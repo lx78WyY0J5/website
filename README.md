@@ -8,23 +8,39 @@ Crée via le package `tree`
   - `tree ./` : Créer l'arborésence du dossier
 ```
 ./
-├── agent.md
+├── index.php
 ├── README.md
 └── src
     ├── assets
-    │   ├── img
-    │   └── svg
+    │   ├── img
+    │   └── svg
     ├── css
     ├── html
+    ├── includes
+    │   ├── footer
+    │   │   ├── footer.css
+    │   │   ├── footer.html
+    │   │   └── footer.js
+    │   └── header
+    │       ├── header.css
+    │       ├── header.html
+    │       └── header.js
     ├── index
-    │   ├── index.css
-    │   ├── index.html
-    │   ├── index.js
-    │   └── index.php
+    │   ├── index.css
+    │   └── index.js
     ├── js
-    └── php
+    ├── pages
+    │   ├── accueil.php
+    │   ├── admin
+    │   │   ├── contact.php
+    │   │   └── donation.php
+    │   └── notes
+    │       └── todolist.php
+    ├── php
+    │   └── info.php
+    └── templates
 
-10 directories, 6 files
+17 directories, 15 files
 
 ```
 ## Installation et lancement
@@ -34,7 +50,7 @@ Crée via le package `tree`
 #### Installer PHP sur Ubuntu
 `sudo apt-get install php php-apache php-mysql php-json php-curl`
 #### Lancer un serveur PHP local
-- `php -S localhost:8000 -t src/index`
+- `php -S localhost:8000 -t ./`
   - `-t` permet de définir le répertoire racine du serveur (le dossier à servir)
     - Seuls les fichiers sous ce dossier sont accessibles via l'URL
     - Le code PHP peut néanmoins `include`/`require` des fichiers en dehors

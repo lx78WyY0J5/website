@@ -1,3 +1,4 @@
+
 <?php
 
 echo '<p>Hello World from PHP!</p>';
@@ -15,4 +16,5 @@ echo '<p>Uname -a : ' . shell_exec('uname -a') . '</p>';
 echo '<hr>';
 
 echo '<p>Document root : ' . $_SERVER['DOCUMENT_ROOT'] . '</p>';
+
 ?>
