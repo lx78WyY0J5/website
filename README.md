@@ -35,7 +35,7 @@ Crée via le package `tree`
 `sudo apt-get install php php-apache php-mysql php-json php-curl`
 #### Lancer un serveur PHP local
 - `php -S localhost:8000 -t src/index`
-  - `-t` permet de ???
+  - `-t` permet de définir le répertoire racine du serveur (le dossier à servir)
 ### SQL
 #### Installer SQL sous Arch Linux
 `sudo pacman -S mariadb`
