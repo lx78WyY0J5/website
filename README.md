@@ -36,6 +36,9 @@ Crée via le package `tree`
 #### Lancer un serveur PHP local
 - `php -S localhost:8000 -t src/index`
   - `-t` permet de définir le répertoire racine du serveur (le dossier à servir)
+    - Seuls les fichiers sous ce dossier sont accessibles via l'URL
+    - Le code PHP peut néanmoins `include`/`require` des fichiers en dehors
+- Naviguez en suite vers [localhost :8000](http://localhost:8000)
 ### SQL
 #### Installer SQL sous Arch Linux
 `sudo pacman -S mariadb`
