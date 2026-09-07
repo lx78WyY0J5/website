@@ -1,20 +1,15 @@
-<?php
-// index.php
-// Hello World from PHP.
-
-echo '<p>Hello World from PHP!</p>';
-
-echo '<hr>';
-
-echo '<p>PHP version : ' . phpversion() . '</p>';
-
-echo '<hr>';
-
-echo '<p>OS : ' . PHP_OS . '</p>';
-echo '<p>' . trim(shell_exec("whoami")) . '@' . shell_exec("hostnamectl hostname") . ' : ' . shell_exec("date") . '</p>';
-echo '<p>Uname -a : ' . shell_exec('uname -a') . '</p>';
-
-echo '<hr>';
-
-echo '<p>Document root : ' . $_SERVER['DOCUMENT_ROOT'] . '</p>';
-?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Site Web</title>
+    <!-- Lien vers le fichier CSS principal -->
+<link rel="stylesheet" href="./index.css">
+<!-- Script JavaScript principal -->
+<script src="./index.js" defer></script>
+</head>
+<body>
+    <h1>Bienvenue sur notre site web</h1>
+    <?php include "./main.php"; ?>
+</body>
+</html>
