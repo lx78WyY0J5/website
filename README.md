@@ -38,6 +38,8 @@ Crée via le package `tree`
   - `-t` permet de définir le répertoire racine du serveur (le dossier à servir)
     - Seuls les fichiers sous ce dossier sont accessibles via l'URL
     - Le code PHP peut néanmoins `include`/`require` des fichiers en dehors
+    - En PHP, ce chemin absolu vers le système de fichiers est accessible via la variable superglobale `$_SERVER['DOCUMENT_ROOT']`
+    - Cela permet aux scripts de construire des chemins absolus portables pour inclure des fichiers ou accéder à des ressources, sans avoir à coder en dur le chemin spécifique à chaque hébergeur (par exemple, `/var/www/html` ou `C:\inetpub\wwwroot`)
 - Naviguez en suite vers [localhost :8000](http://localhost:8000)
 ### SQL
 #### Installer SQL sous Arch Linux
