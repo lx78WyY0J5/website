@@ -12,18 +12,19 @@ Crée via le package `tree`
 ├── README.md
 └── src
     ├── assets
-    │   ├── img
-    │   └── svg
+    │   ├── img
+    │   └── svg
     ├── css
-    │   └── index.css
     ├── html
-    │   └── index.html
+    ├── index
+    │   ├── index.css
+    │   ├── index.html
+    │   ├── index.js
+    │   └── index.php
     ├── js
-    │   └── index.js
     └── php
-        └── index.php
 
-9 directories, 6 files
+10 directories, 6 files
 
 ```
 ## Installation et lancement
@@ -33,12 +34,13 @@ Crée via le package `tree`
 #### Installer PHP sur Ubuntu
 `sudo apt-get install php php-apache php-mysql php-json php-curl`
 #### Lancer un serveur PHP local
-Démarrer le serveur PHP local : `php -S localhost:8000 -t src/index`
-### MySQL
-#### Installer sous Arch Linux
-- `sudo pacman -S mariadb`
+- `php -S localhost:8000 -t src/index`
+  - `-t` permet de ???
+### SQL
+#### Installer SQL sous Arch Linux
+`sudo pacman -S mariadb`
 #### Installer sous Ubuntu
-- `sudo apt-get install mariadb-server`
+`sudo apt-get install mariadb-server`
 #### Lancer MariaDB
 ```bash
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
@@ -54,6 +56,4 @@ FLUSH PRIVILEGES;
 EXIT;
 ```
 ### Démarrer le serveur MySQL local
-```bash
-sudo systemctl start mariadb.service
-```
+`sudo systemctl start mariadb.service`
