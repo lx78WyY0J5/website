@@ -27,15 +27,18 @@ Crée via le package `tree`
 
 ```
 ## Installation et lancement
-### PHP
-  - **Arch Linux** : `sudo pacman -S php php-apache php-mysqli php-json php-curl`
-  - **Ubuntu** : `???`
-- Démarrer le serveur PHP local : `php -S localhost:8000 -t src/html`
+### Installer PHP
+#### Installer PHP sur Arch linux
+`sudo pacman -S php php-apache php-mysqli php-json php-curl`
+#### Installer PHP sur Ubuntu
+`sudo apt-get install php php-apache php-mysql php-json php-curl`
+#### Lancer un serveur PHP local
+Démarrer le serveur PHP local : `php -S localhost:8000 -t src/index`
 ### MySQL
 #### Installer sous Arch Linux
 - `sudo pacman -S mariadb`
 #### Installer sous Ubuntu
-- `???`
+- `sudo apt-get install mariadb-server`
 #### Lancer MariaDB
 ```bash
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
