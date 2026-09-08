@@ -53,7 +53,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } elseif(strlen(trim($_POST["password"])) < 6){
         echo "Password must have atleast 6 characters.";
         $can_register = false;
-    } else{
+    } elseif(!preg_match('/\d/', trim($_POST["password"]))){
+        echo "Password must have a number in it.";
+        $can_register = false;
+    } elseif(!preg_match('/[^a-zA-Z0-9]/', trim($_POST["password"]))){
+        echo "Password must have a special character in it.";
+        $can_register = false;
+    }
+    else{
         $password = trim($_POST["password"]);
     }
 
