@@ -101,10 +101,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(isset($password) && !empty($password)){
         $entropy = calculateEntropy($password);
-        echo "<p>Entropie du mot de passe : " . round($entropy, 2) . " bits</p>";
 
         if ($entropy <= 70) {
-            echo "L'entropie du mot de passe est trop faible, elle doit être au moins de 70 bits.";
+            echo "L'entropie du mot de passe est trop faible<br>Elle doit être au moins de 70 bits<br>Et est actuellement de " . round($entropy, 2) . " bits !";
         }
     }
 
