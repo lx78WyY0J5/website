@@ -50,7 +50,7 @@ Crée via le package `tree`
 #### Installer PHP sur Arch linux
 - `sudo pacman -S php`
 - `sudo sed -i 's/;extension=pdo_mysql/extension=pdo_mysql/g' /etc/php/php.ini` pour activer PDO_MySQL
-#### Installer PHP sur Ubuntu
+#### Installer PHP sur Ubuntu (UNTESTED)
 `sudo apt-get install php`
 #### Lancer un serveur PHP local
 - `php -S localhost:8000 -t ./public/`
@@ -63,7 +63,7 @@ Crée via le package `tree`
 ### SQL
 #### Installer SQL sous Arch Linux
 `sudo pacman -S mariadb`
-#### Installer sous Ubuntu
+#### Installer sous Ubuntu (UNTESTED)
 `sudo apt-get install mariadb-server`
 #### Installer sous Termux
 `pkg install mariadb`
