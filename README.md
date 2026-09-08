@@ -7,40 +7,51 @@ Crée via le package `tree`
   - `sudo pacman -S tree` : Installation
   - `tree ./` : Créer l'arborésence du dossier
 ```
-./
-├── index.php
-├── README.md
-└── src
-    ├── assets
-    │   ├── img
-    │   └── svg
-    ├── css
-    ├── html
-    ├── includes
-    │   ├── footer
-    │   │   ├── footer.css
-    │   │   ├── footer.html
-    │   │   └── footer.js
-    │   └── header
-    │       ├── header.css
-    │       ├── header.html
-    │       └── header.js
-    ├── index
-    │   ├── index.css
-    │   └── index.js
-    ├── js
-    ├── pages
-    │   ├── accueil.php
-    │   ├── admin
-    │   │   ├── contact.php
-    │   │   └── donation.php
-    │   └── notes
-    │       └── todolist.php
-    ├── php
-    │   └── info.php
-    └── templates
+.
+├── public
+│   ├── index.php
+│   └── src
+│       ├── assets
+│       │   ├── img
+│       │   └── svg
+│       ├── includes
+│       │   ├── footer
+│       │   │   ├── footer.css
+│       │   │   ├── footer.html
+│       │   │   └── footer.js
+│       │   └── header
+│       │       ├── header.css
+│       │       ├── header.html
+│       │       └── header.js
+│       ├── index
+│       │   ├── head.html
+│       │   ├── index.css
+│       │   ├── index.html
+│       │   ├── index.js
+│       │   └── index.php
+│       ├── js
+│       ├── pages
+│       │   ├── 404
+│       │   │   ├── 404.css
+│       │   │   ├── 404.html
+│       │   │   ├── 404.js
+│       │   │   ├── head.html
+│       │   │   └── index.php
+│       │   └── admin
+│       │       └── contact
+│       │           ├── contact.css
+│       │           ├── contact.html
+│       │           ├── contact.js
+│       │           ├── head.html
+│       │           └── index.php
+│       └── php
+│           ├── create-db.php
+│           ├── info.php
+│           ├── loadEnv.php
+│           └── PDO.php
+└── README.md
 
-17 directories, 15 files
+16 directories, 27 files
 
 ```
 ## Installation et lancement
