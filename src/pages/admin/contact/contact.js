@@ -1,3 +1,3 @@
 window.addEventListener('DOMContentLoaded', () => {
-    console.log('index.js loaded');
+    console.log('contact.js loaded');
 });
