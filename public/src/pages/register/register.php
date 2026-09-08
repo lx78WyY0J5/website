@@ -12,57 +12,61 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate username
     if(empty(trim($_POST["username"]))){
-        echo "Please enter a username.";
+        echo "Veuillez saisir un nom d'utilisateur.";
         $can_register = false;
-    } elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
-        echo "Username can only contain letters, numbers, and underscores.";
-        $can_register = false;
-    } else{
-        // Prepare a select statement
-        $sql = "SELECT id FROM users WHERE username = :username";
+    } else {
+        if(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
+            echo "Le nom d'utilisateur ne peut contenir que des lettres, chiffres et underscores.";
+            $can_register = false;
+        } 
+        
+        if($can_register === true){
+            // Prepare a select statement
+            $sql = "SELECT id FROM users WHERE username = :username";
 
-        if($stmt = $pdo->prepare($sql)){
-            // Bind variables to the prepared statement as parameters
-            $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
+            if($stmt = $pdo->prepare($sql)){
+                // Bind variables to the prepared statement as parameters
+                $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
 
-            // Set parameters
-            $param_username = trim($_POST["username"]);
+                // Set parameters
+                $param_username = trim($_POST["username"]);
 
-            // Attempt to execute the prepared statement
-            if($stmt->execute()){
-                if($stmt->rowCount() == 1){
-                    echo "This username is already taken.";
-                    $can_register = false;
+                // Attempt to execute the prepared statement
+                if($stmt->execute()){
+                    if($stmt->rowCount() == 1){
+                        echo "Ce nom d'utilisateur est déjà pris.";
+                        $can_register = false;
+                    } else{
+                        $username = trim($_POST["username"]);
+                    }
                 } else{
-                    $username = trim($_POST["username"]);
+echo "Oups! Une erreur s'est produite. Veuillez réessayer plus tard.";
+                    $can_register = false;
                 }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-                $can_register = false;
-            }
 
-            // Close statement
-            unset($stmt);
+                // Close statement
+                unset($stmt);
+            }
         }
     }
 
     // Validate password
     if(empty(trim($_POST["password"]))){
-        echo "Please enter a password.";
+        echo "Veuillez saisir un mot de passe.";
         $can_register = false;
     } else {
         if(strlen(trim($_POST["password"])) < 6){
-            echo "Password must have atleast 6 characters.";
+            echo "Le mot de passe doit comporter au moins 6 caractères.";
             $can_register = false;
         } 
         
         if(!preg_match('/\d/', trim($_POST["password"]))){
-            echo "Password must have a number in it.";
+            echo "Le mot de passe doit contenir un chiffre.";
             $can_register = false;
         }
         
         if(!preg_match('/[^a-zA-Z0-9]/', trim($_POST["password"]))){
-            echo "Password must have a special character in it.";
+            echo "Le mot de passe doit contenir un caractère spécial.";
             $can_register = false;
         }
     }
@@ -74,12 +78,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate confirm password
     if(empty(trim($_POST["confirm_password"]))){
-        echo "Please confirm password.";
+        echo "Veuillez confirmer le mot de passe.";
         $can_register = false;
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
         if($password != $confirm_password){
-            echo "Password did not match.";
+            echo "Les mots de passe ne correspondent pas.";
             $can_register = false;
         }
     }
@@ -104,7 +108,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 //header("location: login.php");
                 echo "Compte crée !";
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Oups! Une erreur s'est produite. Veuillez réessayer plus tard.";
             }
 
             // Close statement
