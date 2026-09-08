@@ -18,7 +18,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
             echo "Le nom d'utilisateur ne peut contenir que des lettres, chiffres et underscores";
             $can_register = false;
-        } 
+        }
+
+        if(strlen(trim($_POST["username"])) < 6){
+            echo "Le nom d'utilisateur doit comporter au moins 6 caractères";
+            $can_register = false;
+        }
         
         if($can_register === true){
             // Prepare a select statement
@@ -40,7 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $username = trim($_POST["username"]);
                     }
                 } else{
-echo "Oups! Une erreur s'est produite. Veuillez réessayer plus tard";
+                    echo "Oups! Une erreur s'est produite. Veuillez réessayer plus tard";
                     $can_register = false;
                 }
 
@@ -58,8 +63,8 @@ echo "Oups! Une erreur s'est produite. Veuillez réessayer plus tard";
         if(strlen(trim($_POST["password"])) < 6){
             echo "Le mot de passe doit comporter au moins 6 caractères";
             $can_register = false;
-        } 
-        
+        }
+
         if(!preg_match('/\d/', trim($_POST["password"]))){
             echo "Le mot de passe doit contenir un chiffre";
             $can_register = false;
@@ -72,9 +77,7 @@ echo "Oups! Une erreur s'est produite. Veuillez réessayer plus tard";
     }
 
     //parse password into var
-    if($can_register === true){
-        $password = trim($_POST["password"]);
-    }
+    $password = trim($_POST["password"]);
 
     // Validate confirm password
     if(empty(trim($_POST["confirm_password"]))){
