@@ -2,6 +2,18 @@
 <script src="/src/includes/header/header.js"></script>
 <header>
     <h2>My Site Header</h2>
-    <a href="/accueil">/accueil</a>
-    <a href="/admin/contact">adm contact</a>
+    <a href="/accueil">Accueil</a>
+    <a href="/admin/contact">Contact</a>
+    <br>
+
+    <?php
+    session_start();
+            if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+                echo "<a href=\"/logout\">Logout</a>";
+            }
+            else{
+                echo "<a href=\"/login\">Login</a>";
+                echo "<a href=\"/register\">Register</a>";
+            }
+    ?>
 </header>
