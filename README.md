@@ -52,7 +52,7 @@ Crée via le package `tree`
 #### Installer PHP sur Ubuntu
 `sudo apt-get install php php-apache php-mysql php-json php-curl`
 #### Lancer un serveur PHP local
-- `php -S localhost:8000 -t ./`
+- `php -S localhost:8000 -t ./public/`
   - `-t` permet de définir le répertoire racine du serveur (le dossier à servir)
     - Seuls les fichiers sous ce dossier sont accessibles via l'URL
     - Le code PHP peut néanmoins `include`/`require` des fichiers en dehors
@@ -92,13 +92,13 @@ FLUSH PRIVILEGES;
 ## Lancer PHP et MariaDB sur Termux
 ```
 cd ./website ;
-nohup php -S localhost:8000 -t ./ &
+nohup php -S localhost:8000 -t ./public/ &
 nohup mysqld_safe &
 ```
 ### Lancer Code-Server et PHP et MariaDB sur Termux
 ```
 cd ./website ;
-nohup php -S localhost:8000 -t ./ &
+nohup php -S localhost:8000 -t ./public/ &
 nohup mysqld_safe &
 
 nohup code-server --auth none &
