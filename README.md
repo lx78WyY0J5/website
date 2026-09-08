@@ -48,9 +48,10 @@ Crée via le package `tree`
 #### Installer PHP sur Termux
 `pkg install php`
 #### Installer PHP sur Arch linux
-`sudo pacman -S php php-apache php-mysqli php-json php-curl`
+- `sudo pacman -S php`
+- `sudo sed -i 's/;extension=pdo_mysql/extension=pdo_mysql/g' /etc/php/php.ini` pour activer PDO_MySQL
 #### Installer PHP sur Ubuntu
-`sudo apt-get install php php-apache php-mysql php-json php-curl`
+`sudo apt-get install php`
 #### Lancer un serveur PHP local
 - `php -S localhost:8000 -t ./public/`
   - `-t` permet de définir le répertoire racine du serveur (le dossier à servir)
@@ -77,6 +78,8 @@ sudo systemctl start mariadb.service
 sudo systemctl enable mariadb.service
 ```
 #### Configurer un utilisateur et mot de passe
+- Lancez `sudo mysql`
+- Puis lancez ;
 ```bash
 CREATE USER 'webuser'@'localhost' IDENTIFIED BY 'strongpassword';
 GRANT ALL PRIVILEGES ON *.* TO 'webuser'@'localhost';
@@ -84,6 +87,8 @@ FLUSH PRIVILEGES;
 EXIT;
 ```
 #### Créer la base de données
+- Lancez `sudo mysql`
+- Puis lancez ;
 ```bash
 CREATE DATABASE mydb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 GRANT ALL PRIVILEGES ON mydb.* TO 'webuser'@'localhost';
