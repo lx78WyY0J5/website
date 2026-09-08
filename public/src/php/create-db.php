@@ -5,16 +5,16 @@
   $dbname = getenv('DB_NAME');
 
   try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   } catch(PDOException $e) {
     die("Could not connect. " . $e->getMessage());
   }
 
   try {
     $sql = "CREATE DATABASE " . $dbname;
-    $conn->exec($sql);
+    $pdo->exec($sql);
     echo "Database created successfully";
   } catch(PDOException $e) {
     // Handle errors during db creation
@@ -22,5 +22,5 @@
   }
 
   // Close connection
-  $conn = null;
+  $pdo = null;
 ?>

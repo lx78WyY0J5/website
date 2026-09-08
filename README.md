@@ -105,6 +105,18 @@ CREATE DATABASE mydb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 GRANT ALL PRIVILEGES ON mydb.* TO 'webuser'@'localhost';
 FLUSH PRIVILEGES;
 ```
+#### Créer la table 'users'
+- Lancez `sudo mysql`
+- Puis lancez ;
+```bash
+USE mydb;
+CREATE TABLE users (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+```
 ## Lancer PHP et MariaDB sur Termux
 ```
 cd ./website ;
