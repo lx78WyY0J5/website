@@ -60,8 +60,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "<p>Veuillez saisir un mot de passe</p>";
         $can_register = false;
     } else {
-        if(strlen(trim($_POST["password"])) < 6){
-            echo "<p>Le mot de passe doit comporter au moins 6 caractères</p>";
+        if(strlen(trim($_POST["password"])) < 12){
+            echo "<p>Le mot de passe doit comporter au moins 12 caractères</p>";
             $can_register = false;
         }
 
@@ -101,9 +101,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(isset($password) && !empty($password)){
         $entropy = calculateEntropy($password);
+        echo "<p>L'entropie du mot de passe est de " . round($entropy, 2) . " bits</p>";
 
-        if ($entropy <= 70) {
-            echo "L'entropie du mot de passe est trop faible<br>Elle doit être au moins de 70 bits<br>Et est actuellement de " . round($entropy, 2) . " bits !";
+        if ($entropy <= 80) {
+            echo "<p>L'entropie du mot de passe est trop faible<br>Elle doit être au moins de 80 bits</p>";
         }
     }
 
