@@ -50,17 +50,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty(trim($_POST["password"]))){
         echo "Please enter a password.";
         $can_register = false;
-    } elseif(strlen(trim($_POST["password"])) < 6){
-        echo "Password must have atleast 6 characters.";
-        $can_register = false;
-    } elseif(!preg_match('/\d/', trim($_POST["password"]))){
-        echo "Password must have a number in it.";
-        $can_register = false;
-    } elseif(!preg_match('/[^a-zA-Z0-9]/', trim($_POST["password"]))){
-        echo "Password must have a special character in it.";
-        $can_register = false;
+    } else {
+        if(strlen(trim($_POST["password"])) < 6){
+            echo "Password must have atleast 6 characters.";
+            $can_register = false;
+        } 
+        
+        if(!preg_match('/\d/', trim($_POST["password"]))){
+            echo "Password must have a number in it.";
+            $can_register = false;
+        }
+        
+        if(!preg_match('/[^a-zA-Z0-9]/', trim($_POST["password"]))){
+            echo "Password must have a special character in it.";
+            $can_register = false;
+        }
     }
-    else{
+
+    //parse password into var
+    if($can_register === true){
         $password = trim($_POST["password"]);
     }
 
@@ -70,7 +78,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $can_register = false;
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
-        if(empty($password_err) && ($password != $confirm_password)){
+        if($password != $confirm_password){
             echo "Password did not match.";
             $can_register = false;
         }
