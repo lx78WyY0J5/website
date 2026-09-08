@@ -5,7 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
 
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
-$username_err = $password_err = $confirm_password_err = "";
+$can_register = true;
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -13,8 +13,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate username
     if(empty(trim($_POST["username"]))){
         echo "Please enter a username.";
+        $can_register = false;
     } elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
         echo "Username can only contain letters, numbers, and underscores.";
+        $can_register = false;
     } else{
         // Prepare a select statement
         $sql = "SELECT id FROM users WHERE username = :username";
@@ -30,11 +32,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if($stmt->execute()){
                 if($stmt->rowCount() == 1){
                     echo "This username is already taken.";
+                    $can_register = false;
                 } else{
                     $username = trim($_POST["username"]);
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
+                $can_register = false;
             }
 
             // Close statement
@@ -45,8 +49,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate password
     if(empty(trim($_POST["password"]))){
         echo "Please enter a password.";
+        $can_register = false;
     } elseif(strlen(trim($_POST["password"])) < 6){
         echo "Password must have atleast 6 characters.";
+        $can_register = false;
     } else{
         $password = trim($_POST["password"]);
     }
@@ -54,15 +60,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate confirm password
     if(empty(trim($_POST["confirm_password"]))){
         echo "Please confirm password.";
+        $can_register = false;
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
         if(empty($password_err) && ($password != $confirm_password)){
             echo "Password did not match.";
+            $can_register = false;
         }
     }
 
     // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
+    if($can_register === true){
         // Prepare an insert statement
         $sql = "INSERT INTO users (username, password) VALUES (:username, :password)";
 
