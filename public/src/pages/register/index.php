@@ -5,8 +5,6 @@
         <?php
             include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.html';
             include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/register/register.html';
-            include $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
-            include $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
             include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/register/register.php';
             include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/footer/footer.html';
         ?>

@@ -33,9 +33,3 @@ function loadEnv($path) {
 }
 
 loadEnv(__DIR__ . '/../../../.env');
-
-echo "<p>" . getenv('DB_USER') . "</p>";
-echo "<p>" . getenv('DB_NAME') . "</p>";
-echo "<p>" . getenv('DB_PASS') . "</p>";
-
-// $token = $_ENV['DB_PASS'];
