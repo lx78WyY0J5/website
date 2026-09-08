@@ -5,13 +5,13 @@
         $pageFile = $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.php';
     }
     else {
-        $filePath = $_SERVER['DOCUMENT_ROOT'] . '/src/pages/' . str_replace('/', DIRECTORY_SEPARATOR, $uri) . '.php';
+        $filePath = $_SERVER['DOCUMENT_ROOT'] . '/src/pages/' . str_replace('/', DIRECTORY_SEPARATOR, $uri) . '/index.php';
         if (file_exists($filePath)) {
             $pageFile = $filePath;
         }
         else {
             http_response_code(404);
-            echo '404 Not Found';
+            $pageFile = $_SERVER['DOCUMENT_ROOT'] . '/src/pages/404/index.php'; // change by a 404 page lol
         }
     }
 
