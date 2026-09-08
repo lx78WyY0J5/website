@@ -12,16 +12,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate username
     if(empty(trim($_POST["username"]))){
-        echo "Veuillez saisir un nom d'utilisateur";
+        echo "<p>Veuillez saisir un nom d'utilisateur</p>";
         $can_register = false;
     } else {
         if(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
-            echo "Le nom d'utilisateur ne peut contenir que des lettres, chiffres et underscores";
+            echo "<p>Le nom d'utilisateur ne peut contenir que des lettres, chiffres et underscores</p>";
             $can_register = false;
         }
 
         if(strlen(trim($_POST["username"])) < 6){
-            echo "Le nom d'utilisateur doit comporter au moins 6 caractères";
+            echo "<p>Le nom d'utilisateur doit comporter au moins 6 caractères</p>";
             $can_register = false;
         }
         
@@ -39,13 +39,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Attempt to execute the prepared statement
                 if($stmt->execute()){
                     if($stmt->rowCount() == 1){
-                        echo "Ce nom d'utilisateur est déjà pris";
+                        echo "<p>Ce nom d'utilisateur est déjà pris</p>";
                         $can_register = false;
                     } else{
                         $username = trim($_POST["username"]);
                     }
                 } else{
-                    echo "Oups! Une erreur s'est produite. Veuillez réessayer plus tard";
+                    echo "<p>Oups! Une erreur s'est produite. Veuillez réessayer plus tard</p>";
                     $can_register = false;
                 }
 
@@ -57,21 +57,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate password
     if(empty(trim($_POST["password"]))){
-        echo "Veuillez saisir un mot de passe";
+        echo "<p>Veuillez saisir un mot de passe</p>";
         $can_register = false;
     } else {
         if(strlen(trim($_POST["password"])) < 6){
-            echo "Le mot de passe doit comporter au moins 6 caractères";
+            echo "<p>Le mot de passe doit comporter au moins 6 caractères</p>";
             $can_register = false;
         }
 
         if(!preg_match('/\d/', trim($_POST["password"]))){
-            echo "Le mot de passe doit contenir un chiffre";
+            echo "<p>Le mot de passe doit contenir un chiffre</p>";
+            $can_register = false;
+        }
+
+        if(!preg_match('/[a-z]/', trim($_POST["password"]))){
+            echo "<p>Le mot de passe doit contenir une lettre minuscule</p>";
+            $can_register = false;
+        }
+
+        if(!preg_match('/[A-Z]/', trim($_POST["password"]))){
+            echo "<p>Le mot de passe doit contenir une lettre majuscule</p>";
             $can_register = false;
         }
         
         if(!preg_match('/[^a-zA-Z0-9]/', trim($_POST["password"]))){
-            echo "Le mot de passe doit contenir un caractère spécial";
+            echo "<p>Le mot de passe doit contenir un caractère spécial</p>";
             $can_register = false;
         }
     }
@@ -81,12 +91,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate confirm password
     if(empty(trim($_POST["confirm_password"]))){
-        echo "Veuillez confirmer le mot de passe";
+        echo "<p>Veuillez confirmer le mot de passe</p>";
         $can_register = false;
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
         if($password != $confirm_password){
-            echo "Les mots de passe ne correspondent pas";
+            echo "<p>Les mots de passe ne correspondent pas</p>";
             $can_register = false;
         }
     }
@@ -109,9 +119,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if($stmt->execute()){
                 // Redirect to login page
                 //header("location: login.php");
-                echo "Compte crée !";
+                echo "<p>Compte crée !</p>";
             } else{
-                echo "Oups! Une erreur s'est produite. Veuillez réessayer plus tard";
+                echo "<p>Oups! Une erreur s'est produite. Veuillez réessayer plus tard</p>";
             }
 
             // Close statement
