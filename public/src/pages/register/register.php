@@ -86,18 +86,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
-    //parse password into var
-    $password = trim($_POST["password"]);
-
     // Validate confirm password
     if(empty(trim($_POST["confirm_password"]))){
         echo "<p>Veuillez confirmer le mot de passe</p>";
         $can_register = false;
     } else{
+        $password = trim($_POST["password"]);
         $confirm_password = trim($_POST["confirm_password"]);
         if($password != $confirm_password){
             echo "<p>Les mots de passe ne correspondent pas</p>";
             $can_register = false;
+        }
+    }
+
+    if(isset($password) && !empty($password)){
+        $entropy = calculateEntropy($password);
+        echo "<p>Entropie du mot de passe : " . round($entropy, 2) . " bits</p>";
+
+        if ($entropy <= 70) {
+            echo "L'entropie du mot de passe est trop faible, elle doit être au moins de 70 bits.";
         }
     }
 
@@ -131,5 +138,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Close connection
     unset($pdo);
+}
+
+function calculateEntropy($password) {
+    $L = strlen($password);
+    $N = 0;
+    
+    // Determine pool size based on character types
+    if (preg_match('/[a-z]/', $password)) $N += 26;
+    if (preg_match('/[A-Z]/', $password)) $N += 26;
+    if (preg_match('/[0-9]/', $password)) $N += 10;
+    if (preg_match('/[^a-zA-Z0-9]/', $password)) $N += 32; // Symbols
+
+    // Avoid double counting if only one type is present
+    if (ctype_alpha($password)) $N = ($password === strtolower($password)) ? 26 : 52;
+    if (ctype_digit($password)) $N = 10;
+
+    return $L * log($N, 2);
 }
 ?>
