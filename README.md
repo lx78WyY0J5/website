@@ -89,13 +89,13 @@ CREATE DATABASE mydb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 GRANT ALL PRIVILEGES ON mydb.* TO 'webuser'@'localhost';
 FLUSH PRIVILEGES;
 ```
-## Lancer PHP et MariaDB
+## Lancer PHP et MariaDB sur Termux
 ```
 cd ./website ;
 nohup php -S localhost:8000 -t ./ &
 nohup mysqld_safe &
 ```
-### Lancer Code-Server et PHP et MariaDB
+### Lancer Code-Server et PHP et MariaDB sur Termux
 ```
 cd ./website ;
 nohup php -S localhost:8000 -t ./ &
