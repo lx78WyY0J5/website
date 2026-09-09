@@ -1,6 +1,6 @@
 <?php
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    echo "<p>Vous êtes déjà connecté</p>";
+        header("location: /");
     }
     else{
         include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/register/register.html';

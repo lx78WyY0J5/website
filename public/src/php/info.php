@@ -9,9 +9,9 @@ echo '<p>PHP version : ' . phpversion() . '</p>';
 
 echo '<hr>';
 
-echo '<p>OS : ' . PHP_OS . '</p>';
-echo '<p>' . trim(shell_exec("whoami")) . '@' . shell_exec("hostnamectl hostname") . ' : ' . shell_exec("date") . '</p>';
-echo '<p>Uname -a : ' . shell_exec('uname -a') . '</p>';
+echo '<pre>' . shell_exec("echo '{\"modules\":[]}' | fastfetch --logo arch --config -") . '</pre>';
+echo '<p>OS : ' . PHP_OS . "   " . trim(shell_exec("whoami")) . '@' . shell_exec("hostnamectl hostname") . '</p>';
+echo '<p>' . shell_exec('uname -a') . '</p>';
 
 echo '<hr>';
 
