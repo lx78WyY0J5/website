@@ -165,7 +165,7 @@ let links = [
         href: "/games/shopTitans",
         tag: "Jeux Outils",
         title: "ShopTitans",
-        svg: "/assets/image/ShopTitans.webp",
+        svg: "/src/assets/image/ShopTitans.webp",
     },
     {
         href: "/games/minesweeper",
