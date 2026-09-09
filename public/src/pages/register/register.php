@@ -3,6 +3,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/password_validation.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
 
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
@@ -84,6 +85,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION["id"] = $id;
                 $_SESSION["username"] = $username;
 
+                logSecurityEvent('registration', ['username' => $username]);
                 header("location: /");
             } else{
                 echo "<p>Oups! Une erreur s'est produite. Veuillez réessayer plus tard</p>";

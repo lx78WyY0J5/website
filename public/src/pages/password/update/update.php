@@ -10,6 +10,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/password_validation.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
 
 // Define variables and initialize with empty values
 $password = $confirm_password = "";
@@ -42,6 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Password updated successfully. Destroy the session, and redirect to login page
                 session_destroy();
                 echo "OK mot de passe changé !";
+                logSecurityEvent('password_changed', ['user_id' => $_SESSION['id'], 'username' => $_SESSION['username']]);
                 header("location: /login");
                 exit();
             } else{

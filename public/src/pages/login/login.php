@@ -2,6 +2,7 @@
 //load requiered modules
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
 
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -57,11 +58,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         } else{
                             // Password is not valid, display a generic error message
                             echo "<p>Le nom d'utilisateur ou le mot de passe ne correspond pas</p>";
+                            logSecurityEvent('login_failed', ['username' => $username]);
                         }
                     }
                 } else{
                     // Username doesn't exist, display a generic error message
                     echo "<p>Le nom d'utilisateur ou le mot de passe ne correspond pas</p>";
+                    logSecurityEvent('login_failed', ['username' => $username]);
                 }
             } else{
                 echo "<p>Oups! Une erreur s'est produite. Veuillez réessayer plus tard</p>";

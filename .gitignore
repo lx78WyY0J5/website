@@ -1,2 +1,3 @@
 .env
 !.env.exemple
+logs/security.log

@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
 
     $uri = trim($_SERVER['REQUEST_URI'], '/');
 
@@ -16,6 +17,8 @@
             $pageFile = $_SERVER['DOCUMENT_ROOT'] . '/src/pages/404/index.php';
         }
     }
+
+    logSecurityEvent('visit', ['username' => $_SESSION['username'], 'url' => $uri]);
 
     include $pageFile;
 ?>
