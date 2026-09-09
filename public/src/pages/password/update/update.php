@@ -1,102 +1,64 @@
 <?php
 session_start();
+
+// Check if the user is logged in, otherwise redirect to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: /login");
+    exit;
+}
+
 //load requiered modules
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
 
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = "";
-$can_register = true;
+$password = $confirm_password = "";
+$can_update = true;
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    // Validate username
-    if(empty(trim($_POST["username"]))){
-        echo "<p>Veuillez saisir un nom d'utilisateur</p>";
-        $can_register = false;
-    } else {
-        if(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
-            echo "<p>Le nom d'utilisateur ne peut contenir que des lettres, chiffres et underscores</p>";
-            $can_register = false;
-        }
-
-        if(strlen(trim($_POST["username"])) < 6){
-            echo "<p>Le nom d'utilisateur doit comporter au moins 6 caractères</p>";
-            $can_register = false;
-        }
-        
-        if($can_register === true){
-            // Prepare a select statement
-            $sql = "SELECT id FROM users WHERE username = :username";
-
-            if($stmt = $pdo->prepare($sql)){
-                // Bind variables to the prepared statement as parameters
-                $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
-
-                // Set parameters
-                $param_username = trim($_POST["username"]);
-
-                // Attempt to execute the prepared statement
-                if($stmt->execute()){
-                    if($stmt->rowCount() == 1){
-                        echo "<p>Ce nom d'utilisateur est déjà pris</p>";
-                        $can_register = false;
-                    } else{
-                        $username = trim($_POST["username"]);
-                    }
-                } else{
-                    echo "<p>Oups! Une erreur s'est produite. Veuillez réessayer plus tard</p>";
-                    $can_register = false;
-                }
-
-                // Close statement
-                unset($stmt);
-            }
-        }
-    }
-
     // Validate password
     if(empty(trim($_POST["password"]))){
         echo "<p>Veuillez saisir un mot de passe</p>";
-        $can_register = false;
+        $can_update = false;
     } else {
         if(strlen(trim($_POST["password"])) < 12){
             echo "<p>Le mot de passe doit comporter au moins 12 caractères</p>";
-            $can_register = false;
+            $can_update = false;
         }
 
         if(!preg_match('/\d/', trim($_POST["password"]))){
             echo "<p>Le mot de passe doit contenir un chiffre</p>";
-            $can_register = false;
+            $can_update = false;
         }
 
         if(!preg_match('/[a-z]/', trim($_POST["password"]))){
             echo "<p>Le mot de passe doit contenir une lettre minuscule</p>";
-            $can_register = false;
+            $can_update = false;
         }
 
         if(!preg_match('/[A-Z]/', trim($_POST["password"]))){
             echo "<p>Le mot de passe doit contenir une lettre majuscule</p>";
-            $can_register = false;
+            $can_update = false;
         }
         
         if(!preg_match('/[^a-zA-Z0-9]/', trim($_POST["password"]))){
             echo "<p>Le mot de passe doit contenir un caractère spécial</p>";
-            $can_register = false;
+            $can_update = false;
         }
     }
 
     // Validate confirm password
     if(empty(trim($_POST["confirm_password"]))){
         echo "<p>Veuillez confirmer le mot de passe</p>";
-        $can_register = false;
+        $can_update = false;
     } else{
         $password = trim($_POST["password"]);
         $confirm_password = trim($_POST["confirm_password"]);
         if($password != $confirm_password){
             echo "<p>Les mots de passe ne correspondent pas</p>";
-            $can_register = false;
+            $can_update = false;
         }
     }
 
@@ -109,40 +71,36 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
-    // Check input errors before inserting in database
-    if($can_register === true){
-        // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES (:username, :password)";
-
+    // Check input errors before updating the database
+    if($can_update === true){
+        // Prepare an update statement
+        $sql = "UPDATE users SET password = :password WHERE id = :id";
+        
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
             $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
+            $stmt->bindParam(":id", $param_id, PDO::PARAM_INT);
             
             // Set parameters
-            $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+            $param_password = password_hash($password, PASSWORD_DEFAULT);
+            $param_id = $_SESSION["id"];
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
-                // Redirect to login page
-                session_start();
-
-                // Store data in session variables
-                $_SESSION["loggedin"] = true;
-                $_SESSION["id"] = $id;
-                $_SESSION["username"] = $username;
-
-                header("location: /");
+                // Password updated successfully. Destroy the session, and redirect to login page
+                session_destroy();
+                echo "OK mot de passe changé !";
+                header("location: /login");
+                exit();
             } else{
-                echo "<p>Oups! Une erreur s'est produite. Veuillez réessayer plus tard</p>";
+                echo "Oops! Something went wrong. Please try again later.";
             }
 
             // Close statement
             unset($stmt);
         }
     }
-
+    
     // Close connection
     unset($pdo);
 }

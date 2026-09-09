@@ -1,3 +1,3 @@
 window.addEventListener('DOMContentLoaded', () => {
-    console.log('register.js loaded');
+    console.log('password update.js loaded');
 });

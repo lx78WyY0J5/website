@@ -6,7 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
 // Define variables and initialize with empty values
 $username = $password = "";
 $can_register = true;
- 
+
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
@@ -49,14 +49,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         if(password_verify($password, $hashed_password)){
                             // Password is correct, so start a new session
                             session_start();
-                            
+
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
                             
                             // Redirect user to welcome page
-                            header("location: admin/contact");
+                            header("location: /");
                         } else{
                             // Password is not valid, display a generic error message
                             echo "<p>Le nom d'utilisateur ou le mot de passe ne correspond pas</p>";

@@ -3,7 +3,7 @@
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/index/head.html'; ?>
     <body>
         <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.html';
+            include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.php';
             include $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.html';
             include $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
             include $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
