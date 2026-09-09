@@ -1,7 +1,7 @@
 <?php
 function loadEnv($path) {
     if (!file_exists($path)) {
-        echo "<p>file not found</p>";
+        echo "<p>.env file not found</p>";
         return;
     }
 
