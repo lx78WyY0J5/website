@@ -2,10 +2,10 @@
 <html lang="fr">
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/404/head.html'; ?>
     <body>
-        <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.php';
-            include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/404/404.html';
-            include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/footer/footer.html';
-        ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.php'; ?>
+        <article>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/404/404.html'; ?>
+        </article>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/footer/footer.html'; ?>
     </body>
 </html>
