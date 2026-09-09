@@ -2,7 +2,6 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.html';
 
-        session_start();
         if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             echo "<a href=\"/logout\">Logout</a>";
             echo "<a href=\"/password/update\">Update password</a>";

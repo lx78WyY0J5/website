@@ -1,5 +1,4 @@
 <?php
-session_start();
 //load requiered modules
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
@@ -79,7 +78,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Redirect to login page
-                session_start();
 
                 // Store data in session variables
                 $_SESSION["loggedin"] = true;

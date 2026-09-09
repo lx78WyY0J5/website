@@ -5,7 +5,6 @@
         <?php
             include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.php';
 
-            session_start();
             if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                echo "<p>Vous êtes déjà connecté</p>";
             }

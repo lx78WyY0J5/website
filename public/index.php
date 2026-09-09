@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     $uri = trim($_SERVER['REQUEST_URI'], '/');
 
     if ($uri === '' || $uri === 'accueil') {
