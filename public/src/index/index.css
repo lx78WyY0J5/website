@@ -1,12 +1,279 @@
 body {
-    font-family: Arial, sans-serif;
+    position: relative;
+    overflow-x: clip;
     margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
-h1 {
-    color: #333;
-    text-align: center;
-    margin-top: 50px;
+@media screen and (max-width: 1024px) {
+    body {
+    position: absolute;
+}
+}
+
+p {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    white-space: pre-wrap;
+}
+
+li>p,
+li>a,
+sub>*,
+del>* {
+    display: inline-block;
+}
+
+li>*{
+    vertical-align: middle;
+}
+
+del>* {
+    text-decoration: line-through;
+}
+
+h1>* {
+    display: inline;
+}
+
+ul, ol {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+    list-style-type: disc;
+    display: block !important;
+    padding-left: 25px;
+}
+
+textarea {
+    background: linear-gradient(var(--main-color-transparent), var(--background-color-transparent));
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 8px;
+
+    padding: 20px;
+
+    min-width: 10%;
+    width: 75%;
+    max-width: 85%;
+
+    min-height: 100px;
+    max-height: 70vh;
+
+    border-color: var(--main-color);
+    border-width: 2px;
+
+    color: var(--text-color);
+
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+
+    overflow-y: auto;
+}
+
+textarea::-webkit-scrollbar {
+    width: 1.5em;
+    background-color: transparent;
+    border: none;
+}
+
+textarea::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+textarea::-webkit-scrollbar-track-piece {
+    background-color: var(--second-default);
+    border-radius: 16px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+    outline: 1px solid var(--link-color);
+}
+
+textarea::-webkit-scrollbar-corner {
+    background-color: var(--main-color);
+    border-radius: 100%;
+    border-color: transparent;
+}
+
+code{
+    display: inline-block;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    border-radius: 10px;
+
+    margin: 5px;
+
+    font-size: larger;
+    font-weight: bold;
+    color: var(--link-color);
+    background-color: var(--main-color-transparent);
+}
+
+blockquote{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+
+    padding-left: 10px;
+
+    border-left-color: var(--text-color);
+    border-left-width: 2px;
+    border-left-style: solid;
+
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:-webkit-any(article, aside, nav, section) h1,h2,h3,h4,h5,h6 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+button {
+    background-color: var(--main-color-transparent);
+    border-color: var(--text-color);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+}
+
+input[type=checkbox].checkboxBox {
+    appearance: none;
+
+    transform: scale(1.5);
+
+    border-radius: 4px;
+    height: 15px;
+    width: 15px;
+    background: var(--main-color);
+    border: 1px solid var(--text-color);
+}
+
+input[type="checkbox"].checkboxBox:checked {
+    background: var(--text-color);
+
+    &:before {
+        content: '✖';
+        left: 20%;
+        font-size: 10px;
+        position: absolute;
+        color: var(--main-color);
+    }
+}
+
+button:focus-within,
+input:focus-within~span{
+    outline-color: var(--text-color);
+    outline-offset: 3px;
+    outline-width: 2px;
+    outline-style: solid;
+    transition: 0ms !important;
+}
+
+.check,
+.check>* {
+    display: inline-block;
+}
+
+.checkboxToggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 40px;
+    transform: translateY(25%);
+}
+
+.checkboxToggle>input {
+    z-index: 999;
+    opacity: 0;
+}
+
+.checkboxToggle>input,
+.checkboxToggle>span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.checkboxToggle>span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    -webkit-backdrop-filter: invert(0.75);
+    backdrop-filter: invert(0.75);
+    transition: 0.5s;
+}
+
+.checkboxToggle>span:before {
+    position: absolute;
+    content: "";
+    --size: 25px;
+    height: var(--size);
+    width: var(--size);
+    left: 10%;
+    bottom: 20%;
+    background-color: var(--main-color);
+    transition: 0.5s;
+}
+
+
+.checkboxToggle.invert>input+span,
+.checkboxToggle>input:checked+span,
+.checkboxToggle>input.defaultTrue:indeterminate+span {
+    transition: 1s;
+    background-color: green;
+}
+.checkboxToggle.invert>input:checked+span,
+.checkboxToggle>input+span,
+.checkboxToggle>input.defaultFalse:indeterminate+span {
+    transition: 1s;
+    background-color: red;
+}
+
+.checkboxToggle>input:focus+span {
+    /*keyboard space / click*/
+}
+
+*:focus{
+    color: var(--text-color);
+
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--text-color)
+}
+
+.checkboxToggle>input:checked+span:before {
+    transition: 1.5s;
+    right: 10%;
+    left: unset;
+}
+
+.checkboxToggle>input.defaultTrue:indeterminate+span:before,
+.checkboxToggle>input.defaultFalse:indeterminate+span:before{
+    transition: 1.5s;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.checkboxToggle>span {
+    border-radius: 34px;
+}
+
+.checkboxToggle>span:before {
+    border-radius: 50%;
 }

@@ -24,6 +24,30 @@
     else {
         logSecurityEvent('visit', ['url' => $uri]);
     }
-
-    include $pageFile;
 ?>
+
+<!DOCTYPE html>
+<html lang="fr">
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/' . str_replace('/', DIRECTORY_SEPARATOR, $uri) . '/head.html'; ?>
+    <body>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.php'; ?>
+
+        <link rel="stylesheet" href="/src/css/theme.css">
+        <link rel="stylesheet" href="/src/css/font.css">
+        <link rel="stylesheet" href="/src/css/article.css">
+
+        <div id="content">
+            <div id="content-left" style="display: none;">
+            </div>
+
+            <article id="contentArticle">
+                <?php include $pageFile; ?>
+            </article>
+
+            <div id="content-right">
+            </div>
+        </div>
+
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/footer/footer.html'; ?>
+    </body>
+</html>

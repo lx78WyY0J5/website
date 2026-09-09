@@ -1,19 +1,12 @@
 header {
-    background-color: #333;
-    color: white;
-    padding: 10px;
+    position: sticky;
+    top: 0;
 
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    justify-content: center;
-}
+    width: 100%;
 
-header>h2{
-    padding-right:15px;
-}
+    text-align: center;
 
-header>a{
-    color:white;
-    text-decoration: none;
+    z-index: 999;
+
+    pointer-events: none;
 }

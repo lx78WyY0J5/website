@@ -1,5 +1,45 @@
 footer {
-    background-color: #333;
-    color: white;
-    padding: 10px;
+    position: relative;
+    bottom: 0;
+
+    width: 100%;
+
+    padding-bottom: 2.5vh;
+    padding-top: 2.5vh;
+
+    z-index: 989;
+
+    background: linear-gradient(var(--background-color-transparent), var(--main-color));
+
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+
+    user-select: none;
+}
+
+footer>div>nav>a,
+footer>div>nav>p {
+    margin: 5px;
+    text-decoration: none;
+}
+
+footer>nav,
+footer>div>nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    align-content: center;
+    flex-direction: row;
+}
+
+footer>nav>a,
+footer>div>nav>a {
+    padding: 8px;
+    transform: translateY(20%);
 }
