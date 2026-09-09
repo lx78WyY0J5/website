@@ -61,6 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                             // Redirect user to welcome page
                             header("location: /");
+                            echo "<script>window.location.href = '/';</script>";
                         }
                         else {
                             // Password is not valid, display a generic error message

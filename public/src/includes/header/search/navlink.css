@@ -1,0 +1,124 @@
+a.cardTitle{
+    transform: translateY(15%);
+}
+
+.subnav-content {
+    display: none;
+    position: absolute;
+    background-color: var(--background-color);
+    padding: 0px 15px 25px 15px;
+
+    border-width: 2px;
+    border-color: var(--main-color);
+    border-style: solid;
+
+    z-index: 999;
+}
+
+.cardUI {
+    display: inline-block;
+    padding-bottom: 16px;
+}
+
+.cardUI>div,
+.cardUI>div>.subnav-text>h2 {
+    display: inline-block;
+}
+
+.subnav-text>h2 {
+    margin-right: 25px;
+    text-decoration: none;
+    font-size: large;
+    font-family: Varela;
+}
+
+.subnav:hover .subnav-content,
+.subnav:active .subnav-content,
+.subnav:focus .subnav-content,
+.subnav:focus-within .subnav-content {
+    display: block;
+}
+
+.subnav-content>a:hover,
+.subnav-content>a:active,
+.subnav-content>a:focus,
+.subnav-content>a:focus-within,
+.subnav-content>div>a:hover,
+.subnav-content>div>a:active,
+.subnav-content>div>a:focus,
+.subnav-content>div>a:focus-within {
+    color: var(--text-color);
+}
+
+.subnav-content>a,
+.subnav-content>div>a {
+    display: block;
+
+    text-decoration: none;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.cardUI {
+    margin-left: 10px;
+    margin-right: 150px;
+}
+
+.subnav-content>a>img,
+.subnav-content>div>a>img {
+    max-width: 25px;
+    display: inline;
+    transform: translateY(25%);
+    margin-right: 5px;
+}
+
+.subnav-text>img {
+    max-width: 25px;
+    transform: translateY(25%);
+}
+
+@media screen and (max-width: 1800px) {
+    .subnav-content {
+        max-height: 50vh;
+
+        overflow-y: auto;
+        padding-right: 50px;
+        padding-left: 50px;
+
+        left: 7.5vw;
+        right: 7.5vw;
+
+        border-radius: 16px;
+    }
+}
+
+@media screen and (min-width: 1800px) {
+    .subnav-content{
+        transform: translateX(-25%);
+        border-radius: 25px;
+    }
+
+    .subnav-content>.sided:first-child {
+        float: left;
+        padding-right: 15px;
+    }
+
+    .subnav-content>.sided:last-child {
+        float: right;
+        padding-left: 15px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    div.cardUI {
+        margin-left: 10px;
+        margin-right: 150px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    div.cardUI {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}

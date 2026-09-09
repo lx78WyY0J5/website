@@ -3,6 +3,7 @@
 // Check if the user is logged in, otherwise redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: /login");
+    echo "<script>window.location.href = '/login';</script>";
     exit;
 }
 
@@ -45,6 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 echo "OK mot de passe changé !";
                 logSecurityEvent('password_changed', ['user_id' => $_SESSION['id'], 'username' => $_SESSION['username']]);
                 header("location: /login");
+                echo "<script>window.location.href = '/login';</script>";
                 exit();
             } else{
                 echo "Oops! Something went wrong. Please try again later.";

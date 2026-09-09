@@ -109,6 +109,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 logSecurityEvent('registration', ['username' => $username]);
                 header("location: /");
+                echo "<script>window.location.href = '/';</script>";
             } else{
                 echo "<p>Oups! Une erreur s'est produite. Veuillez réessayer plus tard</p>";
             }

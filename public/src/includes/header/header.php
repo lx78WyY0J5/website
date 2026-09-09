@@ -1,15 +1,12 @@
-<?php
+<header>
+    <link rel="stylesheet" href="/src/includes/header/header.css">
+    <script src="/src/includes/header/header.js"></script>
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.html';
-    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        echo "<a href=\"/logout\">Logout</a>";
-        echo "<a href=\"/password/update\">Update password</a>";
-        echo "<h1>Bonjour " . $_SESSION['username'] . "</h1>";
-    }
-    else{
-        echo "<a href=\"/login\">Login</a>";
-        echo "<a href=\"/register\">Register</a>";
-    }
-?>
-
+    <nav id="navlinklist">
+        <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/search/navlink.php'; ?>
+    </nav>
+    <div id="NavBarHolder">
+        <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/search/searchbar.html'; ?>
+    </div>
+    <div id="NavTopModuleHolder"></div>
 </header>

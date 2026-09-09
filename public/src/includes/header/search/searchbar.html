@@ -1,0 +1,21 @@
+<div id="searchbar">
+    <link rel="stylesheet" href="/src/includes/header/search/searchbar.css">
+
+    <div id="search-box">
+        <input tabindex="0" type="text" id="input-box" placeholder="🔍     ⬆ Shift + F" autocomplete="on" onkeyup="keyup(event, this)">
+        <div id="close-search" tabindex="0" onclick="closeSearchBar()" onkeypress="closeSearchBar()">
+            <img src="/src/assets/svg/cross.svg" class="svg" alt="">
+        </div>
+    </div>
+
+    <div id="search-tips" style="display: none;">
+        <p>Pourquoi ne pas chercher : <div id="search-tips-holder"></div></p>
+    </div>
+
+    <div id="result-box">
+    </div>
+
+</div>
+
+<script src="/src/includes/header/search/searchbar.js"></script>
+<script src="/src/includes/header/search/searchbar-list.js"></script>

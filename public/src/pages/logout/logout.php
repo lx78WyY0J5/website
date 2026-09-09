@@ -7,5 +7,6 @@
 
     // Redirect to login page
     header("location: /");
+    echo "<script>window.location.href = '/';</script>";
     exit;
 ?>

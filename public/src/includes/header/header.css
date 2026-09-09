@@ -10,3 +10,31 @@ header {
 
     pointer-events: none;
 }
+
+header>#navlinklist {
+    position: relative;
+
+    z-index: 999;
+
+    width: 100%;
+
+    background: linear-gradient(var(--main-color-transparent), var(--background-color-transparent));
+
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+
+    border-bottom-style: solid;
+    border-bottom-color: var(--main-color);
+    border-bottom-width: 3px;
+
+    user-select: none;
+    pointer-events: all;
+}
+
+header>#NavTopModuleHolder{
+    pointer-events: none;
+}
+
+a.cardTitle {
+    display: inline-block;
+}
