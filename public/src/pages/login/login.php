@@ -60,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             }
 
                             // Redirect user to welcome page
-                            header("location: /");
+                            echo '<script>window.location.replace("/");</script>';
                         } else{
                             // Password is not valid, display a generic error message
                             echo "<p>Le nom d'utilisateur ou le mot de passe ne correspond pas</p>";

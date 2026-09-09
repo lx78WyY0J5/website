@@ -5,9 +5,19 @@
   $dbname = getenv('DB_NAME');
 
   if (!isset($_SESSION['is_admin'])) {
+    if(empty($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+      http_response_code(403);
+      die("Access denied.");
+    }
     http_response_code(403);
     die("Access denied.");
   }
+
+    echo "Connecting to database...<br>";
+    echo "DB_NAME: $dbname<br>";
+    if (empty($dbname)) {
+      die("DB_NAME environment variable is not set.");
+    }
 
   // Connect WITHOUT specifying the database first
   try {
@@ -27,12 +37,15 @@
     echo "Error: " . $e->getMessage();
   }
 
-  // Create table only if it doesn't exist
+  // Create table users only if it doesn't exist
   try {
-    $sql = "CREATE TABLE IF NOT EXISTS my_table (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(100) NOT NULL
+    $sql = "CREATE TABLE users (
+      id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+      username VARCHAR(50) NOT NULL UNIQUE,
+      password VARCHAR(255) NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )";
+    
     $pdo->exec($sql);
     echo "Table ready";
   } catch(PDOException $e) {

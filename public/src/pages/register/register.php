@@ -31,11 +31,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             echo "<p>Ce nom d'utilisateur est réservé</p>";
             $can_register = false;
         }
-
-        if(trim($_POST["code"]) !== getenv("REGISTER_CODE")){
-            echo "<p>Le code de registration est incorrect</p>";
-            $can_register = false;
-        }
         
         if($can_register === true){
             // Prepare a select statement
@@ -64,6 +59,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Close statement
                 unset($stmt);
             }
+        }
+    }
+
+    //Validate user inviation code
+    if(!isset($_POST["code"]) || empty(trim($_POST["code"]))){
+        echo "<p>Veuillez saisir le code de registration</p>";
+        $can_register = false;
+    } else {
+        $register_code = trim($_POST["code"]);
+        if(trim($_POST["code"]) !== getenv("REGISTER_CODE")){
+            echo "<p>Le code de registration est incorrect</p>";
+            $can_register = false;
         }
     }
 

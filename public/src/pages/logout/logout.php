@@ -4,8 +4,8 @@
     
     // Destroy the session.
     session_destroy();
-    
+
     // Redirect to login page
-    header("location: /");
+    echo '<script>window.location.replace("/");</script>';
     exit;
 ?>
