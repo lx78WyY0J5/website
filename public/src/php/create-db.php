@@ -4,23 +4,40 @@
   $password = getenv('DB_PASS');
   $dbname = getenv('DB_NAME');
 
+  if (!isset($_SESSION['is_admin'])) {
+    http_response_code(403);
+    die("Access denied.");
+  }
+
+  // Connect WITHOUT specifying the database first
   try {
-    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
+    $pdo = new PDO("mysql:host=$servername", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   } catch(PDOException $e) {
     die("Could not connect. " . $e->getMessage());
   }
 
+  // Create database only if it doesn't exist
   try {
-    $sql = "CREATE DATABASE " . $dbname;
-    $pdo->exec($sql);
-    echo "Database created successfully";
+    $safeName = '`' . str_replace('`', '``', $dbname) . '`';
+    $pdo->exec("CREATE DATABASE IF NOT EXISTS $safeName");
+    $pdo->exec("USE $safeName");
+    echo "Database ready<br>";
   } catch(PDOException $e) {
-    // Handle errors during db creation
-    echo "Error creating database: " . $sql . "<br>" . $e->getMessage();
+    echo "Error: " . $e->getMessage();
   }
 
-  // Close connection
+  // Create table only if it doesn't exist
+  try {
+    $sql = "CREATE TABLE IF NOT EXISTS my_table (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100) NOT NULL
+    )";
+    $pdo->exec($sql);
+    echo "Table ready";
+  } catch(PDOException $e) {
+    echo "Error creating table: " . $e->getMessage();
+  }
+
   $pdo = null;
 ?>

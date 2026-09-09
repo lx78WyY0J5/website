@@ -52,7 +52,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
-                            
+
+                            if($username === "administrator"){
+                                $_SESSION["is_admin"] = true;
+                            } else {
+                                $_SESSION["is_admin"] = false;
+                            }
+
                             // Redirect user to welcome page
                             header("location: /");
                         } else{

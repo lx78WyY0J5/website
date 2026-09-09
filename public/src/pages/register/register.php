@@ -6,7 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/password_validation.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
 
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = "";
+$username = $password = $confirm_password = $register_code = "";
 $can_register = true;
 
 // Processing form data when form is submitted
@@ -24,6 +24,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if(strlen(trim($_POST["username"])) < 6){
             echo "<p>Le nom d'utilisateur doit comporter au moins 6 caractères</p>";
+            $can_register = false;
+        }
+
+        if(trim($_POST["username"]) === "administrator"){
+            echo "<p>Ce nom d'utilisateur est réservé</p>";
+            $can_register = false;
+        }
+
+        if(trim($_POST["code"]) !== getenv("REGISTER_CODE")){
+            echo "<p>Le code de registration est incorrect</p>";
             $can_register = false;
         }
         
