@@ -8,12 +8,23 @@ Crée via le package `tree`
   - `tree ./` : Créer l'arborésence du dossier
 ```
 .
+├── logs
+│   └── security.log
 ├── public
+│   ├── favicon.ico
 │   ├── index.php
 │   └── src
 │       ├── assets
+│       │   ├── font
+│       │   │   ├── Pacifico-Regular.ttf
+│       │   │   ├── Roboto-Regular.ttf
+│       │   │   └── VarelaRound-Regular.ttf
 │       │   ├── img
 │       │   └── svg
+│       ├── css
+│       │   ├── article.css
+│       │   ├── font.css
+│       │   └── theme.css
 │       ├── includes
 │       │   ├── footer
 │       │   │   ├── footer.css
@@ -78,10 +89,13 @@ Crée via le package `tree`
 │           ├── create-db.php
 │           ├── info.php
 │           ├── loadEnv.php
+│           ├── logging.php
+│           ├── password_entropy.php
+│           ├── password_validation.php
 │           └── PDO.php
 └── README.md
 
-21 directories, 52 files
+24 directories, 63 files
 
 ```
 ## Installation et lancement
