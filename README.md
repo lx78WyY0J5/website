@@ -109,12 +109,16 @@ Crée via le package `tree`
 #### Installer sous Termux
 `pkg install mariadb`
 #### Lancer MariaDB sous Termux
-- Initialiser la base de données avec `mysql_install_db`
+##### Initialiser MariaDB sous Termux
+Initialiser la base de données avec `mysql_install_db`
+##### Lancer le service sous Termux
 - Une fois installé, démarrez le serveur en arrière-plan avec la commande `mysqld_safe &`
   - Vous pouvez ensuite vous connecter au serveur en exécutant `mysql -u root` pour commencer à gérer vos bases de données
 #### Lancer MariaDB sous Linux
+##### Initialiser MariaDB sous linux
+Initialiser la base de données avec `sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql`
+##### Lancer le service MariaDB sous Linux
 ```bash
-sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 sudo systemctl start mariadb.service
 sudo systemctl enable mariadb.service
 ```

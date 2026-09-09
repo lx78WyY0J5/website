@@ -6,6 +6,6 @@
     session_destroy();
 
     // Redirect to login page
-    echo '<script>window.location.replace("/");</script>';
+    header("location: /");
     exit;
 ?>
