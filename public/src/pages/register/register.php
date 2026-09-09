@@ -27,6 +27,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $can_register = false;
         }
 
+        if(strlen(trim($_POST["username"])) > 24){
+            echo "<p>Le nom d'utilisateur doit comporter moins de 24 caractères</p>";
+            $can_register = false;
+        }
+
         if(trim($_POST["username"]) === "administrator"){
             echo "<p>Ce nom d'utilisateur est réservé</p>";
             $can_register = false;
