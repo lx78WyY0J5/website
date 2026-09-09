@@ -18,7 +18,12 @@
         }
     }
 
-    logSecurityEvent('visit', ['username' => $_SESSION['username'], 'url' => $uri]);
+    if(isset($_SESSION['username'])) {
+        logSecurityEvent('visit', ['username' => $_SESSION['username'], 'url' => $uri]);
+    }
+    else {
+        logSecurityEvent('visit', ['url' => $uri]);
+    }
 
     include $pageFile;
 ?>
