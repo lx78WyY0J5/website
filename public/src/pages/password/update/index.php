@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/logout/head.html'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/password/update/head.html'; ?>
     <body>
         <?php
            include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.php';
