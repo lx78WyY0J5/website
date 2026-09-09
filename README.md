@@ -22,7 +22,8 @@ Crée via le package `tree`
 │       │   └── header
 │       │       ├── header.css
 │       │       ├── header.html
-│       │       └── header.js
+│       │       ├── header.js
+│       │       └── header.php
 │       ├── index
 │       │   ├── head.html
 │       │   ├── index.css
@@ -37,13 +38,42 @@ Crée via le package `tree`
 │       │   │   ├── 404.js
 │       │   │   ├── head.html
 │       │   │   └── index.php
-│       │   └── admin
-│       │       └── contact
-│       │           ├── contact.css
-│       │           ├── contact.html
-│       │           ├── contact.js
-│       │           ├── head.html
-│       │           └── index.php
+│       │   ├── admin
+│       │   │   └── contact
+│       │   │       ├── contact.css
+│       │   │       ├── contact.html
+│       │   │       ├── contact.js
+│       │   │       ├── head.html
+│       │   │       └── index.php
+│       │   ├── login
+│       │   │   ├── head.html
+│       │   │   ├── index.php
+│       │   │   ├── login.css
+│       │   │   ├── login.html
+│       │   │   ├── login.js
+│       │   │   └── login.php
+│       │   ├── logout
+│       │   │   ├── head.html
+│       │   │   ├── index.php
+│       │   │   ├── logout.css
+│       │   │   ├── logout.html
+│       │   │   ├── logout.js
+│       │   │   └── logout.php
+│       │   ├── password
+│       │   │   └── update
+│       │   │       ├── head.html
+│       │   │       ├── index.php
+│       │   │       ├── update.css
+│       │   │       ├── update.html
+│       │   │       ├── update.js
+│       │   │       └── update.php
+│       │   └── register
+│       │       ├── head.html
+│       │       ├── index.php
+│       │       ├── register.css
+│       │       ├── register.html
+│       │       ├── register.js
+│       │       └── register.php
 │       └── php
 │           ├── create-db.php
 │           ├── info.php
@@ -51,7 +81,7 @@ Crée via le package `tree`
 │           └── PDO.php
 └── README.md
 
-16 directories, 27 files
+21 directories, 52 files
 
 ```
 ## Installation et lancement
