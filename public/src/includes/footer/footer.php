@@ -49,9 +49,9 @@
 
                 echo '<nav>';
                     echo '<a href="" id="offline-url">127.0.0.1:3000/..</a><p>|</p>';
-                    echo '<a href="" id"php-url">localhost:8000/..</a><p>|</p>';
+                    echo '<a href="" id="php-url">localhost:8000/..</a><p>|</p>';
                     echo '<a href="" id="mixed-url">3000.code.altherneum.fr/..</a><p>|</p>';
-                    echo '<a href="" id"github-url">Github.io/..</a><p>|</p>';
+                    echo '<a href="" id="github-url">Github.io/..</a><p>|</p>';
                     echo '<a href="" id="online-url">doc.altherneum.fr/..</a>';
                 echo '</nav>';
             echo '</div>';
