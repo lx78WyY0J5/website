@@ -13,10 +13,10 @@ function keyup(event, inputBoxParam) {
 
     const inputBox = document.getElementById("input-box");
     let input = inputBox.value;
-    getResult(input, true);
+    getResult(input);
 }
 
-async function getResult(query, addCursorTag) {
+async function getResult(query) {
     if (query.length > 0) {
         var result = checkIfInputMatchLink(query).then(result => {
 
@@ -36,11 +36,7 @@ async function getResult(query, addCursorTag) {
                 showSearchbarResult(result);
 
                 if (needToShowMore) {
-                    AddShowMoreButton(query, addCursorTag);
-                }
-
-                if (addCursorTag) {
-                    //addAllTags();
+                    AddShowMoreButton(query);
                 }
             }
 
@@ -56,7 +52,7 @@ async function getResult(query, addCursorTag) {
     }
 }
 
-function AddShowMoreButton(PrevQuery, addCursorTag) {
+function AddShowMoreButton(PrevQuery) {
     var resultBox = document.getElementById("result-box");
     var ShowMore = document.createElement("div");
     ShowMore.id = "showMore";
@@ -71,7 +67,7 @@ function AddShowMoreButton(PrevQuery, addCursorTag) {
         e.preventDefault();
         showMore = true;
         let query = document.getElementById("input-box").value;
-        getResult(query, addCursorTag);
+        getResult(query);
     });
 
     var showMoreImage = document.createElement("img");
@@ -381,7 +377,6 @@ function addSearchTips() {
 
         tips.appendChild(a);
     }
-    //addAllTags();
 }
 
 function setURLParameterClick(value, runGetAfter, setSearchInput, doHideTips) {
@@ -393,9 +388,8 @@ function setURLParameterClick(value, runGetAfter, setSearchInput, doHideTips) {
     console.warn("set ; " + paramName + " = " + value);
 
     if (runGetAfter) {
-        getResult(value, false);
+        getResult(value);
     }
-    //set All tags to false as AddAllTags() did not exist yet & cursor auto load will get tags
 
     if (setSearchInput) {
         const inputBox = document.getElementById("input-box");
@@ -415,8 +409,7 @@ function getURLParameter() {
         const searchQuery = urlParams.get(paramName);
         console.warn("found ; " + paramName + " = " + searchQuery);
 
-        getResult(searchQuery, false);
-        //set All tags to false as AddAllTags() did not exist yet & cursor auto load will get tags
+        getResult(searchQuery);
 
         const inputBox = document.getElementById("input-box");
         inputBox.value = searchQuery;
