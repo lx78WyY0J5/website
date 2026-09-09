@@ -29,13 +29,14 @@
 <!DOCTYPE html>
 <html lang="fr">
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/' . str_replace('/', DIRECTORY_SEPARATOR, $uri) . '/head.html'; ?>
+    <link rel="stylesheet" href="/src/css/font.css">
     <body>
+        <script src="/src/js/theme.js"></script>
+        <link rel="stylesheet" href="/src/css/theme.css">
+        <link rel="stylesheet" href="/src/css/article.css">
+
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.php'; ?>
 
-        <link rel="stylesheet" href="/src/css/theme.css">
-        <link rel="stylesheet" href="/src/css/font.css">
-        <link rel="stylesheet" href="/src/css/article.css">
-        <script src="/src/js/theme.js"></script>
 
         <div id="content">
             <div id="content-left" style="display: none;">
