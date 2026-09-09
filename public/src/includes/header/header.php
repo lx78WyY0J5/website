@@ -10,3 +10,6 @@
     </div>
     <div id="NavTopModuleHolder"></div>
 </header>
+<link rel="stylesheet" href="/src/css/scrollPercentage.css">
+<div id="scrollPercentage"></div>
+<script src="/src/js/scrollPercentage.js"></script>

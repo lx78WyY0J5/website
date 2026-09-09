@@ -1,0 +1,13 @@
+#scrollPercentage{
+    position: fixed;
+    top: 0;
+    width: 0%;
+    height: 4px;
+    /*background: linear-gradient(90deg, rgb(255, 192, 1) 0%, rgb(212, 223, 0) 16.15%, rgb(128, 211, 74) 33.85%, rgb(0, 196, 131) 50.52%, rgb(11, 225, 255) 66.15%, rgb(74, 190, 255) 82.52%, rgb(0, 105, 255) 100%);
+    */
+    background: linear-gradient(in hsl longer hue 45deg, red 0 0);
+    z-index: 10000;
+
+    animation: animate 10s ease-in-out infinite;
+    background-size: 400% 400%;
+}
