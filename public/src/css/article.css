@@ -28,6 +28,9 @@
 
     -webkit-backdrop-filter: var(--blur);
     backdrop-filter: var(--blur);
+
+
+    margin-right: 10px !important;
 }
 
 #content-right,
@@ -85,7 +88,7 @@ article>div>h3 {
     }
 
     #content-right {
-        top: 0vh;
+        top: 20vh;
         max-height: 95vh;
         padding: 8px;
     }

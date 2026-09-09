@@ -35,6 +35,7 @@
         <link rel="stylesheet" href="/src/css/theme.css">
         <link rel="stylesheet" href="/src/css/font.css">
         <link rel="stylesheet" href="/src/css/article.css">
+        <script src="/src/js/theme.js"></script>
 
         <div id="content">
             <div id="content-left" style="display: none;">
@@ -45,9 +46,10 @@
             </article>
 
             <div id="content-right">
+                <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/anchor.php'; ?>
             </div>
         </div>
 
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/footer/footer.html'; ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/footer/footer.php'; ?>
     </body>
 </html>

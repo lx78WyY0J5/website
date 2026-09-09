@@ -28,7 +28,7 @@ Crée via le package `tree`
 │       ├── includes
 │       │   ├── footer
 │       │   │   ├── footer.css
-│       │   │   ├── footer.html
+│       │   │   ├── footer.php
 │       │   │   └── footer.js
 │       │   └── header
 │       │       ├── header.css
