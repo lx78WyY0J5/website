@@ -14,7 +14,7 @@
         }
         else {
             http_response_code(404);
-            $pageFile = $_SERVER['DOCUMENT_ROOT'] . '/src/pages/404/index.php';
+            $pageFile = $_SERVER['DOCUMENT_ROOT'] . '/src/pages/404/404.html';
         }
     }
 

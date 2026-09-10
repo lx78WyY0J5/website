@@ -1,1 +1,1 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/404/404.html'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/404/404-custom.html'; ?>
