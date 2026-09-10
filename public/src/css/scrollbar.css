@@ -1,0 +1,26 @@
+::-webkit-scrollbar {
+    width: 30px;
+    overflow: visible;
+    border-left-style: solid;
+    border-left-width: 2px;
+    border-left-color: var(--main-color-transparent);
+}
+
+::-webkit-scrollbar-track {
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+/*Barre de select*/
+::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background: var(--second-default);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--second-hover);
+}
+
+::-webkit-scrollbar-corner {
+    background: rgb(0, 0, 0, 0);
+}
