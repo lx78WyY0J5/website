@@ -282,8 +282,8 @@
             <a href="/admin/to-watch"><img src="/src/assets/svg/help-question.svg" class="svg" alt="">À voir</a>
             <a href="/admin/video"><img src="/src/assets/svg/tv2.svg" class="svg" alt="">Vidéos</a>
             <hr>
-            <a href="/admin/lang.html" style="display: none;"><img src="/src/assets/svg/language.svg" class="svg" alt="">Techno</a>
-            <a href="/admin/jeu.html" style="display: none;"><img src="/src/assets/svg/game.svg" class="svg" alt="">Jeu</a>
+            <a href="/admin/lang" style="display: none;"><img src="/src/assets/svg/language.svg" class="svg" alt="">Techno</a>
+            <a href="/admin/jeu" style="display: none;"><img src="/src/assets/svg/game.svg" class="svg" alt="">Jeu</a>
             <a href="/admin/music"><img src="/src/assets/svg/music.svg" class="svg" alt="">Musique</a>
             <a href="/admin/contact"><img src="/src/assets/svg/contact.svg" class="svg" alt="">Contact</a>
             <a href="/admin/donation"><img src="/src/assets/svg/donation.svg" class="svg" alt="">Donation</a>

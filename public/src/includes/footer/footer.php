@@ -2,16 +2,16 @@
     <link rel="stylesheet" href="/src/includes/footer/footer.css">
 
     <div>
-        <p>Site fait avec <img src="/src/assets/svg/heart-color.svg" class="svg-color"></img> par <a href="/admin/contact.html">lx78WyY0J5</a></p>
+        <p>Site fait avec <img src="/src/assets/svg/heart-color.svg" class="svg-color"></img> par <a href="/admin/contact">lx78WyY0J5</a></p>
     </div>
 
     <hr>
 
     <nav class="footer-logolist">
         <a href="/"><img src="/src/assets/svg/home.svg" class="svg" alt=""></a>
-        <a href="/discord.html"><img src="/src/assets/svg/trademark/discord.svg" class="svg" alt=""></a>
+        <a href="/discord"><img src="/src/assets/svg/trademark/discord.svg" class="svg" alt=""></a>
         <a href="mailto:contact@altherneum.fr"><img src="/src/assets/svg/mail.svg" class="svg" alt=""></a>
-        <a href="/admin/contact.html"><img src="/src/assets/svg/administrator.svg" class="svg" alt=""></a>
+        <a href="/admin/contact"><img src="/src/assets/svg/administrator.svg" class="svg" alt=""></a>
         <a href="https://github.com/Altherneum"><img src="/src/assets/svg/trademark/github.svg" class="svg" alt=""></a>
         <a href="https://Play.Altherneum.fr"><img src="/src/assets/svg/trademark/minecraft.svg" class="svg" alt=""></a>
     </nav>
