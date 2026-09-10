@@ -13,7 +13,7 @@ $can_register = true;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate username
-    if(empty(trim($_POST["username"]))){
+    if(!isset($_POST["username"]) || empty(trim($_POST["username"]))){
         echo "<p>Veuillez saisir un nom d'utilisateur</p>";
         $can_register = false;
     } else {
@@ -82,7 +82,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate password using shared validation
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
-    $can_register = checkPassword($password, $confirm_password);
+    if (!checkPassword($password, $confirm_password)) {
+        $can_register = false;
+    }
 
     // Check input errors before inserting in database
     if($can_register === true){
