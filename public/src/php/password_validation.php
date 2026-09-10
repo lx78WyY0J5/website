@@ -30,7 +30,7 @@ function checkPassword($password, $password2){
             echo "<p>Le mot de passe doit contenir une lettre majuscule</p>";
             $can_register = false;
         }
-        
+
         if(!preg_match('/[^a-zA-Z0-9]/', $password)){
             echo "<p>Le mot de passe doit contenir un caractère spécial</p>";
             $can_register = false;

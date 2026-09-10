@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             echo "<p>Ce nom d'utilisateur est réservé</p>";
             $can_register = false;
         }
-        
+
         if($can_register === true){
             // Prepare a select statement
             $sql = "SELECT id FROM users WHERE username = :username";
@@ -93,11 +93,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Bind variables to the prepared statement as parameters
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
             $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
-            
+
             // Set parameters
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-            
+
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Redirect to login page

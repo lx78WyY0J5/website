@@ -29,16 +29,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if($can_update === true){
         // Prepare an update statement
         $sql = "UPDATE users SET password = :password WHERE id = :id";
-        
+
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
             $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
             $stmt->bindParam(":id", $param_id, PDO::PARAM_INT);
-            
+
             // Set parameters
             $param_password = password_hash($password, PASSWORD_DEFAULT);
             $param_id = $_SESSION["id"];
-            
+
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Password updated successfully. Destroy the session, and redirect to login page
@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             unset($stmt);
         }
     }
-    
+
     // Close connection
     unset($pdo);
 }

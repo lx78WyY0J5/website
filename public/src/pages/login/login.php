@@ -10,7 +10,7 @@ $can_register = true;
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
+
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
         echo "<p>Veuillez saisir un nom d'utilisateur</p>";
@@ -18,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $username = trim($_POST["username"]);
     }
-    
+
     // Check if password is empty
     if(empty(trim($_POST["password"]))){
         echo "<p>Veuillez saisir un mot de passe</p>";
@@ -26,19 +26,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $password = trim($_POST["password"]);
     }
-    
+
     // Validate credentials
     if($can_register === true){
         // Prepare a select statement
         $sql = "SELECT id, username, password FROM users WHERE username = :username";
-        
+
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
-            
+
             // Set parameters
             $param_username = trim($_POST["username"]);
-            
+
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Check if username exists, if yes then verify password
@@ -82,7 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             unset($stmt);
         }
     }
-    
+
     // Close connection
     unset($pdo);
 }

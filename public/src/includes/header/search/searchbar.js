@@ -99,7 +99,7 @@ function mergeYouTubeTitles(musicListMerge, song, video, film){
     for (link in musicListMerge) {
         let linked = musicListMerge[link];
         let htmlOffline = "";
-        
+
         var linkText = "";
         if(linked.text !== undefined){
             linkText = linked.text;
