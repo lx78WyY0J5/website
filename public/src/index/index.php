@@ -6,7 +6,7 @@
     if($_SESSION["is_admin"] !== true){
         include $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.html';
         if(!isset($_SESSION['loggedin'])){
-            echo '<p><a href="/login">Connectez-vous</a> ou <a href="/register">créez un compte</a></p>';
+            echo '<p><a href="/login">Connectez-vous</a>, ou alors pourquoi ne pas <a href="/register">créer un compte</a> ?</p>';
         }
     }
     else{
