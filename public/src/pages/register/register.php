@@ -16,7 +16,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(!isset($_POST["username"]) || empty(trim($_POST["username"]))){
         echo "<p>Veuillez saisir un nom d'utilisateur</p>";
         $can_register = false;
-    } else {
+    }
+    else {
         if(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
             echo "<p>Le nom d'utilisateur ne peut contenir que des lettres, chiffres et underscores</p>";
             $can_register = false;
