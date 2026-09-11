@@ -140,11 +140,35 @@ html {
     margin-block-end: 0;
 }
 
+form{
+    display: flex;
+    flex-direction: column;
+}
+
 button {
     background-color: var(--main-color-transparent);
     border-color: var(--text-color);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+input[type=text],
+input[type=number],
+input[type=password] {
+    padding: 15px;
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+    color: var(--text-color);
+    margin: 5px;
+    border-radius: 5px;
+}
+
+input[type=text]::placeholder,
+input[type=number]::placeholder,
+input[type=password]::placeholder {
+    color: var(--link-color);
 }
 
 input[type=checkbox].checkboxBox {
