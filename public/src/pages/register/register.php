@@ -4,6 +4,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/password_validation.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
+
+// Rate limiting
+$clientIp = getClientIdentifier();
+if (!checkRateLimit($pdo, $clientIp, 'register', 3, 15)) {
+    logSecurityEvent('rate_limit_exceeded', ['endpoint' => 'register', 'ip' => $clientIp]);
+    rateLimitExceededResponse('register');
+}
 
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $register_code = "";

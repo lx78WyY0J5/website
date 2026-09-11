@@ -52,5 +52,22 @@
     echo "Error creating table: " . $e->getMessage();
   }
 
+  // Create table rate_limits only if it doesn't exist
+  try {
+    $sql = "CREATE TABLE rate_limits (
+      id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+      identifier VARCHAR(255) NOT NULL,
+      endpoint VARCHAR(50) NOT NULL,
+      attempts INT NOT NULL DEFAULT 1,
+      window_start DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      UNIQUE KEY unique_identifier_endpoint (identifier, endpoint)
+    )";
+
+    $pdo->exec($sql);
+    echo "Rate limit table ready<br>";
+  } catch(PDOException $e) {
+    echo "Error creating rate limit table: " . $e->getMessage();
+  }
+
   $pdo = null;
 ?>

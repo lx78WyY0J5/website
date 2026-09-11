@@ -12,6 +12,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/password_validation.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
+
+// Rate limiting (per user + per IP)
+$clientIp = getClientIdentifier();
+$userId = $_SESSION["id"];
+if (!checkRateLimit($pdo, $clientIp, 'password_update', 5, 15) ||
+    !checkRateLimit($pdo, "user_{$userId}", 'password_update', 5, 15)) {
+    logSecurityEvent('rate_limit_exceeded', ['endpoint' => 'password_update', 'ip' => $clientIp, 'user_id' => $userId]);
+    rateLimitExceededResponse('password_update');
+}
 
 // Define variables and initialize with empty values
 $password = $confirm_password = "";
