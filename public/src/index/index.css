@@ -40,3 +40,8 @@
 #opensource>p{
     padding-top: 30px;
 }
+
+#opensource>:last-child{
+    padding-top: 20px;
+    display: block;
+}
