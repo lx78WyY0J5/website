@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $can_register = false;
         }
 
-        if(trim($_POST["username"]) === "administrator"){
+        if(strcasecmp(trim($_POST["username"]), "administrator") === 0){
             echo "<p>Ce nom d'utilisateur est réservé</p>";
             $can_register = false;
         }
