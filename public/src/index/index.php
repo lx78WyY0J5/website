@@ -3,10 +3,6 @@
         echo '<h2>Bienvenue ' . $_SESSION['username'] .'</h2>';
     }
 
-    if($_SESSION["is_admin"] !== true){
-        include $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.html';
-    }
-    else{
-        include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/info/info.php';
-    }
+    include $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.html';
+    include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/info/info.php';
 ?>
