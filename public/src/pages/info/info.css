@@ -1,0 +1,8 @@
+#contentArticle > * {
+    padding-bottom: 10px;
+}
+
+pre {
+    font-size: x-large;
+    font-weight: bolder;
+}

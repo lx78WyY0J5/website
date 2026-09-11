@@ -32,13 +32,12 @@
     <link rel="stylesheet" href="/src/css/font.css">
     <link rel="stylesheet" href="/src/css/style.css">
     <link rel="stylesheet" href="/src/css/scrollbar.css">
+    <link rel="stylesheet" href="/src/css/theme.css">
+    <link rel="stylesheet" href="/src/css/article.css">
     <body>
-        <link rel="stylesheet" href="/src/css/theme.css">
         <script src="/src/js/theme.js"></script>
-        <link rel="stylesheet" href="/src/css/article.css">
 
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.php'; ?>
-
 
         <div id="content">
             <div id="content-left" style="display: none;">

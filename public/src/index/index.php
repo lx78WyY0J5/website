@@ -7,6 +7,6 @@
         include $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.html';
     }
     else{
-        include $_SERVER['DOCUMENT_ROOT'] . '/src/php/info.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/info/info.php';
     }
 ?>

@@ -1,6 +1,8 @@
 
 <?php
 
+include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/info/info.html';
+
 echo '<pre>' . shell_exec("echo '{\"modules\":[]}' | fastfetch --logo arch --config -") . '</pre>';
 echo '<p>PHP v°' . phpversion() . '</p>';
 echo '<p>OS : ' . PHP_OS . "   " . trim(shell_exec("whoami")) . '@' . shell_exec("hostnamectl hostname") . '</p>';
