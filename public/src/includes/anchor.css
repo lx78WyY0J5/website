@@ -6,6 +6,15 @@
     margin: 5px;
 }
 
+#anchor>#anchor-button {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+
 #anchor {
     z-index: 1000;
 
@@ -32,6 +41,7 @@
     margin-bottom: 5px;
 
     background-color: var(--main-color-transparent);
+    padding: 5px;
 }
 
 #SummaryAnchor{

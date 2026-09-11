@@ -1,6 +1,9 @@
 <?php
     if(isset($_SESSION["loggedin"]) && isset($_SESSION['username'])){
-        echo '<h2>Bienvenue ' . $_SESSION['username'] .'</h2>';
+        echo '<link rel="stylesheet" href="/src/index/welcome-user.css">';
+        echo '<div id="welcome-user">';
+        echo '<h2>Bienvenue</h2> <h1>' . $_SESSION['username'] .'</h1>';
+        echo '</div>';
     }
 
     if($_SESSION["is_admin"] !== true){

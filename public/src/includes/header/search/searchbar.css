@@ -101,6 +101,12 @@ a.cardTitle{
     border-bottom-right-radius: 0px;
     padding: 0px;
     margin: 0px;
+
+    text-align: start;
+}
+
+#search-box>input::placeholder {
+    text-align: start;
 }
 
 #result-box>div {    

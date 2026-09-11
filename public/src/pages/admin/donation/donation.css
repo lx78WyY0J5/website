@@ -1,0 +1,67 @@
+#donation>.holder>*{
+    display: inline-block;
+}
+
+#donation>.holder>.card{
+    border-style: solid;
+    border-color: var(--main-color);
+    border-radius: 16px;
+    border-width: 3px;
+
+    box-shadow: var(--box-shadow-all-inset-main-transparent-color);
+
+    padding:10px;
+    margin: 10px;
+
+    background: linear-gradient(var(--background-color), var(--main-color-transparent));
+
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+}
+
+#donation>.holder>.card>div>*,
+#donation>.holder>.card>div>*{
+    display: inline;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#donation>.holder>.card>div>p{
+    color: var(--link-color);
+    padding-left: 12px;
+}
+
+#donation>.holder>.card>.adresse{
+    margin-top: 6px;
+
+    word-break: break-all;
+    max-width: fit-content;
+
+    padding: 12px;
+
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--main-color);
+    border-radius: 12px;
+
+    color: var(--link-color);
+}
+
+#donation>.holder>.card>div>.svg{
+    max-width: 75px;
+    padding-right: 25px;
+}
+
+@media screen and (max-width: 1024px) {
+    #donation>.holder>.card {
+        max-width: 95%;
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #donation>.holder>.card {
+        max-width: 40%;
+        width: fit-content;
+    }
+}

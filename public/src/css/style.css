@@ -143,6 +143,14 @@ html {
 form{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+form > * {
+    width: 80%;
 }
 
 button {
@@ -163,12 +171,17 @@ input[type=password] {
     color: var(--text-color);
     margin: 5px;
     border-radius: 5px;
+    
+    font-size: x-large;
+    font-family: Roboto;
+    text-align: center;
 }
 
 input[type=text]::placeholder,
 input[type=number]::placeholder,
 input[type=password]::placeholder {
     color: var(--link-color);
+    text-align: center;
 }
 
 input[type=checkbox].checkboxBox {
