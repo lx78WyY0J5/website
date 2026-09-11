@@ -39,7 +39,7 @@
 
   // Create table users only if it doesn't exist
   try {
-    $sql = "CREATE TABLE users (
+    $sql = "CREATE TABLE IF NOT EXISTS users (
       id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
       username VARCHAR(50) NOT NULL UNIQUE,
       password VARCHAR(255) NOT NULL,
@@ -54,7 +54,7 @@
 
   // Create table rate_limits only if it doesn't exist
   try {
-    $sql = "CREATE TABLE rate_limits (
+    $sql = "CREATE TABLE IF NOT EXISTS rate_limits (
       id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
       identifier VARCHAR(255) NOT NULL,
       endpoint VARCHAR(50) NOT NULL,
