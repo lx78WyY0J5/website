@@ -1,0 +1,168 @@
+.contact {
+    text-align: center;
+    margin: auto;
+
+    max-width: 100%;
+}
+
+.contact>h1{
+    padding-top: 50px;
+    padding-bottom: 25px;
+
+    max-width: 90vw;
+    font-size: 7.5vw;
+    font-weight: bolder;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+
+.contact>img {
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+
+    max-width: 75%;
+
+    width: 256px;
+
+    border-radius: 100%;
+    border-color: var(--text-color);
+    border-width: 3px;
+    border-style: solid;
+
+    box-shadow: var(--box-shadow-all-inset-main-color);
+}
+
+.contact>div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact>div>a>h2 {
+    font-weight: bold;
+    font-size: large;
+    text-decoration: underline;
+
+    padding-top: 3px;
+}
+
+.contact>div>a>p {
+    font-size: 30px;
+    padding-right: 12px;
+}
+
+.contact>div>a>img.svg,
+.contact>div>div>img.svg {
+    max-width: 50px;
+    padding-right: 12px;
+}
+
+.contact>div>a,
+.contact>div>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 3px solid var(--main-color);
+    border-radius: 12px;
+
+    box-shadow: var(--box-shadow-all-inset-main-transparent-color-small);
+
+    margin: 12px;
+    padding: 24px;
+
+    flex-basis: 40%;
+
+    text-decoration: none !important;
+
+    background: linear-gradient(var(--background-color), var(--main-color-transparent));
+
+    -webkit-backdrop-filter: var(--blur-light);
+    backdrop-filter: var(--blur-light);
+}
+
+.contact>div>a:hover,
+.contact>div>div:hover {
+    background-color: var(--main-color);
+    box-shadow: var(--box-shadow-all-inset-main-color);
+}
+
+.contact>#techno>div{
+    background-color: var(--main-color-transparent);
+}
+
+.contact>#techno{
+    padding-top: 16px;
+}
+
+#contact-mail {
+    text-decoration: none;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    flex-wrap: nowrap;
+
+    gap: 5px;
+
+    flex-direction: row;
+}
+
+#contact-mail > .contact-mail-text {
+    font-weight: bolder;
+}
+
+#contact-mail > .contact-mail-split {
+    opacity: 0.75;
+}
+
+.gpg {
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.gpg > textarea {
+    color: var(--text-color);
+
+    width: 600px;
+    height: 215px;
+
+    text-align: center;
+
+    resize: none;
+}
+
+.gpg > div {
+    display: flex;
+    gap: 15px;
+}
+
+.gpg > div > button {
+    border-color: var(--text-color);
+    border-width: 3px;
+    border-style: solid;
+
+    border-radius: 15px;
+
+    padding: 10px;
+
+    box-shadow: var(--box-shadow-all-inset-main-color);
+
+    color: var(--text-color);
+
+}
+
+.gpg > div > button:hover,
+.gpg > div > button:hover {
+    background-color: var(--text-color);
+
+    color: var(--main-color);
+    border-color: var(--main-color-transparent);
+}
