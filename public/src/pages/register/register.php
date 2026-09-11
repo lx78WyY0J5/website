@@ -110,6 +110,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION["id"] = $id;
                 $_SESSION["username"] = $username;
 
+                echo "<script>document.forms[0].style = 'display: none;';</script>";
                 logSecurityEvent('registration', ['username' => $username]);
                 header("location: /");
                 echo "<script>window.location.href = '/';</script>";

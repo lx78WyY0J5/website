@@ -23,41 +23,58 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate password using shared validation
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
+    $old_password = $_POST["old_password"];
     $can_update = checkPassword($password, $confirm_password);
 
     // Check input errors before updating the database
     if($can_update === true){
-        // Prepare an update statement
-        $sql = "UPDATE users SET password = :password WHERE id = :id";
+    // Verify old password
+    $sql = "SELECT password FROM users WHERE id = :id";
+    if($stmt = $pdo->prepare($sql)){
+        $stmt->bindParam(":id", $param_id, PDO::PARAM_INT);
+        $param_id = $_SESSION["id"];
 
-        if($stmt = $pdo->prepare($sql)){
-            // Bind variables to the prepared statement as parameters
-            $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
-            $stmt->bindParam(":id", $param_id, PDO::PARAM_INT);
+        if($stmt->execute()){
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Set parameters
-            $param_password = password_hash($password, PASSWORD_DEFAULT);
-            $param_id = $_SESSION["id"];
+            if($row && password_verify($old_password, $row["password"])){
+                // Old password is correct — proceed with update
+                $sql = "UPDATE users SET password = :password WHERE id = :id";
+                if($stmt = $pdo->prepare($sql)){
+                    $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
+                    $stmt->bindParam(":id", $param_id, PDO::PARAM_INT);
 
-            // Attempt to execute the prepared statement
-            if($stmt->execute()){
-                // Password updated successfully. Destroy the session, and redirect to login page
-                session_destroy();
-                echo "OK mot de passe changé !";
-                logSecurityEvent('password_changed', ['user_id' => $_SESSION['id'], 'username' => $_SESSION['username']]);
-                header("location: /login");
-                echo "<script>window.location.href = '/login';</script>";
-                exit();
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                    $param_password = password_hash($password, PASSWORD_DEFAULT);
+                    $param_id = $_SESSION["id"];
+
+                    if($stmt->execute()){
+                        logSecurityEvent('password_changed', ['user_id' => $_SESSION['id'], 'username' => $_SESSION['username']]);
+                        session_destroy();
+                        echo "<p>Mot de passe changé avec succès !</p>";
+                        echo "<p>Vous allez être redirigé vers la page de connexion dans 5 secondes</p>";
+                        echo "<script>
+                            setTimeout(function(){ window.location.href='/login'; }, 5000);
+                            document.forms[0].style = 'display: none;';
+                        </script>";
+                        exit();
+                    }
+                    else {
+                        echo "Oops! Something went wrong. Please try again later.";
+                    }
+                }
             }
-
-            // Close statement
-            unset($stmt);
+            else {
+                echo "<p>L'ancien mot de passe est incorrect</p>";
+            }
         }
+        else {
+            echo "Oops! Something went wrong. Please try again later.";
+        }
+        unset($stmt);
     }
+}
 
-    // Close connection
-    unset($pdo);
+// Close connection
+unset($pdo);
 }
 ?>

@@ -59,6 +59,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 $_SESSION["is_admin"] = false;
                             }
 
+                            echo "<script>document.forms[0].style = 'display: none;';</script>";
+                            logSecurityEvent('login_success', ['username' => $username]);
+
                             // Redirect user to welcome page
                             header("location: /");
                             echo "<script>window.location.href = '/';</script>";
@@ -66,13 +69,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         else {
                             // Password is not valid, display a generic error message
                             echo "<p>Le nom d'utilisateur ou le mot de passe ne correspond pas</p>";
-                            logSecurityEvent('login_failed', ['username' => $username]);
+                            logSecurityEvent('login_failed_password', ['username' => $username]);
                         }
                     }
                 } else{
                     // Username doesn't exist, display a generic error message
                     echo "<p>Le nom d'utilisateur ou le mot de passe ne correspond pas</p>";
-                    logSecurityEvent('login_failed', ['username' => $username]);
+                    logSecurityEvent('login_failed_username', ['username' => $username]);
                 }
             } else{
                 echo "<p>Oups! Une erreur s'est produite. Veuillez réessayer plus tard</p>";
