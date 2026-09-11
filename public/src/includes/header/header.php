@@ -1,3 +1,4 @@
+<a id="header"></a>
 <header>
     <link rel="stylesheet" href="/src/includes/header/header.css">
     <script src="/src/includes/header/header.js"></script>
