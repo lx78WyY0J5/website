@@ -1,7 +1,4 @@
 <?php
-    include $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
-    include $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
-
     if(isset($_SESSION["loggedin"]) && isset($_SESSION['username'])){
         echo '<h2>Bienvenue ' . $_SESSION['username'] .'</h2>';
     }
