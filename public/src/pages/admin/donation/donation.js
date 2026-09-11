@@ -8,7 +8,7 @@ async function main() {
     //await getPriceBinance("xmr", deviseType);
     await getPriceBinance("xrp", deviseType);
     await getPriceBinance("ada", deviseType);
-    await getPriceBinance("usdt", deviseType);
+    //await getPriceBinance("usdt", deviseType);
 }
 
 function setData(id, data, deviseType) {
