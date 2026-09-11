@@ -1,8 +1,13 @@
-#contentArticle > * {
-    padding-bottom: 10px;
+#info{
+    display: inline-flex;
+    gap: 24px;
+    align-items: center;
+    flex-direction: column;
+    width: fit-content;
+    width: 100%;
 }
 
-pre {
+#info > pre {
     font-size: x-large;
     font-weight: bolder;
 }
