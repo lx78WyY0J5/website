@@ -30,6 +30,7 @@
 <html lang="fr">
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/' . str_replace('/', DIRECTORY_SEPARATOR, $uri) . '/head.html'; ?>
     <link rel="stylesheet" href="/src/css/font.css">
+    <link rel="stylesheet" href="/src/css/style.css">
     <link rel="stylesheet" href="/src/css/scrollbar.css">
     <body>
         <link rel="stylesheet" href="/src/css/theme.css">
