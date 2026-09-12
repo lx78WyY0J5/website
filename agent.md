@@ -44,15 +44,16 @@ else {
 }
 ```
 
-#### Messages en français
-- **Tous les commentaires** dans le code doivent être en français
-- **Tous les messages affichés à l'utilisateur** doivent être en français
-- Exemple : `<p>Veuillez saisir un mot de passe</p>` (et non "Please enter password")
-
-#### Messages utilisateur en balises HTML `<p>`
+#### Messages en français et formatés en HTML
+- Tous **les commentaires dans le code doivent être en français**
+- Tous **les messages affichés à l'utilisateur doivent être en français**
+  - Exemple : `<p>Veuillez saisir un mot de passe</p>` (et non "Please enter password")
+- **Les messages ne doivent pas se terminer par un point** (`.`)
+  - Exemple correct : `"Connecté avec succès"`
+  - Exemple incorrect : `"Connecté avec succès."`
 - **Chaque message envoyé à l'utilisateur doit être entouré de balises `<p>`**
-- Exemple correct : `echo "<p>Message pour l'utilisateur</p>";`
-- Exemple incorrect : `echo "Message pour l'utilisateur";`
+  - Exemple correct : `echo "<p>Message pour l'utilisateur</p>";`
+  - Exemple incorrect : `echo "Message pour l'utilisateur";`
 
 #### Stack technique
 - **HTML, CSS, JS, PHP, SQL avec MariaDB**
