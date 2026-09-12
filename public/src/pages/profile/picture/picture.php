@@ -82,11 +82,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
-    // Vérifier si le fichier existe déjà
-    $target_file = $target_dir . basename($_FILES["profile_picture"]["name"]);
-    if (file_exists($target_file)) {
-        echo "<p>Désolé, un fichier portant ce nom existe déjà.</p>";
-        $can_upload = false;
+    // Vérifier si le fichier existe uniquement si les validations précédentes ont réussi
+    if ($can_upload) {
+        $target_file = $target_dir . basename($_FILES["profile_picture"]["name"]);
+        if (file_exists($target_file)) {
+            echo "<p>Désolé, un fichier portant ce nom existe déjà.</p>";
+            $can_upload = false;
+        }
     }
 
     // Traitement du formulaire soumis
