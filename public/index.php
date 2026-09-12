@@ -8,9 +8,9 @@
     // Global rate limit per IP (DDoS protection)
     $clientIp = getClientIdentifier();
     // Determine max attempts based on user authentication
-    $maxAttempts = 5;
+    $maxAttempts = 10;
     if(isset($_SESSION['username'])){
-        $maxAttempts = 15;
+        $maxAttempts = 30;
     };
     
     if (!checkRateLimit($pdo, $clientIp, 'global', $maxAttempts, 1)) {
@@ -22,11 +22,13 @@
 
     if ($uri === '' || $uri === 'accueil') {
         $pageFile = $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/src/index/head.html';
     }
     else {
         $filePath = $_SERVER['DOCUMENT_ROOT'] . '/src/pages/' . str_replace('/', DIRECTORY_SEPARATOR, $uri) . '/index.php';
         if (file_exists($filePath)) {
             $pageFile = $filePath;
+            include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/' . str_replace('/', DIRECTORY_SEPARATOR, $uri) . '/head.html';
         }
         else {
             http_response_code(404);
@@ -44,7 +46,6 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/' . str_replace('/', DIRECTORY_SEPARATOR, $uri) . '/head.html'; ?>
     <link rel="stylesheet" href="/src/css/font.css">
     <link rel="stylesheet" href="/src/css/style.css">
     <link rel="stylesheet" href="/src/css/scrollbar.css">

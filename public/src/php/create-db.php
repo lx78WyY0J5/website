@@ -5,13 +5,11 @@
   $password = getenv('DB_PASS');
   $dbname = getenv('DB_NAME');
 
-  if (!isset($_SESSION['is_admin'])) {
-    if(empty($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+  if (!isset($_SESSION["is_admin"])) {
+    if(empty($_SESSION["is_admin"]) || $_SESSION["is_admin"] !== true) {
       http_response_code(403);
-      die("Access denied.");
     }
     http_response_code(403);
-    die("Access denied.");
   }
 
     echo "Connecting to database...<br>";
@@ -68,6 +66,4 @@
   } catch(PDOException $e) {
     echo "☠️ Error creating rate limit table: " . $e->getMessage();
   }
-
-  $pdo = null;
 ?>

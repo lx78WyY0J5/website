@@ -24,7 +24,7 @@
     </nav>
 
     <?php
-        if($_SESSION["is_admin"] === true){
+        if(isset($_SESSION["is_admin"]) && !empty($_SESSION["is_admin"]) && $_SESSION["is_admin"] === true) {
             echo '<div>';
 
                 echo '<hr>';

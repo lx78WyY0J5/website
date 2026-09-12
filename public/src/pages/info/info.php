@@ -1,6 +1,6 @@
 
 <?php
-    if($_SESSION["is_admin"] === true){
+    if(isset($_SESSION["is_admin"]) && !empty($_SESSION["is_admin"]) && $_SESSION["is_admin"] === true) {
         echo '<div id="info">';
             include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/info/info.html';
 
@@ -28,5 +28,8 @@
             $memUsagePercent = round(($memUsed / $memTotal) * 100, 2);
             echo '<p>RAM : ' . round(($memUsed/1024/1024), 1) . 'Gb /' . round(($memTotal/1024/1024), 1) . 'Gb (' . $memUsagePercent . '%)</p>';
         echo '</div>';
-        }
+        echo '<div id="db-create">';
+            require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/create-db.php';
+        echo '</div>';
+    }
 ?>
