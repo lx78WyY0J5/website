@@ -5,11 +5,11 @@
   $password = getenv('DB_PASS');
   $dbname = getenv('DB_NAME');
 
-  if (isset($_SESSION["is_admin"]) && !empty($_SESSION["is_admin"]) || $_SESSION["is_admin"] === true) {
+  if (isset($_SESSION["is_admin"]) && !empty($_SESSION["is_admin"]) && $_SESSION["is_admin"] === true) {
       echo "<p>Connecting to database...</p>";
       echo "<p>DB_NAME: $dbname</p>";
       if (empty($dbname)) {
-        die("DB_NAME environment variable is not set");
+        echo "<p>DB_NAME environment variable is not set</p>";
       }
 
     // Connect WITHOUT specifying the database first
@@ -17,7 +17,7 @@
       $pdo = new PDO("mysql:host=$servername", $username, $password);
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch(PDOException $e) {
-      die("Could not connect. " . $e->getMessage());
+      echo "<p>Could not connect. " . $e->getMessage() . "</p>";
     }
 
     // Create database only if it doesn't exist
@@ -42,7 +42,7 @@
       $pdo->exec($sql);
       echo "<p>✔️ Table users ready</p>";
     } catch(PDOException $e) {
-      echo "☠️ Error creating table: " . $e->getMessage();
+      echo "<p>☠️ Error creating table: " . $e->getMessage() . "</p>";
     }
 
     // Create table rate_limits only if it doesn't exist
@@ -58,7 +58,25 @@
       $pdo->exec($sql);
       echo "<p>✔️ rate_limits table ready</p>";
     } catch(PDOException $e) {
-      echo "☠️ Error creating rate limit table: " . $e->getMessage();
+      echo "<p>☠️ Error creating rate limit table: " . $e->getMessage() . "</p>";
+    }
+
+    // Create table user_pictures only if it doesn't exist
+    try {
+      $sql = "CREATE TABLE IF NOT EXISTS user_pictures (
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        user_id INT NOT NULL,
+        filename VARCHAR(255) NOT NULL,
+        file_path VARCHAR(255) NOT NULL,
+        uploaded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+        INDEX idx_user_id (user_id)
+      )";
+
+      $pdo->exec($sql);
+      echo "<p>✔️ user_pictures table ready</p>";
+    } catch(PDOException $e) {
+      echo "<p>☠️ Error creating user_pictures table: " . $e->getMessage() . "</p>";
     }
   }
 ?>

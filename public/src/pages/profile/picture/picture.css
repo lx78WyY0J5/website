@@ -1,0 +1,11 @@
+#profile-picture-display {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#profile-picture-display img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+}
