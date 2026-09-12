@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Vérifier l'extension du fichier
     $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
-    $file_extension = strtolower(pathinfo($_FILES["profile_picture"]["name"], PATH_EXTENSION));
+    $file_extension = strtolower(pathinfo($_FILES["profile_picture"]["name"], PATHINFO_EXTENSION));
 
     if (!in_array($file_extension, $allowed_extensions, true)) {
         echo "<p>Seules les images JPG, PNG et GIF sont autorisées.</p>";
@@ -68,15 +68,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $can_upload = false;
     }
 
-    // Vérifier si le fichier est une image réelle using exif_imagetype
+    // Vérifier si le fichier est une image réelle using getimagesize
     if ($can_upload) {
-        $finfo = finfo_open(FILEINFO_MIME_TYPE);
-        $mime = finfo_file($finfo, $_FILES["profile_picture"]["tmp_name"]);
-        finfo_close($finfo);
-        
-        $valid_image_types = [IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_GIF];
-        $image_type = exif_imagetype($_FILES["profile_picture"]["tmp_name"]);
-        if ($image_type === false || !in_array($image_type, $valid_image_types)) {
+        $image_type = getimagesize($_FILES["profile_picture"]["tmp_name"]);
+        if ($image_type === false || !in_array($image_type[2], [IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_GIF])) {
             echo "<p>Le fichier n'est pas une image valide.</p>";
             $can_upload = false;
         }
@@ -96,7 +91,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Upload the file
         if (move_uploaded_file($_FILES["profile_picture"]["tmp_name"], $target_file)) {
             // Save filename and file path to database
-            $filePath = $target_file;
+            $relativePath = 'uploads/profile_pictures/' . $userId . '/' . basename($_FILES["profile_picture"]["name"]);
+            $filePath = $uploadsDir . $userId . '/' . basename($_FILES["profile_picture"]["name"]);
             $sql = "INSERT INTO user_pictures (user_id, filename, file_path) VALUES (:user_id, :filename, :file_path)";
             if ($stmt = $pdo->prepare($sql)) {
                 $stmt->bindParam(":user_id", $param_user_id, PDO::PARAM_INT);
@@ -105,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 $param_user_id = $userId;
                 $param_filename = basename($_FILES["profile_picture"]["name"]);
-                $param_file_path = $filePath;
+                $param_file_path = $relativePath;
 
                 if ($stmt->execute()) {
                     logSecurityEvent('profile_picture_uploaded', ['user_id' => $userId, 'filename' => basename($_FILES["profile_picture"]["name"])]);
@@ -157,10 +153,14 @@ function getAllProfilesPicturesOfUser($pdo, $userId) {
 
 // Display the user's profile picture (if exists)
 $latestPicture = getLatestProfilePictureOfUser($pdo, $userId);
-if ($latestPicture && file_exists($latestPicture)) {
+if ($latestPicture && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . dirname($latestPicture) . '/' . basename($latestPicture))) {
     echo "<div>";
-    echo "<img src='{$latestPicture}' alt='Profile picture'>";
+    echo "<img src='/" . ltrim($latestPicture, '/') . "' alt='Profile picture'>";
     echo "</div>";
+}
+else {
+    $name = $_SERVER['DOCUMENT_ROOT'] . '/' . dirname($latestPicture) . '/' . basename($latestPicture);
+    echo "<p>error !!!!</p><br><p>" . $name . "</p>";
 }
 
 // Display all pictures if multiple exist
