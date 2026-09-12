@@ -7,7 +7,7 @@
 
     // Global rate limit per IP (DDoS protection)
     $clientIp = getClientIdentifier();
-    if (!checkRateLimit($pdo, $clientIp, 'global', 30, 1)) {
+    if (!checkRateLimit($pdo, $clientIp, 'global', 15, 1)) {
         logSecurityEvent('rate_limit_exceeded', ['endpoint' => 'global', 'ip' => $clientIp]);
         rateLimitExceededResponse('global');
     }
