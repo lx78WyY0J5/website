@@ -1,11 +1,25 @@
-#profile-picture-display {
-    margin-top: 20px;
-    text-align: center;
+article>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
 }
 
-#profile-picture-display img {
-    max-width: 150px;
-    max-height: 150px;
-    border-radius: 8px;
-    border: 2px solid #ddd;
+article>div>img,
+article>div>div>img{
+    background-color: transparent;
+    background: transparent;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.gallery{
+    flex-direction: row;
+    margin-top: 5%;
+}
+
+.gallery > div {
+    padding-left: 5px;
+    padding-right: 5px;
 }

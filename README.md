@@ -105,6 +105,8 @@ Crée via le package `tree`
 #### Installer PHP sur Arch linux
 - `sudo pacman -S php`
 - `sudo sed -i 's/;extension=pdo_mysql/extension=pdo_mysql/g' /etc/php/php.ini` pour activer PDO_MySQL
+- `sudo sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 10M/g' /etc/php/php.ini` pour la limite de taille de fichier
+- `sudo sed -i 's/post_max_size = 8M/post_max_size = 10M/g' /etc/php/php.ini` pour la limite de taille d'upload
 #### Installer PHP sur Ubuntu (UNTESTED)
 `sudo apt-get install php`
 #### Lancer un serveur PHP local

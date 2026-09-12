@@ -53,25 +53,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Vérifier le type de fichier via le contenu
-    if ($can_upload) {
+    if ($can_upload && isset($_FILES["profile_picture"]["tmp_name"]) && !empty($_FILES["profile_picture"]["tmp_name"])) {
         $allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
         $file_type = $_FILES["profile_picture"]["type"];
         
-        // Vérifier si un fichier a été uploadé
-        if (empty($_FILES["profile_picture"]["tmp_name"])) {
-            $mime_type = '';
-            echo "<p>Aucun MIME type trouvé</p>";
-            $can_upload = false;
-        } else {
-            $finfo = finfo_open(FILEINFO_MIME_TYPE);
-            $mime_type = finfo_file($finfo, $_FILES["profile_picture"]["tmp_name"]);
-            finfo_close($finfo);
-        }
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mime_type = finfo_file($finfo, $_FILES["profile_picture"]["tmp_name"]);
+        finfo_close($finfo);
 
         if (!in_array($mime_type, $allowed_types)) {
             echo "<p>Seules les images JPG, PNG et GIF sont autorisées.</p>";
             $can_upload = false;
         }
+    } elseif ($can_upload) {
+        // tmp_name is empty or not set despite no upload error
+        $mime_type = '';
+        $can_upload = false;
+        echo "<p>Erreur: impossible de détecter le type de fichier.</p>";
     }
 
     // Vérifier la taille du fichier
@@ -181,7 +179,7 @@ if (count($allPictures) > 1) {
     echo "<div class='gallery'>";
     foreach ($allPictures as $fp) {
         if (file_exists($fp)) {
-            echo "<div><img src='{$fp}' alt='Profile picture'></div>";
+            echo "<div><img src='/{$fp}' alt='Profile picture'></div>";
         }
     }
     echo "</div>";
