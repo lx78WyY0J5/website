@@ -5,65 +5,60 @@
   $password = getenv('DB_PASS');
   $dbname = getenv('DB_NAME');
 
-  if (!isset($_SESSION["is_admin"])) {
-    if(empty($_SESSION["is_admin"]) || $_SESSION["is_admin"] !== true) {
-      http_response_code(403);
+  if (isset($_SESSION["is_admin"]) && !empty($_SESSION["is_admin"]) || $_SESSION["is_admin"] === true) {
+      echo "<p>Connecting to database...</p>";
+      echo "<p>DB_NAME: $dbname</p>";
+      if (empty($dbname)) {
+        die("DB_NAME environment variable is not set");
+      }
+
+    // Connect WITHOUT specifying the database first
+    try {
+      $pdo = new PDO("mysql:host=$servername", $username, $password);
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch(PDOException $e) {
+      die("Could not connect. " . $e->getMessage());
     }
-    http_response_code(403);
-  }
 
-    echo "Connecting to database...<br>";
-    echo "DB_NAME: $dbname<br><br>";
-    if (empty($dbname)) {
-      die("DB_NAME environment variable is not set");
+    // Create database only if it doesn't exist
+    try {
+      $safeName = '`' . str_replace('`', '``', $dbname) . '`';
+      $pdo->exec("CREATE DATABASE IF NOT EXISTS $safeName");
+      $pdo->exec("USE $safeName");
+      echo "<p>✔️ Database ready</p>";
+    } catch(PDOException $e) {
+      echo "<p>☠️ Error: " . $e->getMessage() . "</p>";
     }
 
-  // Connect WITHOUT specifying the database first
-  try {
-    $pdo = new PDO("mysql:host=$servername", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  } catch(PDOException $e) {
-    die("Could not connect. " . $e->getMessage());
-  }
+    // Create table users only if it doesn't exist
+    try {
+      $sql = "CREATE TABLE IF NOT EXISTS users (
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        username VARCHAR(50) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      )";
 
-  // Create database only if it doesn't exist
-  try {
-    $safeName = '`' . str_replace('`', '``', $dbname) . '`';
-    $pdo->exec("CREATE DATABASE IF NOT EXISTS $safeName");
-    $pdo->exec("USE $safeName");
-    echo "✔️ Database ready<br>";
-  } catch(PDOException $e) {
-    echo "☠️ Error: " . $e->getMessage() . "<br>";
-  }
+      $pdo->exec($sql);
+      echo "<p>✔️ Table users ready</p>";
+    } catch(PDOException $e) {
+      echo "☠️ Error creating table: " . $e->getMessage();
+    }
 
-  // Create table users only if it doesn't exist
-  try {
-    $sql = "CREATE TABLE IF NOT EXISTS users (
-      id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-      username VARCHAR(50) NOT NULL UNIQUE,
-      password VARCHAR(255) NOT NULL,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )";
+    // Create table rate_limits only if it doesn't exist
+    try {
+      $sql = "CREATE TABLE IF NOT EXISTS rate_limits (
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        identifier VARCHAR(255) NOT NULL,
+        endpoint VARCHAR(50) NOT NULL,
+        requested_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        INDEX idx_identifier_endpoint_time (identifier, endpoint, requested_at)
+      )";
 
-    $pdo->exec($sql);
-    echo "✔️ Table users ready<br>";
-  } catch(PDOException $e) {
-    echo "☠️ Error creating table: " . $e->getMessage();
-  }
-
-  // Create table rate_limits only if it doesn't exist
-  try {
-    $sql = "CREATE TABLE IF NOT EXISTS rate_limits (
-      id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-      identifier VARCHAR(255) NOT NULL,
-      endpoint VARCHAR(50) NOT NULL,
-      requested_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      INDEX idx_identifier_endpoint_time (identifier, endpoint, requested_at)
-    )";
-
-    $pdo->exec($sql);
-    echo "✔️ rate_limits table ready<br>";
-  } catch(PDOException $e) {
-    echo "☠️ Error creating rate limit table: " . $e->getMessage();
+      $pdo->exec($sql);
+      echo "<p>✔️ rate_limits table ready</p>";
+    } catch(PDOException $e) {
+      echo "☠️ Error creating rate limit table: " . $e->getMessage();
+    }
   }
 ?>
