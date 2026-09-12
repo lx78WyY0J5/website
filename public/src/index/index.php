@@ -6,7 +6,7 @@
         echo '</div>';
     }
 
-    if(isset($_SESSION["is_admin"]) && !empty($_SESSION["is_admin"]) && $_SESSION["is_admin"] === true) {
+    if(!isset($_SESSION["is_admin"]) || empty($_SESSION["is_admin"]) || $_SESSION["is_admin"] != true) {
         include $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.html';
         if(!isset($_SESSION['loggedin'])){
             echo '<p><a href="/login">Connectez-vous</a>, ou alors pourquoi ne pas <a href="/register">créer un compte</a> ?</p>';
