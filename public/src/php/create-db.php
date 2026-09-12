@@ -59,9 +59,8 @@
       id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
       identifier VARCHAR(255) NOT NULL,
       endpoint VARCHAR(50) NOT NULL,
-      attempts INT NOT NULL DEFAULT 1,
-      window_start DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      UNIQUE KEY unique_identifier_endpoint (identifier, endpoint)
+      requested_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      INDEX idx_identifier_endpoint_time (identifier, endpoint, requested_at)
     )";
 
     $pdo->exec($sql);

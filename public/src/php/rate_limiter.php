@@ -3,36 +3,36 @@
 function checkRateLimit(PDO $pdo, string $identifier, string $endpoint, int $maxAttempts = 5, int $windowMinutes = 15): bool {
     $windowStart = date('Y-m-d H:i:s', strtotime("-{$windowMinutes} minutes"));
 
-    $sql = "SELECT attempts, window_start FROM rate_limits 
-            WHERE identifier = :identifier AND endpoint = :endpoint 
-            AND window_start >= :window_start";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':identifier', $identifier, PDO::PARAM_STR);
-    $stmt->bindParam(':endpoint', $endpoint, PDO::PARAM_STR);
-    $stmt->bindParam(':window_start', $windowStart, PDO::PARAM_STR);
-    $stmt->execute();
+    // Clean old entries (older than window)
+    $cleanSql = "DELETE FROM rate_limits WHERE requested_at < :window_start";
+    $cleanStmt = $pdo->prepare($cleanSql);
+    $cleanStmt->bindParam(':window_start', $windowStart, PDO::PARAM_STR);
+    $cleanStmt->execute();
 
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Count requests in current window
+    $countSql = "SELECT COUNT(*) as count FROM rate_limits 
+                 WHERE identifier = :identifier AND endpoint = :endpoint 
+                 AND requested_at >= :window_start";
+    $countStmt = $pdo->prepare($countSql);
+    $countStmt->bindParam(':identifier', $identifier, PDO::PARAM_STR);
+    $countStmt->bindParam(':endpoint', $endpoint, PDO::PARAM_STR);
+    $countStmt->bindParam(':window_start', $windowStart, PDO::PARAM_STR);
+    $countStmt->execute();
 
-    if ($row) {
-        if ($row['attempts'] >= $maxAttempts) {
-            return false;
-        }
-        $newAttempts = $row['attempts'] + 1;
-        $sql = "UPDATE rate_limits SET attempts = :attempts WHERE identifier = :identifier AND endpoint = :endpoint";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':attempts', $newAttempts, PDO::PARAM_INT);
-        $stmt->bindParam(':identifier', $identifier, PDO::PARAM_STR);
-        $stmt->bindParam(':endpoint', $endpoint, PDO::PARAM_STR);
-        $stmt->execute();
-    } else {
-        $sql = "INSERT INTO rate_limits (identifier, endpoint, attempts, window_start) 
-                VALUES (:identifier, :endpoint, 1, NOW())";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':identifier', $identifier, PDO::PARAM_STR);
-        $stmt->bindParam(':endpoint', $endpoint, PDO::PARAM_STR);
-        $stmt->execute();
+    $row = $countStmt->fetch(PDO::FETCH_ASSOC);
+    $currentCount = (int)($row['count'] ?? 0);
+
+    if ($currentCount >= $maxAttempts) {
+        return false;
     }
+
+    // Insert this request
+    $insertSql = "INSERT INTO rate_limits (identifier, endpoint, requested_at) 
+                  VALUES (:identifier, :endpoint, NOW())";
+    $insertStmt = $pdo->prepare($insertSql);
+    $insertStmt->bindParam(':identifier', $identifier, PDO::PARAM_STR);
+    $insertStmt->bindParam(':endpoint', $endpoint, PDO::PARAM_STR);
+    $insertStmt->execute();
 
     return true;
 }
