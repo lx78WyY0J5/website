@@ -41,7 +41,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $can_upload = false;
     }
 
-    // Vérifier le type de fichier via le contenu, pas seulement l'extension
+    // Vérifier l'extension du fichier
+    $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+    $file_extension = strtolower(pathinfo($_FILES["profile_picture"]["name"], PATH_EXTENSION));
+
+    if (!in_array($file_extension, $allowed_extensions, true)) {
+        echo "<p>Seules les images JPG, PNG et GIF sont autorisées.</p>";
+        $can_upload = false;
+    }
+
+    // Vérifier le type de fichier via le contenu
     $allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
     $file_type = $_FILES["profile_picture"]["type"];
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
