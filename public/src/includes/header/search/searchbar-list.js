@@ -36,6 +36,12 @@ let links = [
         svg: "",
     },
     {
+        href: "/profile/picture",
+        tag: "",
+        title: "Changer de photo de profile",
+        svg: "",
+    },
+    {
         href: "/discord/tempvoc",
         tag: ".gg URL Discord",
         title: "Salon vocal invité Discord",
