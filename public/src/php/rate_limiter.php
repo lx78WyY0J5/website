@@ -1,6 +1,6 @@
 <?php
 
-function checkRateLimit(PDO $pdo, string $identifier, string $endpoint, int $maxAttempts = 5, int $windowMinutes = 15): bool {
+function checkRateLimit(PDO $pdo, string $identifier, string $endpoint, int $maxAttempts, int $windowMinutes): bool {
     $windowStart = date('Y-m-d H:i:s', strtotime("-{$windowMinutes} minutes"));
 
     // Clean old entries (older than window)
