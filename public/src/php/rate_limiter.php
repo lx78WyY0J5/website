@@ -1,33 +1,29 @@
 <?php
 
 function checkRateLimit(PDO $pdo, string $identifier, string $endpoint, int $maxAttempts, int $windowMinutes): bool {
-    $windowStart = date('Y-m-d H:i:s', strtotime("-{$windowMinutes} minutes"));
-
-    // Clean old entries (older than window)
-    $cleanSql = "DELETE FROM rate_limits WHERE requested_at < :window_start";
+    // Clean old entries
+    $cleanSql = "DELETE FROM rate_limits WHERE requested_at < (NOW() - INTERVAL :minutes MINUTE)";
     $cleanStmt = $pdo->prepare($cleanSql);
-    $cleanStmt->bindParam(':window_start', $windowStart, PDO::PARAM_STR);
+    $cleanStmt->bindParam(':minutes', $windowMinutes, PDO::PARAM_INT);
     $cleanStmt->execute();
 
     // Count requests in current window
-    $countSql = "SELECT COUNT(*) as count FROM rate_limits 
-                 WHERE identifier = :identifier AND endpoint = :endpoint 
-                 AND requested_at >= :window_start";
+    $countSql = "SELECT COUNT(*) AS cnt FROM rate_limits
+                 WHERE identifier = :identifier AND endpoint = :endpoint
+                   AND requested_at >= (NOW() - INTERVAL :minutes MINUTE)";
     $countStmt = $pdo->prepare($countSql);
     $countStmt->bindParam(':identifier', $identifier, PDO::PARAM_STR);
     $countStmt->bindParam(':endpoint', $endpoint, PDO::PARAM_STR);
-    $countStmt->bindParam(':window_start', $windowStart, PDO::PARAM_STR);
+    $countStmt->bindParam(':minutes', $windowMinutes, PDO::PARAM_INT);
     $countStmt->execute();
 
-    $row = $countStmt->fetch(PDO::FETCH_ASSOC);
-    $currentCount = (int)($row['count'] ?? 0);
+    $currentCount = (int)($countStmt->fetch(PDO::FETCH_ASSOC)['cnt'] ?? 0);
 
     if ($currentCount >= $maxAttempts) {
         return false;
     }
 
-    // Insert this request
-    $insertSql = "INSERT INTO rate_limits (identifier, endpoint, requested_at) 
+    $insertSql = "INSERT INTO rate_limits (identifier, endpoint, requested_at)
                   VALUES (:identifier, :endpoint, NOW())";
     $insertStmt = $pdo->prepare($insertSql);
     $insertStmt->bindParam(':identifier', $identifier, PDO::PARAM_STR);
