@@ -1,3 +1,4 @@
 .env
 logs/security.log
+logs/php.log
 nohup.out

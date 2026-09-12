@@ -108,7 +108,8 @@ Crée via le package `tree`
 #### Installer PHP sur Ubuntu (UNTESTED)
 `sudo apt-get install php`
 #### Lancer un serveur PHP local
-- `php -S localhost:8000 -t ./public/`
+- Pour lancer le serveur PHP ; `php -S localhost:8000 -t ./public/`
+- Ou avec les logs : `php -S localhost:8000 -t ./repo/website/public/ &>> ./repo/website/logs/php.log`
   - `-t` permet de définir le répertoire racine du serveur (le dossier à servir)
     - Seuls les fichiers sous ce dossier sont accessibles via l'URL
     - Le code PHP peut néanmoins `include`/`require` des fichiers en dehors
@@ -144,26 +145,6 @@ CREATE USER 'webuser'@'localhost' IDENTIFIED BY 'strongpassword';
 GRANT ALL PRIVILEGES ON *.* TO 'webuser'@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
-```
-#### Créer la base de données
-- Lancez `sudo mysql`
-- Puis lancez ;
-```bash
-CREATE DATABASE mydb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL PRIVILEGES ON mydb.* TO 'webuser'@'localhost';
-FLUSH PRIVILEGES;
-```
-#### Créer la table 'users'
-- Lancez `sudo mysql`
-- Puis lancez ;
-```bash
-USE mydb;
-CREATE TABLE users (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
 ```
 ## Lancer PHP et MariaDB sur Termux
 ```
