@@ -1,4 +1,5 @@
 <?php
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
   $servername = getenv('DB_IP');
   $username = getenv('DB_USER');
   $password = getenv('DB_PASS');
@@ -14,9 +15,9 @@
   }
 
     echo "Connecting to database...<br>";
-    echo "DB_NAME: $dbname<br>";
+    echo "DB_NAME: $dbname<br><br>";
     if (empty($dbname)) {
-      die("DB_NAME environment variable is not set.");
+      die("DB_NAME environment variable is not set");
     }
 
   // Connect WITHOUT specifying the database first
@@ -32,9 +33,9 @@
     $safeName = '`' . str_replace('`', '``', $dbname) . '`';
     $pdo->exec("CREATE DATABASE IF NOT EXISTS $safeName");
     $pdo->exec("USE $safeName");
-    echo "Database ready<br>";
+    echo "✔️ Database ready<br>";
   } catch(PDOException $e) {
-    echo "Error: " . $e->getMessage();
+    echo "☠️ Error: " . $e->getMessage() . "<br>";
   }
 
   // Create table users only if it doesn't exist
@@ -47,9 +48,9 @@
     )";
 
     $pdo->exec($sql);
-    echo "Table ready";
+    echo "✔️ Table users ready<br>";
   } catch(PDOException $e) {
-    echo "Error creating table: " . $e->getMessage();
+    echo "☠️ Error creating table: " . $e->getMessage();
   }
 
   // Create table rate_limits only if it doesn't exist
@@ -64,9 +65,9 @@
     )";
 
     $pdo->exec($sql);
-    echo "Rate limit table ready<br>";
+    echo "✔️ rate_limits table ready<br>";
   } catch(PDOException $e) {
-    echo "Error creating rate limit table: " . $e->getMessage();
+    echo "☠️ Error creating rate limit table: " . $e->getMessage();
   }
 
   $pdo = null;

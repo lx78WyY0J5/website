@@ -32,4 +32,4 @@ function loadEnv($path) {
     }
 }
 
-loadEnv(__DIR__ . '/../../../.env');
+loadEnv($_SERVER['DOCUMENT_ROOT'] . '/../.env');

@@ -1,12 +1,13 @@
 <?php
     session_start();
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
 
     // Global rate limit per IP (DDoS protection)
     $clientIp = getClientIdentifier();
-    if (!checkRateLimit($pdo, $clientIp, 'global', 100, 1)) {
+    if (!checkRateLimit($pdo, $clientIp, 'global', 30, 1)) {
         logSecurityEvent('rate_limit_exceeded', ['endpoint' => 'global', 'ip' => $clientIp]);
         rateLimitExceededResponse('global');
     }
