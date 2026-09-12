@@ -42,28 +42,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Vérifier l'extension du fichier
-    $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
-    $file_extension = strtolower(pathinfo($_FILES["profile_picture"]["name"], PATHINFO_EXTENSION));
+    if ($can_upload) {
+        $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+        $file_extension = strtolower(pathinfo($_FILES["profile_picture"]["name"], PATHINFO_EXTENSION));
 
-    if (!in_array($file_extension, $allowed_extensions, true)) {
-        echo "<p>Seules les images JPG, PNG et GIF sont autorisées.</p>";
-        $can_upload = false;
+        if (!in_array($file_extension, $allowed_extensions, true)) {
+            echo "<p>Seules les images JPG, PNG et GIF sont autorisées.</p>";
+            $can_upload = false;
+        }
     }
 
     // Vérifier le type de fichier via le contenu
-    $allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
-    $file_type = $_FILES["profile_picture"]["type"];
-    $finfo = finfo_open(FILEINFO_MIME_TYPE);
-    $mime_type = finfo_file($finfo, $_FILES["profile_picture"]["tmp_name"]);
-    finfo_close($finfo);
+    if ($can_upload) {
+        $allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+        $file_type = $_FILES["profile_picture"]["type"];
+        
+        // Vérifier si un fichier a été uploadé
+        if (empty($_FILES["profile_picture"]["tmp_name"])) {
+            $mime_type = '';
+            echo "<p>Aucun MIME type trouvé</p>";
+            $can_upload = false;
+        } else {
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mime_type = finfo_file($finfo, $_FILES["profile_picture"]["tmp_name"]);
+            finfo_close($finfo);
+        }
 
-    if (!in_array($mime_type, $allowed_types)) {
-        echo "<p>Seules les images JPG, PNG et GIF sont autorisées.</p>";
-        $can_upload = false;
+        if (!in_array($mime_type, $allowed_types)) {
+            echo "<p>Seules les images JPG, PNG et GIF sont autorisées.</p>";
+            $can_upload = false;
+        }
     }
 
     // Vérifier la taille du fichier
-    if ($_FILES["profile_picture"]["size"] > $maxFileSize) {
+    if ($can_upload && $_FILES["profile_picture"]["size"] > $maxFileSize) {
         echo "<p>Votre fichier est trop volumineux (maximum 5 Mo).</p>";
         $can_upload = false;
     }
