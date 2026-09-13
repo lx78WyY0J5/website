@@ -8,7 +8,5 @@ resp=$(curl -s -X POST "$BASE_URL/register" \
   -d "username=test' OR '1'='1&password=StrongPass123!&confirm_password=StrongPass123!&code=123456" \
   -H "Content-Type: application/x-www-form-urlencoded")
 
-echo "Response: $resp"
-
 echo "$resp" | grep -q "Ce nom d'utilisateur est déjà pris\|Le nom d'utilisateur ne peut contenir que des lettres, chiffres et underscores"
 exit $?

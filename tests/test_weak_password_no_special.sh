@@ -8,7 +8,5 @@ resp=$(curl -s -X POST "$BASE_URL/register" \
   -d "username=validuser&password=ValidPass123&confirm_password=ValidPass123&code=123456" \
   -H "Content-Type: application/x-www-form-urlencoded")
 
-echo "Response: $resp"
-
 echo "$resp" | grep -q "Le mot de passe doit contenir un caractère spécial"
 exit $?
