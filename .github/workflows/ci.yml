@@ -53,7 +53,7 @@ jobs:
           DB_PASS="strongpassword"
           DB_NAME="mydb"
           REGISTRATION_CODE="123456"
-          FORCE_DB_INIT: "true"
+          FORCE_DB_INIT="true"
           EOF
 
       - name: Initialize database
