@@ -30,15 +30,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup PHP
+      - name: Install PHP & configure
         run: |
-          sudo apt-get update -y
-          sudo apt-get install -y php8.3 php8.3-cli php8.3-mysql php8.3-mbstring
-          
-          # Configure php.ini per README
-          sudo sed -i 's/;extension=pdo_mysql/extension=pdo_mysql/' /etc/php/8.3/cli/php.ini
-          sudo sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 10M/' /etc/php/8.3/cli/php.ini
-          sudo sed -i 's/post_max_size = 8M/post_max_size = 10M/' /etc/php/8.3/cli/php.ini
+          SKIP_MARIADB=1 bash install.sh
           
           php -v
           php -m | grep pdo_mysql
