@@ -45,16 +45,21 @@ jobs:
             sleep 1
           done
 
+      - name: Create .env file
+        run: |
+          cat > .env <<'EOF'
+          DB_IP="127.0.0.1"
+          DB_USER="webuser"
+          DB_PASS="strongpassword"
+          DB_NAME="mydb"
+          REGISTRATION_CODE="123456"
+          FORCE_DB_INIT: "true"
+          EOF
+
       - name: Initialize database
         run: |
           cd public
           php -r '$_SERVER["DOCUMENT_ROOT"] = "."; require "src/php/create-db.php";'
-        env:
-          DB_IP: 127.0.0.1
-          DB_USER: webuser
-          DB_PASS: strongpassword
-          DB_NAME: mydb
-          FORCE_DB_INIT: "true"
 
       - name: Start PHP server
         run: |
