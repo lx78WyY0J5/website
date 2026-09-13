@@ -46,3 +46,4 @@
 
         echo "<p>✔️ Database initialized from $sqlFile</p>";
     }
+?>
