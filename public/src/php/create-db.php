@@ -1,5 +1,7 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
+    // CLI-friendly path resolution
+    $basePath = $_SERVER['DOCUMENT_ROOT'] ?? dirname(__DIR__, 3);
+    require_once $basePath . '/src/php/loadEnv.php';
     $servername = getenv('DB_IP');
     $username = getenv('DB_USER');
     $password = getenv('DB_PASS');
@@ -18,7 +20,7 @@
             exit;
         }
 
-        $sqlFile = $_SERVER['DOCUMENT_ROOT'] . '/src/sql/init-db.sql';
+        $sqlFile = $basePath . '/src/sql/init-db.sql';
         if (!file_exists($sqlFile)) {
             echo "<p>SQL file not found: $sqlFile</p>";
             exit;

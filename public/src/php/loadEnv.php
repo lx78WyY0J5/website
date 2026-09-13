@@ -1,4 +1,9 @@
 <?php
+// CLI-friendly base path
+if (!defined('BASE_PATH')) {
+    define('BASE_PATH', $_SERVER['DOCUMENT_ROOT'] ?? dirname(__DIR__, 3));
+}
+
 function loadEnv($path) {
     if (!file_exists($path)) {
         echo "<p>.env file not found</p>";
@@ -32,4 +37,4 @@ function loadEnv($path) {
     }
 }
 
-loadEnv($_SERVER['DOCUMENT_ROOT'] . '/../.env');
+loadEnv(BASE_PATH . '/../.env');

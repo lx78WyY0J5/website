@@ -1,6 +1,10 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/password_entropy.php';
+if (!defined('BASE_PATH')) {
+    define('BASE_PATH', $_SERVER['DOCUMENT_ROOT'] ?? dirname(__DIR__, 3));
+}
+
+require_once BASE_PATH . '/src/php/password_entropy.php';
 
 function checkPassword($password, $password2){
     $password = trim($password);
