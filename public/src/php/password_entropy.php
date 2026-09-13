@@ -27,7 +27,7 @@ function getEntropyMessage(string $password)
     $rounded = round($entropy, 2);
 
     if ($entropy >= $minEntropy) {
-        return "<p>L'entropie du mot de passe est de {$rounded} bits</p>";
+        return "<p>L'entropie du mot de passe est de {$rounded} bits (min : {$minEntropy})</p>";
     }
 
     return "<p>L'entropie du mot de passe est de {$rounded} bits</p><p>L'entropie du mot de passe est trop faible<br>Elle doit être au moins de {$minEntropy} bits</p>";
