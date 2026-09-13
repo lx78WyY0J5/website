@@ -1,6 +1,10 @@
 <?php
 
 function checkRateLimit(PDO $pdo, string $identifier, string $endpoint, int $maxAttempts, int $windowMinutes): bool {
+    if ($identifier === '::1' || $identifier === '127.0.0.1') {
+        return true;
+    }
+
     // Clean old entries
     $cleanSql = "DELETE FROM rate_limits WHERE requested_at < (NOW() - INTERVAL :minutes MINUTE)";
     $cleanStmt = $pdo->prepare($cleanSql);
