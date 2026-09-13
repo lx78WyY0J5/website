@@ -52,7 +52,7 @@ jobs:
           DB_USER="webuser"
           DB_PASS="strongpassword"
           DB_NAME="mydb"
-          REGISTRATION_CODE="123456"
+          REGISTER_CODE="123456"
           FORCE_DB_INIT="true"
           EOF
 
