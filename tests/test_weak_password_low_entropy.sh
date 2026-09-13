@@ -10,5 +10,5 @@ resp=$(curl -s -X POST "$BASE_URL/register" \
 
 echo "Response: $resp"
 
-echo "$resp" | grep -q "Le mot de passe n'est pas assez fort\|entropy\|Entropie"
+echo "$resp" | grep -q "L'entropie du mot de passe est trop faible"
 exit $?
