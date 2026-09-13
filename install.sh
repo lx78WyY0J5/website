@@ -69,25 +69,27 @@ install_mariadb() {
 configure_php() {
     echo "Configuring PHP..."
     
-    # Determine php.ini destination
     case $OS in
         arch|manjaro|endeavouros)
             PHP_INI="/etc/php/php.ini"
+            sudo cp php.ini "$PHP_INI"
+            echo "php.ini copied to $PHP_INI"
             ;;
         ubuntu|debian)
-            PHP_INI="/etc/php/8.*/cli/php.ini"
-            # Find actual version
-            for f in /etc/php/*/cli/php.ini; do
-                [ -f "$f" ] && PHP_INI="$f" && break
-            done
+            # Don't replace system php.ini; add custom settings via conf.d
+            PHP_VERSION=$(php -r "echo PHP_MAJOR_VERSION.'.'.PHP_MINOR_VERSION;")
+            CUSTOM_INI="/etc/php/${PHP_VERSION}/cli/conf.d/99-custom.ini"
+            sudo cp php.ini "$CUSTOM_INI"
+            echo "Custom php.ini copied to $CUSTOM_INI"
+            # Remove extension_dir if present (wrong for Ubuntu)
+            sudo sed -i '/^extension_dir/d' "$CUSTOM_INI"
             ;;
         termux)
             PHP_INI="/data/data/com.termux/files/usr/etc/php.ini"
+            sudo cp php.ini "$PHP_INI"
+            echo "php.ini copied to $PHP_INI"
             ;;
     esac
-    
-    sudo cp php.ini "$PHP_INI"
-    echo "php.ini copied to $PHP_INI"
 }
 
 # Initialize MariaDB (skip if SKIP_MARIADB=1)
