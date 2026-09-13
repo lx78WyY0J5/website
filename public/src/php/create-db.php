@@ -4,9 +4,8 @@ $servername = getenv('DB_IP');
 $username = getenv('DB_USER');
 $password = getenv('DB_PASS');
 $dbname = getenv('DB_NAME');
-
-$isAdmin = isset($_SESSION["is_admin"]) && !empty($_SESSION["is_admin"]) && $_SESSION["is_admin"] === true;
 $forceInit = filter_var(getenv('FORCE_DB_INIT'), FILTER_VALIDATE_BOOLEAN);
+$isAdmin = isset($_SESSION["is_admin"]) && !empty($_SESSION["is_admin"]) && $_SESSION["is_admin"] === true;
 
 if (!$isAdmin && !$forceInit) {
     echo "<p>Accès refusé : droits administrateur requis</p>";
