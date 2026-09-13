@@ -1,0 +1,81 @@
+name: CI/CD Security Tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  security-tests:
+    runs-on: ubuntu-latest
+    
+    services:
+      mariadb:
+        image: mariadb:11
+        env:
+          MYSQL_ROOT_PASSWORD: rootpassword
+          MYSQL_DATABASE: mydb
+          MYSQL_USER: webuser
+          MYSQL_PASSWORD: strongpassword
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -u root -prootpassword"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y php8.3 php8.3-cli php8.3-mysql php8.3-mbstring
+          
+          # Configure php.ini per README
+          sudo sed -i 's/;extension=pdo_mysql/extension=pdo_mysql/' /etc/php/8.3/cli/php.ini
+          sudo sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 10M/' /etc/php/8.3/cli/php.ini
+          sudo sed -i 's/post_max_size = 8M/post_max_size = 10M/' /etc/php/8.3/cli/php.ini
+          
+          php -v
+          php -m | grep pdo_mysql
+
+      - name: Copy .env.exemple to .env
+        run: cp .env.exemple .env
+
+      - name: Wait for MariaDB
+        run: |
+          for i in {1..30}; do
+            mysqladmin ping -h 127.0.0.1 -u root -prootpassword --silent && break
+            sleep 1
+          done
+
+      - name: Initialize database
+        run: php public/src/php/create-db.php
+        env:
+          DB_IP: 127.0.0.1
+          DB_USER: webuser
+          DB_PASS: strongpassword
+          DB_NAME: mydb
+          FORCE_DB_INIT: "true"
+
+      - name: Start PHP server
+        run: |
+          cd public
+          php -S 127.0.0.1:8000 -t . > /tmp/php-server.log 2>&1 &
+          echo $! > /tmp/php-pid.txt
+          sleep 3
+          curl -s http://127.0.0.1:8000/ > /dev/null && echo "PHP server ready"
+
+      - name: Run security tests
+        run: bash tests/run-all-tests.sh
+        env:
+          BASE_URL: http://127.0.0.1:8000
+
+      - name: Stop PHP server
+        if: always()
+        run: |
+          kill $(cat /tmp/php-pid.txt 2>/dev/null) 2>/dev/null || true
