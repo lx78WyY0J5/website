@@ -15,9 +15,10 @@ function calculateEntropy(string $password) {
     return $L * log($N, 2);
 }
 
+$minEntropy = 90;
 function isEntropyStrong(string $password)
 {
-    return calculateEntropy($password) >= 80;
+    return calculateEntropy($password) >= $minEntropy;
 }
 
 function getEntropyMessage(string $password)
@@ -25,7 +26,7 @@ function getEntropyMessage(string $password)
     $entropy = calculateEntropy($password);
     $rounded = round($entropy, 2);
 
-    if ($entropy >= 80) {
+    if ($entropy >= $minEntropy) {
         return "<p>L'entropie du mot de passe est de {$rounded} bits</p>";
     }
 
