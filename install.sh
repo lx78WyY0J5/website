@@ -25,7 +25,7 @@ install_php() {
         ubuntu|debian)
             echo "Installing PHP on Ubuntu/Debian..."
             sudo apt-get update -y
-            sudo apt-get install -y php php-mysql
+            sudo apt-get install -y php php-mysql php-curl php-mbstring php-xml php-readline php-zip
             ;;
         termux)
             echo "Installing PHP on Termux..."
