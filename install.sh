@@ -211,6 +211,11 @@ configure_mariadb_user() {
     echo "MariaDB user configured successfully"
 }
 
+install_db() {
+    # echo "installing DataBase"
+    # php -r '$_SERVER["DOCUMENT_ROOT"] = "."; require "src/php/create-db.php";'
+}
+
 # Main
 load_env
 detect_os
@@ -218,6 +223,7 @@ install_php
 install_mariadb
 configure_php
 init_mariadb
+# install_db
 
 echo ""
 echo "Installation complete!"
