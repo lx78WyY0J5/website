@@ -43,3 +43,20 @@ footer>div>nav>a {
     padding: 8px;
     transform: translateY(20%);
 }
+
+.view-stats {
+    text-align: center;
+    color: var(--text-color);
+}
+
+.view-stats p {
+    margin: 4px 0;
+}
+
+.view-stats strong {
+    color: var(--second-hover);
+}
+
+.view-stats-title {
+    text-decoration: underline;
+}

@@ -16,7 +16,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
 $clientIp = getClientIdentifier();
 // Validate userId is numeric
 $userId = intval($_SESSION["id"]);
-if (!checkRateLimit($pdo, $clientIp, 'profile_picture_upload', 10, 60) || !checkRateLimit($pdo, "user_{$userId}", 'profile_picture_upload', 10, 60)) {
+if (!checkRateLimit($pdo, $clientIp, 'profile_picture_upload', 20, 60) || !checkRateLimit($pdo, "user_{$userId}", 'profile_picture_upload', 20, 60)) {
     logSecurityEvent('rate_limit_exceeded', ['endpoint' => 'profile_picture_upload', 'ip' => $clientIp, 'user_id' => $userId]);
     rateLimitExceededResponse('profile_picture_upload');
 }

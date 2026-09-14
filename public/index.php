@@ -4,13 +4,14 @@
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/view_counter.php';
 
     // Global rate limit per IP (DDoS protection)
     $clientIp = getClientIdentifier();
     // Determine max attempts based on user authentication
-    $maxAttempts = 10;
+    $maxAttempts = 20;
     if(isset($_SESSION['username'])){
-        $maxAttempts = 30;
+        $maxAttempts = 50;
     };
     
     if (!checkRateLimit($pdo, $clientIp, 'global', $maxAttempts, 1)) {
@@ -35,6 +36,10 @@
             $pageFile = $_SERVER['DOCUMENT_ROOT'] . '/src/pages/404/404.html';
         }
     }
+
+    $userId = isset($_SESSION['id']) ? (int)$_SESSION['id'] : null;
+    trackView($pdo, $uri, $userId);
+    $viewStats = getViewStats($pdo, $uri, $userId);
 
     if(isset($_SESSION['username'])) {
         logSecurityEvent('visit', ['username' => $_SESSION['username'], 'url' => $uri]);

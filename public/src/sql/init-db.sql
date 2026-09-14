@@ -28,3 +28,37 @@ CREATE TABLE IF NOT EXISTS `user_pictures` (
   FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
   INDEX `idx_user_id` (`user_id`)
 );
+
+CREATE TABLE IF NOT EXISTS `site_views` (
+  `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `total_views` BIGINT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS `page_views` (
+  `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `url` VARCHAR(500) NOT NULL,
+  `view_count` BIGINT NOT NULL DEFAULT 0,
+  UNIQUE KEY `uk_url` (`url`),
+  INDEX `idx_url` (`url`)
+);
+
+CREATE TABLE IF NOT EXISTS `user_page_views` (
+  `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `url` VARCHAR(500) NOT NULL,
+  `view_count` BIGINT NOT NULL DEFAULT 0,
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+  UNIQUE KEY `uk_user_url` (`user_id`, `url`),
+  INDEX `idx_user_id` (`user_id`),
+  INDEX `idx_url` (`url`)
+);
+
+CREATE TABLE IF NOT EXISTS `user_total_views` (
+  `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `total_views` BIGINT NOT NULL DEFAULT 0,
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+  UNIQUE KEY `uk_user_id` (`user_id`)
+);
+
+INSERT IGNORE INTO `site_views` (`id`, `total_views`) VALUES (1, 0);

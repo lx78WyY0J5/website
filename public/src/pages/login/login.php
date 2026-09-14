@@ -7,7 +7,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
 
 // Rate limiting
 $clientIp = getClientIdentifier();
-if (!checkRateLimit($pdo, $clientIp, 'login', 5, 15)) {
+if (!checkRateLimit($pdo, $clientIp, 'login', 10, 15)) {
     logSecurityEvent('rate_limit_exceeded', ['endpoint' => 'login', 'ip' => $clientIp]);
     rateLimitExceededResponse('login');
 }
