@@ -177,6 +177,11 @@ input[type=password] {
     text-align: center;
 }
 
+input[type=file] {
+    color: var(--text-color);
+    padding: 10px;
+}
+
 input[type=text]::placeholder,
 input[type=number]::placeholder,
 input[type=password]::placeholder {
