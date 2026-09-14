@@ -51,8 +51,8 @@ function checkPassword($password, $password2){
     if(isset($password) && !empty($password)){
         $entropy = calculateEntropy($password);
 
-        $entropy_message = getEntropyMessage($entropy);
-        if (!isEntropyStrong($entropy)) {
+        $entropy_message = getEntropyMessage($password);
+        if (!isEntropyStrong($password)) {
             $can_register = false;
         }
         echo $entropy_message;
