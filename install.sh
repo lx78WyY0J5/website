@@ -108,6 +108,11 @@ configure_php() {
 init_mariadb() {
     if [ "$SKIP_MARIADB" = "1" ]; then
         echo "Skipping MariaDB init (SKIP_MARIADB=1)"
+        # Detect CI environment: CI=true (generic) or GITHUB_ACTIONS=true (GitHub Actions)
+        # In CI, MariaDB runs as a service container (not systemctl), so wait for it using root password
+        if [ -n "$CI" ] || [ -n "$GITHUB_ACTIONS" ]; then
+            wait_for_mariadb_ci
+        fi
         return
     fi
     echo "Initializing MariaDB..."
@@ -134,7 +139,24 @@ init_mariadb() {
     esac
 }
 
-# Wait for MariaDB to be ready (replaces sleep 3)
+# Wait for MariaDB in CI (service container with root password)
+wait_for_mariadb_ci() {
+    echo "Waiting for MariaDB (CI mode)..."
+    local max_attempts=30
+    local attempt=0
+    while [ $attempt -lt $max_attempts ]; do
+        if mysql -h 127.0.0.1 -u root -p"${MARIADB_ROOT_PASSWORD:-rootpassword}" -e "SELECT 1" > /dev/null 2>&1; then
+            echo "MariaDB is ready"
+            return 0
+        fi
+        attempt=$((attempt + 1))
+        sleep 1
+    done
+    echo "Error: MariaDB failed to start within $max_attempts seconds"
+    exit 1
+}
+
+# Wait for MariaDB to be ready
 wait_for_mariadb() {
     echo "Waiting for MariaDB to be ready..."
     local max_attempts=30

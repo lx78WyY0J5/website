@@ -38,43 +38,23 @@ jobs:
           php -v
           php -m | grep pdo_mysql
 
-      - name: Wait for MariaDB
+      - name: Start services (MariaDB + PHP)
         run: |
+          SKIP_MARIADB=1 nohup bash start.sh > /tmp/start.log 2>&1 &
+          echo $! > /tmp/start-pid.txt
+          # Wait for PHP server to be ready
           for i in {1..30}; do
-            mysql -h 127.0.0.1 -u root -prootpassword -e "SELECT 1" > /dev/null 2>&1 && break
+            curl -s http://127.0.0.1:8000/ > /dev/null 2>&1 && echo "PHP server ready" && break
             sleep 1
           done
-
-      - name: Create .env file
-        run: |
-          cat > .env <<'EOF'
-          DB_IP="127.0.0.1"
-          DB_USER="webuser"
-          DB_PASS="strongpassword"
-          DB_NAME="mydb"
-          REGISTER_CODE="123456"
-          FORCE_DB_INIT="true"
-          EOF
-
-      - name: Initialize database
-        run: |
-          cd public
-          php -r '$_SERVER["DOCUMENT_ROOT"] = "."; require "src/php/create-db.php";'
-
-      - name: Start PHP server
-        run: |
-          cd public
-          php -S 127.0.0.1:8000 -t . > /tmp/php-server.log 2>&1 &
-          echo $! > /tmp/php-pid.txt
-          sleep 3
-          curl -s http://127.0.0.1:8000/ > /dev/null && echo "PHP server ready"
 
       - name: Run security tests
         run: bash tests/run-all-tests.sh
         env:
           BASE_URL: http://127.0.0.1:8000
 
-      - name: Stop PHP server
+      - name: Stop services
         if: always()
         run: |
-          kill $(cat /tmp/php-pid.txt 2>/dev/null) 2>/dev/null || true
+          kill $(cat /tmp/start-pid.txt 2>/dev/null) 2>/dev/null || true
+          pkill -f "php -S 127.0.0.1:8000" 2>/dev/null || true

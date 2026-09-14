@@ -7,6 +7,12 @@ load_env() {
         set -a
         source .env
         set +a
+    elif [ -f .env.exemple ]; then
+        echo "No .env found, copying from .env.exemple"
+        cp .env.exemple .env
+        set -a
+        source .env
+        set +a
     else
         echo "Error: .env file not found. Copy .env.exemple to .env and configure it."
         exit 1
@@ -30,7 +36,12 @@ detect_os() {
 # Start MariaDB if not running
 start_mariadb() {
     if [ "$SKIP_MARIADB" = "1" ]; then
-        echo "Skipping MariaDB (SKIP_MARIADB=1)"
+        echo "Skipping MariaDB start (SKIP_MARIADB=1)"
+        # Detect CI environment: CI=true (generic) or GITHUB_ACTIONS=true (GitHub Actions)
+        # In CI, MariaDB runs as a service container (not systemctl), so wait for it using root password
+        if [ -n "$CI" ] || [ -n "$GITHUB_ACTIONS" ]; then
+            wait_for_mariadb_ci
+        fi
         return
     fi
     
@@ -54,6 +65,23 @@ start_mariadb() {
             fi
             ;;
     esac
+}
+
+# Wait for MariaDB in CI (service container with root password)
+wait_for_mariadb_ci() {
+    echo "Waiting for MariaDB (CI mode)..."
+    local max_attempts=30
+    local attempt=0
+    while [ $attempt -lt $max_attempts ]; do
+        if mysql -h 127.0.0.1 -u root -p"${MARIADB_ROOT_PASSWORD:-rootpassword}" -e "SELECT 1" > /dev/null 2>&1; then
+            echo "MariaDB is ready"
+            return 0
+        fi
+        attempt=$((attempt + 1))
+        sleep 1
+    done
+    echo "Error: MariaDB failed to start within $max_attempts seconds"
+    exit 1
 }
 
 # Wait for MariaDB to be ready
