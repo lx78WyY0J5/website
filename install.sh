@@ -7,6 +7,12 @@ load_env() {
         set -a
         source .env
         set +a
+    elif [ -f .env.exemple ]; then
+        echo "No .env found, copying from .env.exemple"
+        cp .env.exemple .env
+        set -a
+        source .env
+        set +a
     else
         echo "Error: .env file not found. Copy .env.exemple to .env and configure it."
         exit 1
