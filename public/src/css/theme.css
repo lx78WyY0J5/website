@@ -10,6 +10,7 @@
     --link-color: rgb(80, 80, 80);
     --second-default: rgba(0, 0, 0, 0.75);
     --second-hover: rgba(0, 0, 0, 0.5);
+    --second-hover-low: rgba(0, 0, 0, 0.25);
 }
 
 :root.day {
@@ -24,6 +25,7 @@
     --link-color: rgb(175, 175, 175);
     --second-default: rgba(255, 255, 255, 0.75);
     --second-hover: rgba(255, 255, 255, 0.5);
+    --second-hover-low: rgba(255, 255, 255, 0.1);
 }
 
 :root.default-theme,
@@ -41,6 +43,7 @@
     --link-color: rgb(175, 175, 175);
     --second-default: rgba(255, 255, 255, 0.75);
     --second-hover: rgba(255, 255, 255, 0.5);
+    --second-hover-low: rgba(255, 255, 255, 0.1);
 }
 
 :root {
@@ -82,7 +85,7 @@ body {
 
 body.gride{
     background-size: 100px 100px;
-    background-image: linear-gradient(0deg,  var(--main-color-transparent) 3px, transparent 1px), linear-gradient(90deg,  var(--main-color-transparent) 3px, transparent 1px)
+    background-image: linear-gradient(0deg,  var(--second-hover-low) 3px, transparent 1px), linear-gradient(90deg,  var(--second-hover-low) 3px, transparent 1px)
 }
 
 ::selection {

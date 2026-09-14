@@ -1,8 +1,15 @@
 <footer>
     <link rel="stylesheet" href="/src/includes/footer/footer.css">
 
-    <div>
+    <div class="view-stats">
         <p>Site fait avec <img src="/src/assets/svg/heart-color.svg" class="svg-color"></img> par <a href="/admin/contact">lx78WyY0J5</a></p>
+        <p><strong class="view-stats-title">Statistiques du site</strong> :</p>
+        <p>Vues totales du site : <strong><?= number_format($viewStats['site_total'] ?? 0) ?></strong></p>
+        <p>Vues de cette page : <strong><?= number_format($viewStats['page_total'] ?? 0) ?></strong></p>
+        <?php if (isset($viewStats['user_page'])): ?>
+            <p>Vos vues sur cette page : <strong><?= number_format($viewStats['user_page']) ?></strong></p>
+            <p>Vos vues totales : <strong><?= number_format($viewStats['user_total']) ?></strong></p>
+        <?php endif; ?>
     </div>
 
     <hr>
@@ -22,18 +29,6 @@
         <a href="https://Twitch.com/Altherneum"><img src="/src/assets/svg/trademark/twitch.svg" class="svg" alt=""></a>
         <a href="https://steamcommunity.com/id/Altherneum/"><img src="/src/assets/svg/trademark/steam.svg" class="svg" alt=""></a>
     </nav>
-
-    <hr>
-
-    <div class="view-stats">
-        <p><strong class="view-stats-title">Statistiques du site</strong> :</p>
-        <p>Vues totales du site : <strong><?= number_format($viewStats['site_total'] ?? 0) ?></strong></p>
-        <p>Vues de cette page : <strong><?= number_format($viewStats['page_total'] ?? 0) ?></strong></p>
-        <?php if (isset($viewStats['user_page'])): ?>
-            <p>Vos vues sur cette page : <strong><?= number_format($viewStats['user_page']) ?></strong></p>
-            <p>Vos vues totales : <strong><?= number_format($viewStats['user_total']) ?></strong></p>
-        <?php endif; ?>
-    </div>
 
     <?php
         if(isset($_SESSION["is_admin"]) && !empty($_SESSION["is_admin"]) && $_SESSION["is_admin"] === true) {

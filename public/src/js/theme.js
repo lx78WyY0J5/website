@@ -53,14 +53,19 @@ function changeTheme() {
     else if (localStorage.getItem("theme") === "dark") {
         setTheme("light");
     }
-    else if(localStorage.getItem("theme") === "light" && localStorage.getItem("ThemeTransparent") === "true"){
-        setTheme("transparent")
+    else if(localStorage.getItem("theme") === "light"){
+        if(localStorage.getItem("ThemeTransparent") === "true"){
+            setTheme("transparent")
+        }
+        else{
+            setTheme("day");
+        }
     }
     else if (localStorage.getItem("theme") === "transparent") {
         setTheme("day");
     }
 
-    else { setTheme("dark"); }
+    else { setTheme("day"); }
 }
 
 async function setIconTheme() {
