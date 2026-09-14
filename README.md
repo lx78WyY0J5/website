@@ -407,9 +407,23 @@ Crée via le package `tree`
 48 directories, 348 files
 
 ```
+## Cloner le repo
+`git clone https://github.com/lx78WyY0J5/website.git`
+## Configurer le .env
+- [.env.exemple](/.env.exemple)
+- [.env](/.env)
+- `nano website/.env`
 ## Installation
 [install.sh](/install.sh)
+```
+chmod +x website/install.sh
+website/install.sh
+```
 ## Démarrage
 [start.sh](/start.sh)
+```
+chmod +x website/start.sh
+website/start.sh
+```
 ## Test automatique
 [ci.yml](/.github/workflows/ci.yml)
