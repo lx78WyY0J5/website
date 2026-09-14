@@ -125,16 +125,18 @@
 .gpg {
     flex-direction: column;
 
+    min-width: 85%;
+    max-width: 85%;
     gap: 15px;
 }
 
 .gpg > textarea {
     color: var(--text-color);
-
-    width: 600px;
-    height: 215px;
+    min-width: 90%;
+    height: 240px;
 
     text-align: center;
+    white-space: nowrap;
 
     resize: none;
 }
