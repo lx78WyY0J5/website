@@ -1,6 +1,5 @@
 #!/bin/bash
 # Test: Short username on /register - should require at least 6 chars
-BASE_URL="${BASE_URL:-http://127.0.0.1:8000}"
 
 echo "=== test_short_username.sh ==="
 

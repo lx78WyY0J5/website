@@ -1,6 +1,5 @@
 #!/bin/bash
 # Test: Missing register code on /register
-BASE_URL="${BASE_URL:-http://127.0.0.1:8000}"
 
 echo "=== test_missing_register_code.sh ==="
 

@@ -1,6 +1,8 @@
 #!/bin/bash
 # Runs all test scripts in tests/
 
+export BASE_URL="${BASE_URL:-http://127.0.0.1:8000}"
+
 PASS=0
 FAIL=0
 

@@ -1,6 +1,5 @@
 #!/bin/bash
 # Test: Valid login - after user created
-BASE_URL="${BASE_URL:-http://127.0.0.1:8000}"
 
 echo "=== test_valid_login_2_login.sh ==="
 

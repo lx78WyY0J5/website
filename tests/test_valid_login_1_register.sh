@@ -1,6 +1,5 @@
 #!/bin/bash
 # Test: Valid register - create user
-BASE_URL="${BASE_URL:-http://127.0.0.1:8000}"
 
 echo "=== test_valid_login_1_register.sh ==="
 

@@ -1,6 +1,5 @@
 #!/bin/bash
 # Test: SQL Injection on /register - should be rejected (invalid chars or duplicate)
-BASE_URL="${BASE_URL:-http://127.0.0.1:8000}"
 
 echo "=== test_sql_injection_register.sh ==="
 

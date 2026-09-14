@@ -1,6 +1,5 @@
 #!/bin/bash
 # Test: Weak password (low entropy) on /register
-BASE_URL="${BASE_URL:-http://127.0.0.1:8000}"
 
 echo "=== test_weak_password_low_entropy.sh ==="
 

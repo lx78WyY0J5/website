@@ -1,6 +1,5 @@
 #!/bin/bash
 # Test: SQL Injection on /login - should be rejected with "ne correspond pas"
-BASE_URL="${BASE_URL:-http://127.0.0.1:8000}"
 
 echo "=== test_sql_injection_login.sh ==="
 

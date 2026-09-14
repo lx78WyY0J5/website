@@ -1,6 +1,5 @@
 #!/bin/bash
 # Test: View counter increments and displays in footer
-BASE_URL="${BASE_URL:-http://127.0.0.1:8000}"
 
 echo "=== test_view_counter.sh ==="
 

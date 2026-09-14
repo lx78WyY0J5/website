@@ -1,6 +1,5 @@
 #!/bin/bash
 # Test: Invalid login - wrong password
-BASE_URL="${BASE_URL:-http://127.0.0.1:8000}"
 
 echo "=== test_invalid_login.sh ==="
 
