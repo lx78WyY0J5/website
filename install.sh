@@ -221,9 +221,4 @@ init_mariadb
 
 echo ""
 echo "Installation complete!"
-echo "MariaDB user '$DB_USER' has been created with privileges."
-echo "Create the database (requires admin login or FORCE_DB_INIT=true):"
-echo "  php public/src/php/create-db.php"
-echo ""
-echo "Then start the server:"
 echo "  ./start.sh"

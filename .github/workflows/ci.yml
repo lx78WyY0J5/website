@@ -40,13 +40,9 @@ jobs:
 
       - name: Start services (MariaDB + PHP)
         run: |
-          SKIP_MARIADB=1 nohup bash start.sh > /tmp/start.log 2>&1 &
-          echo $! > /tmp/start-pid.txt
-          # Wait for PHP server to be ready
-          for i in {1..30}; do
-            curl -s http://127.0.0.1:8000/ > /dev/null 2>&1 && echo "PHP server ready" && break
-            sleep 1
-          done
+          SKIP_MARIADB=1 bash start.sh
+          # start.sh waits for PHP server to be ready, then exits in CI mode
+          # PHP server continues running in background
 
       - name: Run security tests
         run: bash tests/run-all-tests.sh
@@ -56,5 +52,4 @@ jobs:
       - name: Stop services
         if: always()
         run: |
-          kill $(cat /tmp/start-pid.txt 2>/dev/null) 2>/dev/null || true
           pkill -f "php -S 127.0.0.1:8000" 2>/dev/null || true
