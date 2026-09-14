@@ -139,7 +139,6 @@ start_php() {
 }
 
 # Main
-load_env
 detect_os
 start_mariadb
 start_php
