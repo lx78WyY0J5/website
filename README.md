@@ -414,7 +414,39 @@ Crée via le package `tree`
 ```
 ## Installation et lancement automatique
 [install.sh](/install.sh)
-
+## Installation et lancement
+### PHP
+#### Installer PHP sur Termux
+`pkg install php`
+#### Installer PHP sur Arch linux
+- `sudo pacman -S php`
+- `sudo sed -i 's/;extension=pdo_mysql/extension=pdo_mysql/g' /etc/php/php.ini` pour activer PDO_MySQL
+- `sudo sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 10M/g' /etc/php/php.ini` pour la limite de taille de fichier
+- `sudo sed -i 's/post_max_size = 8M/post_max_size = 10M/g' /etc/php/php.ini` pour la limite de taille d'upload
+#### Installer PHP sur Ubuntu (UNTESTED)
+`sudo apt-get install php`
+#### Lancer un serveur PHP local
+- Pour lancer le serveur PHP ; `php -S localhost:8000 -t ./public/`
+- Ou avec les logs : `php -S localhost:8000 -t ./repo/website/public/ &>> ./repo/website/logs/php.log`
+  - `-t` permet de définir le répertoire racine du serveur (le dossier à servir)
+    - Seuls les fichiers sous ce dossier sont accessibles via l'URL
+    - Le code PHP peut néanmoins `include`/`require` des fichiers en dehors
+    - En PHP, ce chemin absolu vers le système de fichiers est accessible via la variable superglobale `$_SERVER['DOCUMENT_ROOT']`
+    - Cela permet aux scripts de construire des chemins absolus portables pour inclure des fichiers ou accéder à des ressources, sans avoir à coder en dur le chemin spécifique à chaque hébergeur (par exemple, `/var/www/html` ou `C:\inetpub\wwwroot`)
+- Naviguez en suite vers [localhost :8000](http://localhost:8000)
+### SQL
+#### Installer SQL sous Arch Linux
+`sudo pacman -S mariadb`
+#### Installer sous Ubuntu (UNTESTED)
+`sudo apt-get install mariadb-server`
+#### Installer sous Termux
+`pkg install mariadb`
+#### Lancer MariaDB sous Termux
+##### Initialiser MariaDB sous Termux
+Initialiser la base de données avec `mysql_install_db`
+##### Lancer le service sous Termux
+- Une fois installé, démarrez le serveur en arrière-plan avec la commande `mysqld_safe &`
+  - Vous pouvez ensuite vous connecter au serveur en exécutant `mysql -u root` pour commencer à gérer vos bases de données
 #### Lancer MariaDB sous Linux
 ##### Initialiser MariaDB sous linux
 Initialiser la base de données avec `sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql`
