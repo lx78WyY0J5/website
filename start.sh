@@ -117,11 +117,14 @@ wait_for_mariadb() {
 
 # Start PHP server
 start_php() {
-    echo "Starting PHP server on localhost:8000..."
+    echo "Starting PHP server on 127.0.0.1:8000..."
     cd public
-    php -S localhost:8000 -t . &
+    php -S 127.0.0.1:8000 -t . &
     PHP_PID=$!
     echo $PHP_PID > /tmp/php-pid.txt
+    
+    # Give server a moment to bind
+    sleep 0.5
     
     # Wait for PHP server to be ready
     echo "Waiting for PHP server to be ready..."
