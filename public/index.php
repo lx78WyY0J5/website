@@ -23,13 +23,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/view_counter.php';
 
     if ($uri === '' || $uri === 'accueil') {
         $pageFile = $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.php';
-        include $_SERVER['DOCUMENT_ROOT'] . '/src/index/head.html';
+        include $_SERVER['DOCUMENT_ROOT'] . '/src/index/head.php';
     }
     else {
         $filePath = $_SERVER['DOCUMENT_ROOT'] . '/src/pages/' . str_replace('/', DIRECTORY_SEPARATOR, $uri) . '/index.php';
         if (file_exists($filePath)) {
             $pageFile = $filePath;
-            include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/' . str_replace('/', DIRECTORY_SEPARATOR, $uri) . '/head.html';
+            include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/' . str_replace('/', DIRECTORY_SEPARATOR, $uri) . '/head.php';
         }
         else {
             http_response_code(404);
