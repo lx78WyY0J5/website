@@ -212,8 +212,10 @@ configure_mariadb_user() {
 }
 
 install_db() {
-    # echo "installing DataBase"
-    # php -r '$_SERVER["DOCUMENT_ROOT"] = "."; require "src/php/create-db.php";'
+    if [ -n "$GITHUB_ACTIONS" ] || [ -n "$CI" ] || [ "$LOCAL" = "true" ]; then
+        echo "installing DataBase"
+        php -r '$_SERVER["DOCUMENT_ROOT"] = "."; require "src/php/create-db.php";'
+    fi
 }
 
 # Main
@@ -223,7 +225,7 @@ install_php
 install_mariadb
 configure_php
 init_mariadb
-# install_db
+install_db
 
 echo ""
 echo "Installation complete!"
