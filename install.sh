@@ -10,6 +10,9 @@ load_env() {
     elif [ -f .env.exemple ]; then
         echo "No .env found, copying from .env.exemple"
         cp .env.exemple .env
+        if [ -n "$GITHUB_ACTIONS" ]; then
+            sed -i 's/FORCE_DB_INIT="false"/FORCE_DB_INIT="true"/' .env
+        fi
         set -a
         source .env
         set +a
