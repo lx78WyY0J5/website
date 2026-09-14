@@ -31,9 +31,10 @@
         echo '<div id="db-create">';
             require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/create-db.php';
         echo '</div>';
-        echo '<div id="php-info">';
+        /*echo '<div id="php-info">';
             phpinfo();
-        echo '</div>';
+        echo '</div>';*/
+        //avoid PHP info as it override with some CSS
     }else{
         header("location: /");
         echo "<script>window.location.href = '/';</script>";
