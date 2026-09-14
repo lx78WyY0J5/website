@@ -15,7 +15,6 @@
 }
 
 #welcome-user > :last-child {
-    text-transform: uppercase;
     text-decoration: underline;
     font-size: xx-large;
 }
