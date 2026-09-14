@@ -1,6 +1,18 @@
 #!/bin/bash
 set -e
 
+# Load environment variables from .env
+load_env() {
+    if [ -f .env ]; then
+        set -a
+        source .env
+        set +a
+    else
+        echo "Error: .env file not found. Copy .env.exemple to .env and configure it."
+        exit 1
+    fi
+}
+
 # Detect OS
 detect_os() {
     if [ -f /etc/os-release ]; then
@@ -104,20 +116,75 @@ init_mariadb() {
             sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql 2>/dev/null || true
             sudo systemctl start mariadb
             sudo systemctl enable mariadb
+            wait_for_mariadb
+            configure_mariadb_user
             ;;
         ubuntu|debian)
             sudo systemctl start mariadb
             sudo systemctl enable mariadb
+            wait_for_mariadb
+            configure_mariadb_user
             ;;
         termux)
             mysql_install_db 2>/dev/null || true
             mysqld_safe &
-            sleep 3
+            wait_for_mariadb
+            configure_mariadb_user
             ;;
     esac
 }
 
+# Wait for MariaDB to be ready (replaces sleep 3)
+wait_for_mariadb() {
+    echo "Waiting for MariaDB to be ready..."
+    local max_attempts=30
+    local attempt=0
+    case $OS in
+        arch|manjaro|endeavouros|ubuntu|debian)
+            while [ $attempt -lt $max_attempts ]; do
+                if sudo mysqladmin ping --silent 2>/dev/null; then
+                    echo "MariaDB is ready"
+                    return 0
+                fi
+                attempt=$((attempt + 1))
+                sleep 1
+            done
+            ;;
+        termux)
+            while [ $attempt -lt $max_attempts ]; do
+                if mysqladmin ping --silent 2>/dev/null; then
+                    echo "MariaDB is ready"
+                    return 0
+                fi
+                attempt=$((attempt + 1))
+                sleep 1
+            done
+            ;;
+    esac
+    echo "Error: MariaDB failed to start within $max_attempts seconds"
+    exit 1
+}
+
+# Configure MariaDB user from .env variables
+configure_mariadb_user() {
+    echo "Configuring MariaDB user: $DB_USER"
+    case $OS in
+        arch|manjaro|endeavouros|ubuntu|debian)
+            sudo mysql -e "CREATE USER IF NOT EXISTS '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASS';"
+            sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO '$DB_USER'@'localhost';"
+            sudo mysql -e "FLUSH PRIVILEGES;"
+            ;;
+        termux)
+            mysql -e "CREATE USER IF NOT EXISTS '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASS';"
+            mysql -e "GRANT ALL PRIVILEGES ON *.* TO '$DB_USER'@'localhost';"
+            mysql -e "FLUSH PRIVILEGES;"
+            ;;
+    esac
+    echo "MariaDB user configured successfully"
+}
+
 # Main
+load_env
 detect_os
 install_php
 install_mariadb
@@ -126,9 +193,9 @@ init_mariadb
 
 echo ""
 echo "Installation complete!"
-echo "Configure your .env file (copy .env.exemple to .env and edit)"
-echo "Then create the database (requires admin login or FORCE_DB_INIT=true):"
+echo "MariaDB user '$DB_USER' has been created with privileges."
+echo "Create the database (requires admin login or FORCE_DB_INIT=true):"
 echo "  php public/src/php/create-db.php"
 echo ""
 echo "Then start the server:"
-echo "  cd public && php -S localhost:8000 -t ."
+echo "  ./start.sh"

@@ -1,9 +1,4 @@
 # website
-## DEPRECATED DOC !
-La documentation n'est plus à jour !
-- La création de DB peut être faite via script
-  - Un create-db .sql
-  - ou le fichier PHP pour les env de test (ci - cd)
 ## Introduction
 - Site web en HTML, CSS, PHP, SQL
 - Site permettant de stocker différent contenus et apprendre la création de backend en PHP + SQL
