@@ -3,8 +3,8 @@
     --background-color-R: 255;
     --background-color-G: 255;
     --background-color-B: 255;
-    --background-color-transparent: rgb(255, 255, 255, 0.5);
-    --main-color: rgb(175, 175, 190);
+    --background-color-transparent: rgb(255, 255, 255, 0.25);
+    --main-color: rgb(145, 145, 145);
     --main-color-transparent: rgba(215, 215, 230, 0.5);
     --text-color: rgb(30, 30, 30);
     --link-color: rgb(80, 80, 80);
