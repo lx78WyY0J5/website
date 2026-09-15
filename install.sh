@@ -218,7 +218,7 @@ install_db() {
     if [ -n "$GITHUB_ACTIONS" ] || [ -n "$CI" ] || [ "$LOCAL" = "true" ] || [ "$FIRST_RUN" = "true" ]; then
         echo "installing DataBase"
         php -r '$_SERVER["DOCUMENT_ROOT"] = "./public"; require "./public/src/php/create-db.php";'
-        if [ "$FIRST_RUN" = "true" ];
+        if [ "$FIRST_RUN" = "true" ]; then
             sed -i 's/FIRST_RUN="true"/FIRST_RUN="false"/' .env
         fi
     fi
