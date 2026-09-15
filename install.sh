@@ -206,9 +206,9 @@ configure_mariadb_user() {
             sudo mysql -e "FLUSH PRIVILEGES;"
             ;;
         termux)
-            mysql -e "CREATE USER IF NOT EXISTS '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASS';"
-            mysql -e "GRANT ALL PRIVILEGES ON *.* TO '$DB_USER'@'localhost';"
-            mysql -e "FLUSH PRIVILEGES;"
+            mysql -u root -e "CREATE USER IF NOT EXISTS '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASS';"
+            mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO '$DB_USER'@'localhost';"
+            mysql -u root -e "FLUSH PRIVILEGES;"
             ;;
     esac
     echo "MariaDB user configured successfully"
