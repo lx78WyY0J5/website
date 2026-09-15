@@ -10,6 +10,10 @@
     #welcome-user { 
         flex-direction: column;
     }
+
+    #welcome-user > h2 {
+        margin-bottom: 0px;
+    }
 }
 
 #welcome-user > * {
