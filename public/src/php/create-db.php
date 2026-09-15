@@ -158,6 +158,19 @@
             echo "Error inserting site views: " . $e->getMessage();
         }
 
+        // Insert admin user if not exists
+        $adminUsername = getenv('ADMIN_USERNAME');
+        $adminPassword = getenv('ADMIN_PASSWORD');
+        if ($adminUsername && $adminPassword) {
+            try {
+                $stmt = $pdo->prepare("INSERT IGNORE INTO users (username, password) VALUES (?, ?)");
+                $stmt->execute([$adminUsername, password_hash($adminPassword, PASSWORD_DEFAULT)]);
+                echo "✔️ Admin user inserted<br>";
+            } catch(PDOException $e) {
+                echo "Error inserting admin user: " . $e->getMessage() . "<br>";
+            }
+        }
+
         echo "<p>✔️ Database initialized</p>";
     }
 
