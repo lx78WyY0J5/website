@@ -107,7 +107,7 @@ configure_php() {
             ;;
         termux)
             PHP_INI="/data/data/com.termux/files/usr/etc/php.ini"
-            sudo cp php.ini "$PHP_INI"
+            cp php.ini "$PHP_INI"
             echo "php.ini copied to $PHP_INI"
             ;;
     esac
