@@ -103,7 +103,12 @@ start_php() {
     cd public
     php -S 127.0.0.1:8000 -t . &
     PHP_PID=$!
-    echo $PHP_PID > /tmp/php-pid.txt
+    
+    if [ "$OS" = "termux" ]; then
+        echo $PHP_PID > "$PREFIX/tmp/php-pid.txt"
+    else
+        echo $PHP_PID > /tmp/php-pid.txt
+    fi
     
     # Give server a moment to bind
     sleep 0.5
