@@ -11,10 +11,10 @@
         echo "<p>Accès refusé : droits administrateur requis</p>";
     }
     else {
-        echo "<p>Connecting to database...</p>";
-        echo "<p>DB_NAME: " . $dbname . "</p>";
+        echo "<p>🛜 Connecting to database...</p>";
+        echo "<p>📊 DB_NAME: " . $dbname . "</p>";
         if (empty($dbname)) {
-            die("DB_NAME environment variable is not set.<br>");
+            die("DB_NAME environment variable is not set");
         }
 
         // Connect WITHOUT specifying the database first
@@ -22,7 +22,7 @@
             $pdo = new PDO("mysql:host=$servername", $username, $password);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $e) {
-            die("Could not connect. " . $e->getMessage());
+            die("Could not connect : " . $e->getMessage());
         }
 
         // Create database only if it doesn't exist
@@ -30,9 +30,9 @@
             $safeName = '`' . str_replace('`', '``', $dbname) . '`';
             $pdo->exec("CREATE DATABASE IF NOT EXISTS $safeName");
             $pdo->exec("USE $safeName");
-            echo "✔️ Database ready<br>";
+            echo "<p>✔️ Database ready</p>";
         } catch(PDOException $e) {
-            echo "Error: " . $e->getMessage() . "<br>";
+            echo "<p>Error: " . $e->getMessage() . "</p>";
         }
 
         // Create table users only if it doesn't exist
@@ -46,9 +46,9 @@
 
 
             $pdo->exec($sql);
-            echo "✔️ Table users ready";
+            echo "<p>✔️ Table users ready</p>";
         } catch(PDOException $e) {
-            echo "Error creating table: " . $e->getMessage();
+            echo "<p>Error creating table: " . $e->getMessage() . "</p>";
         }
 
         // Create table rate_limits only if it doesn't exist
@@ -62,9 +62,9 @@
             )";
 
             $pdo->exec($sql);
-            echo "✔️ Rate limit table ready<br>";
+            echo "<p>✔️ Rate limit table ready</p>";
         } catch(PDOException $e) {
-            echo "Error creating rate limit table: " . $e->getMessage();
+            echo "<p>Error creating rate limit table: " . $e->getMessage() . "</p>";
         }
 
         // Create table user_pictures only if it doesn't exist
@@ -80,9 +80,9 @@
             )";
 
             $pdo->exec($sql);
-            echo "✔️ User pictures table ready<br>";
+            echo "<p>✔️ User pictures table ready</p>";
         } catch(PDOException $e) {
-            echo "Error creating user pictures table: " . $e->getMessage();
+            echo "<p>Error creating user pictures table: " . $e->getMessage() . "</p>";
         }
 
         // Create table site_views only if it doesn't exist
@@ -93,9 +93,9 @@
             )";
 
             $pdo->exec($sql);
-            echo "✔️ Site views table ready<br>";
+            echo "<p>✔️ Site views table ready</p>";
         } catch(PDOException $e) {
-            echo "Error creating site views table: " . $e->getMessage();
+            echo "<p>Error creating site views table: " . $e->getMessage() . "</p>";
         }
 
         // Create table page_views only if it doesn't exist
@@ -109,9 +109,9 @@
             )";
 
             $pdo->exec($sql);
-            echo "✔️ Page views table ready<br>";
+            echo "<p>✔️ Page views table ready</p>";
         } catch(PDOException $e) {
-            echo "Error creating page views table: " . $e->getMessage();
+            echo "<p>Error creating page views table: " . $e->getMessage() . "</p>";
         }
 
         // Create table user_page_views only if it doesn't exist
@@ -128,9 +128,9 @@
             )";
 
             $pdo->exec($sql);
-            echo "✔️ User page views table ready<br>";
+            echo "<p>✔️ User page views table ready</p>";
         } catch(PDOException $e) {
-            echo "Error creating user page views table: " . $e->getMessage();
+            echo "<p>Error creating user page views table: " . $e->getMessage() . "</p>";
         }
 
 
@@ -145,17 +145,17 @@
             )";
 
             $pdo->exec($sql);
-            echo "✔️ User total views table ready<br>";
+            echo "<p>✔️ User total views table ready</p>";
         } catch(PDOException $e) {
-            echo "Error creating user total views table: " . $e->getMessage();
+            echo "<p>Error creating user total views table: " . $e->getMessage() . "</p>";
         }
 
         // Insert initial site views only if not exists
         try {
             $pdo->exec("INSERT IGNORE INTO site_views (id, total_views) VALUES (1, 0)");
-            echo "✔️ Initial site views inserted<br>";
+            echo "<p>✔️ Initial site views inserted</p>";
         } catch(PDOException $e) {
-            echo "Error inserting site views: " . $e->getMessage();
+            echo "<p>Error inserting site views: " . $e->getMessage() . "</p>";
         }
 
         // Insert admin user if not exists
@@ -165,9 +165,9 @@
             try {
                 $stmt = $pdo->prepare("INSERT IGNORE INTO users (username, password) VALUES (?, ?)");
                 $stmt->execute([$adminUsername, password_hash($adminPassword, PASSWORD_DEFAULT)]);
-                echo "✔️ Admin user inserted<br>";
+                echo "<p>✔️ Admin user inserted</p>";
             } catch(PDOException $e) {
-                echo "Error inserting admin user: " . $e->getMessage() . "<br>";
+                echo "<p>Error inserting admin user: " . $e->getMessage() . "</p>";
             }
         }
 
