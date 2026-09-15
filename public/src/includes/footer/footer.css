@@ -46,7 +46,7 @@ footer>div>nav>a {
 
 .view-stats {
     text-align: center;
-    color: var(--text-color);
+    padding-top: 10px;
 }
 
 .view-stats p {
@@ -59,4 +59,28 @@ footer>div>nav>a {
 
 .view-stats-title {
     text-decoration: underline;
+}
+
+
+.render-time,
+.render-weight {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.render-timer-num,
+.render-weight-num {
+    font-weight: bold;
+}
+
+.render-time-ms,
+.render-weight-ko {
+    color: var(--link-color);
+}
+
+.render-low-ms {
+    color: red !important;
 }

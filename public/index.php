@@ -1,4 +1,6 @@
 <?php
+    $renderStartTime = microtime(true);
+    ob_start();
     session_start();
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';

@@ -1,8 +1,8 @@
 <footer>
     <link rel="stylesheet" href="/src/includes/footer/footer.css">
-
+<p>Site fait avec <img src="/src/assets/svg/heart-color.svg" class="svg-color"></img> par <a href="/admin/contact">lx78WyY0J5</a></p>
+        
     <div class="view-stats">
-        <p>Site fait avec <img src="/src/assets/svg/heart-color.svg" class="svg-color"></img> par <a href="/admin/contact">lx78WyY0J5</a></p>
         <p><strong class="view-stats-title">Statistiques du site</strong> :</p>
         <p>Vues totales du site : <strong><?= number_format($viewStats['site_total'] ?? 0) ?></strong></p>
         <p>Vues de cette page : <strong><?= number_format($viewStats['page_total'] ?? 0) ?></strong></p>
@@ -10,6 +10,28 @@
             <p>Vos vues sur cette page : <strong><?= number_format($viewStats['user_page']) ?></strong></p>
             <p>Vos vues totales : <strong><?= number_format($viewStats['user_total']) ?></strong></p>
         <?php endif; ?>
+
+        <div class="site-stats">
+            <div class="render-time">
+                <?php
+                    $renderEndTime = microtime(true);
+                    $renderTime = ($renderEndTime - $renderStartTime) * 1000;
+                    $class = "";
+                    if($renderTime >= 250){
+                        $class=" render-low-ms";
+                    }
+                    echo '<p>Page générée en </p><p class="render-timer-num' . $class . '">' . number_format($renderTime, 2) . '</p><p class="render-time-ms"> ms</p>';
+                ?>
+            </div>
+            <div class="render-weight">
+                <?php
+                    $taille = ob_get_length();
+                    $taille_ko = round($taille / 1024, 2);
+                    echo '<p>Poids de la page</p><p class="render-weight-num"> ' . $taille_ko . '</p><p class="render-weight-ko"> ko</p>';
+                    ob_end_flush();
+                ?>
+            </div>
+        </div>
     </div>
 
     <hr>
