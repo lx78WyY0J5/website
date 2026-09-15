@@ -73,7 +73,7 @@ footer>div>nav>a {
 
 .render-timer-num,
 .render-weight-num {
-    font-weight: bold;
+    color: var(--link-color);
 }
 
 .render-time-ms,
