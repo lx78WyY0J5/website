@@ -26,7 +26,7 @@ start_mariadb() {
         fi
         return
     fi
-    
+
     case $OS in
         arch|manjaro|endeavouros|ubuntu|debian)
             if ! sudo systemctl is-active --quiet mariadb; then
@@ -103,16 +103,16 @@ start_php() {
     cd public
     php -S 127.0.0.1:8000 -t . &
     PHP_PID=$!
-    
+
     if [ "$OS" = "termux" ]; then
         echo $PHP_PID > "$PREFIX/tmp/php-pid.txt"
     else
         echo $PHP_PID > /tmp/php-pid.txt
     fi
-    
+
     # Give server a moment to bind
     sleep 0.5
-    
+
     # Wait for PHP server to be ready
     echo "Waiting for PHP server to be ready..."
     local max_attempts=30
@@ -125,13 +125,13 @@ start_php() {
         attempt=$((attempt + 1))
         sleep 1
     done
-    
+
     if [ $attempt -eq $max_attempts ]; then
         echo "Error: PHP server failed to start within $max_attempts seconds"
         kill $PHP_PID 2>/dev/null || true
         exit 1
     fi
-    
+
     # In CI: step completes, PHP server stays running in background for tests
     # In local: block here (wait) so server runs in foreground until Ctrl+C
     if [ -n "$CI" ] || [ -n "$GITHUB_ACTIONS" ]; then

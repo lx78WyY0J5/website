@@ -15,7 +15,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/view_counter.php';
     if(isset($_SESSION['username'])){
         $maxAttempts = 50;
     };
-    
+
     if (!checkRateLimit($pdo, $clientIp, 'global', $maxAttempts, 1)) {
         logSecurityEvent('rate_limit_exceeded', ['endpoint' => 'global', 'ip' => $clientIp]);
         rateLimitExceededResponse('global');

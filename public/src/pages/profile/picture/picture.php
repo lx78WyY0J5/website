@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($can_upload && isset($_FILES["profile_picture"]["tmp_name"]) && !empty($_FILES["profile_picture"]["tmp_name"])) {
         $allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
         $file_type = $_FILES["profile_picture"]["type"];
-        
+
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $mime_type = finfo_file($finfo, $_FILES["profile_picture"]["tmp_name"]);
         finfo_close($finfo);

@@ -89,7 +89,7 @@ install_mariadb() {
 # Configure PHP - copy php.ini to standard location
 configure_php() {
     echo "Configuring PHP..."
-    
+
     case $OS in
         arch|manjaro|endeavouros)
             PHP_INI="/etc/php/php.ini"

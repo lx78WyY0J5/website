@@ -34,7 +34,7 @@ jobs:
       - name: Install PHP & configure
         run: |
           SKIP_MARIADB=1 bash install.sh
-          
+
           php -v
           php -m | grep pdo_mysql
 

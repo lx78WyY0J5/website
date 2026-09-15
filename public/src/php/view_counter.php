@@ -59,7 +59,7 @@ function getUserTotalViews(PDO $pdo, int $userId): int {
 function trackView(PDO $pdo, string $url, ?int $userId = null): void {
     incrementSiteViews($pdo);
     incrementPageViews($pdo, $url);
-    
+
     if ($userId !== null) {
         incrementUserPageViews($pdo, $userId, $url);
         incrementUserTotalViews($pdo, $userId);
@@ -71,11 +71,11 @@ function getViewStats(PDO $pdo, string $url, ?int $userId = null): array {
         'site_total' => getSiteViews($pdo),
         'page_total' => getPageViews($pdo, $url),
     ];
-    
+
     if ($userId !== null) {
         $stats['user_page'] = getUserPageViews($pdo, $userId, $url);
         $stats['user_total'] = getUserTotalViews($pdo, $userId);
     }
-    
+
     return $stats;
 }

@@ -4,7 +4,7 @@
 
         $userId = intval($_SESSION["id"]);
         $profilePicture = getLatestProfilePictureOfUser($pdo, $userId);
-        
+
         echo '<link rel="stylesheet" href="/src/index/welcome-user.css">';
         echo '<div id="welcome-user">';
             echo '<h2>Bienvenue</h2>';
