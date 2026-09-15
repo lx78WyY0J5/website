@@ -61,7 +61,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
 
-                            if(strcasecmp(trim($_POST["username"]), "administrator") === 0){
+                            $adminUsername = getenv("ADMIN_USERNAME");
+                            if (empty($adminUsername) || !isset($adminUsername)) {
+                                $adminUsername = "administrator";
+                            }
+                            if(strcasecmp(trim($_POST["username"]), $adminUsername) === 0){
                                 $_SESSION["is_admin"] = true;
                             } else {
                                 $_SESSION["is_admin"] = false;

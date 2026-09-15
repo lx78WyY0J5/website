@@ -6,8 +6,8 @@
 - `git clone https://github.com/lx78WyY0J5/website.git`
 - Se déplacer dans le repo `cd website`
 ## Configurer le .env
-- copier [./.env.exemple](/.env.exemple)
-- vers [./.env](/.env)
+- copier [./.env.exemple](/.env.exemple) vers [./.env](/.env)
+  - `cp ./.env.exemple ./.env`
 - `nano .env`
 ### .env inexistant
 En cas de `.env` inexistant, le `.env.exemple` sera copié vers `.env`
