@@ -2,7 +2,6 @@
     await getUpdate("Altherneum.github.io");
 })();
 
-
 async function getUpdate(repoName) {
     console.log("Getting Github-Update");
 

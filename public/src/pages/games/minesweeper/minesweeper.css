@@ -13,7 +13,6 @@
     color:red;
 }
 
-
 #plate>* td{
     color: var(--text-color);
 }

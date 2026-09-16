@@ -9,7 +9,7 @@ async function addMarkdown(repo, file, gist) {
     console.log("Loading .md");
 
     if (isAutoScrollLoaded === false) {
-        await include_script("/src/js/content/auto-scroll.js");
+        await include_script("/src/js/auto-scroll.js");
         isAutoScrollLoaded = true;
     }
 
@@ -65,7 +65,7 @@ const parseMarkdown = async (text) => {
     const regex = /\(https:\/\/youtube\.com\/watch\?v=(.*)\)/g;
     var matched = toHTML.match(regex);
     if (matched) {
-        await include_script("/src/js/content/youtubeEmbed.js");
+        await include_script("/src/js/youtubeEmbed.js");
         await include_css("/src/css/youtubeEmbed.css");
 
         toHTML = toHTML.replace(/([^!])\[([^\[]+)\]\((https:\/\/youtube\.com\/watch\?v=([^)]*)*)\)/g, '\n$2 - <a href=\"$3\">$4</a>\n<div class="youtubeEmbed">\n<div class="videoholder" id="video-id-$4">\n</div>\n</div>') //$3 = URL $4 = video ID, $2 = text
@@ -86,7 +86,7 @@ const parseMarkdown = async (text) => {
     const regexShort = /\(https:\/\/youtube\.com\/shorts\/(.*)\)/g;
     var matchedShort = toHTML.match(regexShort);
     if (matchedShort) {
-        await include_script("/src/js/content/youtubeEmbed.js");
+        await include_script("/src/js/youtubeEmbed.js");
         await include_css("/src/css/youtubeEmbed.css");
 
         toHTML = toHTML.replace(/([^!])\[([^\[]+)\]\((https:\/\/youtube\.com\/shorts\/([^)]*)*)\)/g, '\n$2 - <a href=\"$3\">$4</a>\n<div class="youtubeEmbed">\n<div class="videoholder" id="video-id-$4">\n</div>\n</div>') //$3 = URL $4 = video ID, $2 = text
@@ -185,9 +185,6 @@ const parseMarkdown = async (text) => {
     // need to update to include <code> <textarea> as ignored
     //https://regexr.com/8eo85
 
-
-
-
     //toHTML = toHTML.replace(/(?![^<]*>|[^>]*<\/)(.+)(?![^<]*>|[^>]*<\/.)/gim, '<p>$1</p>') // text p balise
 
     //text inside summary to do
@@ -234,7 +231,6 @@ function cleanMarkdownBR(text) {
 async function githubData(repo, file, content, gist) {
     var fileTrimed = file.replaceAll("/", "%2F");
 
-
     var holder = document.createElement("div");
     holder.id = "fileData";
 
@@ -247,6 +243,10 @@ async function githubData(repo, file, content, gist) {
         anchorHolder(repo.split('/')[0], holder);
     }
     if (!gist) {
+        if (isAutoScrollLoaded === false) {
+            await include_script("/src/js/gather.js");
+            isAutoScrollLoaded = true;
+        }
         var data = await gather("https://api.github.com/repos/" + repo + "/commits?path=" + fileTrimed + "&page=1&per_page=1");
         //console.log(data);
 

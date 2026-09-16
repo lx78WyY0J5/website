@@ -107,7 +107,6 @@ async function fetchShopTitansDataGuilde(id) {
         await addData("player-" + value, pre, member.name);
         await addData("player-" + value, "ID", member._id)
 
-
         var button1 = document.createElement("button");
         var button1p = document.createElement("p");
         button1.setAttribute("onClick", "fetchShopTitansDataStart('invest', '" + member._id + "')");

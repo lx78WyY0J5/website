@@ -94,7 +94,6 @@ document.addEventListener("keyup", event => {
     keyPressed = false;
 });
 
-
 var gameLoop = setInterval(function () {
     for (props of document.getElementsByClassName("props")) {
         var top = parseFloat(window.getComputedStyle(props).getPropertyValue("top"));
@@ -128,7 +127,6 @@ window.addEventListener("gamepadconnected", function (e) {
             for (var i in axes) {
                 if (axes[i] >= 0.3 || axes[i] <= -0.3) { console.log('axes[%s] value is: %s', i, axes[i]); };
             };
-
 
             var buttons = gp.buttons;
             for (var i in buttons) {
@@ -164,8 +162,6 @@ window.addEventListener("gamepadconnected", function (e) {
 
     }, 1);
 });
-
-
 
 function checkCollide() {
     var props = document.getElementById("container-props");

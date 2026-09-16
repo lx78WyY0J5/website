@@ -908,7 +908,7 @@ let links = [
         title: "Npcap",
     },
     {
-        href: "/src/js/content/rss.js",
+        href: "/src/js/rss.js",
         svg: "/src/assets/svg/languages/js.svg",
         tag: "RSS URL",
         title: "RSS .JS",

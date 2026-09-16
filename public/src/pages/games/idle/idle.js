@@ -5,8 +5,8 @@ async function startGame(){
 } startGame();
 
 async function loadFiles(){
-    await include_script("/src/js/content/idle-gold.js");
-    await include_script("/src/js/content/idle-xp.js");
+    await include_script("/src/pages/games/idle/idle-gold.js");
+    await include_script("//src/pages/games/idle/idle-xp.js");
 }
 
 function getTimeStamp(){

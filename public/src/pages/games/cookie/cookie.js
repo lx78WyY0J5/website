@@ -2,7 +2,6 @@ updateStats();
 run();
 updatePrice();
 
-
 /*
 To do : 
 - Jesus effect
@@ -152,7 +151,6 @@ function getPriceFormula(bonus) {
     return (BonusAmount * defaultPrice);
 }
 
-
 function bonusClick(bonus) {
     var lastBuyOK = false;
 
@@ -187,7 +185,6 @@ function bonusClick(bonus) {
             lastBuyOK = true;
         }
     }
-
 
     buyAmountInt -= 1;
 

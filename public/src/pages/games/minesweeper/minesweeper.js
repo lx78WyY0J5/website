@@ -171,7 +171,6 @@ function createTable() {
         }
     }
 
-
     var thead = document.createElement("thead");
     table.appendChild(thead);
 

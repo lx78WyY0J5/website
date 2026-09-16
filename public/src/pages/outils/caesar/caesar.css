@@ -12,13 +12,9 @@
     margin-bottom: 20px;
 }
 
-#caesar>#number {
-    max-width: 105px;
-}
-
 #caesar>#btn {
     margin: 15px;
-    border-color: var(--border-color);
+    border-color: var(--text-color);
     border-radius: 2px;
     border-style: ridge;
     text-align: center;

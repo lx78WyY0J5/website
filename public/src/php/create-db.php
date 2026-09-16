@@ -44,7 +44,6 @@
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )";
 
-
             $pdo->exec($sql);
             echo "<p>✔️ Table users ready</p>";
         } catch(PDOException $e) {
@@ -132,7 +131,6 @@
         } catch(PDOException $e) {
             echo "<p>Error creating user page views table: " . $e->getMessage() . "</p>";
         }
-
 
         // Create table user_total_views only if it doesn't exist
         try {

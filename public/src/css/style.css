@@ -273,7 +273,6 @@ input:focus-within~span{
     transition: 0.5s;
 }
 
-
 .checkboxToggle.invert>input+span,
 .checkboxToggle>input:checked+span,
 .checkboxToggle>input.defaultTrue:indeterminate+span {

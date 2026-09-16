@@ -29,7 +29,6 @@
     -webkit-backdrop-filter: var(--blur);
     backdrop-filter: var(--blur);
 
-
     margin-right: 10px !important;
 }
 
@@ -43,8 +42,6 @@
     padding: 12px;
     padding-top: 0px;
 }
-
-
 
 #content>article {
     width: 100%;

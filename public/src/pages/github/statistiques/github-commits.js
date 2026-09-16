@@ -7,7 +7,6 @@
     await getCommits(3, "resourcePack");
 })();
 
-
 async function getCommits(amount, repoName) {
     console.log("Getting Github-Commits : " + repoName);
 

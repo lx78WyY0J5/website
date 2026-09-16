@@ -138,7 +138,6 @@ async function show() {
         }
     } catch { }
 
-
     try {
         const battery = navigator.getBattery();
         battery.then((resultat) => {
@@ -152,7 +151,6 @@ async function show() {
         logIntoDocumentHR();
     }
     catch { }
-
 
     try {
         if ("credentials" in navigator) {

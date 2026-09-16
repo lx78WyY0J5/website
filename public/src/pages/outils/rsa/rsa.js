@@ -191,18 +191,13 @@ async function test() {
     await RSAKeyGen();
 
 
-
-
     consoleHTML.textContent += "\n\nvalue to crypt ; " + valueToCrypt;
-
 
     let x1 = Math.round(encrypt(valueToCrypt, maxBits));
     consoleHTML.textContent += "\n\ncrypt  "+x1;
 
-
     let x2 = Math.round(decrypt(x1));
     consoleHTML.textContent += "\n\ndecrypt  " + x2;
-
 
     if (valueToCrypt === x2)
     {

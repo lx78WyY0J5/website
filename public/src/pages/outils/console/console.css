@@ -1,14 +1,9 @@
 #console{
-    max-width: 50vw;
+    max-width: 70vw;
     margin: 50px;
 }
 
 #console-border{
-    -webkit-backdrop-filter: var(--blur);
-    backdrop-filter: var(--blur);
-
-    height: 100%;
-    width: 100%;
 }
 
 #console-header{
@@ -49,4 +44,10 @@
     /*Auto scroll*/
     display: flex;
     flex-direction: column-reverse;
+}
+
+#console-header,
+#console-body{
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
 }

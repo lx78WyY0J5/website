@@ -110,7 +110,7 @@ function shuffle(array) {
 const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 async function GetVideos(videoList, VideoListType, videoType, includeLatestVideoOfChannel) {
-    await include_script("/src/js/content/auto-scroll.js");
+    await include_script("/src/js/auto-scroll.js");
     addButtons(VideoListType);
 
     var hash = decodeURIComponent(window.location.hash).replace("#", "");
@@ -260,7 +260,6 @@ async function addIFrame(playlist, videoID, top, category, text, short, premadeP
     var length = 75;
     var title = title.length > length ? title.substring(0, length - 3) + "..." : title;
 
-
     var video_div = addCardData(div_card, title, text, thumbnail, false);
     addVideoCard(video_div, videoID, playlist, short, premadePlayList);
 
@@ -324,7 +323,6 @@ async function parseResponse(playlist, videoID, top, category, fetchUrl, text, s
             if (status === 200) {
                 var jsonResponse = await response.json();
                 JSONdata = jsonResponse;
-
 
                 var title = JSONdata.title;
                     setTitleInVar(videoID, title);
@@ -424,7 +422,6 @@ function addCard(top, playlist, videoID, category, latest, premadePlayList, vide
         imagepremadePlayList.className = "premadePlayList svg";
         divLogoHolder.appendChild(imagepremadePlayList);
     }
-
 
     let url = getURL(premadePlayList, short, playlist, videoID, false);
 

@@ -55,8 +55,6 @@ function chiffrement(text, textLength, alphabet, alphabetLength, clef, clefLengt
     return result;
 }
 
-
-
 /*
 Note de sécurité ;
 La taille de la clef n'est pas check

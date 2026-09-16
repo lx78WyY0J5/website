@@ -19,7 +19,6 @@ function spawnCube(divID) {
         var translateFormula = i * size / layer - size / 2;
         div.style.transform = "translateZ(" + translateFormula + "px)";
 
-
         var childDiv = document.createElement("div");
         div.appendChild(childDiv);
 

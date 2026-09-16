@@ -2,7 +2,6 @@
     await getEvents(5, "Altherneum");
 })();
 
-
 async function getEvents(amount, orgsName) {
     console.log("Getting Github-PushEvent");
 
