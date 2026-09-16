@@ -11,27 +11,48 @@
 
             echo '<p>Document root : ' . $_SERVER['DOCUMENT_ROOT'] . '</p>';
 
-            try{
-                $cpuLoad = sys_getloadavg();
-                $cpuUsage = $cpuLoad[0]; // 1-minute load average
-                echo '<p>CPU Average (1 min) : ' . $cpuUsage . '</p>';
+try {
+    // --- CPU ---
+    if (function_exists('sys_getloadavg')) {
+        $cpuLoad = sys_getloadavg();
+        if ($cpuLoad !== false) {
+            echo '<p>CPU (1 min) : ' . $cpuLoad[0] . '</p>';
+        } else {
+            echo '<p>CPU : indisponible</p>';
+        }
+    } else {
+        // Fallback : lire /proc/loadavg
+        $loadavg = @file_get_contents('/proc/loadavg');
+        if ($loadavg) {
+            $parts = explode(' ', trim($loadavg));
+            echo '<p>CPU (1 min) : ' . $parts[0] . '</p>';
+        } else {
+            echo '<p>CPU : indisponible</p>';
+        }
+    }
 
-                // RAM Usage
-                $free = shell_exec('free');
-                $free = (string)trim($free);
-                $free_arr = explode("\n", $free);
-                $mem = explode(" ", $free_arr[1]);
-                $mem = array_filter($mem);
-                $mem = array_merge($mem);
+    // --- RAM ---
+    // /proc/meminfo est toujours disponible sur Android/Termux
+    $meminfo = @file_get_contents('/proc/meminfo');
+    if ($meminfo) {
+        preg_match('/^MemTotal:\s+(\d+)\s+kB/m', $meminfo, $mt);
+        preg_match('/^MemAvailable:\s+(\d+)\s+kB/m', $meminfo, $ma);
+        if ($mt && $ma) {
+            $memTotal = (int)$mt[1];           // en KB
+            $memAvail = (int)$ma[1];           // en KB
+            $memUsed  = $memTotal - $memAvail; // en KB
+            $percent  = round(($memUsed / $memTotal) * 100, 2);
+            $usedGB   = round($memUsed / 1024 / 1024, 2);
+            $totalGB  = round($memTotal / 1024 / 1024, 2);
+            echo '<p>RAM : ' . $usedGB . ' Go / ' . $totalGB . ' Go (' . $percent . '%)</p>';
+        }
+    } else {
+        echo '<p>RAM : indisponible</p>';
+    }
 
-                $memTotal = $mem[1];
-                $memUsed  = $mem[2];
-                $memUsagePercent = round(($memUsed / $memTotal) * 100, 2);
-                echo '<p>RAM : ' . round(($memUsed/1024/1024), 1) . 'Gb /' . round(($memTotal/1024/1024), 1) . 'Gb (' . $memUsagePercent . '%)</p>';
-            }
-            catch(Exception $e) {
-                echo '<p>Wooops, Sys_GetLoadAvg() ne marche pas ici !<br>' . e->getMessage() . ' </p>';
-            }
+} catch (\Throwable $e) {
+    echo '<p>Erreur : ' . htmlspecialchars($e->getMessage()) . '</p>';
+}
         echo '</div>';
         echo '<div id="db-create">';
             require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/create-db.php';
