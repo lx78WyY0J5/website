@@ -192,12 +192,6 @@ let links = [
         svg: "/src/assets/svg/game.svg",
     },
     {
-        href: "/rss.rss",
-        tag: "RSS",
-        title: "Fichier RSS.rss",
-        svg: "/src/assets/svg/file-wired.svg",
-    },
-    {
         href: "/outils/caesar",
         tag: "Outils OpSec",
         title: "Chiffrement par décalage (Caesar / César)",
@@ -900,12 +894,6 @@ let links = [
         svg: "/src/assets/svg/network.svg",
         tag: "URL Network OpSec",
         title: "Npcap",
-    },
-    {
-        href: "/src/js/rss.js",
-        svg: "/src/assets/svg/languages/js.svg",
-        tag: "RSS URL",
-        title: "RSS .JS",
     },
     {
         href: "https://www.toptal.com/developers/keycode",
