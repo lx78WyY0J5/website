@@ -45,6 +45,7 @@
     border-radius: 12px;
 
     color: var(--link-color);
+    background-color: var(--background-color);
 }
 
 #donation>.holder>.card>div>.svg{
