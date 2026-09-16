@@ -594,12 +594,6 @@ let links = [
         svg: "/src/assets/svg/note.svg",
     },
     {
-        href: "/cours/retraite",
-        tag: "Cours",
-        title: "Système de retraite",
-        svg: "/src/assets/svg/old-man.svg",
-    },
-    {
         href: "/cours/sql",
         tag: "Cours Web",
         title: "SQL",

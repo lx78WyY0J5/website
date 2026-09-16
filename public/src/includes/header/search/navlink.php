@@ -155,8 +155,6 @@
             <div>
                 <a href="/cours/readme"><img src="/src/assets/svg/note.svg" class="svg">Read me</a>
                 <hr>
-                <a href="/cours/retraite"><img src="/src/assets/svg/old-man.svg" class="svg" alt="">Retraite</a>
-                <hr>
                 <a href="/cours/lm-studio"><img src="/src/assets/svg/ai-ml.svg" class="svg" alt="">LM-Studio</a>
                 <a href="/cours/google-dorks"><img src="/src/assets/svg/note.svg" class="svg" alt="">Google dorks</a>
                 <a href="/cours/google-doodle"><img src="/src/assets/svg/note.svg" class="svg" alt="">Google doodle</a>
