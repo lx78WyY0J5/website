@@ -1,0 +1,238 @@
+.youtubeEmbed {
+    max-width: 100%;
+}
+
+.youtubeEmbed>.videoholder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.markdowned * >.youtubeEmbed>.videoholder{
+    justify-content: start !important;
+}
+
+.youtubeEmbed>.videoholder>.card>.videoDiv>img {
+    display: block;
+    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    height: 100%;
+    position: absolute;
+
+    margin-right: auto;
+    margin-left: auto;
+
+    border-radius: inherit;
+}
+
+.youtubeEmbed>.videoholder>.card>p {
+    padding-bottom: 25px;
+}
+
+.youtubeEmbed>.videoholder>.card>.videoDiv>iframe {
+    width: 100%;
+    height: 100%;
+    margin-right: auto;
+    position: absolute;
+}
+
+.youtubeEmbed>.videoholder>.card>.videoDiv {
+    width: 100%;
+    min-height: 300px;
+    position: relative;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.youtubeEmbed>.videoholder>.card>.videoDiv>button {
+    height: 100%;
+    position: absolute;
+    text-indent: -9999px;
+    width: 100%;
+
+    background-color: transparent;
+    border-color: transparent;
+    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0);
+}
+
+.youtubeEmbed>.videoholder>.card>.videoDiv>button:focus-visible,
+.youtubeEmbed>.videoholder>.card>.videoDiv>button:focus-within,
+.youtubeEmbed>.videoholder>.card>.videoDiv>button:focus {
+    border-radius: inherit;
+
+    outline-color: var(--background-color);
+    outline-offset: -6px !important;
+    outline-style: solid;
+    outline-width: 3px;
+
+    border-color: var(--text-color);
+    border-style: solid;
+    border-width: 3px;
+}
+
+.menu {
+    padding-bottom: 25px;
+}
+
+.menu>div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 25px;
+    gap: 20px;
+}
+
+
+.menu>#music-menu,
+.menu>#video-menu{
+    display: none;
+}
+
+.menu>div>button {
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.menu>#menu-all {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.menu>div>div.check{
+    transform: translate(25px, -10%);
+}
+
+div:has(> div > input[type="range"]) {
+    transform: translate(25px, -10%);
+}
+
+.menu>div>button.active, .menu>div>button:active{
+    background-color: var(--text-color);
+}
+
+.menu>div>button.active>p, .menu>div>button:active>p{
+    color: var(--background-color);
+}
+
+.menu>div>button>p.background-clip {
+    font-size: 1vw;
+}
+
+.background-clip {
+    color: var(--text-color);
+    font-weight: bolder;
+    font-size: 5vw;
+    font-family: Arial;
+    max-width: 100%;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: var(--text-color);
+    text-shadow: 0px 0px 20px var(--background-color);
+}
+
+.youtubeEmbed>.videoholder>.card>h1 {
+    text-align: center;
+    max-width: 100%;
+    padding: 16px;
+    font-size: x-large;
+}
+
+.youtubeEmbed>.videoholder>.card>p.textSub {
+    text-align: center;
+    max-width: 100%;
+    padding: 16px;
+}
+
+.youtubeEmbed>.videoholder>.card>p.categorieList {
+    width: fit-content;
+    display: inline-block;
+    transform: translateY(-15%);
+    font-size: x-large;
+}
+
+.youtubeEmbed>.videoholder>.card>#logoHolder>a{
+        font-size: 40px;
+        padding: 10px;
+        padding-bottom: 0px;
+        border-radius: 15px;
+}
+
+.youtubeEmbed>.videoholder>.card>#logoHolder>a>img,
+.youtubeEmbed>.videoholder>.card>#logoHolder>.topimg,
+.youtubeEmbed>.videoholder>.card>#logoHolder>button>img {
+    max-width: 25px !important;
+}
+
+.youtubeEmbed>.videoholder>.card>#logoHolder>button {
+    border: none;
+    background-color: transparent;
+    border-radius: 15px;
+    float:right;
+    backdrop-filter: none;
+}
+
+.youtubeEmbed>.videoholder>.card {
+    display: none;
+
+    padding: 10px;
+
+    background: linear-gradient(var(--background-color), var(--main-color));
+    box-shadow: var(--box-shadow-all-inset-main-transparent-color);
+
+    border-radius: 16px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: var(--main-color);
+
+    margin: 25px;
+
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.youtubeEmbed>.videoholder>h1 {
+    text-align: center;
+    padding-top: 12px;
+    flex-basis: 100%;
+}
+
+.card:has(.videoDiv>iframe) {
+    border-color: var(--text-color);
+    border-style: solid;
+    border-width: 2px;
+
+    box-shadow: var(--box-shadow-all-inset-main-color-big);
+}
+
+.card.top {
+    animation-name: topAnimation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+@media screen and (max-width: 1024px) {
+    .youtubeEmbed>.videoholder>.card {
+        width: 80%;
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .youtubeEmbed>.videoholder>.card {
+        width: 300px;
+    }
+}
+
+@keyframes topAnimation {
+    0% {
+        box-shadow: var(--box-shadow-all-inset-main-color-small);
+    }
+
+    100% {
+        box-shadow: var(--box-shadow-all-inset-main-color-big);
+    }
+}

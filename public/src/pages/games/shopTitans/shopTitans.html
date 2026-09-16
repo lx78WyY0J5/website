@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="/src/pages/games/shopTitans/shopTitans.css">
+<script src="/src/js/gather.js"></script>
+<script src="/src/pages/games/shopTitans/math.js"></script>
+<script src="/src/pages/games/shopTitans/shopTitans.js"></script>
+
+<div id="ShopTitansMenu">
+    <div>
+       <p>Pour obtenir votre identifiant de joueur :</p>
+       <p>- Onglet "Paramètres" en jeu</p>
+       <p>- recoppier la valeur "Appareil"</p>
+       <p>Exemple : 5f42e6dba8f22a129d2a2748 (Exemple de joueur)</p>
+       <p>Exemple : 64766ee4300f3e7b2917892e (Exemple de guilde)</p>
+    </div>
+    <hr>
+    <div>
+        <p>Si vous êtes dans la guilde : Altherneum.fr :</p>
+        <p>Vous pouvez vous voire dans la liste</p>
+    </div>
+
+    <input type="text" placeholder="ID ShopTitans" id="ShopTitansID">
+    <button id="statsButton" onclick="fetchShopTitansDataStart('stats','undefined')">
+        <p>Stats</p>
+    </button>
+    <button id="investButton" onclick="fetchShopTitansDataStart('invest','undefined')">
+        <p>Invest</p>
+    </button>
+    <button id="guildButton" onclick="fetchShopTitansDataStart('guilde', 'undefined')">
+        <p>Guilde</p>
+    </button>
+</div>
+
+<div id="ShopTitansDataGuild">
+</div>
+
+<div id="ShopTitansData">
+</div>
+
+<div id="ShopTitanDataInvestMenu">
+    <div id="ShopTitansDataInvest">
+    </div>
+    <div id="ShopTitansDataInvestVIP">
+    </div>
+</div>

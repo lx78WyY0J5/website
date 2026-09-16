@@ -1,0 +1,40 @@
+textarea#frames-textarea{
+    width: 80vw;
+    height: 70vh;
+
+    max-width: 80vw;
+    max-height: 70vh;
+
+    text-align: center;
+
+    background-color: transparent;
+    border-style: none;
+    background: transparent;
+    backdrop-filter: none;
+}
+
+#frames-frames,
+#frames-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+#frames-menu{
+    padding: 25px;
+}
+
+#frames-menu>*{
+    padding: 15px;
+}
+
+#frames-frames{
+
+}
+
+#frames-menu>details>*{
+    display: block;
+    padding: 5px;
+}

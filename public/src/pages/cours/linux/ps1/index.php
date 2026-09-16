@@ -1,0 +1,1 @@
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/cours/linux/ps1/ps1.html'; ?>

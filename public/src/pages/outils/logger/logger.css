@@ -1,0 +1,16 @@
+#logger>h1,
+#logger>p {
+    display: inline-block;
+}
+
+#logger>p {
+    padding-left: 16px;
+}
+
+#logger {
+    max-width: 90%;
+}
+
+#logger>#ip>div>.note {
+    color: var(--link-color);
+} 

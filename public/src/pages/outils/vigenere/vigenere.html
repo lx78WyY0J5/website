@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="/src/pages/outils/vigenere/vigenere.css">
+<script src="/src/pages/outils/vigenere/vigenere.js"></script>
+
+<div id="vigenere">
+    <input type="text" name="" id="alphabet" placeholder="Alphabet" value="">
+    <input type="text" name="" id="text" placeholder="texte à chiffrer">
+    <input type="text" name="" id="clef" placeholder="clef de chiffrement">
+
+
+    <button id="btn" onclick="cipher(false)">
+        <p>Chiffrer le text</p>
+    </button>
+
+    <button id="btn" onclick="cipher(true)">
+        <p>Déchiffrer le text</p>
+    </button>
+
+    <input type="text" name="" id="output" placeholder="text chiffré" readonly>
+</div>
+
+<hr>
+
+<h1>Alphabet par défaut</h1>
+<textarea name="" id="alphabet-default"></textarea>
+
+<hr>
+
+<h2>Attention !</h2>
+<p>La clef n'est pas vérifié proprement, elle doit être de taille égale au text à chiffrer</p>
+<p>Si la clef est plus petite, une fois arrivé au dernier caractère, ce dernier sera utilisé à l'infini jusqu'à la fin du text, ce qui réduit la sécurité du message et soumet à des attaques</p>
+
+<hr>
+
+<div id="vigenere-cours">
+    <h1>
+        <a href="https://fr.wikipedia.org/wiki/Chiffre_de_Vigenère">
+            Chiffre de Vigenère
+        </a>
+    </h1>
+    <br><br>
+
+    <p>
+    Le chiffre de Vigenère est un système de chiffrement par substitution polyalphabétique dans lequel une même lettre du message clair peut, suivant sa position dans celui-ci, être remplacée par des lettres différentes, contrairement à un système de chiffrement mono alphabétique comme le chiffre de César (qu'il utilise cependant comme composant).
+    <br><br>
+    Il est nommé ainsi au xixe siècle en référence au diplomate du xvie siècle Blaise de Vigenère, qui le décrit (intégré à un chiffrement plus complexe) dans son traité des chiffres paru en 1586. On trouve en fait déjà une méthode de chiffrement analogue dans un court traité de Giovan Battista Bellaso paru en 1553.
+    <br><br>
+    Cette méthode résiste ainsi à l'analyse de fréquences, ce qui est un avantage décisif sur les chiffrements mono alphabétiques. Cependant le chiffre de Vigenère a été percé par le major prussien Friedrich Kasiski qui a publié sa méthode en 1863. Depuis cette époque, il n'offre plus aucune sécurité.
+    <br><br>
+    Ce chiffrement introduit la notion de clé. Une clé se présente généralement sous la forme d'un mot ou d'une phrase. Pour pouvoir chiffrer le texte, chaque caractère utilise une lettre de la clé pour effectuer la substitution. Plus la clé est longue et variée, mieux le texte est chiffré.
+    <br>
+    Pour chaque lettre en clair, on sélectionne la colonne correspondante et pour une lettre de la clé on sélectionne la ligne adéquate, puis au croisement de la ligne et de la colonne on trouve la lettre chiffrée. La lettre de la clé est à prendre dans l'ordre dans laquelle elle se présente et on répète la clé en boucle autant que nécessaire.
+    </p>
+    <br><br>
+    <img src="/assets/image/vigenere.png" alt="">
+</div>

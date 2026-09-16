@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/src/pages/outils/rsa/rsa.css">
+<script src="/src/pages/outils/rsa/rsa.js"></script>
+
+<div id="rsa">
+    <div id="console">
+        <div id="rsa-console-holder">
+            <p id="rsa-console"></p>
+        </div>
+    </div>
+
+    <div>
+        <input type="number" placeholder="Bits max" name="maxBits" id="valueMaxBits" value="4">
+        <button onclick="RSAKeyGen()"><p>RSA key gen</p></button>
+    </div>
+
+    <div>
+        <input type="number" placeholder="Valeur" name="value" id="value" value="1">
+        <button onclick="encrypt()"><p>Crypter</p></button>
+        <button onclick="decrypt()"><p>Dé-Crypter</p></button>
+    </div>
+
+    <div>
+        <h1>Shared key</h1>
+        <input type="number" placeholder="N" name="valueN" id="valueN">
+    </div>
+
+    <div>
+        <h1>Public key</h1>
+        <input type="number" placeholder="D" name="valueD" id="valueD">
+    </div>
+
+    </div>
+        <h1>Private key</h1>
+        <input type="number" placeholder="E" name="valueE" id="valueE">
+    </div>
+</div>

@@ -1,0 +1,102 @@
+.films>h1 {
+    text-align: center;
+    color: var(--text-color);
+    padding-top: 50px;
+}
+
+.films>div{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.films>div>div {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 25px;
+    margin: 10px;
+
+    width: 17vw;
+    overflow-x: auto;
+
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+}
+
+
+.films>div>div>img.svg {
+    width: 50px;
+    height: 50px;
+}
+
+.films>div>div>img {
+    width: 100%;
+    max-height: 60vh;
+
+    border-radius: 10%;
+
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+.films>div>div>a {
+    font-size: xx-large;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.films>div>div>p {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.card {
+    background: linear-gradient(var(--background-color), var(--main-color-transparent));
+    box-shadow: var(--box-shadow-all-inset-main-transparent-color);
+
+    border-radius: 16px;
+
+    border-style: solid;
+    border-width: 3px;
+    border-color: var(--main-color);
+}
+
+.card>img.svg {
+    content: url(/assets/svg/thumbs-down.svg);
+    max-width: 50px;
+}
+
+.card.unknow>img.svg {
+    content: url(/assets/svg/help-question.svg);
+    max-width: 50px;
+}
+
+.card.best>img.svg {
+    content: url(/assets/svg/star.svg);
+}
+
+.card.medium>img.svg {
+    content: url(/assets/svg/star-half.svg);
+}
+
+.card.love>img.svg {
+    content: url(/assets/svg/heart.svg);
+}
+.card.bad>img.svg {
+    content: url(/assets/svg/thumbs-down.svg);
+}
+
+.card.zero>img.svg {
+    content: url(/assets/svg/warning.svg);
+}
+
+/*CSS mobile une seule carte par rangé 100%*/
+@media screen and (max-width: 1024px) {
+    .films>div>div {
+        width: 75%;
+    }
+}

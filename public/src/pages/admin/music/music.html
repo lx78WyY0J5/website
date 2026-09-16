@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/src/css/youtubeEmbed.css">
+<script src="/src/js/youtubeEmbed.js"></script>
+<script src="/src/js/auto-scroll.js"></script>
+<script src="/src/js/settings.js"></script>
+<script src="/src/pages/admin/music/music.js"></script>
+
+<datalist id="tickmarks">
+<option value="0" label="0%"></option>
+<option value="1"></option>
+<option value="2"></option>
+<option value="3"></option>
+<option value="4"></option>
+<option value="5"></option>
+<option value="6"></option>
+<option value="7"></option>
+<option value="8"></option>
+<option value="9"></option>
+<option value="10"></option>
+<option value="15"></option>
+<option value="20"></option>
+<option value="30"></option>
+<option value="40"></option>
+<option value="50" label="50%"></option>
+<option value="60"></option>
+<option value="70"></option>
+<option value="80"></option>
+<option value="90"></option>
+<option value="100" label="100%"></option>
+</datalist>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/partials/youtubeEmbed.html'; ?>
+
+<script>
+loadYouTubeEmbed();
+setSwitch("YouTubeLoop", false);
+setSwitch("YoutubeShuffle", true);
+setInputValue("PlayListVideoAmount", 20);
+setInputValue("YouTubeVideoDelay", 20);
+setSwitch("IndividualsVids", true);
+setSwitch("YoutubeTitleSaving", false);
+</script>

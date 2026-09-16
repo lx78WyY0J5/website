@@ -1,0 +1,140 @@
+header, footer, #content-right {
+    display: none;
+}
+
+#content{
+    height: 100vh;
+}
+#contentArticle{
+    padding-top: 0px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+#idle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+
+    justify-content: space-between;
+
+    width: 85vw;
+    height: 90vh;
+
+    border-color: white;
+    border-style: solid;
+
+    padding: 20px;
+    padding-bottom: 0px;
+
+    margin: auto;
+}
+
+#idleplayer {
+    position: relative;
+    top: 0;
+
+    justify-content: space-between;
+
+    width: 100%;
+}
+
+#idleplayer, #idleplayer>*, #idleplayer>*>* {
+    display: flex;
+}
+
+#idleplayer>*>*, #idleplayer>*>* {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#idleplayer>* {
+    border-style: solid;
+    border-color: white;
+    padding: 10px;
+}
+
+#idlecontent {
+    border-style: solid;
+    border-color: white;
+
+    width: 100%;
+    height: 100%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#idlemenu {
+    position: relative;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+
+    /* Ensure it doesn't scroll on desktop */
+    overflow: visible; 
+    max-height: none;
+    min-width: 100%;
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    transform: translateY(2px);
+}
+
+#idlemenu, #idlemenu > * {
+    border-style: solid;
+    border-color: wheat;
+}
+
+#idlemenu > * {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 6px;
+}
+
+/* Mobile Layout (< 1000px) - Grid with vertical scroll */
+@media (max-width: 1000px) {
+    #idlemenu {
+        /* Switch to Grid */
+        display: grid;
+        /* Create 2 columns (adjust '1fr 1fr' or 'repeat(2, 1fr)' as needed) */
+        grid-template-columns: repeat(2, 1fr); 
+        /* Or use 'repeat(auto-fill, minmax(120px, 1fr))' for responsive columns */
+        
+        /* Reset Flex properties */
+        flex-direction: row; /* Ignored in grid, but good to reset mentally */
+        flex-wrap: nowrap;   /* Ignored in grid */
+        align-content: start; /* Align items to top to allow scrolling */
+        align-items: stretch; /* Make items fill grid cells */
+        
+        /* Enable Scrolling */
+        overflow-y: auto;    /* Vertical scroll */
+        overflow-x: hidden;  /* Prevent horizontal scroll */
+        
+        /* Define a max height to trigger scrolling */
+        /* Adjust '300px' based on how much space you want the menu to take */
+        max-height: 40vh;    
+        
+        gap: 10px;
+        padding: 10px; /* Optional: Add padding so scroll isn't tight against edges */
+        
+        /* Reset position if 'bottom: 0' conflicts with the new flow */
+        position: relative; 
+        bottom: auto;
+    }
+
+    /* Optional: Ensure children fit nicely in the grid */
+    #idlemenu > * {
+        width: 100%; /* Force items to fill the grid column */
+        box-sizing: border-box;
+    }
+}

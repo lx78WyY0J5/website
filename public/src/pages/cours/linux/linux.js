@@ -1,0 +1,57 @@
+document.addEventListener('DOMContentLoaded', async function() {
+  try {
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/README.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/introduction.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/man.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/cmd-parameters.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/shutdown-reboot.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/history.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/directory.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/more.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/grep.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/tmp.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/lister.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/file.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/permission.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/tar.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/arithmetique.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/logique.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/variable.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/read.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/os-version.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/shebang.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/alias.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/apt.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/pacman.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/who.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/whoami.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/MOTD.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/PS1.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/free.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/top.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/uptime.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/Jobs.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/screen.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/kill.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/PIDof.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/systemctl.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/netstat.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/ps.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/remote.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/ssh.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/scp.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/wget.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/UFW.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/HTTPD-from-src.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/code-server-apache.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/user.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/sudo.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/password.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/faillock.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/copy-paste.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/0x0.st.md', false);
+    await addMarkdown('Altherneum/.github', 'note/OS/Linux/LVM.md', false);
+  } catch(error) {
+    console.error(error);
+  }
+});

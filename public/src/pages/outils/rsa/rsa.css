@@ -1,0 +1,26 @@
+#rsa>*{
+    display: block;
+    padding: 5px;
+    padding-bottom: 20px;
+}
+
+#rsa>#console>#rsa-console-holder{
+    min-width: 75vw;
+    max-width: 75vw;
+    min-height: 40vh;
+    max-height: 40vh;
+
+    border-style: solid;
+    border-radius: 20px;
+    border-color: var(--text-color);
+
+    padding: 16px;
+
+    overflow: auto;
+
+    display: flex;
+    flex-direction: column-reverse;
+
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+}

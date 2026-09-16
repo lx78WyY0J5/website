@@ -1,0 +1,104 @@
+#github_issue {max-width: 95%;}
+
+#github_issue>.repo {
+    width: 100%;
+    max-height: 75vh;
+    overflow-y: auto;
+
+    border-style: solid;
+    border-color: var(--main-color);
+    border-width: 3px;
+    border-radius: 16px;
+
+    margin-bottom: 30px;
+}
+
+#github_issue>.repo>.RepoName{
+    position:sticky;
+    border-radius: 16px;
+    top: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+
+    padding: 16px;
+    padding-bottom: 35px;
+
+    background: linear-gradient(var(--background-color), var(--main-color));
+
+    z-index: 900;
+}
+
+#github_issue>.repo>.RepoName>div>img{
+    transform: translateY(40%);
+    max-width: 50px;
+    padding-right: 10px;
+}
+
+#github_issue>.repo>.issues{
+    margin-top: 16px;
+}
+
+#github_issue>.repo>.issues>.issue {
+    display: inline-block;
+    margin: 1vw;
+    padding: 10px;
+    max-width: 70vw;
+    max-height: 70vh;
+    overflow-x: auto;
+
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 16px;
+    border-color: var(--main-color);
+
+    backdrop-filter: var(--blur);
+}
+
+#github_issue>.repo>.issues>.issue>img.profile {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 25px;
+}
+
+#github_issue>.repo>.issues>.issue>img.logoissue {
+    max-width: 50px;
+    max-height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+}
+
+#github_issue>.repo>.issues>.issue>a.issuelink {
+    padding-right: 16px;
+    display: block;
+}
+
+#github_issue>.repo>.issues>.issue>a.username {
+    padding-right: 16px;
+    display: block;
+}
+
+#github_issue>.repo>.issues>.issue>p.date {
+    padding-right: 16px;
+    display: inline;
+}
+
+#github_issue>.repo>.issues>.issue>p.repo {
+    padding-right: 16px;
+    display: inline;
+}
+
+#github_issue>.repo>.issues>.issue>p.labelissue {
+    display: inline;
+    padding-right: 16px;
+    font-size: 32px;
+}
+
+#github_issue>.repo>.issues>.issue>p.textIssue>*{
+    display: inline-block;
+}

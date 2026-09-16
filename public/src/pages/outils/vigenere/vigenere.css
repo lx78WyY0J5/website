@@ -1,0 +1,30 @@
+#vigenere>input::placeholder {
+    color: var(--link-color);
+}
+
+#vigenere>input {
+    display: block;
+    padding: 15px;
+
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+#vigenere>#number {
+    max-width: 105px;
+}
+
+#vigenere>#btn {
+    margin: 15px;
+    border-color: var(--border-color);
+    border-radius: 2px;
+    border-style: ridge;
+    text-align: center;
+}
+
+#contentArticle>hr{
+    margin-top: 64px;
+    margin-bottom: 64px;
+}

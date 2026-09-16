@@ -1,0 +1,80 @@
+<div class="menu">
+    <div id="menu-link">
+        <a href="">Retourner sur la liste complète</a>
+    </div>
+
+    <div id="menu-default">
+        <button id="playing" onclick="show('playing')">
+            <p>⏯ Playing</p>
+        </button>
+
+        <button id="top" onclick="show('top')">
+            <p>👑 Top</p>
+        </button>
+
+        <button id="all" onclick="show('all')" class="active">
+            <p>🌐 Tout</p>
+        </button>
+
+        <button id="playlist" onclick="show('playlist')">
+            <p>🔁 PlayList</p>
+        </button>
+
+        <button id="latest" onclick="show('latest')">
+            <p>🆕 Latest</p>
+        </button>
+
+        <button id="premadePlayList" onclick="show('premadePlayList')">
+            <p>🎚️ PlayList Auto</p>
+        </button>
+
+        <div class="check">
+            <div class="checkboxToggle">
+                <input type="checkbox" id="YouTubeLoop" onclick="SwitchYouTubeLoop()" />
+                <span></span>
+            </div>
+            <p>YouTube Loop</p>
+        </div>
+        <div class="check">
+            <div class="checkboxToggle">
+                <input type="checkbox" id="YoutubeShuffle" onclick="SwitchYoutubeShuffle()" />
+                <span></span>
+            </div>
+            <p>YouTube Shuffle</p>
+        </div>
+        <div class="check">
+            <div class="checkboxToggle">
+                <input type="checkbox" id="YoutubeTitleSaving" onclick="SwitchYoutubeTitleSaving()" />
+                <span></span>
+            </div>
+            <p>YouTube Titles saving</p>
+        </div>
+        <div class="check">
+            <div class="checkboxToggle">
+                <input type="checkbox" id="IndividualsVids" onclick="SwitchYTIndividualsVids()" />
+                <span></span>
+            </div>
+            <p>Charger les Singles</p>
+        </div>
+        <div>
+            <div>
+                <input type="range" min="1" max="50" value="20" step="1" id="PlayListVideoAmount" onChange="localStorage.setItem('PlayListVideoAmount', this.value)" list="tickmarks">
+            </div>
+            <p>YouTube PlayList Video Amount</p>
+        </div>
+        <div>
+            <div>
+                <input type="range" min="1" max="100" value="20" step="1" id="YouTubeVideoDelay" onChange="localStorage.setItem('YouTubeVideoDelay', this.value)" list="tickmarks">
+            </div>
+            <p>YouTube Delay Between Video</p>
+        </div>
+    </div>
+
+    <div id="menu-all">
+    </div>
+</div>
+
+<div class="youtubeEmbed">
+    <div class="show-all videoholder" id="videoholder">
+    </div>
+</div>

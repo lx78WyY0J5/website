@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="/src/pages/games/minesweeper/minesweeper.css">
+<script src="/src/pages/games/minesweeper/minesweeper.js"></script>
+
+<div id="mineSweeper">
+    <h1 id="MineCaption">
+        Titre
+    </h1>
+    <div id="plate">
+    </div>
+
+    <div id="menu">
+        <p id="dateHolderMine"></p>
+        <button>
+            <p onclick="start(true)">Start Game</p>
+        </button>
+        <div id="inputList">
+            <div>
+                <input type="number" name="Col" id="Col" placeholder="Colonnes" value="10">
+                <p>Colonnes</p>
+            </div>
+            <div>
+                <input type="number" name="Row" id="Row" placeholder="Rangées" value="10">
+                <p>Rangées</p>
+            </div>
+            <div>
+                <input type="number" name="Mines" id="Mines" placeholder="Mines" value="10">
+                <p>Mines</p>
+            </div>
+        </div>
+
+        <div id="checkList">
+            <div class="check">
+                <div class="checkboxToggle">
+                    <input type="checkbox" id="cheatMode" />
+                    <span></span>
+                </div>
+                <p>Cheat Mode</p>
+            </div>
+            <div class="check" style="display: none;">
+                <div class="checkboxToggle">
+                    <input type="checkbox" id="autoUnlockk" />
+                    <span></span>
+                </div>
+                <p>Auto Unlock nearby</p>
+            </div>
+        </div>
+    </div>
+</div>

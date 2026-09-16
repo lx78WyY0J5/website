@@ -1,0 +1,13 @@
+#base64{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 16px;
+}
+
+#base64>button{
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: 10px;
+}

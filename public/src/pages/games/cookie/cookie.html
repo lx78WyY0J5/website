@@ -1,0 +1,91 @@
+<link rel="stylesheet" href="/src/pages/games/cookie/cookie.css">
+<script src="/src/pages/games/cookie/cookie.js"></script>
+
+<div class="cookieclicker">
+
+    <div id="buyMenu">
+        <div id="x1" onclick="buyMode(1);">
+            <p>x 1</p>
+        </div>
+        <div id="x5" onclick="buyMode(2);">
+            <p>x 5</p>
+        </div>
+        <div id="x10" onclick="buyMode(3);">
+            <p>x 10</p>
+        </div>
+        <div id="x50" onclick="buyMode(4);">
+            <p>x 50</p>
+        </div>
+        <div id="x100" onclick="buyMode(5);">
+            <p>x 100</p>
+        </div>
+        <div id="x1000" onclick="buyMode(6);">
+            <p>x 1000</p>
+        </div>
+    </div>
+
+    <div class="stats">
+        <div>
+            <img src="https://www.svgrepo.com/show/19169/cookies.svg" alt="Cookie jar">
+            <p id="cookie-amount">0</p>
+            <p> cookies</p>
+        </div>
+        <div>
+            <img src="https://www.svgrepo.com/show/301105/mouse.svg" alt="Mouse">
+            <p id="cookie-per-click">0</p>
+            <p> / click</p>
+        </div>
+        <div>
+            <img src="https://www.svgrepo.com/show/501872/hourglass-hourglass.svg" alt="hourglass">
+            <p id="click-per-second">0</p>
+            <p>CPS</p>
+        </div>
+        <div>
+            <img src="/assets/svg/cookie.svg" alt="cookie">
+            <p id="cookie-per-second">0</p>
+            <p> / second</p>
+        </div>
+        <div>
+            <img src="https://www.svgrepo.com/show/356722/calculator.svg" alt="calculator">
+            <p id="cookie-multiplier">0</p>
+            <p> bonus</p>
+        </div>
+    </div>
+
+    <div class="cookie">
+        <img src="/assets/svg/cookie.svg" alt="Cookie"
+            onclick="cookieClick()">
+    </div>
+
+    <div class="shop">
+        <div class="bonus" onclick="bonusClick(1)">
+            <img src="https://www.svgrepo.com/show/301105/mouse.svg" alt="">
+            <h1>Click booster</h1>
+            <p>+1 cookie par click</p>
+            <p>Prix : </p>
+            <p id="prix-booster">0</p>
+        </div>
+        <div class="bonus" onclick="bonusClick(2)">
+            <img src="https://www.svgrepo.com/show/235196/oculus-rift-virtual-reality.svg" alt="">
+            <h1>Boulangerie par IA</h1>
+            <p>+1 click par second</p>
+            <p>Prix : </p>
+            <p id="prix-IA">0</p>
+        </div>
+        <div class="bonus" onclick="bonusClick(3)">
+            <img src="https://www.svgrepo.com/show/356722/calculator.svg" alt="">
+            <h1>Click multiplicateur</h1>
+            <p>+5% cookie par click</p>
+            <p>Prix : </p>
+            <p id="prix-multiplicateur">0</p>
+        </div>
+        <div class="bonus" onclick="bonusClick(4)" style="display: none;">
+            <img src="https://www.svgrepo.com/show/280982/jesus-god.svg" alt="">
+            <h1>Jesus</h1>
+            <p>Multiplie vos cookie chaque seconde par 1.1</p>
+            <p>Prix : </p>
+            <p id="prix-jesus">0</p>
+        </div>
+    </div>
+
+</div>

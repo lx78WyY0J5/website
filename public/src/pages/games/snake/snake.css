@@ -1,0 +1,8 @@
+#snake{
+    --size: 30px;
+}
+
+#snake>table>tbody>tr>td{
+    width: var(--size);
+    height: var(--size);
+}
