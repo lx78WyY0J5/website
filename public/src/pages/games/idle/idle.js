@@ -1,13 +1,7 @@
 
 async function startGame(){
-    await loadFiles();
     updateGoldUI();
 } startGame();
-
-async function loadFiles(){
-    await include_script("/src/pages/games/idle/idle-gold.js");
-    await include_script("//src/pages/games/idle/idle-xp.js");
-}
 
 function getTimeStamp(){
     return new Date().getTime();

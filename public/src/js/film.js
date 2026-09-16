@@ -1678,8 +1678,6 @@ function getEmoji(FilmListType){
 }
 
 async function showFilm(categorie, divID){
-    await include_script("/src/js/auto-scroll.js");
-
     let mainDiv = document.getElementsByClassName(divID);
     for(link in filmLinks){
         if(filmLinks[link].category === categorie){

@@ -1,17 +1,9 @@
 var isAnchorListSet = false;
-var isAutoScrollLoaded = false;
 var anchorList;
 var isFinished = false;
 
 async function addMarkdown(repo, file, gist) {
-    console.log("Loading markdown CSS");
-    await include_css("/src/css/markdown.css");
     console.log("Loading .md");
-
-    if (isAutoScrollLoaded === false) {
-        await include_script("/src/js/auto-scroll.js");
-        isAutoScrollLoaded = true;
-    }
 
     var markdownHolder = setMarkdownHolder();
     var content = setMarkdownFileDiv(repo, file, markdownHolder);
@@ -65,9 +57,6 @@ const parseMarkdown = async (text) => {
     const regex = /\(https:\/\/youtube\.com\/watch\?v=(.*)\)/g;
     var matched = toHTML.match(regex);
     if (matched) {
-        await include_script("/src/js/youtubeEmbed.js");
-        await include_css("/src/css/youtubeEmbed.css");
-
         toHTML = toHTML.replace(/([^!])\[([^\[]+)\]\((https:\/\/youtube\.com\/watch\?v=([^)]*)*)\)/g, '\n$2 - <a href=\"$3\">$4</a>\n<div class="youtubeEmbed">\n<div class="videoholder" id="video-id-$4">\n</div>\n</div>') //$3 = URL $4 = video ID, $2 = text
         for (index in matched) {
             const words = matched[index].split("v=");
@@ -86,9 +75,6 @@ const parseMarkdown = async (text) => {
     const regexShort = /\(https:\/\/youtube\.com\/shorts\/(.*)\)/g;
     var matchedShort = toHTML.match(regexShort);
     if (matchedShort) {
-        await include_script("/src/js/youtubeEmbed.js");
-        await include_css("/src/css/youtubeEmbed.css");
-
         toHTML = toHTML.replace(/([^!])\[([^\[]+)\]\((https:\/\/youtube\.com\/shorts\/([^)]*)*)\)/g, '\n$2 - <a href=\"$3\">$4</a>\n<div class="youtubeEmbed">\n<div class="videoholder" id="video-id-$4">\n</div>\n</div>') //$3 = URL $4 = video ID, $2 = text
         for (index in matchedShort) {
             const words = matchedShort[index].split("/");
@@ -243,10 +229,6 @@ async function githubData(repo, file, content, gist) {
         anchorHolder(repo.split('/')[0], holder);
     }
     if (!gist) {
-        if (isAutoScrollLoaded === false) {
-            await include_script("/src/js/gather.js");
-            isAutoScrollLoaded = true;
-        }
         var data = await gather("https://api.github.com/repos/" + repo + "/commits?path=" + fileTrimed + "&page=1&per_page=1");
         //console.log(data);
 

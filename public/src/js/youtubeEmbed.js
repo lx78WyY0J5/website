@@ -110,7 +110,6 @@ function shuffle(array) {
 const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 async function GetVideos(videoList, VideoListType, videoType, includeLatestVideoOfChannel) {
-    await include_script("/src/js/auto-scroll.js");
     addButtons(VideoListType);
 
     var hash = decodeURIComponent(window.location.hash).replace("#", "");
