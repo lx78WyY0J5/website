@@ -51,7 +51,7 @@ async function GetFile(fileName){
     console.log("running : " + fileName);
 
     if(JSONFile === undefined){
-        JSONFile = await fetch("/assets/txt/frames/" + fileName + ".json");
+        JSONFile = await fetch("/src/assets/txt/frames/" + fileName + ".json");
         console.log("setting JSONFile");
     }
 

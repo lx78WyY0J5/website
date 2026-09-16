@@ -127,7 +127,7 @@ function mergeYouTubeTitles(musicListMerge, song, video, film){
                 tag: linked.category,
                 title: linked.title,
                 text: linkText,
-                svg: "/assets/svg/trademark/" + icon + ".svg",
+                svg: "/src/assets/svg/trademark/" + icon + ".svg",
             };
 
             links.push(object);
@@ -137,7 +137,7 @@ function mergeYouTubeTitles(musicListMerge, song, video, film){
                 href: "/admin/" + url + htmlOffline + "#" + linked.filmID,
                 tag: linked.category,
                 title: linked.title,
-                svg: "/assets/svg/" + icon + ".svg",
+                svg: "/src/assets/svg/" + icon + ".svg",
             };
 
             links.push(object);
@@ -241,10 +241,10 @@ function showSearchbarResult(result) {
             const text = result[i].text;
             let svg;
             if (result[i].svg === undefined) {
-                svg = "/assets/svg/link.svg";
+                svg = "/src/assets/svg/link.svg";
             }
-            else if (result[i].svg === "/assets/svg/.svg") {
-                svg = "/assets/svg/help-question.svg";
+            else if (result[i].svg === "/src/assets/svg/.svg") {
+                svg = "/src/assets/svg/help-question.svg";
             }
             else { svg = result[i].svg; }
 

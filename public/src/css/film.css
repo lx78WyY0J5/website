@@ -65,32 +65,32 @@
 }
 
 .card>img.svg {
-    content: url(/assets/svg/thumbs-down.svg);
+    content: url(/src/assets/svg/thumbs-down.svg);
     max-width: 50px;
 }
 
 .card.unknow>img.svg {
-    content: url(/assets/svg/help-question.svg);
+    content: url(/src/assets/svg/help-question.svg);
     max-width: 50px;
 }
 
 .card.best>img.svg {
-    content: url(/assets/svg/star.svg);
+    content: url(/src/assets/svg/star.svg);
 }
 
 .card.medium>img.svg {
-    content: url(/assets/svg/star-half.svg);
+    content: url(/src/assets/svg/star-half.svg);
 }
 
 .card.love>img.svg {
-    content: url(/assets/svg/heart.svg);
+    content: url(/src/assets/svg/heart.svg);
 }
 .card.bad>img.svg {
-    content: url(/assets/svg/thumbs-down.svg);
+    content: url(/src/assets/svg/thumbs-down.svg);
 }
 
 .card.zero>img.svg {
-    content: url(/assets/svg/warning.svg);
+    content: url(/src/assets/svg/warning.svg);
 }
 
 /*CSS mobile une seule carte par rangé 100%*/

@@ -55,7 +55,7 @@ async function getRepo(orgs) {
         repoName.appendChild(RepoHolder);
 
         var RepoLogo = document.createElement('img');
-        RepoLogo.src = "/assets/svg/trademark/repo.svg";
+        RepoLogo.src = "/src/assets/svg/trademark/repo.svg";
         RepoLogo.className = "svg RepoLogo";
         RepoHolder.appendChild(RepoLogo);
 
@@ -70,7 +70,7 @@ async function getRepo(orgs) {
         repoName.appendChild(repoIssueHolder);
 
         var RepoIssueLogo = document.createElement('img');
-        RepoIssueLogo.src = "/assets/svg/issue.svg";
+        RepoIssueLogo.src = "/src/assets/svg/issue.svg";
         RepoIssueLogo.className = "svg RepoIssueLogo";
         repoIssueHolder.appendChild(RepoIssueLogo);
 

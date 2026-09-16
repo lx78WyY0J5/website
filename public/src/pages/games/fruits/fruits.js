@@ -20,15 +20,15 @@ var keyPressed = false;
 var score = 0;
 
 const fruits = [
-    { "level": 1, "points": 25, "src": "/assets/fruits/coconut.png" },
-    { "level": 2, "points": 100, "src": "/assets/fruits/lime.png" },
-    { "level": 3, "points": 250, "src": "/assets/fruits/plum.png" },
-    { "level": 4, "points": 500, "src": "/assets/fruits/peach.png" },
-    { "level": 5, "points": 1000, "src": "/assets/fruits/orange.png" },
-    { "level": 6, "points": 2500, "src": "/assets/fruits/green-apple.png" },
-    { "level": 7, "points": 4000, "src": "/assets/fruits/raspberry.png" },
-    { "level": 8, "points": 5000, "src": "/assets/fruits/star-fruit.png" },
-    { "level": 9, "points": 10000, "src": "/assets/fruits/watermelon.png" },
+    { "level": 1, "points": 25, "src": "/src/assets/fruits/coconut.png" },
+    { "level": 2, "points": 100, "src": "/src/assets/fruits/lime.png" },
+    { "level": 3, "points": 250, "src": "/src/assets/fruits/plum.png" },
+    { "level": 4, "points": 500, "src": "/src/assets/fruits/peach.png" },
+    { "level": 5, "points": 1000, "src": "/src/assets/fruits/orange.png" },
+    { "level": 6, "points": 2500, "src": "/src/assets/fruits/green-apple.png" },
+    { "level": 7, "points": 4000, "src": "/src/assets/fruits/raspberry.png" },
+    { "level": 8, "points": 5000, "src": "/src/assets/fruits/star-fruit.png" },
+    { "level": 9, "points": 10000, "src": "/src/assets/fruits/watermelon.png" },
 ];
 
 function moveLeft() {

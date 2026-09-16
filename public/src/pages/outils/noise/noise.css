@@ -2,7 +2,7 @@
     width: 100%;
     height: 100%;
 
-    background-image: url(/assets/image/noise-color.png);
+    background-image: url(/src/assets/image/noise-color.png);
     background-repeat: repeat;
 
     animation: animation 250ms infinite linear reverse;

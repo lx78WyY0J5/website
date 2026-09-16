@@ -284,7 +284,7 @@ function anchorUpdate(url, holder) {
     var image = document.createElement("img");
     var text = document.createElement("p");
     link.href = url;
-    image.src = "/assets/svg/update.svg";
+    image.src = "/src/assets/svg/update.svg";
     button.classList = "edit-gist"
     text.textContent = "Last commit";
     link.target = "_blank";
@@ -304,7 +304,7 @@ function anchorAuthor(authorLogin, holder, commitAuthorName) {
     var image = document.createElement("img");
     var text = document.createElement("p");
     link.href = "https://github.com/" + authorLogin;
-    image.src = "/assets/svg/writer-write-blogger-work-at-desk.svg";
+    image.src = "/src/assets/svg/writer-write-blogger-work-at-desk.svg";
     button.classList = "edit-gist"
 
     if (authorLogin !== commitAuthorName) {
@@ -332,7 +332,7 @@ function anchorRaw(repo, file, holder, gist) {
     else if (gist === false) {
         link.href = "https://raw.githubusercontent.com/" + repo + "/main/" + file;
     }
-    image.src = "/assets/svg/language.svg";
+    image.src = "/src/assets/svg/language.svg";
     button.classList = "edit-gist"
     text.textContent = "RAW";
     link.target = "_blank";
@@ -349,7 +349,7 @@ function anchorRepo(repo, holder) {
     var image = document.createElement("img");
     var text = document.createElement("p");
     link.href = "https://github.com/" + repo;
-    image.src = "/assets/svg/trademark/repo.svg";
+    image.src = "/src/assets/svg/trademark/repo.svg";
     button.classList = "edit-gist"
     text.textContent = repo.split("/")[1];
     link.target = "_blank";
@@ -367,7 +367,7 @@ function anchorHolder(user, holder) {
     var text = document.createElement("p");
 
     link.href = "https://github.com/" + user;
-    image.src = "/assets/svg/trademark/organisation.svg";
+    image.src = "/src/assets/svg/trademark/organisation.svg";
     button.classList = "edit-gist"
     text.textContent = "@ " + user;
     link.target = "_blank";
@@ -397,7 +397,7 @@ function anchorButton(repo, file, gist, holder) {
         link.href = "https://github.com/" + repo + "/blob/main/" + file;
         button.classList = "edit-md"
     }
-    image.src = "/assets/svg/trademark/github.svg";
+    image.src = "/src/assets/svg/trademark/github.svg";
     text.textContent = file.split('/').pop();
     link.target = "_blank";
     image.classList = "svg";
@@ -420,7 +420,7 @@ function anchorEdit(repo, file, gist, holder) {
         link.href = "https://github.com/" + repo + "/edit/main/" + file;
         button.classList = "edit-md"
     }
-    image.src = "/assets/svg/edit.svg";
+    image.src = "/src/assets/svg/edit.svg";
     text.textContent = "Modifier";
     link.target = "_blank";
     image.classList = "svg";
@@ -459,7 +459,7 @@ function setAnchorButton(id, asset) {
 }
 
 function setAnchor() {
-    setAnchorButton("#anchor-button", "/assets/svg/book.svg");
+    setAnchorButton("#anchor-button", "/src/assets/svg/book.svg");
     var anchorList = document.createElement("div");
     anchorList.id = "anchorList";
 
@@ -480,7 +480,7 @@ function setAnchor() {
     divAnchorTitle.id = "AnchorTitle";
 
     var anchorTitleLogo = document.createElement("img");
-    anchorTitleLogo.src = "/assets/svg/book.svg";
+    anchorTitleLogo.src = "/src/assets/svg/book.svg";
     anchorTitleLogo.classList = "svg";
     anchorTitleLogo.style = "max-width: 25px; transform: translateY(25%); padding-right: 15px; padding-left: 10px;"
     divAnchorTitle.appendChild(anchorTitleLogo);
@@ -497,7 +497,7 @@ function setAnchor() {
 
     anchorList.appendChild(divAnchorTitle);
     anchorList.appendChild(AnchorSummary);
-    setAnchorButton("#AnchorSummary", "/assets/svg/close.svg");
+    setAnchorButton("#AnchorSummary", "/src/assets/svg/close.svg");
 
     return anchorList;
 }

@@ -1703,7 +1703,7 @@ async function showFilm(categorie, divID){
             a.href = "https://www.imdb.com/title/" + filmLinks[link].filmID;
             a.innerHTML = filmLinks[link].title;
 
-            img.src = "/assets/image/film/" + filmLinks[link].filmID + ".jpg";
+            img.src = "/src/assets/image/film/" + filmLinks[link].filmID + ".jpg";
 
             text.innerHTML = filmLinks[link].description;
 

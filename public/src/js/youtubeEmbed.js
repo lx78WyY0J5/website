@@ -168,7 +168,7 @@ async function GetVideos(videoList, VideoListType, videoType, includeLatestVideo
         if (videoList[videoID] !== undefined && videoList[videoID].text !== undefined) {
             savedTitle = " : " + videoList[videoID].text;
         }
-        addCardData(div_card, "404" + savedTitle , "Code YouTube \" " + hash + " \" incorrect !", "/assets/svg/link-broken.svg", true);
+        addCardData(div_card, "404" + savedTitle , "Code YouTube \" " + hash + " \" incorrect !", "/src/assets/svg/link-broken.svg", true);
         videoholder.appendChild(div_card);
         div_card.style.display = "flex";
     }
@@ -334,15 +334,15 @@ async function parseResponse(playlist, videoID, top, category, fetchUrl, text, s
                 return;
             }
             else if (status === 404) {
-                addCardData(div_card, "404" + SavedText, "Vidéo supprimée !", "/assets/svg/link-broken.svg", true);
+                addCardData(div_card, "404" + SavedText, "Vidéo supprimée !", "/src/assets/svg/link-broken.svg", true);
                 videoholder.appendChild(div_card);
             }
             else if (status === 403) {
-                addCardData(div_card, "403" + SavedText, "Vidéo privée !", "/assets/svg/link-broken.svg", true);
+                addCardData(div_card, "403" + SavedText, "Vidéo privée !", "/src/assets/svg/link-broken.svg", true);
                 videoholder.appendChild(div_card);
             }
             else if (status === 401) {
-                addCardData(div_card, "401" + SavedText, "Vidéo sans embed !", "/assets/svg/link-broken.svg", true);
+                addCardData(div_card, "401" + SavedText, "Vidéo sans embed !", "/src/assets/svg/link-broken.svg", true);
                 videoholder.appendChild(div_card);
             }
             else {
@@ -392,32 +392,32 @@ function addCard(top, playlist, videoID, category, latest, premadePlayList, vide
         divLogoHolder.appendChild(anchor);
 
         var imageAnchor = document.createElement("img");
-        imageAnchor.src = "/assets/svg/link.svg";
+        imageAnchor.src = "/src/assets/svg/link.svg";
         imageAnchor.className = "topimg svg";
         anchor.appendChild(imageAnchor);
     }
 
     if (top) {
         var imageTop = document.createElement("img");
-        imageTop.src = "/assets/svg/star.svg";
+        imageTop.src = "/src/assets/svg/star.svg";
         imageTop.className = "topimg svg";
         divLogoHolder.appendChild(imageTop);
     }
     if (playlist) {
         var imagePlayList = document.createElement("img");
-        imagePlayList.src = "/assets/svg/playlist.svg";
+        imagePlayList.src = "/src/assets/svg/playlist.svg";
         imagePlayList.className = "playlistimg svg";
         divLogoHolder.appendChild(imagePlayList);
     }
     if (latest) {
         var imageNew = document.createElement("img");
-        imageNew.src = "/assets/svg/new.svg";
+        imageNew.src = "/src/assets/svg/new.svg";
         imageNew.className = "newimg svg";
         divLogoHolder.appendChild(imageNew);
     }
     if (premadePlayList) {
         var imagepremadePlayList = document.createElement("img");
-        imagepremadePlayList.src = "/assets/svg/dj-turntable-vinyl.svg";
+        imagepremadePlayList.src = "/src/assets/svg/dj-turntable-vinyl.svg";
         imagepremadePlayList.className = "premadePlayList svg";
         divLogoHolder.appendChild(imagepremadePlayList);
     }
@@ -428,7 +428,7 @@ function addCard(top, playlist, videoID, category, latest, premadePlayList, vide
         var urlOpenYoutubeMusic = document.createElement("a");
         urlOpenYoutubeMusic.href = url.replace("www.", "music.");
         var imageOpenOnYoutubeMusic = document.createElement("img");
-        imageOpenOnYoutubeMusic.src = "/assets/svg/trademark/youtube-music.svg";
+        imageOpenOnYoutubeMusic.src = "/src/assets/svg/trademark/youtube-music.svg";
         imageOpenOnYoutubeMusic.className = "OpenOnYoutube svg";
 
         urlOpenYoutubeMusic.appendChild(imageOpenOnYoutubeMusic);
@@ -438,7 +438,7 @@ function addCard(top, playlist, videoID, category, latest, premadePlayList, vide
     var urlOpenYoutube = document.createElement("a");
     urlOpenYoutube.href = url;
     var imageOpenOnYoutube = document.createElement("img");
-    imageOpenOnYoutube.src = "/assets/svg/trademark/youtube.svg";
+    imageOpenOnYoutube.src = "/src/assets/svg/trademark/youtube.svg";
     imageOpenOnYoutube.className = "OpenOnYoutube svg";
 
     urlOpenYoutube.appendChild(imageOpenOnYoutube);
@@ -452,7 +452,7 @@ function addCard(top, playlist, videoID, category, latest, premadePlayList, vide
         urlOpenGithub.href = "https://github.com/search?q=" + videoID + "+repo:Altherneum/Altherneum.github.io+path:src/js/content/video.js&type=code";    
     }
     var imageOpenOnGithub = document.createElement("img");
-    imageOpenOnGithub.src = "/assets/svg/trademark/github.svg";
+    imageOpenOnGithub.src = "/src/assets/svg/trademark/github.svg";
     imageOpenOnGithub.className = "OpenOnGithub svg";
 
     urlOpenGithub.appendChild(imageOpenOnGithub);
@@ -462,7 +462,7 @@ function addCard(top, playlist, videoID, category, latest, premadePlayList, vide
     urlCopy.onclick  = () => { navigator.clipboard.writeText(videoID);}
 
     var copyUrlImage = document.createElement("img");
-    copyUrlImage.src = "/assets/svg/copy.svg";
+    copyUrlImage.src = "/src/assets/svg/copy.svg";
     copyUrlImage.className = "copyurl svg";
 
     urlCopy.appendChild(copyUrlImage);
@@ -816,7 +816,7 @@ async function CheckIfPlayListAtLimit(tag, top, mixed, videoType, short, topType
             smallAutoMix[smallAutoMix.findIndex(obj => obj.tag == tag && obj.top == topType)].videoIDList = "";
             smallAutoMix[smallAutoMix.findIndex(obj => obj.tag == tag && obj.top == topType)].amount = 0;
             let div_card = addCard(true, true, videoIDList, tag, false, true, videoType, short);
-            await addIFrame(true, videoIDList, true, tag, "Auto Mix Top : " + videoAmount, false, true, tag, "/assets/gif/logo.gif", document.getElementById("videoholder"), div_card, videoType);
+            await addIFrame(true, videoIDList, true, tag, "Auto Mix Top : " + videoAmount, false, true, tag, "/src/assets/gif/logo.gif", document.getElementById("videoholder"), div_card, videoType);
         }
     }
     else if (topType === "false"){
@@ -826,7 +826,7 @@ async function CheckIfPlayListAtLimit(tag, top, mixed, videoType, short, topType
             smallAutoMix[smallAutoMix.findIndex(obj => obj.tag == tag && obj.top == topType)].videoIDList = "";
             smallAutoMix[smallAutoMix.findIndex(obj => obj.tag == tag && obj.top == topType)].amount = 0;
             let div_card = addCard(false, true, videoIDList, tag, false, true, videoType, short);
-            await addIFrame(true, videoIDList, false, tag, "Auto Mix No Top : " + videoAmount, false, true, tag, "/assets/gif/logo.gif", document.getElementById("videoholder"), div_card, videoType);
+            await addIFrame(true, videoIDList, false, tag, "Auto Mix No Top : " + videoAmount, false, true, tag, "/src/assets/gif/logo.gif", document.getElementById("videoholder"), div_card, videoType);
         }
     }
     else if(topType === "mixed") {
@@ -836,7 +836,7 @@ async function CheckIfPlayListAtLimit(tag, top, mixed, videoType, short, topType
             smallAutoMix[smallAutoMix.findIndex(obj => obj.tag == tag && obj.top == topType)].videoIDList = "";
             smallAutoMix[smallAutoMix.findIndex(obj => obj.tag == tag && obj.top == topType)].amount = 0;
             let div_card = addCard(false, true, videoIDList, tag, false, true, videoType, short);
-            await addIFrame(true, videoIDList, false, tag, "Auto Mix Mixed : " + videoAmount, false, true, tag, "/assets/gif/logo.gif", document.getElementById("videoholder"), div_card, videoType);
+            await addIFrame(true, videoIDList, false, tag, "Auto Mix Mixed : " + videoAmount, false, true, tag, "/src/assets/gif/logo.gif", document.getElementById("videoholder"), div_card, videoType);
         }
     }
 }
@@ -852,7 +852,7 @@ async function setGlobalPlayList(videoType, short) {
         let videoAmountTop = fullAutoMix[fullAutoMix.findIndex(obj => obj.tag == tag && obj.top == topType)].amount;
 
         let div_cardTop = addCard(true, true, videoIDListTop, tag, false, true, videoType, short);
-        addIFrame(true, videoIDListTop, true, tag, "Auto Mix Top : " + videoAmountTop, false, true, tag, "/assets/gif/logo.gif", document.getElementById("videoholder"), div_cardTop, videoType);
+        addIFrame(true, videoIDListTop, true, tag, "Auto Mix Top : " + videoAmountTop, false, true, tag, "/src/assets/gif/logo.gif", document.getElementById("videoholder"), div_cardTop, videoType);
 
         //Mixed
         topType = "mixed"
@@ -860,7 +860,7 @@ async function setGlobalPlayList(videoType, short) {
         let videoAmountMixed = fullAutoMix[fullAutoMix.findIndex(obj => obj.tag == tag && obj.top == topType)].amount;
 
         let div_cardMixed = addCard(false, true, videoIDListMixed, tag, false, true, videoType, short);
-        addIFrame(true, videoIDListMixed, false, tag, "Auto Mix Mixed : " + videoAmountMixed, false, true, tag, "/assets/gif/logo.gif", document.getElementById("videoholder"), div_cardMixed, videoType);
+        addIFrame(true, videoIDListMixed, false, tag, "Auto Mix Mixed : " + videoAmountMixed, false, true, tag, "/src/assets/gif/logo.gif", document.getElementById("videoholder"), div_cardMixed, videoType);
 
         //NoTop
         topType = "false";
@@ -868,7 +868,7 @@ async function setGlobalPlayList(videoType, short) {
         let videoAmountNoTop = fullAutoMix[fullAutoMix.findIndex(obj => obj.tag == tag && obj.top == topType)].amount;
 
         let div_cardNoTop = addCard(false, true, videoIDListNoTop, tag, false, true, videoType, short);
-        addIFrame(false, videoIDListNoTop, true, tag, "Auto Mix No Top: " + videoAmountNoTop, false, true, tag, "/assets/gif/logo.gif", document.getElementById("videoholder"), div_cardNoTop, videoType);
+        addIFrame(false, videoIDListNoTop, true, tag, "Auto Mix No Top: " + videoAmountNoTop, false, true, tag, "/src/assets/gif/logo.gif", document.getElementById("videoholder"), div_cardNoTop, videoType);
     }
 }
 
