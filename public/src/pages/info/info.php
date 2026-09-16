@@ -22,10 +22,9 @@ try {
         }
     } else {
         // Fallback : lire /proc/loadavg
-        $loadavg = @file_get_contents('/proc/loadavg');
+        $loadavg = shell_exec("fastfetch -s loadavg --logo none");
         if ($loadavg) {
-            $parts = explode(' ', trim($loadavg));
-            echo '<p>CPU (1 min) : ' . $parts[0] . '</p>';
+            echo '<p>CPU : ' . $loadavg . '</p>';
         } else {
             echo '<p>CPU : indisponible</p>';
         }
