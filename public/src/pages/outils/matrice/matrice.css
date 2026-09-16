@@ -1,7 +1,7 @@
 #matriceModule {}
 
 .symbol-container {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
@@ -11,7 +11,6 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #000;
 }
 
 .symbol {
@@ -31,28 +30,6 @@
         transform: translateY(100vh);
         opacity: 1;
     }
-}
-
-#matriceModule>a {
-    color: white;
-    font-size: 20px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-
-    z-index: 999;
-
-    padding: 10px;
-    background-color: rgba(0, 255, 0, 0.15);
-    -webkit-backdrop-filter: var(--blur);
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: invert(5%);
-    backdrop-filter: invert(5%);
-    border-radius: 10px;
-}
-
-#matriceHolder>#matriceModule>a {
-    display: none;
 }
 
 #matriceHolder {
