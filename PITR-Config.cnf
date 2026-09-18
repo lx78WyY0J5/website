@@ -1,0 +1,6 @@
+[mysqld]
+# Enable binary logging for Point-In-Time Recovery (PITR)
+log_bin = /var/lib/mysql/mariadb-bin
+binlog_format = ROW
+expire_logs_days = 7
+max_binlog_size = 100M

@@ -86,6 +86,36 @@ install_mariadb() {
     esac
 }
 
+# Configure MariaDB for PITR (Point-In-Time Recovery) - deploy config before MariaDB starts
+configure_mariadb_pitr() {
+    echo "Configuring MariaDB for PITR..."
+    case $OS in
+        arch|manjaro|endeavouros)
+            CONFIG_DIR="/etc/mysql/my.cnf.d"
+            sudo mkdir -p "$CONFIG_DIR"
+            sudo cp PITR-Config.cnf "$CONFIG_DIR/99-pitr.cnf"
+            echo "PITR config deployed to $CONFIG_DIR/99-pitr.cnf"
+            ;;
+        ubuntu|debian)
+            CONFIG_DIR="/etc/mysql/mariadb.conf.d"
+            sudo mkdir -p "$CONFIG_DIR"
+            sudo cp PITR-Config.cnf "$CONFIG_DIR/99-pitr.cnf"
+            echo "PITR config deployed to $CONFIG_DIR/99-pitr.cnf"
+            ;;
+        termux)
+            CONFIG_DIR="$PREFIX/etc/my.cnf.d"
+            mkdir -p "$CONFIG_DIR"
+            cp PITR-Config.cnf "$CONFIG_DIR/99-pitr.cnf"
+            echo "PITR config deployed to $CONFIG_DIR/99-pitr.cnf"
+            ;;
+    esac
+
+    # Ensure backup directory exists at repo root
+    BACKUP_DIR="./backup"
+    mkdir -p "$BACKUP_DIR"
+    echo "Backup directory: $BACKUP_DIR"
+}
+
 # Configure PHP - copy php.ini to standard location
 configure_php() {
     echo "Configuring PHP..."
@@ -230,6 +260,7 @@ detect_os
 install_php
 install_mariadb
 configure_php
+configure_mariadb_pitr
 init_mariadb
 install_db
 
