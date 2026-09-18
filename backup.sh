@@ -1,62 +1,11 @@
 #!/bin/bash
 set -e
 
-load_env() {
-    if [ -f .env ]; then
-        set -a
-        source .env
-        set +a
-    elif [ -f .env.exemple ]; then
-        echo "No .env found, copying from .env.exemple"
-        cp .env.exemple .env
-        set -a
-        source .env
-        set +a
-    else
-        echo "Error: .env file not found. Copy .env.exemple to .env and configure it."
-        exit 1
-    fi
-}
+# Source common library
+source common.sh
 
-detect_os() {
-    if [ -f /etc/os-release ]; then
-        . /etc/os-release
-        OS=$ID
-    elif [ -f /data/data/com.termux/files/usr/bin/bash ]; then
-        OS="termux"
-    else
-        echo "Unsupported OS"
-        exit 1
-    fi
-    echo "Detected OS: $OS"
-}
-
-check_mariabackup() {
-    case $OS in
-        arch|manjaro|endeavouros)
-            if ! command -v mariabackup &> /dev/null; then
-                echo "mariabackup not found. Install with: sudo pacman -S mariadb"
-                exit 1
-            fi
-            ;;
-        ubuntu|debian)
-            if ! command -v mariabackup &> /dev/null; then
-                echo "mariabackup not found. Install with: sudo apt-get install mariadb-backup"
-                exit 1
-            fi
-            ;;
-        termux)
-            if ! command -v mariabackup &> /dev/null; then
-                echo "mariabackup not found. Install with: pkg install mariadb"
-                exit 1
-            fi
-            ;;
-        *)
-            echo "Unsupported OS for mariabackup: $OS"
-            exit 1
-            ;;
-    esac
-}
+# Load environment variables from .env
+load_env
 
 run_backup() {
     BACKUP_DIR="./backup"
