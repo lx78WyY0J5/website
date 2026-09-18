@@ -60,4 +60,7 @@ main() {
     run_backup
 }
 
-main "$@"
+# If sourced do not run, if backup.sh is ran, it will run this ;
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main "$@"
+fi
