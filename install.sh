@@ -103,9 +103,19 @@ configure_mariadb_pitr() {
     BACKUP_DIR="./backup"
     mkdir -p "$BACKUP_DIR"
     echo "Backup directory: $BACKUP_DIR"
+}
 
-    # Link mariaDB PITR to folder
-    ln -s /var/lib/mysql/mariadb-bin ./backup/PITR
+# Create PITR symlink after MariaDB datadir is initialized
+create_pitr_symlink() {
+    echo "Creating PITR symlink..."
+    BACKUP_DIR="./backup"
+    mkdir -p "$BACKUP_DIR"
+    if [ -d /var/lib/mysql/mariadb-bin ]; then
+        ln -sf /var/lib/mysql/mariadb-bin "$BACKUP_DIR/PITR"
+        echo "PITR symlink created: $BACKUP_DIR/PITR -> /var/lib/mysql/mariadb-bin"
+    else
+        echo "Warning: /var/lib/mysql/mariadb-bin not found yet, symlink will be created on first backup"
+    fi
 }
 
 # Configure PHP - copy php.ini to standard location
@@ -208,6 +218,7 @@ install_mariadb
 configure_php
 configure_mariadb_pitr
 init_mariadb
+create_pitr_symlink
 install_db
 
 echo ""

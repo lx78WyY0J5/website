@@ -92,7 +92,8 @@ start_php() {
 run_backup() {
     if [ -f backup.sh ]; then
         echo "Running database backup..."
-        bash backup.sh
+        source backup.sh
+        run_backup
     else
         echo "Warning: backup.sh not found, skipping backup"
     fi
