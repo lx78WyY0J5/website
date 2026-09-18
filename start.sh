@@ -80,10 +80,21 @@ start_php() {
     # In local: block here (wait) so server runs in foreground until Ctrl+C
     if [ -n "$CI" ] || [ -n "$GITHUB_ACTIONS" ]; then
         echo "CI mode: PHP server ready in background (PID: $PHP_PID)"
+        run_backup
         exit 0
     else
         echo "Local mode: PHP server running in foreground (PID: $PHP_PID)"
+        run_backup &
         wait $PHP_PID
+    fi
+}
+
+run_backup() {
+    if [ -f backup.sh ]; then
+        echo "Running database backup..."
+        bash backup.sh
+    else
+        echo "Warning: backup.sh not found, skipping backup"
     fi
 }
 
