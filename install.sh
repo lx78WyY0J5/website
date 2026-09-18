@@ -114,6 +114,9 @@ configure_mariadb_pitr() {
     BACKUP_DIR="./backup"
     mkdir -p "$BACKUP_DIR"
     echo "Backup directory: $BACKUP_DIR"
+
+    # Link mariaDB PITR to folder
+    ln -s /var/lib/mysql/mariadb-bin ./backup/PITR
 }
 
 # Configure PHP - copy php.ini to standard location
