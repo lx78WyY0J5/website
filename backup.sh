@@ -4,9 +4,6 @@ set -e
 # Source common library
 source common.sh
 
-# Load environment variables from .env
-load_env
-
 run_backup() {
     BACKUP_DIR="./backup"
     TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
