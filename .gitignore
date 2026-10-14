@@ -3,3 +3,4 @@ logs/security.log
 logs/php.log
 nohup.out
 */uploads/profile_pictures/*
+backup/*
