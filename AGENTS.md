@@ -5,6 +5,7 @@
 
 ### Lecture du ReadMe.md et du code
 - Toujours commencer par lire le `README.md` pour comprendre l'arborescence et le contexte du projet
+- Lancer une commande `tree` pour ne pas manquer de fichier ou dossier
 - Lire les fichiers PHP, HTML, CSS, JS pour comprendre le style existant avant d'écrire du nouveau code
 - Si le code ne respecte pas les règles ci-dessous, le corriger avant de terminer
 - Vérifier une deuxième fois que toutes les modifications sont bonnes, et n'entraine pas d'effet indésirable
@@ -120,8 +121,7 @@ Avant de considérer une tâche comme terminée :
 - [ ] Code conforme aux règles de style (pas de flèche, pas de ? :, if/else clair)
 - [ ] Tous les messages utilisateur en français et dans des balises `<p>`
 - [ ] Pas de code répété : fonctions créées pour réutilisation
-- [ ] README.md et agent.md mis à jour avec la dernière arborescence
 - [ ] Fichiers `tasks/done.md`, `tasks/now.md`, `tasks/soon.md` mis à jour
-- [ ] Fichiers `README.md` mis à jour
+- [ ] Fichiers `README.md` et `AGENTS.md` mis à jour
 - [ ] Site testable sur http://localhost:8000
   - [ ] Si le site n'est pas en ligne, le démarrer via la commande du ReadMe
