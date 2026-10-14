@@ -106,14 +106,14 @@ else {
 ### ⚠️ RÈGLE ABSOLUE : Demander avant d'agir
 
 **L'IA ne doit JAMAIS** :
-- Lancer une commande sans demander confirmation
-- Créer un fichier, dossier ou script sans demander
 - Modifier un fichier existant sans demander (sauf correction de style évidente)
 
 **L'IA doit TOUJOURS** :
-- Proposer l'action et attendre un "oui" explicite
-- Expliquer ce que la commande va faire
-- Laisser l'utilisateur décider
+- Proposer l'action et expliquer ce que la commande va faire
+- Si l'action est critique ou implique création/modification majeure, demander un "oui" explicite
+- Même pour les petites tâches (ex. formatage automatique), demander explicitement la confirmation
+- Lorsque plusieurs tâches sont liées, regrouper les demandes de confirmation en une seule requête afin d’éviter le spam
+- Les actions doivent être regroupées en paquets : présenter l’ensemble des tâches à exécuter sous forme de liste ou plan, demander la confirmation sur ce paquet complet, puis procéder. Cela évite un ping‑pong constant toutes les 10 s
 
 ## Vérification
 
