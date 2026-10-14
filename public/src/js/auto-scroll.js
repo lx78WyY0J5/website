@@ -18,7 +18,6 @@ function autoScroll(once, type) {
     DoScrollIntoView(element, once, type);
 }
 
-var pageTitle = document.title;
 function DoScrollIntoView(element, once, type) {
     if (element !== null) {
         if (once === true && onceIsDone === true) {
@@ -30,7 +29,6 @@ function DoScrollIntoView(element, once, type) {
             onceIsDone = true;
         }
         console.log("Scrolling to : " + element.id);
-        document.title = pageTitle + " # " + element.parentElement.textContent.replaceAll("#", "");
     }
 }
 
