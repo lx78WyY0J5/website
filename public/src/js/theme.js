@@ -29,9 +29,6 @@ function toggleTheme() {
     else if (localStorage.getItem("theme") === "light") {
         setTheme("light");
     }
-    else if (localStorage.getItem("theme") === "transparent") {
-        setTheme("transparent");
-    }
 
     else {
         const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
@@ -53,19 +50,10 @@ function changeTheme() {
     else if (localStorage.getItem("theme") === "dark") {
         setTheme("light");
     }
-    else if(localStorage.getItem("theme") === "light"){
-        if(localStorage.getItem("ThemeTransparent") === "true"){
-            setTheme("transparent")
-        }
-        else{
-            setTheme("day");
-        }
-    }
-    else if (localStorage.getItem("theme") === "transparent") {
+    else if (localStorage.getItem("theme") === "light") {
         setTheme("day");
     }
-
-    else { setTheme("day"); }
+    else { setTheme("dark"); }
 }
 
 async function setIconTheme() {
@@ -78,19 +66,15 @@ async function setIconTheme() {
     var img = themeButton.children[0];
 
     if (localStorage.getItem("theme") === "dark") {
-        img.src = "/src/assets/svg/sun.svg";
+        img.src = "/assets/svg/sun.svg";
     }
     else if (localStorage.getItem("theme") === "day") {
-        img.src = "/src/assets/svg/light.svg";
+        img.src = "/assets/svg/light.svg";
     }
     else if (localStorage.getItem("theme") === "light") {
-        img.src = "/src/assets/svg/moon.svg";
+        img.src = "/assets/svg/moon.svg";
     }
-    else if (localStorage.getItem("theme") === "transparent") {
-        img.src = "/src/assets/svg/linux.svg";
-    }
-
-    else { img.src = "/src/assets/svg/settings.svg"; }
+    else { img.src = "/assets/svg/settings.svg"; }
 }
 
 function setTransparencyPower(){
@@ -111,17 +95,15 @@ function setTransparencyPower(){
     let B = rootStyle.getPropertyValue("--background-color-B");
         console.log("theme color ; " + R + ", "  + G + ", " + B);
 
-    if(localStorage.getItem("ThemeTransparent") === "true" && localStorage.getItem("theme") === "transparent"){
+    if(localStorage.getItem("ThemeTransparent") === "true"){
         console.log("Transparent module ON");
         console.log(rootStyle.getPropertyValue("--background-color") + " to " + transparencyPower);
         document.documentElement.style.cssText = "--background-color: rgba("+ R + ", " + G + ", " + B + ", 0." + transparencyPower + ")";
     }
     else{
-        console.log("No transparency settings");
-        if (localStorage.getItem("theme") === "transparent") {
-            changeTheme();
-            console.log("Theme is transparent, changeTheme");
-        }
+        console.log("Transparent module OFF");
+        console.log(rootStyle.getPropertyValue("--background-color"));
+        document.documentElement.style.cssText = "--background-color: rgba("+ R + ", " + G + ", " + B + ", 1)";
     }
     console.log("CSS style ; " + document.documentElement.style.cssText);
 }
