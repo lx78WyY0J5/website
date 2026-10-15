@@ -28,7 +28,7 @@
         rateLimitExceededResponse('global');
     }
 
-    $uri = trim($_SERVER['REQUEST_URI'], '/');
+    $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
     if ($uri === '' || $uri === 'accueil') {
         $pageFile = $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.php';
