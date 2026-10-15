@@ -15,6 +15,7 @@
   - Rate-limit global par IP (20 req/min anonyme, 50 connecté)
   - Inclusion dynamique du `head.php` de chaque page
   - Tracking vues (page + site + user) via `view_counter.php`
+  - **Route API** : Gestion des routes `/api/` insensibles à la casse via `str_starts_with` et `str_lower` ; routage basé sur fichiers : vérifie l'existence de `src/php/api/<route>.php` et le charge, retourne 404 si introuvable. Routes implémentées : `/api/` (retourne la date) et `/api/uptime` (retourne le temps de fonctionnement du serveur).
 
 ### 2. Connexion BDD + PDO (`public/src/php/PDO.php`)
 - **Description** : Singleton PDO avec chargement `.env` (`loadEnv.php`), erreurs en exception, mode `ATTR_EMULATE_PREPARES = false`.

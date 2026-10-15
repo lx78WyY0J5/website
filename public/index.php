@@ -34,6 +34,27 @@
 
     $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
+    // Route API (case-insensitive, file-based routing)
+    $lowerUri = strtolower($uri);
+    if (str_starts_with($lowerUri, 'api')) {
+        $route = ltrim(str_replace('api', '', $lowerUri), '/');
+        if ($route === '') {
+            $route = 'index';
+        }
+
+        // Try to load the corresponding API file
+        $apiFile = $_SERVER['DOCUMENT_ROOT'] . '/src/php/api/' . $route . '.php';
+        if (file_exists($apiFile)) {
+            require $apiFile;
+            exit;
+        }
+
+        // Fichier introuvable : 404
+        http_response_code(404);
+        echo 'Route API inconnue';
+        exit;
+    }
+
     if ($uri === '' || $uri === 'accueil') {
         $pageFile = $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.php';
         include $_SERVER['DOCUMENT_ROOT'] . '/src/index/head.php';
