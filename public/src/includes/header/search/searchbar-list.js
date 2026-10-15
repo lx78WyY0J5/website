@@ -13,33 +13,33 @@ let links = [
     },
     {
         href: "/login",
-        tag: "",
+        tag: "Compte URL",
         title: "Se connecter",
-        svg: "",
+        svg: "/src/assets/svg/settings.svg",
     },
     {
         href: "/register",
-        tag: "",
+        tag: "Compte URL",
         title: "Créer un compte",
-        svg: "",
+        svg: "/src/assets/svg/settings.svg",
     },
     {
         href: "/logout",
-        tag: "",
+        tag: "Compte URL",
         title: "Se déconnecter",
-        svg: "",
+        svg: "/src/assets/svg/settings.svg",
     },
     {
         href: "/password/update",
-        tag: "",
+        tag: "Compte URL",
         title: "Changer de mot de passe",
-        svg: "",
+        svg: "/src/assets/svg/settings.svg",
     },
     {
         href: "/profile/picture",
-        tag: "",
+        tag: "Compte URL",
         title: "Changer de photo de profile",
-        svg: "",
+        svg: "/src/assets/svg/settings.svg",
     },
     {
         href: "/discord/tempvoc",
@@ -1796,12 +1796,12 @@ let links = [
     {
         href: "",
         svg: "/src/assets/svg/.svg",
-        tag: "",
+        tag: "Compte URL",
         title: "",
     },
 */
 
-var tagList = ["IP", "Queryable", "Google", "Cours", "URL", "Network", "Github", "CMD", ".gg", "Discord", "OpSec", "Crypto", "OS", "Outils", "ReadMe", "RSS", "XML", "Windows", "Web", "IA", "Linux", "Repo", "Jeux", "Admin", "Développement", "://", "video", "music", "film", "anime", "serie"];
+var tagList = ["Compte", "IP", "Queryable", "Google", "Cours", "URL", "Network", "Github", "CMD", ".gg", "Discord", "OpSec", "Crypto", "OS", "Outils", "ReadMe", "RSS", "XML", "Windows", "Web", "IA", "Linux", "Repo", "Jeux", "Admin", "Développement", "://", "video", "music", "film", "anime", "serie"];
 
 function getTagList(maxSize){
     var tagListReturned = [];
