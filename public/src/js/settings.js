@@ -1,3 +1,8 @@
+window.addEventListener('DOMContentLoaded', () => {
+    console.log('settings.js loaded');
+    loadSettingsSwitch();
+});
+
 function resetLocalStorage() {
     localStorage.clear();
     location.reload();
@@ -8,16 +13,8 @@ function resetWebSiteStorage() {
     location.reload();
 }
 
-function SwitchViewCount() {
-    Switcher("viewCount");
-}
-
 function SwitchYTIndividualsVids() {
     Switcher("IndividualsVids");
-}
-
-function SwitchDevMode() {
-    Switcher("devMode");
 }
 
 function SwitchCursor() {
@@ -158,8 +155,6 @@ function setInputValue(name, defaultValue) {
 }
 
 function loadSettingsSwitch() {
-    setSwitch("devMode", false);
-    setSwitch("viewCount", false);
     setSwitch("customCursor", false);
     setSwitch("Granted", false);
     setSwitch("YouTubeLoop", false);
