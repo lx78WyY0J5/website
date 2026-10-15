@@ -15,10 +15,5 @@ resp=$(curl -s -b /tmp/cookies.txt -X POST "$BASE_URL/register" \
   -H "Content-Type: application/x-www-form-urlencoded")
 
 # Check for CSRF error message
-if echo "$resp" | grep -q "Erreur de sécurité : token CSRF invalide"; then
-    echo "✅ PASS: CSRF error detected with no token"
-    exit 0
-else
-    echo "❌ FAIL: CSRF error NOT detected with no token"
-    exit 1
-fi
+echo "$resp" | grep -q "Erreur de sécurité : token CSRF invalide"
+exit $?
