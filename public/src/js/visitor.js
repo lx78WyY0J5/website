@@ -470,13 +470,8 @@ function generateFingerprint(text) {
 
 function collectVisitorData() {
     var data = {
+        // Navigateur / User Agent
         user_agent: getUserAgent(),
-        time_zone: getTimeZone(),
-        language: getLanguage(),
-        languages: getLanguages(),
-        platform: getPlatform(),
-        gpu: getGpuInfo(),
-        webdriver: getWebdriver(),
         app_version: getAppVersion(),
         app_name: getAppName(),
         app_code_name: getAppCodeName(),
@@ -484,61 +479,82 @@ function collectVisitorData() {
         product_sub: getProductSub(),
         vendor: getVendor(),
         oscpu: getOscpu(),
-        timezone_offset: getTimezoneOffset(),
+        platform: getPlatform(),
+        // Langues (cote a cote)
+        language: getLanguage(),
+        languages: getLanguages(),
+        // Detection client / bot
+        webdriver: getWebdriver(),
+        java_enabled: getJavaEnabled(),
         is_mobile: getUserAgentDataMobile(),
         user_agent_brands: getUserAgentBrands(),
-        referrer: getReferrer(),
-        path: window.location.href,
-        cookies_enabled: getCookiesEnabled(),
-        do_not_track: getDoNotTrack(),
-        fingerprint: '',
-        battery_level: 0,
-        battery_charging: 0,
-        local_ip: '',
+        // Materiel / systeme
         device_memory: getDeviceMemory(),
         hardware_concurrency: getHardwareConcurrency(),
+        time_zone: getTimeZone(),
+        timezone_offset: getTimezoneOffset(),
+        on_line: getOnLine(),
+        // Reseau / connexion
         connection_effective_type: getConnectionEffectiveType(),
         connection_downlink: getConnectionDownlink(),
         connection_save_data: getConnectionSaveData(),
-        on_line: getOnLine(),
-        java_enabled: getJavaEnabled(),
+        local_ip: '',
+        // Ecran / affichage
+        screen_resolution: '',
+        color_depth: 0,
+        pixel_depth: getPixelDepth(),
+        // GPU / graphisme
+        gpu: getGpuInfo(),
         gpu_adapter: '',
-        pixel_depth: getPixelDepth()
+        battery_level: 0,
+        battery_charging: 0,
+        // Visite / technique
+        cookies_enabled: getCookiesEnabled(),
+        do_not_track: getDoNotTrack(),
+        referrer: getReferrer(),
+        path: window.location.href,
+        // Empreinte / debug
+        fingerprint: ''
     };
 
     var screen = getScreenInfo();
     data.screen_resolution = screen.width + 'x' + screen.height;
     data.color_depth = screen.colorDepth;
-    data.pixel_depth = getPixelDepth();
 
     // Construire une chaine pour generer l'empreinte (fingerprint) du visiteur
     var fingerprintSource = data.user_agent + '|' +
-        data.time_zone + '|' +
-        data.language + '|' +
-        data.languages + '|' +
-        data.platform + '|' +
-        data.screen_resolution + '|' +
-        data.color_depth + '|' +
-        data.gpu + '|' +
-        data.webdriver + '|' +
         data.app_version + '|' +
-        data.vendor + '|' +
         data.app_name + '|' +
         data.app_code_name + '|' +
         data.product + '|' +
         data.product_sub + '|' +
+        data.vendor + '|' +
         data.oscpu + '|' +
+        data.platform + '|' +
+        data.language + '|' +
+        data.languages + '|' +
+        data.webdriver + '|' +
+        data.java_enabled + '|' +
         data.is_mobile + '|' +
         data.user_agent_brands + '|' +
-        data.timezone_offset + '|' +
         data.device_memory + '|' +
         data.hardware_concurrency + '|' +
+        data.time_zone + '|' +
+        data.timezone_offset + '|' +
+        data.on_line + '|' +
         data.connection_effective_type + '|' +
         data.connection_downlink + '|' +
         data.connection_save_data + '|' +
-        data.on_line + '|' +
-        data.java_enabled + '|' +
+        data.local_ip + '|' +
+        data.screen_resolution + '|' +
+        data.color_depth + '|' +
         data.pixel_depth + '|' +
+        data.gpu + '|' +
+        data.gpu_adapter + '|' +
+        data.battery_level + '|' +
+        data.battery_charging + '|' +
+        data.cookies_enabled + '|' +
+        data.do_not_track + '|' +
         data.referrer + '|' +
         data.path;
 

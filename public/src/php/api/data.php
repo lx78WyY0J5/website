@@ -264,60 +264,70 @@ try {
             `webdriver`, `app_version`, `timezone_offset`, `battery_level`,
             `battery_charging`, `is_mobile`, `languages`, `vendor`,
             `user_agent_brands`, `app_name`, `app_code_name`, `product_sub`,
-            `product`, `oscpu`,
-            `device_memory`, `hardware_concurrency`, `connection_effective_type`,
-            `connection_downlink`, `connection_save_data`, `on_line`, `java_enabled`,
-            `gpu_adapter`, `pixel_depth`, `local_ip`,
-            `fingerprint`, `referrer`, `path`, `cookies_enabled`, `do_not_track`, `raw_data`
+            `user_agent`, `app_version`, `app_name`, `app_code_name`,
+            `product`, `product_sub`, `vendor`, `oscpu`, `platform`,
+            `language`, `languages`,
+            `webdriver`, `java_enabled`, `is_mobile`, `user_agent_brands`,
+            `device_memory`, `hardware_concurrency`,
+            `time_zone`, `timezone_offset`, `on_line`,
+            `connection_effective_type`, `connection_downlink`, `connection_save_data`, `local_ip`,
+            `screen_resolution`, `color_depth`, `pixel_depth`,
+            `gpu`, `gpu_adapter`,
+            `battery_level`, `battery_charging`,
+            `cookies_enabled`, `do_not_track`, `referrer`, `path`,
+            `fingerprint`, `raw_data`
         ) VALUES (
-            :ip, :date_visite, :user_agent, :time_zone, :language,
-            :platform, :screen_resolution, :color_depth, :gpu,
-            :webdriver, :app_version, :timezone_offset, :battery_level,
-            :battery_charging, :is_mobile, :languages, :vendor,
-            :user_agent_brands, :app_name, :app_code_name, :product_sub,
-            :product, :oscpu,
-            :device_memory, :hardware_concurrency, :connection_effective_type,
-            :connection_downlink, :connection_save_data, :on_line, :java_enabled,
-            :gpu_adapter, :pixel_depth, :local_ip,
-            :fingerprint, :referrer, :path, :cookies_enabled, :do_not_track, :raw_data
+            :ip, :date_visite,
+            :user_agent, :app_version, :app_name, :app_code_name,
+            :product, :product_sub, :vendor, :oscpu, :platform,
+            :language, :languages,
+            :webdriver, :java_enabled, :is_mobile, :user_agent_brands,
+            :device_memory, :hardware_concurrency,
+            :time_zone, :timezone_offset, :on_line,
+            :connection_effective_type, :connection_downlink, :connection_save_data, :local_ip,
+            :screen_resolution, :color_depth, :pixel_depth,
+            :gpu, :gpu_adapter,
+            :battery_level, :battery_charging,
+            :cookies_enabled, :do_not_track, :referrer, :path,
+            :fingerprint, :raw_data
         )
         ON DUPLICATE KEY UPDATE
             `user_agent` = :user_agent,
-            `time_zone` = :time_zone,
-            `language` = :language,
-            `platform` = :platform,
-            `screen_resolution` = :screen_resolution,
-            `color_depth` = :color_depth,
-            `gpu` = :gpu,
-            `webdriver` = :webdriver,
             `app_version` = :app_version,
-            `timezone_offset` = :timezone_offset,
-            `battery_level` = :battery_level,
-            `battery_charging` = :battery_charging,
-            `is_mobile` = :is_mobile,
-            `languages` = :languages,
-            `vendor` = :vendor,
-            `user_agent_brands` = :user_agent_brands,
             `app_name` = :app_name,
             `app_code_name` = :app_code_name,
-            `product_sub` = :product_sub,
             `product` = :product,
+            `product_sub` = :product_sub,
+            `vendor` = :vendor,
             `oscpu` = :oscpu,
+            `platform` = :platform,
+            `language` = :language,
+            `languages` = :languages,
+            `webdriver` = :webdriver,
+            `java_enabled` = :java_enabled,
+            `is_mobile` = :is_mobile,
+            `user_agent_brands` = :user_agent_brands,
             `device_memory` = :device_memory,
             `hardware_concurrency` = :hardware_concurrency,
+            `time_zone` = :time_zone,
+            `timezone_offset` = :timezone_offset,
+            `on_line` = :on_line,
             `connection_effective_type` = :connection_effective_type,
             `connection_downlink` = :connection_downlink,
             `connection_save_data` = :connection_save_data,
-            `on_line` = :on_line,
-            `java_enabled` = :java_enabled,
-            `gpu_adapter` = :gpu_adapter,
-            `pixel_depth` = :pixel_depth,
             `local_ip` = :local_ip,
-            `fingerprint` = :fingerprint,
-            `referrer` = :referrer,
-            `path` = :path,
+            `screen_resolution` = :screen_resolution,
+            `color_depth` = :color_depth,
+            `pixel_depth` = :pixel_depth,
+            `gpu` = :gpu,
+            `gpu_adapter` = :gpu_adapter,
+            `battery_level` = :battery_level,
+            `battery_charging` = :battery_charging,
             `cookies_enabled` = :cookies_enabled,
             `do_not_track` = :do_not_track,
+            `referrer` = :referrer,
+            `path` = :path,
+            `fingerprint` = :fingerprint,
             `raw_data` = :raw_data
     ";
 
@@ -325,41 +335,41 @@ try {
     $stmt->bindParam(':ip', $visitorIp, PDO::PARAM_STR);
     $stmt->bindParam(':date_visite', $visitDate, PDO::PARAM_STR);
     $stmt->bindParam(':user_agent', $userAgent, PDO::PARAM_STR);
-    $stmt->bindParam(':time_zone', $timeZone, PDO::PARAM_STR);
-    $stmt->bindParam(':language', $language, PDO::PARAM_STR);
-    $stmt->bindParam(':platform', $platform, PDO::PARAM_STR);
-    $stmt->bindParam(':screen_resolution', $screenResolution, PDO::PARAM_STR);
-    $stmt->bindParam(':color_depth', $colorDepth, PDO::PARAM_INT);
-    $stmt->bindParam(':gpu', $gpu, PDO::PARAM_STR);
-    $stmt->bindParam(':webdriver', $webdriver, PDO::PARAM_INT);
     $stmt->bindParam(':app_version', $appVersion, PDO::PARAM_STR);
-    $stmt->bindParam(':timezone_offset', $timezoneOffset, PDO::PARAM_INT);
-    $stmt->bindParam(':battery_level', $batteryLevel, PDO::PARAM_STR);
-    $stmt->bindParam(':battery_charging', $batteryCharging, PDO::PARAM_INT);
-    $stmt->bindParam(':is_mobile', $isMobile, PDO::PARAM_INT);
-    $stmt->bindParam(':languages', $languages, PDO::PARAM_STR);
-    $stmt->bindParam(':vendor', $vendor, PDO::PARAM_STR);
-    $stmt->bindParam(':user_agent_brands', $userAgentBrands, PDO::PARAM_STR);
     $stmt->bindParam(':app_name', $appName, PDO::PARAM_STR);
     $stmt->bindParam(':app_code_name', $appCodeName, PDO::PARAM_STR);
-    $stmt->bindParam(':product_sub', $productSub, PDO::PARAM_STR);
     $stmt->bindParam(':product', $product, PDO::PARAM_STR);
+    $stmt->bindParam(':product_sub', $productSub, PDO::PARAM_STR);
+    $stmt->bindParam(':vendor', $vendor, PDO::PARAM_STR);
     $stmt->bindParam(':oscpu', $oscpu, PDO::PARAM_STR);
+    $stmt->bindParam(':platform', $platform, PDO::PARAM_STR);
+    $stmt->bindParam(':language', $language, PDO::PARAM_STR);
+    $stmt->bindParam(':languages', $languages, PDO::PARAM_STR);
+    $stmt->bindParam(':webdriver', $webdriver, PDO::PARAM_INT);
+    $stmt->bindParam(':java_enabled', $javaEnabled, PDO::PARAM_INT);
+    $stmt->bindParam(':is_mobile', $isMobile, PDO::PARAM_INT);
+    $stmt->bindParam(':user_agent_brands', $userAgentBrands, PDO::PARAM_STR);
     $stmt->bindParam(':device_memory', $deviceMemory, PDO::PARAM_STR);
     $stmt->bindParam(':hardware_concurrency', $hardwareConcurrency, PDO::PARAM_INT);
+    $stmt->bindParam(':time_zone', $timeZone, PDO::PARAM_STR);
+    $stmt->bindParam(':timezone_offset', $timezoneOffset, PDO::PARAM_INT);
+    $stmt->bindParam(':on_line', $onLine, PDO::PARAM_INT);
     $stmt->bindParam(':connection_effective_type', $connectionEffectiveType, PDO::PARAM_STR);
     $stmt->bindParam(':connection_downlink', $connectionDownlink, PDO::PARAM_STR);
     $stmt->bindParam(':connection_save_data', $connectionSaveData, PDO::PARAM_INT);
-    $stmt->bindParam(':on_line', $onLine, PDO::PARAM_INT);
-    $stmt->bindParam(':java_enabled', $javaEnabled, PDO::PARAM_INT);
-    $stmt->bindParam(':gpu_adapter', $gpuAdapter, PDO::PARAM_STR);
-    $stmt->bindParam(':pixel_depth', $pixelDepth, PDO::PARAM_INT);
     $stmt->bindParam(':local_ip', $localIp, PDO::PARAM_STR);
-    $stmt->bindParam(':fingerprint', $fingerprint, PDO::PARAM_STR);
-    $stmt->bindParam(':referrer', $referrer, PDO::PARAM_STR);
-    $stmt->bindParam(':path', $path, PDO::PARAM_STR);
+    $stmt->bindParam(':screen_resolution', $screenResolution, PDO::PARAM_STR);
+    $stmt->bindParam(':color_depth', $colorDepth, PDO::PARAM_INT);
+    $stmt->bindParam(':pixel_depth', $pixelDepth, PDO::PARAM_INT);
+    $stmt->bindParam(':gpu', $gpu, PDO::PARAM_STR);
+    $stmt->bindParam(':gpu_adapter', $gpuAdapter, PDO::PARAM_STR);
+    $stmt->bindParam(':battery_level', $batteryLevel, PDO::PARAM_STR);
+    $stmt->bindParam(':battery_charging', $batteryCharging, PDO::PARAM_INT);
     $stmt->bindParam(':cookies_enabled', $cookiesEnabled, PDO::PARAM_INT);
     $stmt->bindParam(':do_not_track', $doNotTrack, PDO::PARAM_INT);
+    $stmt->bindParam(':referrer', $referrer, PDO::PARAM_STR);
+    $stmt->bindParam(':path', $path, PDO::PARAM_STR);
+    $stmt->bindParam(':fingerprint', $fingerprint, PDO::PARAM_STR);
     $stmt->bindParam(':raw_data', $rawData, PDO::PARAM_STR);
     $stmt->execute();
 
