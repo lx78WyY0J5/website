@@ -137,14 +137,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 // Display the user's profile picture (if exists)
 $latestPicture = getLatestProfilePictureOfUser($pdo, $userId);
-if ($latestPicture && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . dirname($latestPicture) . '/' . basename($latestPicture))) {
+if ($latestPicture !== false && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . dirname($latestPicture) . '/' . basename($latestPicture))) {
     echo "<div>";
     echo "<img src='/" . ltrim($latestPicture, '/') . "' alt='Profile picture'>";
     echo "</div>";
 }
 else {
-    $name = $_SERVER['DOCUMENT_ROOT'] . '/' . dirname($latestPicture) . '/' . basename($latestPicture);
-    echo "<p>error !!!!</p><br><p>" . $name . "</p>";
+    echo "<p>Aucune photo de profil pour le moment.</p>";
 }
 
 // Display all pictures if multiple exist
