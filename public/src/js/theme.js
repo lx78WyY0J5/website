@@ -66,15 +66,15 @@ async function setIconTheme() {
     var img = themeButton.children[0];
 
     if (localStorage.getItem("theme") === "dark") {
-        img.src = "/assets/svg/sun.svg";
+        img.src = "/src/assets/svg/sun.svg";
     }
     else if (localStorage.getItem("theme") === "day") {
-        img.src = "/assets/svg/light.svg";
+        img.src = "/src/assets/svg/light.svg";
     }
     else if (localStorage.getItem("theme") === "light") {
-        img.src = "/assets/svg/moon.svg";
+        img.src = "/src/assets/svg/moon.svg";
     }
-    else { img.src = "/assets/svg/settings.svg"; }
+    else { img.src = "/src/assets/svg/settings.svg"; }
 }
 
 function setTransparencyPower(){

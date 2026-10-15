@@ -1,0 +1,24 @@
+#settingsmenu>div{
+    padding: 50px;
+}
+
+#settingsmenu>button {
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.check {
+    display: block;
+
+    padding-top: 15px;
+    padding-left: 50px;
+}
+
+.check>p{
+    padding-left: 10px;
+}
+
+div:has(> div > input[type="range"]) {
+    padding-left: 50px;
+    padding-top: 30px;
+}
