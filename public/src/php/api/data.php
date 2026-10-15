@@ -259,11 +259,7 @@ $rawData = json_encode($data, JSON_UNESCAPED_UNICODE);
 try {
     $sql = "
         INSERT INTO `visites` (
-            `ip`, `date_visite`, `user_agent`, `time_zone`, `language`,
-            `platform`, `screen_resolution`, `color_depth`, `gpu`,
-            `webdriver`, `app_version`, `timezone_offset`, `battery_level`,
-            `battery_charging`, `is_mobile`, `languages`, `vendor`,
-            `user_agent_brands`, `app_name`, `app_code_name`, `product_sub`,
+            `ip`, `date_visite`,
             `user_agent`, `app_version`, `app_name`, `app_code_name`,
             `product`, `product_sub`, `vendor`, `oscpu`, `platform`,
             `language`, `languages`,
