@@ -114,11 +114,11 @@ function setInputValue(name, defaultValue) {
 
     if(GotValue === undefined || GotValue === null){
         input.value = defaultValue;
-        console.error("Setting input " + name + " to default value ; " + defaultValue);
+        console.warn("Setting input " + name + " to default value ; " + defaultValue);
     }
     else {
         input.value = GotValue;
-        console.error("Setting input " + name + " to found value ; " + GotValue);
+        console.log("Setting input " + name + " to found value ; " + GotValue);
     }
 }
 
