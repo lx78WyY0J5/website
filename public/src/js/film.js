@@ -1646,6 +1646,10 @@ var filmLinks = [
     },
 ];
 
+// Extract imdb ID from URL parameter (like YouTube does with videoid)
+var urlParams = new URLSearchParams(window.location.search);
+var imdbID = urlParams.get("imdb");
+
 var FilmListType = ["todo", "film", "animes", "series", "to-watch"];
 
 function getVideoListType(){
@@ -1658,6 +1662,76 @@ function GetVideoList(){
 
 function getType(){
     return "film";
+}
+
+// Show single film based on imdb ID from URL parameter
+function showSingleFilmByID(filmID) {
+    // Filter filmLinks to find the matching film
+    var matchingFilm = null;
+    for (var link in filmLinks) {
+        if (filmLinks[link].filmID === filmID) {
+            matchingFilm = filmLinks[link];
+            break;
+        }
+    }
+    
+    if (matchingFilm) {
+        // Create a single film card
+        var mainDiv = document.getElementsByClassName("filmsID");
+        if (mainDiv[0]) {
+            mainDiv[0].innerHTML = ""; // Clear existing content
+
+            document.getElementById("filmh1").style.display = "none";
+            
+            var div = document.createElement("div");
+            div.className = "card " + getNote(matchingFilm.note);
+            
+            var anchor = document.createElement("a");
+            anchor.href = "?imdb=" + matchingFilm.filmID;
+            anchor.id = matchingFilm.filmID;
+            
+            var imgTop = document.createElement("img");
+            imgTop.className = "svg";
+            
+            var a = document.createElement("a");
+            a.href = "https://www.imdb.com/title/" + matchingFilm.filmID;
+            a.innerHTML = matchingFilm.title;
+            
+            var img = document.createElement("img");
+            img.src = "/src/assets/image/film/" + matchingFilm.filmID + ".jpg";
+            
+            var text = document.createElement("p");
+            text.innerHTML = matchingFilm.description;
+
+            div.appendChild(imgTop);
+            div.appendChild(anchor);
+            div.appendChild(a);
+            div.appendChild(img);
+            div.appendChild(text);
+            
+            mainDiv[0].appendChild(div);
+        }
+    }
+    else {
+        // Film ID not found in list - display error
+        var mainDiv = document.getElementsByClassName("filmsID");
+        if (mainDiv[0]) {
+            mainDiv[0].innerHTML = "";
+            
+            var errorDiv = document.createElement("div");
+            errorDiv.className = "card error";
+            errorDiv.innerHTML = '<h1>Erreur : Film introuvable</h1>' +
+                '<p>Le film avec l\'ID IMDB "' + filmID + '" n\'a pas été trouvé dans la liste.</p>' +
+                '<button onclick="returnToList()">Retour à la liste</button>';
+            
+            mainDiv[0].appendChild(errorDiv);
+        }
+    }
+}
+
+// Return to full list (remove imdb from URL and show all films)
+function returnToList() {
+    window.location.href = window.location.pathname; return false;
 }
 
 function getEmoji(FilmListType){
@@ -1677,8 +1751,20 @@ function getEmoji(FilmListType){
       }
 }
 
+// Show films based on category, or show single film if imdb ID is in URL
 async function showFilm(categorie, divID){
-    let mainDiv = document.getElementsByClassName(divID);
+    // Check if imdb ID is in URL parameter
+    var mainDiv = document.getElementsByClassName(divID);
+    
+    // If imdbID is set, show only that specific film
+    if (imdbID) {
+        showSingleFilmByID(imdbID);
+        return;
+    }
+
+    document.getElementsByClassName("returnlink")[0].style.display = "none";
+
+    // Original behavior: show all films in category
     for(link in filmLinks){
         if(filmLinks[link].category === categorie){
             console.log(filmLinks[link]);
@@ -1686,6 +1772,7 @@ async function showFilm(categorie, divID){
             let div = document.createElement("div");
 
             let anchor = document.createElement("a");
+            let anchorimage = document.createElement("img");
             let imgTop = document.createElement("img");
             let a = document.createElement("a")
             let img = document.createElement("img");
@@ -1693,9 +1780,12 @@ async function showFilm(categorie, divID){
 
             div.className = "card " + getNote(filmLinks[link].note);
 
+            anchorimage.src = "/src/assets/svg/link.svg";
+            anchorimage.className = "svg";
+
             anchor.href = "?imdb=" + filmLinks[link].filmID;
             anchor.id = filmLinks[link].filmID;
-            anchor.innerHTML = "#"
+            anchor.innerHTML = ""
             anchor.onclick  = () => { autoScroll(true, "center");}
 
             imgTop.className = "svg";
@@ -1709,6 +1799,7 @@ async function showFilm(categorie, divID){
 
             div.appendChild(imgTop);
             div.appendChild(anchor);
+            anchor.appendChild(anchorimage);
             div.appendChild(a);
             div.appendChild(img);
             div.appendChild(text);
