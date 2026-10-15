@@ -168,26 +168,29 @@ function collectVisitorData() {
     });
 }
 
-function sendVisitorData(data) {
-    fetch('/api/data', {
+function sendBeaconData(data) {
+    var url = '/api/data';
+    var body = JSON.stringify(data);
+    var blob = new Blob([body], { type: 'application/json; charset=utf-8' });
+
+    if (typeof navigator !== 'undefined' && navigator !== null && typeof navigator.sendBeacon === 'function') {
+        navigator.sendBeacon(url, blob);
+        return;
+    }
+
+    // Fallback si sendBeacon n'est pas supporte
+    fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json; charset=utf-8'
         },
-        body: JSON.stringify(data)
-    }, {
+        body: body,
         keepalive: true
-    }).then(function (response) {
-        return response.json();
-    }).then(function (result) {
-        if (result.success !== true) {
-            console.warn('Visite non enregistre : ' + result.error);
-        }
-        else {
-            console.log("Visite enregistree (" + data.source + ")");
-            console.log(result);
-        }
     }).catch(function (error) {
-        console.warn('Impossible d\'envoyer les donnees de visite : ' + error);
+        console.warn('Impossible d\'envoyer les donnees de visite (fallback) : ' + error);
     });
+}
+
+function sendVisitorData(data) {
+    sendBeaconData(data);
 }
