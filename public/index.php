@@ -6,7 +6,7 @@
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/view_counter.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/view_counter.php';
 
     // Global rate limit per IP (DDoS protection)
     $clientIp = getClientIdentifier();
