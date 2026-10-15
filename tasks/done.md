@@ -1,7 +1,15 @@
 # ✅ Fait — Fonctionnalités implémentées et opérationnelles
 
-> Dernière mise à jour : 2025-10-14
+> Dernière mise à jour : 2026-10-15
 > Ce fichier liste ce qui **fonctionne déjà** dans le repo `website/` avec pointeurs vers le code.
+
+## 🧪 Tests API ajoutés
+
+### test_api.sh - Vérifie que l'endpoint `/api` retourne "OK"
+
+- **Fichier** : `tests/test_api.sh`
+- **Description** : Envoie une requête curl vers `$BASE_URL/api` et vérifie que la réponse contient "OK"
+- **Utilisation** : Exécuté via `bash tests/test_api.sh` avec le serveur PHP en cours d'exécution sur le port 8000
 
 ---
 
