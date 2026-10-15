@@ -101,7 +101,7 @@ wait_for_mariadb() {
 start_php() {
     echo "Starting PHP server on 127.0.0.1:8000..."
     cd public
-    php -S 127.0.0.1:8000 -t . &
+    php -S 127.0.0.1:8000 -t . index.php &
     PHP_PID=$!
 
     if [ "$OS" = "termux" ]; then
