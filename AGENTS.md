@@ -1,10 +1,12 @@
 # Lecture des règles
+
+- Lorsqu’une tâche dans `tasks/now.md` est complétée, elle doit être supprimée du fichier. Si la tâche est importante ou nécessite un compte‑rendu, l’ajouter à `tasks/done.md`.
 - Lancer une commande `tree` pour ne pas manquer de fichier ou dossier
 - Lire les fichiers PHP, HTML, CSS, JS pour comprendre le style existant avant d'écrire du nouveau code
 - Si le code ne respecte pas les règles ci-dessous, le corriger avant de terminer
 - Vérifier une deuxième fois que toutes les modifications sont bonnes, et n'entraine pas d'effet indésirable
 - Vérifier les fautes d'orthographes et les signaler dans `soon.md`
-- Fichiers `tasks/done.md`, `tasks/now.md`, `tasks/soon.md`, `README.md`, et `AGENTS.md` doivent êtres mis à jour en fin de session
+- Fichiers `tasks/done.md`, `tasks/now.md`, `tasks/soon.md`, `README.md`, et `AGENTS.md` doivent être mis à jour en fin de session
 - **Pas de fonctions fléchées** (`=>`) : utiliser des fonctions classiques avec `function name()`
 - **Pas de conditions en une ligne** (`? :`) : utiliser des `if / else` complets et explicites
 - **Conditions `if / else` claires** : toujours utiliser la structure complète avec accolades `{ }`
@@ -15,3 +17,7 @@
 - **HTML, CSS, JS, PHP, SQL avec MariaDB**
 - Aucune librairie externe n'est autorisée
 - Le site tourne en local sur `localhost:8000` avec `php -S localhost:8000 -t ./public/`
+- Le répertoire `tasks/` contient les fichiers qui constituent la mémoire de travail de l'IA en cours de session :
+- **Important** : Tu peux toi-même ajouter des tâches directement dans `now.md` et lancer l'IA dessus. L'IA traitera ces tâches séquentiellement.
+- **Début de session** : Vérifier `now.md` pour connaître les priorités immédiates (c'est la mémoire de tâche en cours).
+- **Progression** : À mesure qu'une tâche avance, mise à jour de son état (`en cours`, `bloqué`, etc.).

@@ -7,7 +7,7 @@
 
 ## 🔴 CRITIQUE — Sécurité & SEO fondamentaux
 
-### 1. Protection CSRF sur tous les formulaires POST
+### Protection CSRF sur tous les formulaires POST
 - **Description** : Aucun token CSRF n'existe. Tout formulaire state-changing (login, register, password update, profile picture, logout) est vulnérable.
 - **Exemple d'attaque** : Page malveillante → `<form action="https://doc.altherneum.fr/login" method="POST">` → auto-submit → victim connectée sans le savoir.
 - **Fichiers cibles** :
@@ -38,7 +38,7 @@ function requireCsrfToken(): void {
 }
 ```
 
-### 2. Template `<head>` unifié avec métas SEO/social
+### Template `<head>` unifié avec métas SEO/social
 - **Description** : 70+ fichiers `head.php` ne contiennent que `<meta charset>` + `<title>`. Manquent : viewport, OG, Twitter Cards, canonical, description, favicons links, theme-color.
 - **Exemple** : Page partagée sur Discord/Twitter → pas d'image, pas de description, titre générique.
 - **Fichiers cibles** :
@@ -81,7 +81,7 @@ $ogImage     = $ogImage     ?? 'https://doc.altherneum.fr/src/assets/gif/small.g
 </head>
 ```
 
-### 3. `robots.txt` + `sitemap.xml` + `CNAME` à la racine `public/`
+### `robots.txt` + `sitemap.xml` + `CNAME` à la racine `public/`
 - **Description** : Absents. Indispensables pour SEO (crawling, indexation, domaine custom GitHub Pages).
 - **Exemple** : Google ne sait pas quoi crawler, pas de sitemap → indexation lente/incomplète.
 - **Fichiers cibles** (nouveaux dans `public/`) :
@@ -97,7 +97,7 @@ $ogImage     = $ogImage     ?? 'https://doc.altherneum.fr/src/assets/gif/small.g
     ```
   - `sitemap.xml` : **Génération dynamique recommandée** (script PHP cron ou à la volée via route `/sitemap.xml` dans `index.php`)
 
-### 4. Durcir `php.ini` (prod)
+### Durcir `php.ini` (prod)
 - **Description** : Config par défaut insécurisée.
 - **Modifications** :
 ```ini
@@ -108,7 +108,7 @@ session.cookie_secure = 1     ; seulement si HTTPS en prod
 ```
 - **Fichier** : `php.ini` (lignes 14, 98, 99, 100)
 
-### 5. Headers de sécurité HTTP (`.htaccess` pour Apache / config Nginx)
+### Headers de sécurité HTTP (`.htaccess` pour Apache / config Nginx)
 - **Description** : Aucun header CSP, HSTS, X-Frame-Options, etc.
 - **Fichier cible** : `public/.htaccess` (nouveau)
 - **Contenu minimal** :
@@ -136,7 +136,7 @@ Header always set Content-Security-Policy "default-src 'self'; script-src 'self'
 </FilesMatch>
 ```
 
-### 6. Corriger `agent.md` (référence fantôme `init-db.sql`)
+### Corriger `agent.md` (référence fantôme `init-db.sql`)
 - **Description** : L'`agent.md` (ligne ~444) liste `public/src/sql/init-db.sql` dans l'arborescence, mais ce fichier **n'existe pas**. Le schéma BDD est créé par `public/src/php/create-db.php` (lignes 40-170).
 - **Impact** : IA qui lit l'agent.md croit qu'un fichier SQL existe → confusion, arborescence fausse.
 - **Action** : Supprimer la ligne `init-db.sql` de l'arborescence dans `agent.md` + mettre à jour le `tree` output.
@@ -147,7 +147,7 @@ Header always set Content-Security-Policy "default-src 'self'; script-src 'self'
 
 ## 🟠 IMPORTANT — Fonctionnalités manquantes (existaient sur l'ancien site)
 
-### 7. Endpoint RSS XML réel (`/rss.rss` ou `/feed.xml`)
+### Endpoint RSS XML réel (`/rss.rss` ou `/feed.xml`)
 - **Description** : Page `/outils/rss` existe (JS client-side qui affiche le XML dans un textarea), mais **pas de fichier XML servis par le serveur**. L'ancien site avait `rss.rss` statique à la racine.
 - **Exemple** : Lecteur RSS (Feedly, Thunderbird) → `https://doc.altherneum.fr/rss.rss` → 404.
 - **Solution** : Créer `public/src/pages/rss/feed.php` qui génère le XML (réutiliser logique `rss.js` côté serveur) + route dans `index.php` (`/rss.rss` ou `/feed.xml` → ce handler).
@@ -178,7 +178,7 @@ foreach ($items as $item) {
 echo '  </channel></rss>';
 ```
 
-### 8. Sitemap XML dynamique
+### Sitemap XML dynamique
 - **Description** : L'ancien site avait `sitemap.xml` statique. Avec 100+ pages dynamiques, génération auto nécessaire.
 - **Solution** : Route `/sitemap.xml` dans `index.php` → handler PHP qui scanne `public/src/pages/` + pages statiques connues → génère XML avec `<lastmod>` depuis git ou BDD.
 
@@ -186,7 +186,10 @@ echo '  </channel></rss>';
 
 ## 🟡 AMÉLIORATIONS — UX / Qualité / Observabilité
 
-### 9. `manifest.json` (PWA)
+### Page /github/statistiques, ajouter le repo website
+- **Ajouter le repo `website`** dans la section « Références » de la page `/github/statistiques` ainsi que sur le dépôt GitHub Altherneum. Le repo est actuellement hébergé sur mon profil personnel.
+
+### `manifest.json` (PWA)
 - **Description** : Permet installation "Add to Home Screen", splash screen, offline basique.
 - **Fichier** : `public/manifest.json` (nouveau)
 - **Contenu** :
@@ -207,7 +210,7 @@ echo '  </channel></rss>';
 ```
 - **Note** : Il faut créer le 512×512 (manquant dans assets).
 
-### 10. `security.txt` (RFC 9116)
+### `security.txt` (RFC 9116)
 - **Description** : Standard pour contact sécurité (bug bounty, disclosure).
 - **Fichier** : `public/.well-known/security.txt` (nouveau, créer dossier)
 - **Contenu** :
@@ -218,44 +221,42 @@ Preferred-Languages: fr, en
 Canonical: https://doc.altherneum.fr/.well-known/security.txt
 ```
 
-### 11. `humans.txt` (fun, tradition)
+### `humans.txt` (fun, tradition)
 - **Description** : Crédits humains (dev, design, tools).
 - **Fichier** : `public/humans.txt` (nouveau)
 
-### 12. Health check endpoint (`/health`)
+### Health check endpoint (`/health`)
 - **Description** : Monitoring uptime (Uptime Kuma, Prometheus, etc.).
 - **Fichier** : `public/src/pages/health/index.php` (nouveau)
 - **Réponse** : JSON `{ "status": "ok", "db": "connected", "time": "..." }` + HTTP 200/503.
 
-### 13. Service Worker basique (`sw.js`) + cache offline
+### Service Worker basique (`sw.js`) + cache offline
 - **Description** : Cache statique (CSS, JS, fonts, favicons) pour chargement instantané repeat visits.
 - **Fichiers** : `public/sw.js` (nouveau) + registration dans `head.template.php` ou `index.php`.
 
-### 14. Données structurées JSON-LD (SEO rich snippets)
+### Données structurées JSON-LD (SEO rich snippets)
 - **Description** : `WebSite`, `Person`, `Article` (pour cours), `SoftwareApplication` (pour outils/jeux).
 - **Intégration** : Dans `head.template.php` ou par page selon type.
 
-### 15. Rate-limit sur endpoints publics non-auth (contact, outils, jeux)
+### Rate-limit sur endpoints publics non-auth (contact, outils, jeux)
 - **Description** : Actuellement rate-limit seulement sur auth + profile picture. Les pages publiques (outils, jeux, cours) sont ouvertes.
 - **Action** : Ajouter `checkRateLimit($pdo, $clientIp, 'public_page', 100, 1)` dans `index.php` avant include page.
 
 ---
 
-## 🟢 NICE TO HAVE
-
-### 16. Préconnect / DNS-prefetch pour assets externes
+### Préconnect / DNS-prefetch pour assets externes
 - **Description** : Si CDN, polices Google, APIs tierces → `<link rel="preconnect" href="...">` dans head.
 
-### 17. Error tracking JS côté client
+### Error tracking JS côté client
 - **Description** : `window.onerror` → POST `/api/js-error` (log dans `security.log` ou fichier dédié).
 
-### 18. Backup automatique BDD (cron)
+### Backup automatique BDD (cron)
 - **Description** : `mysqldump` journalier → compression → stockage externe (S3, Drive, etc.).
 
-### 19. Mise à jour auto des prix crypto (donation)
+### Mise à jour auto des prix crypto (donation)
 - **Description** : Actuellement `gather.js` fetch prix côté client. Cacher via cron serveur + BDD → éviter rate-limit API + charger instantané.
 
-### 20. Internationalisation (i18n) FR/EN
+### Internationalisation (i18n) FR/EN
 - **Description** : Fichiers `lang/fr.php`, `lang/en.php` + détection `Accept-Language` ou param `?lang=en`.
 
 ---
