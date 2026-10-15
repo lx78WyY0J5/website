@@ -488,6 +488,50 @@ function getHeadlessScore() {
         if ((oscpu === '' || oscpu === undefined) && (platform === '' || platform === undefined)) {
             score = score + 1;
         }
+
+        var appVersion = getAppVersion();
+        var uaLower = ua.toLowerCase();
+        var appVersionLower = appVersion.toLowerCase();
+        var botWords = [
+            'googlebot', 'googlebot-image', 'googlebot-news', 'googlebot-video', 'mediapartners-google',
+            'bingbot', 'msnbot', 'bingpreview',
+            'yandexbot', 'yandexadditional',
+            'baiduspider', 'baidu',
+            'duckduckbot', 'duckassistbot',
+            'bravebot',
+            'applebot', 'applebot-extended',
+            'amazonbot', 'amzn-searchbot',
+            'facebookexternalhit', 'facebookbot', 'meta-externalagent', 'meta-webindexer', 'meta-externalagent',
+            'linkedinbot',
+            'twitterbot',
+            'slackbot',
+            'pinterestbot',
+            'ahrefsbot', 'semrushbot', 'screaming-frog-seo-spider', 'dotbot', 'mj12bot',
+            'gptbot', 'oai-searchbot', 'chatgpt-user',
+            'claudebot', 'claude-web', 'claude-user', 'claude-code', 'anthropic-ai',
+            'perplexitybot', 'perplexity-user',
+            'google-extended', 'google-cloudvertexbot', 'gemini-deep-research', 'Google-Read-Aloud',
+            'ccbot', 'ai2bot',
+            'bytespider',
+            'cohere-ai', 'cohere-training-data-crawler',
+            'diffbot', 'img2dataset', 'crawl4ai', 'firecrawl', 'youbot', 'timpi',
+            'bot', 'crawler', 'spider', 'scrap', 'agent', 'harvester', 'extractor', 'monitor'
+        ];
+        var i;
+        var containsBotWord = 0;
+        for (i = 0; i < botWords.length; i = i + 1) {
+            if (uaLower.indexOf(botWords[i]) !== -1 || appVersionLower.indexOf(botWords[i]) !== -1) {
+                containsBotWord = 1;
+                break;
+            }
+        }
+        if (containsBotWord === 1) {
+            score = score + 1;
+        }
+
+        if (ua.indexOf('http://') !== -1 || ua.indexOf('https://') !== -1 || ua.indexOf('www.') !== -1) {
+            score = score + 1;
+        }
     }
     return score;
 }
