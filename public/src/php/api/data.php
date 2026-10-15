@@ -34,7 +34,8 @@ if (isset($_SERVER['REMOTE_ADDR'])) {
 }
 
 // Date de la visite (heure du serveur pour garantir l'unicite de la cle primaire)
-$visitDate = date('Y-m-d H:i:s.u');
+$dateTime = new DateTime();
+$visitDate = $dateTime->format('Y-m-d H:i:s.u');
 
 // Champs envoyes par le JavaScript
 if (isset($data['user_agent'])) {
