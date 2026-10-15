@@ -14,15 +14,21 @@ if (!checkRateLimit($pdo, $clientIp, 'login', 10, 15)) {
 
 // Define variables and initialize with empty values
 $username = $password = "";
-$can_register = true;
+$can_login = true;
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+    // Validate CSRF token
+    if(!validateCsrfToken()) {
+        echo "<p>Erreur de sécurité : token CSRF invalide</p>";
+        $can_login = false;
+    }
+
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
         echo "<p>Veuillez saisir un nom d'utilisateur</p>";
-        $can_register = false;
+        $can_login = false;
     } else{
         $username = trim($_POST["username"]);
     }
@@ -30,13 +36,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check if password is empty
     if(empty(trim($_POST["password"]))){
         echo "<p>Veuillez saisir un mot de passe</p>";
-        $can_register = false;
+        $can_login = false;
     } else{
         $password = trim($_POST["password"]);
     }
 
     // Validate credentials
-    if($can_register === true){
+    if($can_login === true){
         // Prepare a select statement
         $sql = "SELECT id, username, password FROM users WHERE username = :username";
 

@@ -97,6 +97,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
+    // Validate CSRF token
+    if (!validateCsrfToken()) {
+        echo "<p>Erreur de sécurité : token CSRF invalide</p>";
+        $can_upload = false;
+    }
+
     // Traitement du formulaire soumis
     if (isset($_POST["upload_profile_picture"]) && $can_upload) {
         // Upload the file

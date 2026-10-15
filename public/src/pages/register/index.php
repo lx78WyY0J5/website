@@ -4,6 +4,7 @@
         echo "<script>window.location.href = '/';</script>";
     }
     else{
+        include $_SERVER['DOCUMENT_ROOT'] . '/src/php/csrf.php';
         include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/register/register.html';
         include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/register/register.php';
     }

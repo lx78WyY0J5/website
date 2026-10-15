@@ -68,6 +68,17 @@
 - **Fichiers** : `picture.php`, `picture.html`, `picture.js`, `head.php`, `getPicture.php`
 - **Upload** : Multipart, validation extension + MIME (finfo) + `getimagesize` + taille ≤ 5 Mo → stockage `uploads/profile_pictures/<userId>/` → INSERT `user_pictures`
 - **Rate-limit** : 20 req/60 min par IP + par user
+---
+### 11b. Protection CSRF (`public/src/php/csrf.php` + formulaires)
+- **Description** : Protection CSRF (Cross-Site Request Forgery) implémentée sur tous les formulaires POST du site. Empêche les requêtes non autorisées en validant un token unique stocké en session.
+- **Fichiers** : `public/src/php/csrf.php`
+- **Fonctionnement** : 
+  - Génération d'un token unique via `bin2hex(random_bytes(32))` stocké en session
+  - Champ caché inclus dans chaque formulaire
+  - Validation côté serveur avec `validateCsrfToken()` utilisant `hash_equals()` pour la sécurité
+  - Tout bloqué si le token est manquant ou invalide
+- **Utilisé par** : Formulaires de connexion, inscription, téléchargement de photo de profil, changement de mot de passe, login, logout
+- Page sans POST/PUT/UPDATE/DELETE/GET : Utilise un formulaire invisible et le fait envoyer via JS (exemple le /Logout)
 
 ---
 

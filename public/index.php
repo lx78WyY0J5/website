@@ -1,6 +1,13 @@
 <?php
     $renderStartTime = microtime(true);
     ob_start();
+
+    session_set_cookie_params([
+        'httponly' => true,
+        'secure'   => true,
+        'samesite' => 'Strict',
+    ]);
+
     session_start();
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';

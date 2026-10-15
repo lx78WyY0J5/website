@@ -20,6 +20,12 @@ $can_register = true;
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+    // Validate CSRF token
+    if(!validateCsrfToken()) {
+        echo "<p>Erreur de sécurité : token CSRF invalide</p>";
+        $can_register = false;
+    }
+
     // Validate username
     if(!isset($_POST["username"]) || empty(trim($_POST["username"]))){
         echo "<p>Veuillez saisir un nom d'utilisateur</p>";

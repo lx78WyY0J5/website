@@ -2,6 +2,7 @@
 
 <form method="POST" enctype="multipart/form-data" action="">
     <h2>Profil picture</h2>
+    <input type="hidden" name="csrf_token" value="<?php echo generateCsrfToken(); ?>">
     <input type="file" name="profile_picture" accept="image/*" required>
     <button type="submit" name="upload_profile_picture"><p>Upload</p></button>
 </form>

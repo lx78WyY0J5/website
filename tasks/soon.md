@@ -1,41 +1,3 @@
-# Protection CSRF sur tous les formulaires POST
-## Explication
-- Commence par expliquer pourquoi et comment ça marche
-- Détail comment une tel attaque fonctionne, étape par étape (je suis dév ait pas peur)
-- Explique étape par étape le fonctionnement qui protège de cette attaque
-
-## Puis commence la tâche
-
-- **Description** : Aucun token CSRF n'existe. Tout formulaire state-changing (login, register, password update, profile picture, logout) est vulnérable.
-- **Exemple d'attaque** : Page malveillante → `<form action="https://doc.altherneum.fr/login" method="POST">` → auto-submit → victim connectée sans le savoir.
-- **Fichiers cibles** :
-  - **Nouveau** : `public/src/php/csrf.php` (génération/validation token)
-  - **Modifier** : `public/src/pages/login/login.php`, `register/register.php`, `password/update/update.php`, `profile/picture/picture.php`, `logout/logout.php` (ajouter `requireCsrfToken()` en tout début)
-  - **Modifier** : `public/src/pages/login/login.html`, `register/register.html`, `password/update/update.html`, `profile/picture/picture.html` (ajouter `<?= csrfField() ?>` dans `<form>` → renommer en `.php` ou include PHP)
-- **Pseudo-code** (`csrf.php`) :
-```php
-function generateCsrfToken(): string {
-    if (empty($_SESSION['csrf_token'])) {
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-    }
-    return $_SESSION['csrf_token'];
-}
-function validateCsrfToken(string $token): bool {
-    return !empty($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
-}
-function csrfField(): string {
-    return '<input type="hidden" name="csrf_token" value="' . htmlspecialchars(generateCsrfToken()) . '">';
-}
-function requireCsrfToken(): void {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && !validateCsrfToken($_POST['csrf_token'] ?? '')) {
-        http_response_code(403);
-        logSecurityEvent('csrf_validation_failed', ['ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown']);
-        echo "<p>Jeton CSRF invalide. Rafraîchissez la page.</p>";
-        exit;
-    }
-}
-```
-
 # User-Agent, IP, route, etc logging
 - Anti Bot
 - Each request log User-Agent, CPU, GPU, VideoDriver, TimeZone, browserLang etc
@@ -245,3 +207,13 @@ Canonical: https://doc.altherneum.fr/.well-known/security.txt
 
 # Internationalisation (i18n) FR/EN
 - **Description** : Fichiers `lang/fr.php`, `lang/en.php` + détection `Accept-Language` ou param `?lang=en`.
+
+# Protection CSRF sur tous les formulaires POST
+- **Description** : Implémentée en octobre 2026. Voir la tâche `tasks/now.md` initiale.
+- **Détails** : Token CSRF généré via `bin2hex(random_bytes(32))`, stocké en session, validé avec `hash_equals()` pour éviter les attaques par timing.
+- **Fichiers modifiés** : `public/src/php/csrf.php` (nouveau), `public/src/pages/login/login.php`, `public/src/pages/register/register.php`, `public/src/pages/profile/picture/picture.php`, `public/src/pages/password/update/update.php`, `public/src/pages/login/login.html`, `public/src/pages/register/register.html`, `public/src/pages/profile/picture/picture.html`, `public/src/pages/password/update/update.html`.
+- **Formulaires protégés** : Connexion, inscription, téléchargement photo de profil, changement de mot de passe.
+- **Règles respectées** : Functions classiques au lieu de fléchées, blocs `{ }` complets, pas de conditions `? :` en une ligne.
+
+# Corrections rapides
+- **Mot de passe .xyz** : Correction de l'espace superflu dans le lien navlink.php (`motdepasse .xyz` → `motdepasse.xyz`).

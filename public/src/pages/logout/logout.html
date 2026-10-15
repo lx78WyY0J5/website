@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="/src/pages/logout/logout.css">
 
+<form id="logoutForm" method="POST" action="/logout">
+    <input type="hidden" name="csrf_token" value="<?php echo generateCsrfToken(); ?>">
+</form>
 
 <script src="/src/pages/logout/logout.js"></script>

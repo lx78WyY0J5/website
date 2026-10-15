@@ -2,6 +2,7 @@
 
 <form method="POST" action="">
     <h2>Créer un compte</h2>
+    <input type="hidden" name="csrf_token" value="<?php echo generateCsrfToken(); ?>">
     <input type="text" name="username" placeholder="username" required>
     <input type="password" name="password" placeholder="password" required>
     <input type="password" name="confirm_password" placeholder="Confirm password" required>

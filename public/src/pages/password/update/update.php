@@ -13,6 +13,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/password_validation.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/csrf.php';
 
 // Rate limiting (per user + per IP)
 $clientIp = getClientIdentifier();
@@ -29,6 +30,12 @@ $can_update = true;
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    // Validate CSRF token
+    if(!validateCsrfToken()) {
+        echo "<p>Erreur de sécurité : token CSRF invalide</p>";
+        $can_update = false;
+    }
 
     // Validate password using shared validation
     $password = $_POST["password"];
@@ -66,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             setTimeout(function(){ window.location.href='/login'; }, 5000);
                             document.forms[0].style = 'display: none;';
                         </script>";
-                        exit();
+                        exit;
                     }
                     else {
                         echo "Oops! Something went wrong. Please try again later.";
