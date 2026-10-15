@@ -92,6 +92,7 @@
     <link rel="stylesheet" href="/src/css/article.css">
     <body>
         <script src="/src/js/theme.js"></script>
+        <script src="/src/js/visitor.js"></script>
 
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.php'; ?>
 

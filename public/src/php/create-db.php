@@ -169,6 +169,35 @@
             }
         }
 
+        // Create table visites only if it doesn't exist
+        try {
+            $sql = "CREATE TABLE IF NOT EXISTS visites (
+                ip VARCHAR(45) NOT NULL,
+                date_visite DATETIME(6) NOT NULL,
+                user_agent TEXT NOT NULL,
+                time_zone VARCHAR(100),
+                language VARCHAR(20),
+                platform VARCHAR(100),
+                screen_resolution VARCHAR(30),
+                color_depth SMALLINT UNSIGNED,
+                gpu TEXT,
+                fingerprint CHAR(64),
+                referrer TEXT,
+                path TEXT,
+                cookies_enabled TINYINT(1) UNSIGNED DEFAULT 0,
+                do_not_track TINYINT(1) UNSIGNED DEFAULT 0,
+                raw_data TEXT,
+                PRIMARY KEY (ip, date_visite),
+                INDEX idx_fingerprint (fingerprint),
+                INDEX idx_date_visite (date_visite)
+            )";
+
+            $pdo->exec($sql);
+            echo "<p>✔️ Table visites ready</p>";
+        } catch(PDOException $e) {
+            echo "<p>Error creating visites table: " . $e->getMessage() . "</p>";
+        }
+
         echo "<p>✔️ Database initialized</p>";
     }
 
