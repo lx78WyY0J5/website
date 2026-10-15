@@ -2,13 +2,6 @@
 // https://discord.com/developers/docs/reference
 var Token = "AAAAAAAAAAAAAAAAAAAA.AAAAAA-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 
-// sendMessage(9, t, "", "POST", "channels/1328803239109464205/messages", "Test", "1035681305947553892"); //send message to a serverChannel
-// sendMessage(9, t, "", "POST", "channels/1328803239109464205/messages", "Test", ""); //send message to a UserChannel
-function sendMessage(Version, Token, AccountType, Methode, ChannelID, Message, ServerID){
-    var referrer = "channels/" + ServerID + "/" + ChannelID;
-    sendToAPI(Version, Token, AccountType, Methode, ChannelID, Message, referrer);
-}
-
 // sendToAPI(9, "TOKEN", "Bot", "POST", "", "");
 function sendToAPI(Version, Token, AccountType, Methode, URL, Message, referrer){
 
@@ -33,6 +26,13 @@ function sendToAPI(Version, Token, AccountType, Methode, URL, Message, referrer)
     .catch(function (res) {
         console.log(res);
     });
+}
+
+// sendMessage(9, t, "", "POST", "channels/1111111111111111111/messages", "Test", "1111111111111111111"); //send message to a serverChannel
+// sendMessage(9, t, "", "POST", "channels/1111111111111111111/messages", "Test", ""); //send message to a UserChannel
+function sendMessage(Version, Token, AccountType, Methode, ChannelID, Message, ServerID){
+    var referrer = "channels/" + ServerID + "/" + ChannelID;
+    sendToAPI(Version, Token, AccountType, Methode, ChannelID, Message, referrer);
 }
 
 // sendToWebHook("000000000000000", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "test", "POST");

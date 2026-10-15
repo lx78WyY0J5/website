@@ -26,32 +26,8 @@ function SwitchGranted() {
     Switcher("Granted");
 }
 
-function SwitchOldSearchBar() {
-    Switcher("OldSearchBar");
-}
-
-function SwitchAllSearchBar() {
-    Switcher("AllSearchBar");
-}
-
-function SwitchSearchBarList() {
-    Switcher("SearchBarList");
-}
-
 function SwitchYouTubeLoop() {
     Switcher("YouTubeLoop");
-}
-
-function SwitchErrorLogging() {
-    Switcher("ErrorLogging");
-}
-
-function SwitchWarningLogging() {
-    Switcher("WarningLogging");
-}
-
-function SwitchAllLogs() {
-    Switcher("AllLogs");
 }
 
 function SwitchYoutubeShuffle() {
@@ -60,14 +36,6 @@ function SwitchYoutubeShuffle() {
 
 function SwitchYoutubeTitleSaving() {
     Switcher("YoutubeTitleSaving");
-}
-
-function SwitchVisitedLogs() {
-    Switcher("VisitedLogs");
-}
-
-function SwitchLogLogging() {
-    Switcher("LogLogging");
 }
 
 function SwitchOpenAllChapter() {
@@ -163,14 +131,6 @@ function loadSettingsSwitch() {
     setInputValue("PlayListVideoAmount", 20);
     setInputValue("YouTubeVideoDelay", 20);
     setSwitch("IndividualsVids", true);
-    setSwitch("OldSearchBar", false);
-    setSwitch("SearchBarList", true);
-    setSwitch("AllSearchBar", false);
-    setSwitch("LogLogging", false);
-    setSwitch("WarningLogging", false);
-    setSwitch("ErrorLogging", false);
-    setSwitch("VisitedLogs", true);
-    setSwitch("AllLogs", false);
     setSwitch("OpenAllChapter", true);
     setSwitch("CloseOnOpen", false);
     setSwitch("Titre2", true);
