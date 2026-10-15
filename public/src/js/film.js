@@ -1693,7 +1693,7 @@ async function showFilm(categorie, divID){
 
             div.className = "card " + getNote(filmLinks[link].note);
 
-            anchor.href = "#" + filmLinks[link].filmID;
+            anchor.href = "?imdb=" + filmLinks[link].filmID;
             anchor.id = filmLinks[link].filmID;
             anchor.innerHTML = "#"
             anchor.onclick  = () => { autoScroll(true, "center");}

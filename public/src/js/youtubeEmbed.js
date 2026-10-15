@@ -3,18 +3,17 @@ var total = 0;
 let GlobalVideoIDList;
 
 async function loadYouTubeEmbed() {
-    checkURL();
     await setVideoScreenLocking();
     createPlayListList();
     GlobalVideoIDList = GetVideoList();
     GetVideos(shuffle(GlobalVideoIDList), getVideoListType(), getType(), true);
 }
 
-function checkURL(){
-    let hash = window.location.hash
-    if(hash == "#footer" || hash == "#header"){
-        window.history.replaceState({page: ""}, "", window.location.pathname);   
-    }
+function returnToList() {
+    // Remove ?videoid from URL and show all videos
+    window.history.replaceState({page: ""}, "", window.location.pathname);
+    // Reload to show all videos (no videoid parameter means show all)
+    GetVideos(GlobalVideoIDList, getVideoListType(), getType(), true);
 }
 
 var shown = ["all"];
@@ -112,9 +111,10 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 async function GetVideos(videoList, VideoListType, videoType, includeLatestVideoOfChannel) {
     addButtons(VideoListType);
 
-    var hash = decodeURIComponent(window.location.hash).replace("#", "");
+    var search = window.location.search;
+    var hash = new URLSearchParams(search).get("videoid");
     var LoadSingleVideo = false;
-    if (hash !== "") {
+    if (hash !== null) {
         LoadSingleVideo = true;
         hideMenu("menu-all");
         hideMenu("menu-default");
@@ -384,7 +384,7 @@ function addCard(top, playlist, videoID, category, latest, premadePlayList, vide
 
     if (!premadePlayList) {
         var anchor = document.createElement("a");
-        anchor.href = "#" + videoID;
+        anchor.href = "?videoid=" + videoID;
         anchor.onclick = () => { };
 
         anchor.id = videoID;

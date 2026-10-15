@@ -123,7 +123,7 @@ function mergeYouTubeTitles(musicListMerge, song, video, film){
 
         if(linked.title !== undefined && (song === true || video === true)){
             object = {
-                href: "/admin/" + url + htmlOffline + "#" + linked.videoID,
+                href: "/admin/" + url + htmlOffline + "?videoid=" + linked.videoID,
                 tag: linked.category,
                 title: linked.title,
                 text: linkText,
@@ -134,7 +134,7 @@ function mergeYouTubeTitles(musicListMerge, song, video, film){
         }
         else if (linked.title !== undefined && film === true){
             object = {
-                href: "/admin/" + url + htmlOffline + "#" + linked.filmID,
+                href: "/admin/" + url + htmlOffline + "?imdb=" + linked.filmID,
                 tag: linked.category,
                 title: linked.title,
                 svg: "/src/assets/svg/" + icon + ".svg",

@@ -337,7 +337,7 @@ var videoLinks = [
         "videoID": "IRD06dycqYc",
         "category": "game",
         "short": true,
-        "text": "<a target='_blank' href='#yt-Ab65Cr-XU8U'>The TRUTH about the MIG Switch Nintendo Flash Cart</a>",
+        "text": "<a target='_blank' href='/admin/video?videoid=Ab65Cr-XU8U'>The TRUTH about the MIG Switch Nintendo Flash Cart</a>",
         "title": "👆LlNK ON MY PROFILE"
     },
     {
@@ -780,7 +780,7 @@ var videoLinks = [
     {
         "videoID": "vOGhAV-84iI",
         "category": "archive",
-        "text": "<a target='_blank' href='/admin/video#sVjk5nrb_lI'>Spooky Scary Skeletons</a>"
+        "text": "<a target='_blank' href='/admin/music?videoid=sVjk5nrb_lI'>Spooky Scary Skeletons</a>"
     },
     {
         "videoID": "Dmy3IThKO14",
