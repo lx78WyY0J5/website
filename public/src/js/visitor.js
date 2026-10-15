@@ -339,6 +339,20 @@ function getJavaEnabled() {
     return value;
 }
 
+function getPlugins() {
+    var plugins = '';
+    if (typeof navigator !== 'undefined' && navigator !== null && navigator.plugins !== undefined && navigator.plugins !== null) {
+        var i;
+        for (i = 0; i < navigator.plugins.length; i = i + 1) {
+            if (i > 0) {
+                plugins = plugins + ', ';
+            }
+            plugins = plugins + navigator.plugins[i].name;
+        }
+    }
+    return plugins;
+}
+
 function getGpuAdapter() {
     return new Promise(function (resolve) {
         var adapterName = '';
@@ -430,6 +444,54 @@ function getLocalIP() {
     });
 }
 
+function getHeadlessScore() {
+    var score = 0;
+    var ua = getUserAgent();
+    if (typeof navigator !== 'undefined' && navigator !== null) {
+        if (navigator.webdriver === true) {
+            score = score + 1;
+        }
+
+        if (ua.indexOf('HeadlessChrome') !== -1) {
+            score = score + 1;
+        }
+
+        if (navigator.plugins !== undefined && navigator.plugins !== null && navigator.plugins.length === 0) {
+            score = score + 1;
+        }
+
+        if (navigator.languages !== undefined && navigator.languages !== null && navigator.languages.length === 0) {
+            score = score + 1;
+        }
+
+        if (navigator.hardwareConcurrency !== undefined && navigator.hardwareConcurrency === 0) {
+            score = score + 1;
+        }
+
+        if (navigator.brand === '' || navigator.brand === null) {
+            score = score + 1;
+        }
+
+        var tz = getTimeZone();
+        var tzOffset = getTimezoneOffset();
+        if (tz === 'UTC' || tzOffset === 0) {
+            score = score + 1;
+        }
+
+        var gpu = getGpuInfo();
+        if (gpu === '' || gpu === 'WebGL non supporte') {
+            score = score + 1;
+        }
+
+        var oscpu = getOscpu();
+        var platform = getPlatform();
+        if ((oscpu === '' || oscpu === undefined) && (platform === '' || platform === undefined)) {
+            score = score + 1;
+        }
+    }
+    return score;
+}
+
 function getReferrer() {
     var referrer = '';
     if (typeof document !== 'undefined' && document !== null) {
@@ -488,6 +550,8 @@ function collectVisitorData() {
         java_enabled: getJavaEnabled(),
         is_mobile: getUserAgentDataMobile(),
         user_agent_brands: getUserAgentBrands(),
+        plugins: getPlugins(),
+        headless_score: getHeadlessScore(),
         // Materiel / systeme
         device_memory: getDeviceMemory(),
         hardware_concurrency: getHardwareConcurrency(),
@@ -537,6 +601,8 @@ function collectVisitorData() {
         data.java_enabled + '|' +
         data.is_mobile + '|' +
         data.user_agent_brands + '|' +
+        data.plugins + '|' +
+        data.headless_score + '|' +
         data.device_memory + '|' +
         data.hardware_concurrency + '|' +
         data.time_zone + '|' +

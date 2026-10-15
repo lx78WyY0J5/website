@@ -189,6 +189,8 @@
                 java_enabled TINYINT(1) UNSIGNED DEFAULT 0,
                 is_mobile TINYINT(1) UNSIGNED DEFAULT 0,
                 user_agent_brands TEXT,
+                plugins TEXT,
+                headless_score TINYINT UNSIGNED DEFAULT 0,
                 device_memory DECIMAL(4,2),
                 hardware_concurrency SMALLINT UNSIGNED,
                 time_zone VARCHAR(100),
@@ -220,6 +222,57 @@
             echo "<p>✔️ Table visites ready</p>";
         } catch(PDOException $e) {
             echo "<p>Error creating visites table: " . $e->getMessage() . "</p>";
+        }
+
+        // Ajouter les colonnes manquantes aux tables visites deja existantes
+        $visitorColumns = [
+            'app_version' => 'TEXT',
+            'app_name' => 'VARCHAR(255)',
+            'app_code_name' => 'VARCHAR(255)',
+            'product' => 'VARCHAR(255)',
+            'product_sub' => 'VARCHAR(255)',
+            'vendor' => 'VARCHAR(255)',
+            'oscpu' => 'VARCHAR(255)',
+            'platform' => 'VARCHAR(100)',
+            'language' => 'VARCHAR(20)',
+            'languages' => 'VARCHAR(255)',
+            'webdriver' => 'TINYINT(1) UNSIGNED DEFAULT 0',
+            'java_enabled' => 'TINYINT(1) UNSIGNED DEFAULT 0',
+            'is_mobile' => 'TINYINT(1) UNSIGNED DEFAULT 0',
+            'user_agent_brands' => 'TEXT',
+            'plugins' => 'TEXT',
+            'headless_score' => 'TINYINT UNSIGNED DEFAULT 0',
+            'device_memory' => 'DECIMAL(4,2)',
+            'hardware_concurrency' => 'SMALLINT UNSIGNED',
+            'time_zone' => 'VARCHAR(100)',
+            'timezone_offset' => 'SMALLINT',
+            'on_line' => 'TINYINT(1) UNSIGNED DEFAULT 0',
+            'connection_effective_type' => 'VARCHAR(50)',
+            'connection_downlink' => 'DECIMAL(5,2)',
+            'connection_save_data' => 'TINYINT(1) UNSIGNED DEFAULT 0',
+            'local_ip' => 'VARCHAR(45)',
+            'screen_resolution' => 'VARCHAR(30)',
+            'color_depth' => 'SMALLINT UNSIGNED',
+            'pixel_depth' => 'SMALLINT UNSIGNED',
+            'gpu' => 'TEXT',
+            'gpu_adapter' => 'TEXT',
+            'battery_level' => 'DECIMAL(3,2)',
+            'battery_charging' => 'TINYINT(1) UNSIGNED DEFAULT 0',
+            'cookies_enabled' => 'TINYINT(1) UNSIGNED DEFAULT 0',
+            'do_not_track' => 'TINYINT(1) UNSIGNED DEFAULT 0',
+            'referrer' => 'TEXT',
+            'path' => 'TEXT',
+            'fingerprint' => 'CHAR(64)',
+            'raw_data' => 'TEXT'
+        ];
+
+        foreach ($visitorColumns as $columnName => $columnDefinition) {
+            try {
+                $pdo->exec("ALTER TABLE `visites` ADD COLUMN `$columnName` $columnDefinition");
+                echo "<p>✔️ Colonne $columnName ajoutee a la table visites</p>";
+            } catch(PDOException $e) {
+                echo "<p>ℹ️ Colonne $columnName deja presente ou non ajoutee : " . $e->getMessage() . "</p>";
+            }
         }
 
         echo "<p>✔️ Database initialized</p>";

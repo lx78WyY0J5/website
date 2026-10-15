@@ -163,6 +163,12 @@ if (isset($data['user_agent_brands'])) {
     $userAgentBrands = '';
 }
 
+if (isset($data['plugins'])) {
+    $plugins = (string)$data['plugins'];
+} else {
+    $plugins = '';
+}
+
 if (isset($data['app_name'])) {
     $appName = (string)$data['app_name'];
 } else {
@@ -191,6 +197,12 @@ if (isset($data['oscpu'])) {
     $oscpu = (string)$data['oscpu'];
 } else {
     $oscpu = '';
+}
+
+if (isset($data['headless_score'])) {
+    $headlessScore = (int)$data['headless_score'];
+} else {
+    $headlessScore = 0;
 }
 
 if (isset($data['device_memory'])) {
@@ -264,6 +276,8 @@ try {
             `product`, `product_sub`, `vendor`, `oscpu`, `platform`,
             `language`, `languages`,
             `webdriver`, `java_enabled`, `is_mobile`, `user_agent_brands`,
+            `plugins`,
+            `headless_score`,
             `device_memory`, `hardware_concurrency`,
             `time_zone`, `timezone_offset`, `on_line`,
             `connection_effective_type`, `connection_downlink`, `connection_save_data`, `local_ip`,
@@ -278,6 +292,8 @@ try {
             :product, :product_sub, :vendor, :oscpu, :platform,
             :language, :languages,
             :webdriver, :java_enabled, :is_mobile, :user_agent_brands,
+            :plugins,
+            :headless_score,
             :device_memory, :hardware_concurrency,
             :time_zone, :timezone_offset, :on_line,
             :connection_effective_type, :connection_downlink, :connection_save_data, :local_ip,
@@ -303,6 +319,8 @@ try {
             `java_enabled` = :java_enabled,
             `is_mobile` = :is_mobile,
             `user_agent_brands` = :user_agent_brands,
+            `plugins` = :plugins,
+            `headless_score` = :headless_score,
             `device_memory` = :device_memory,
             `hardware_concurrency` = :hardware_concurrency,
             `time_zone` = :time_zone,
@@ -345,6 +363,8 @@ try {
     $stmt->bindParam(':java_enabled', $javaEnabled, PDO::PARAM_INT);
     $stmt->bindParam(':is_mobile', $isMobile, PDO::PARAM_INT);
     $stmt->bindParam(':user_agent_brands', $userAgentBrands, PDO::PARAM_STR);
+    $stmt->bindParam(':plugins', $plugins, PDO::PARAM_STR);
+    $stmt->bindParam(':headless_score', $headlessScore, PDO::PARAM_INT);
     $stmt->bindParam(':device_memory', $deviceMemory, PDO::PARAM_STR);
     $stmt->bindParam(':hardware_concurrency', $hardwareConcurrency, PDO::PARAM_INT);
     $stmt->bindParam(':time_zone', $timeZone, PDO::PARAM_STR);
