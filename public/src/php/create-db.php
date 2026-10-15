@@ -186,6 +186,30 @@
                 path TEXT,
                 cookies_enabled TINYINT(1) UNSIGNED DEFAULT 0,
                 do_not_track TINYINT(1) UNSIGNED DEFAULT 0,
+                webdriver TINYINT(1) UNSIGNED DEFAULT 0,
+                app_version TEXT,
+                timezone_offset SMALLINT,
+                battery_level DECIMAL(3,2),
+                battery_charging TINYINT(1) UNSIGNED DEFAULT 0,
+                is_mobile TINYINT(1) UNSIGNED DEFAULT 0,
+                languages VARCHAR(255),
+                vendor VARCHAR(255),
+                user_agent_brands TEXT,
+                app_name VARCHAR(255),
+                app_code_name VARCHAR(255),
+                product_sub VARCHAR(255),
+                product VARCHAR(255),
+                oscpu VARCHAR(255),
+                device_memory DECIMAL(4,2),
+                hardware_concurrency SMALLINT UNSIGNED,
+                connection_effective_type VARCHAR(50),
+                connection_downlink DECIMAL(5,2),
+                connection_save_data TINYINT(1) UNSIGNED DEFAULT 0,
+                on_line TINYINT(1) UNSIGNED DEFAULT 0,
+                java_enabled TINYINT(1) UNSIGNED DEFAULT 0,
+                gpu_adapter TEXT,
+                pixel_depth SMALLINT UNSIGNED,
+                local_ip VARCHAR(45),
                 raw_data TEXT,
                 PRIMARY KEY (ip, date_visite),
                 INDEX idx_fingerprint (fingerprint),
@@ -196,6 +220,43 @@
             echo "<p>✔️ Table visites ready</p>";
         } catch(PDOException $e) {
             echo "<p>Error creating visites table: " . $e->getMessage() . "</p>";
+        }
+
+        // Ajouter les colonnes manquantes aux tables visites deja existantes
+        $visitorColumns = [
+            'webdriver' => 'TINYINT(1) UNSIGNED DEFAULT 0',
+            'app_version' => 'TEXT',
+            'timezone_offset' => 'SMALLINT',
+            'battery_level' => 'DECIMAL(3,2)',
+            'battery_charging' => 'TINYINT(1) UNSIGNED DEFAULT 0',
+            'is_mobile' => 'TINYINT(1) UNSIGNED DEFAULT 0',
+            'languages' => 'VARCHAR(255)',
+            'vendor' => 'VARCHAR(255)',
+            'user_agent_brands' => 'TEXT',
+            'app_name' => 'VARCHAR(255)',
+            'app_code_name' => 'VARCHAR(255)',
+            'product_sub' => 'VARCHAR(255)',
+            'product' => 'VARCHAR(255)',
+            'oscpu' => 'VARCHAR(255)',
+            'device_memory' => 'DECIMAL(4,2)',
+            'hardware_concurrency' => 'SMALLINT UNSIGNED',
+            'connection_effective_type' => 'VARCHAR(50)',
+            'connection_downlink' => 'DECIMAL(5,2)',
+            'connection_save_data' => 'TINYINT(1) UNSIGNED DEFAULT 0',
+            'on_line' => 'TINYINT(1) UNSIGNED DEFAULT 0',
+            'java_enabled' => 'TINYINT(1) UNSIGNED DEFAULT 0',
+            'gpu_adapter' => 'TEXT',
+            'pixel_depth' => 'SMALLINT UNSIGNED',
+            'local_ip' => 'VARCHAR(45)'
+        ];
+
+        foreach ($visitorColumns as $columnName => $columnDefinition) {
+            try {
+                $pdo->exec("ALTER TABLE `visites` ADD COLUMN `$columnName` $columnDefinition");
+                echo "<p>✔️ Colonne $columnName ajoutee a la table visites</p>";
+            } catch(PDOException $e) {
+                echo "<p>ℹ️ Colonne $columnName deja presente ou non ajoutee : " . $e->getMessage() . "</p>";
+            }
         }
 
         echo "<p>✔️ Database initialized</p>";

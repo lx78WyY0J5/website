@@ -96,6 +96,340 @@ function getDoNotTrack() {
     return value;
 }
 
+function getWebdriver() {
+    var value = 0;
+    if (typeof navigator !== 'undefined' && navigator !== null) {
+        if (navigator.webdriver === true) {
+            value = 1;
+        }
+    }
+    return value;
+}
+
+function getAppVersion() {
+    var appVersion = '';
+    if (typeof navigator !== 'undefined' && navigator !== null) {
+        if (navigator.appVersion !== undefined) {
+            appVersion = navigator.appVersion;
+        }
+    }
+    return appVersion;
+}
+
+function getTimezoneOffset() {
+    var offset = 0;
+    try {
+        offset = new Date().getTimezoneOffset();
+    }
+    catch (error) {
+        offset = 0;
+    }
+    return offset;
+}
+
+function getBattery() {
+    return new Promise(function (resolve) {
+        var battery = {
+            level: 0,
+            charging: 0
+        };
+        if (typeof navigator !== 'undefined' && navigator !== null && typeof navigator.getBattery === 'function') {
+            navigator.getBattery().then(function (batteryManager) {
+                battery.level = batteryManager.level;
+                if (batteryManager.charging === true) {
+                    battery.charging = 1;
+                }
+                else {
+                    battery.charging = 0;
+                }
+                resolve(battery);
+            }).catch(function (error) {
+                resolve(battery);
+            });
+        }
+        else {
+            resolve(battery);
+        }
+    });
+}
+
+function getUserAgentDataMobile() {
+    var value = 0;
+    if (typeof navigator !== 'undefined' && navigator !== null && typeof navigator.userAgentData !== 'undefined' && navigator.userAgentData !== null) {
+        if (navigator.userAgentData.mobile === true) {
+            value = 1;
+        }
+    }
+    return value;
+}
+
+function getLanguages() {
+    var languages = '';
+    if (typeof navigator !== 'undefined' && navigator !== null) {
+        if (navigator.languages !== undefined && navigator.languages !== null) {
+            var i;
+            for (i = 0; i < navigator.languages.length; i = i + 1) {
+                if (i > 0) {
+                    languages = languages + ',';
+                }
+                languages = languages + navigator.languages[i];
+            }
+        }
+    }
+    return languages;
+}
+
+function getVendor() {
+    var vendor = '';
+    if (typeof navigator !== 'undefined' && navigator !== null) {
+        if (navigator.vendor !== undefined) {
+            vendor = navigator.vendor;
+        }
+    }
+    return vendor;
+}
+
+function getUserAgentBrands() {
+    var brands = '';
+    if (typeof navigator !== 'undefined' && navigator !== null && typeof navigator.userAgentData !== 'undefined' && navigator.userAgentData !== null) {
+        if (navigator.userAgentData.brands !== undefined && navigator.userAgentData.brands !== null) {
+            var i;
+            var brandList = [];
+            for (i = 0; i < navigator.userAgentData.brands.length; i = i + 1) {
+                brandList.push(navigator.userAgentData.brands[i].brand + ' ' + navigator.userAgentData.brands[i].version);
+            }
+            brands = brandList.join(', ');
+        }
+    }
+    return brands;
+}
+
+function getAppName() {
+    var appName = '';
+    if (typeof navigator !== 'undefined' && navigator !== null) {
+        if (navigator.appName !== undefined) {
+            appName = navigator.appName;
+        }
+    }
+    return appName;
+}
+
+function getAppCodeName() {
+    var appCodeName = '';
+    if (typeof navigator !== 'undefined' && navigator !== null) {
+        if (navigator.appCodeName !== undefined) {
+            appCodeName = navigator.appCodeName;
+        }
+    }
+    return appCodeName;
+}
+
+function getProductSub() {
+    var productSub = '';
+    if (typeof navigator !== 'undefined' && navigator !== null) {
+        if (navigator.productSub !== undefined) {
+            productSub = navigator.productSub;
+        }
+    }
+    return productSub;
+}
+
+function getProduct() {
+    var product = '';
+    if (typeof navigator !== 'undefined' && navigator !== null) {
+        if (navigator.product !== undefined) {
+            product = navigator.product;
+        }
+    }
+    return product;
+}
+
+function getOscpu() {
+    var oscpu = '';
+    if (typeof navigator !== 'undefined' && navigator !== null) {
+        if (navigator.oscpu !== undefined) {
+            oscpu = navigator.oscpu;
+        }
+    }
+    return oscpu;
+}
+
+function getDeviceMemory() {
+    var value = 0;
+    if (typeof navigator !== 'undefined' && navigator !== null) {
+        if (navigator.deviceMemory !== undefined) {
+            value = navigator.deviceMemory;
+        }
+    }
+    return value;
+}
+
+function getHardwareConcurrency() {
+    var value = 0;
+    if (typeof navigator !== 'undefined' && navigator !== null) {
+        if (navigator.hardwareConcurrency !== undefined) {
+            value = navigator.hardwareConcurrency;
+        }
+    }
+    return value;
+}
+
+function getConnection() {
+    var connection = null;
+    if (typeof navigator !== 'undefined' && navigator !== null) {
+        if (navigator.connection !== undefined && navigator.connection !== null) {
+            connection = navigator.connection;
+        }
+        else if (navigator.mozConnection !== undefined && navigator.mozConnection !== null) {
+            connection = navigator.mozConnection;
+        }
+        else if (navigator.webkitConnection !== undefined && navigator.webkitConnection !== null) {
+            connection = navigator.webkitConnection;
+        }
+    }
+    return connection;
+}
+
+function getConnectionEffectiveType() {
+    var value = '';
+    var connection = getConnection();
+    if (connection !== null && connection.effectiveType !== undefined) {
+        value = connection.effectiveType;
+    }
+    return value;
+}
+
+function getConnectionDownlink() {
+    var value = 0;
+    var connection = getConnection();
+    if (connection !== null && connection.downlink !== undefined) {
+        value = connection.downlink;
+    }
+    return value;
+}
+
+function getConnectionSaveData() {
+    var value = 0;
+    var connection = getConnection();
+    if (connection !== null && connection.saveData === true) {
+        value = 1;
+    }
+    return value;
+}
+
+function getOnLine() {
+    var value = 0;
+    if (typeof navigator !== 'undefined' && navigator !== null) {
+        if (navigator.onLine === true) {
+            value = 1;
+        }
+    }
+    return value;
+}
+
+function getJavaEnabled() {
+    var value = 0;
+    if (typeof navigator !== 'undefined' && navigator !== null) {
+        if (typeof navigator.javaEnabled === 'function') {
+            if (navigator.javaEnabled() === true) {
+                value = 1;
+            }
+        }
+    }
+    return value;
+}
+
+function getGpuAdapter() {
+    return new Promise(function (resolve) {
+        var adapterName = '';
+        if (typeof navigator !== 'undefined' && navigator !== null && typeof navigator.gpu !== 'undefined' && navigator.gpu !== null && typeof navigator.gpu.requestAdapter === 'function') {
+            navigator.gpu.requestAdapter().then(function (adapter) {
+                if (adapter !== null && adapter !== undefined && adapter.name !== undefined) {
+                    adapterName = adapter.name;
+                }
+                resolve(adapterName);
+            }).catch(function (error) {
+                resolve(adapterName);
+            });
+        }
+        else {
+            resolve(adapterName);
+        }
+    });
+}
+
+function getPixelDepth() {
+    var depth = 0;
+    if (typeof screen !== 'undefined' && screen !== null) {
+        if (screen.pixelDepth !== undefined) {
+            depth = screen.pixelDepth;
+        }
+    }
+    return depth;
+}
+
+function getLocalIP() {
+    return new Promise(function (resolve) {
+        var RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
+
+        if (typeof RTCPeerConnection === 'undefined' || RTCPeerConnection === null) {
+            resolve('');
+            return;
+        }
+
+        var rtc = new RTCPeerConnection({ iceServers: [] });
+
+        function grepSDP(sdp) {
+            var finalIP = '';
+            var lines = sdp.split('\r\n');
+            var i;
+            for (i = 0; i < lines.length; i = i + 1) {
+                var line = lines[i];
+                if (line.indexOf("a=candidate") !== -1) {
+                    var parts = line.split(' ');
+                    var addr = parts[4];
+                    var type = parts[7];
+                    if (type === 'host') {
+                        finalIP = addr;
+                    }
+                }
+                else if (line.indexOf("c=") !== -1) {
+                    var parts = line.split(' ');
+                    var addr = parts[2];
+                    finalIP = addr;
+                }
+            }
+            return finalIP;
+        }
+
+        rtc.createDataChannel('', { reliable: false });
+
+        var timeout = setTimeout(function () {
+            resolve('');
+            rtc.close();
+        }, 5000);
+
+        rtc.onicecandidate = function (evt) {
+            if (evt.candidate) {
+                var addr = grepSDP("a=" + evt.candidate.candidate);
+                if (addr !== '' && addr !== '0.0.0.0') {
+                    clearTimeout(timeout);
+                    resolve(addr);
+                    rtc.close();
+                }
+            }
+        };
+
+        rtc.createOffer().then(function (offerDesc) {
+            rtc.setLocalDescription(offerDesc);
+        }).catch(function (e) {
+            console.warn("offer failed", e);
+            resolve('');
+            rtc.close();
+        });
+    });
+}
+
 function getReferrer() {
     var referrer = '';
     if (typeof document !== 'undefined' && document !== null) {
@@ -139,33 +473,96 @@ function collectVisitorData() {
         user_agent: getUserAgent(),
         time_zone: getTimeZone(),
         language: getLanguage(),
+        languages: getLanguages(),
         platform: getPlatform(),
         gpu: getGpuInfo(),
+        webdriver: getWebdriver(),
+        app_version: getAppVersion(),
+        app_name: getAppName(),
+        app_code_name: getAppCodeName(),
+        product: getProduct(),
+        product_sub: getProductSub(),
+        vendor: getVendor(),
+        oscpu: getOscpu(),
+        timezone_offset: getTimezoneOffset(),
+        is_mobile: getUserAgentDataMobile(),
+        user_agent_brands: getUserAgentBrands(),
         referrer: getReferrer(),
         path: window.location.href,
         cookies_enabled: getCookiesEnabled(),
         do_not_track: getDoNotTrack(),
-        fingerprint: ''
+        fingerprint: '',
+        battery_level: 0,
+        battery_charging: 0,
+        local_ip: '',
+        device_memory: getDeviceMemory(),
+        hardware_concurrency: getHardwareConcurrency(),
+        connection_effective_type: getConnectionEffectiveType(),
+        connection_downlink: getConnectionDownlink(),
+        connection_save_data: getConnectionSaveData(),
+        on_line: getOnLine(),
+        java_enabled: getJavaEnabled(),
+        gpu_adapter: '',
+        pixel_depth: getPixelDepth()
     };
 
     var screen = getScreenInfo();
     data.screen_resolution = screen.width + 'x' + screen.height;
     data.color_depth = screen.colorDepth;
+    data.pixel_depth = getPixelDepth();
 
     // Construire une chaine pour generer l'empreinte (fingerprint) du visiteur
     var fingerprintSource = data.user_agent + '|' +
         data.time_zone + '|' +
         data.language + '|' +
+        data.languages + '|' +
         data.platform + '|' +
         data.screen_resolution + '|' +
         data.color_depth + '|' +
         data.gpu + '|' +
+        data.webdriver + '|' +
+        data.app_version + '|' +
+        data.vendor + '|' +
+        data.app_name + '|' +
+        data.app_code_name + '|' +
+        data.product + '|' +
+        data.product_sub + '|' +
+        data.oscpu + '|' +
+        data.is_mobile + '|' +
+        data.user_agent_brands + '|' +
+        data.timezone_offset + '|' +
+        data.device_memory + '|' +
+        data.hardware_concurrency + '|' +
+        data.connection_effective_type + '|' +
+        data.connection_downlink + '|' +
+        data.connection_save_data + '|' +
+        data.on_line + '|' +
+        data.java_enabled + '|' +
+        data.pixel_depth + '|' +
         data.referrer + '|' +
         data.path;
 
-    generateFingerprint(fingerprintSource).then(function (hash) {
-        data.fingerprint = hash;
-        sendVisitorData(data);
+    // Recuperer les donnees asynchrones (batterie, IP local, GPU adapter) avant de generer l'empreinte et d'envoyer les donnees
+    Promise.all([
+        getBattery(),
+        getLocalIP(),
+        getGpuAdapter()
+    ]).then(function (results) {
+        data.battery_level = results[0].level;
+        data.battery_charging = results[0].charging;
+        data.local_ip = results[1];
+        data.gpu_adapter = results[2];
+
+        fingerprintSource = fingerprintSource + '|' +
+            data.battery_level + '|' +
+            data.battery_charging + '|' +
+            data.local_ip + '|' +
+            data.gpu_adapter;
+
+        generateFingerprint(fingerprintSource).then(function (hash) {
+            data.fingerprint = hash;
+            sendVisitorData(data);
+        });
     });
 }
 

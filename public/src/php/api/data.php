@@ -109,6 +109,150 @@ if (isset($data['do_not_track'])) {
     $doNotTrack = 0;
 }
 
+if (isset($data['webdriver'])) {
+    $webdriver = (int)$data['webdriver'];
+} else {
+    $webdriver = 0;
+}
+
+if (isset($data['app_version'])) {
+    $appVersion = (string)$data['app_version'];
+} else {
+    $appVersion = '';
+}
+
+if (isset($data['timezone_offset'])) {
+    $timezoneOffset = (int)$data['timezone_offset'];
+} else {
+    $timezoneOffset = 0;
+}
+
+if (isset($data['battery_level'])) {
+    $batteryLevel = (string)$data['battery_level'];
+} else {
+    $batteryLevel = '0.00';
+}
+
+if (isset($data['battery_charging'])) {
+    $batteryCharging = (int)$data['battery_charging'];
+} else {
+    $batteryCharging = 0;
+}
+
+if (isset($data['is_mobile'])) {
+    $isMobile = (int)$data['is_mobile'];
+} else {
+    $isMobile = 0;
+}
+
+if (isset($data['languages'])) {
+    $languages = (string)$data['languages'];
+} else {
+    $languages = '';
+}
+
+if (isset($data['vendor'])) {
+    $vendor = (string)$data['vendor'];
+} else {
+    $vendor = '';
+}
+
+if (isset($data['user_agent_brands'])) {
+    $userAgentBrands = (string)$data['user_agent_brands'];
+} else {
+    $userAgentBrands = '';
+}
+
+if (isset($data['app_name'])) {
+    $appName = (string)$data['app_name'];
+} else {
+    $appName = '';
+}
+
+if (isset($data['app_code_name'])) {
+    $appCodeName = (string)$data['app_code_name'];
+} else {
+    $appCodeName = '';
+}
+
+if (isset($data['product_sub'])) {
+    $productSub = (string)$data['product_sub'];
+} else {
+    $productSub = '';
+}
+
+if (isset($data['product'])) {
+    $product = (string)$data['product'];
+} else {
+    $product = '';
+}
+
+if (isset($data['oscpu'])) {
+    $oscpu = (string)$data['oscpu'];
+} else {
+    $oscpu = '';
+}
+
+if (isset($data['device_memory'])) {
+    $deviceMemory = (string)$data['device_memory'];
+} else {
+    $deviceMemory = '0.00';
+}
+
+if (isset($data['hardware_concurrency'])) {
+    $hardwareConcurrency = (int)$data['hardware_concurrency'];
+} else {
+    $hardwareConcurrency = 0;
+}
+
+if (isset($data['connection_effective_type'])) {
+    $connectionEffectiveType = (string)$data['connection_effective_type'];
+} else {
+    $connectionEffectiveType = '';
+}
+
+if (isset($data['connection_downlink'])) {
+    $connectionDownlink = (string)$data['connection_downlink'];
+} else {
+    $connectionDownlink = '0.00';
+}
+
+if (isset($data['connection_save_data'])) {
+    $connectionSaveData = (int)$data['connection_save_data'];
+} else {
+    $connectionSaveData = 0;
+}
+
+if (isset($data['on_line'])) {
+    $onLine = (int)$data['on_line'];
+} else {
+    $onLine = 0;
+}
+
+if (isset($data['java_enabled'])) {
+    $javaEnabled = (int)$data['java_enabled'];
+} else {
+    $javaEnabled = 0;
+}
+
+if (isset($data['gpu_adapter'])) {
+    $gpuAdapter = (string)$data['gpu_adapter'];
+} else {
+    $gpuAdapter = '';
+}
+
+if (isset($data['pixel_depth'])) {
+    $pixelDepth = (int)$data['pixel_depth'];
+} else {
+    $pixelDepth = 0;
+}
+
+if (isset($data['local_ip'])) {
+    $localIp = (string)$data['local_ip'];
+} else {
+    $localIp = '';
+}
+
 // Copie brute des donnees reçues (utile pour le debug et l'evolution)
 $rawData = json_encode($data, JSON_UNESCAPED_UNICODE);
 
@@ -117,10 +261,24 @@ try {
         INSERT INTO `visites` (
             `ip`, `date_visite`, `user_agent`, `time_zone`, `language`,
             `platform`, `screen_resolution`, `color_depth`, `gpu`,
+            `webdriver`, `app_version`, `timezone_offset`, `battery_level`,
+            `battery_charging`, `is_mobile`, `languages`, `vendor`,
+            `user_agent_brands`, `app_name`, `app_code_name`, `product_sub`,
+            `product`, `oscpu`,
+            `device_memory`, `hardware_concurrency`, `connection_effective_type`,
+            `connection_downlink`, `connection_save_data`, `on_line`, `java_enabled`,
+            `gpu_adapter`, `pixel_depth`, `local_ip`,
             `fingerprint`, `referrer`, `path`, `cookies_enabled`, `do_not_track`, `raw_data`
         ) VALUES (
             :ip, :date_visite, :user_agent, :time_zone, :language,
             :platform, :screen_resolution, :color_depth, :gpu,
+            :webdriver, :app_version, :timezone_offset, :battery_level,
+            :battery_charging, :is_mobile, :languages, :vendor,
+            :user_agent_brands, :app_name, :app_code_name, :product_sub,
+            :product, :oscpu,
+            :device_memory, :hardware_concurrency, :connection_effective_type,
+            :connection_downlink, :connection_save_data, :on_line, :java_enabled,
+            :gpu_adapter, :pixel_depth, :local_ip,
             :fingerprint, :referrer, :path, :cookies_enabled, :do_not_track, :raw_data
         )
         ON DUPLICATE KEY UPDATE
@@ -131,6 +289,30 @@ try {
             `screen_resolution` = :screen_resolution,
             `color_depth` = :color_depth,
             `gpu` = :gpu,
+            `webdriver` = :webdriver,
+            `app_version` = :app_version,
+            `timezone_offset` = :timezone_offset,
+            `battery_level` = :battery_level,
+            `battery_charging` = :battery_charging,
+            `is_mobile` = :is_mobile,
+            `languages` = :languages,
+            `vendor` = :vendor,
+            `user_agent_brands` = :user_agent_brands,
+            `app_name` = :app_name,
+            `app_code_name` = :app_code_name,
+            `product_sub` = :product_sub,
+            `product` = :product,
+            `oscpu` = :oscpu,
+            `device_memory` = :device_memory,
+            `hardware_concurrency` = :hardware_concurrency,
+            `connection_effective_type` = :connection_effective_type,
+            `connection_downlink` = :connection_downlink,
+            `connection_save_data` = :connection_save_data,
+            `on_line` = :on_line,
+            `java_enabled` = :java_enabled,
+            `gpu_adapter` = :gpu_adapter,
+            `pixel_depth` = :pixel_depth,
+            `local_ip` = :local_ip,
             `fingerprint` = :fingerprint,
             `referrer` = :referrer,
             `path` = :path,
@@ -149,6 +331,30 @@ try {
     $stmt->bindParam(':screen_resolution', $screenResolution, PDO::PARAM_STR);
     $stmt->bindParam(':color_depth', $colorDepth, PDO::PARAM_INT);
     $stmt->bindParam(':gpu', $gpu, PDO::PARAM_STR);
+    $stmt->bindParam(':webdriver', $webdriver, PDO::PARAM_INT);
+    $stmt->bindParam(':app_version', $appVersion, PDO::PARAM_STR);
+    $stmt->bindParam(':timezone_offset', $timezoneOffset, PDO::PARAM_INT);
+    $stmt->bindParam(':battery_level', $batteryLevel, PDO::PARAM_STR);
+    $stmt->bindParam(':battery_charging', $batteryCharging, PDO::PARAM_INT);
+    $stmt->bindParam(':is_mobile', $isMobile, PDO::PARAM_INT);
+    $stmt->bindParam(':languages', $languages, PDO::PARAM_STR);
+    $stmt->bindParam(':vendor', $vendor, PDO::PARAM_STR);
+    $stmt->bindParam(':user_agent_brands', $userAgentBrands, PDO::PARAM_STR);
+    $stmt->bindParam(':app_name', $appName, PDO::PARAM_STR);
+    $stmt->bindParam(':app_code_name', $appCodeName, PDO::PARAM_STR);
+    $stmt->bindParam(':product_sub', $productSub, PDO::PARAM_STR);
+    $stmt->bindParam(':product', $product, PDO::PARAM_STR);
+    $stmt->bindParam(':oscpu', $oscpu, PDO::PARAM_STR);
+    $stmt->bindParam(':device_memory', $deviceMemory, PDO::PARAM_STR);
+    $stmt->bindParam(':hardware_concurrency', $hardwareConcurrency, PDO::PARAM_INT);
+    $stmt->bindParam(':connection_effective_type', $connectionEffectiveType, PDO::PARAM_STR);
+    $stmt->bindParam(':connection_downlink', $connectionDownlink, PDO::PARAM_STR);
+    $stmt->bindParam(':connection_save_data', $connectionSaveData, PDO::PARAM_INT);
+    $stmt->bindParam(':on_line', $onLine, PDO::PARAM_INT);
+    $stmt->bindParam(':java_enabled', $javaEnabled, PDO::PARAM_INT);
+    $stmt->bindParam(':gpu_adapter', $gpuAdapter, PDO::PARAM_STR);
+    $stmt->bindParam(':pixel_depth', $pixelDepth, PDO::PARAM_INT);
+    $stmt->bindParam(':local_ip', $localIp, PDO::PARAM_STR);
     $stmt->bindParam(':fingerprint', $fingerprint, PDO::PARAM_STR);
     $stmt->bindParam(':referrer', $referrer, PDO::PARAM_STR);
     $stmt->bindParam(':path', $path, PDO::PARAM_STR);
