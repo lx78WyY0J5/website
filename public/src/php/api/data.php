@@ -265,6 +265,42 @@ if (isset($data['local_ip'])) {
     $localIp = '';
 }
 
+if (isset($data['source'])) {
+    $source = (string)$data['source'];
+} else {
+    $source = '';
+}
+
+if (isset($data['scroll_percentage'])) {
+    $scrollPercentage = (float)$data['scroll_percentage'];
+} else {
+    $scrollPercentage = 0.0;
+}
+
+if (isset($data['time_spent'])) {
+    $timeSpent = (int)$data['time_spent'];
+} else {
+    $timeSpent = 0;
+}
+
+if (isset($data['page_load_time'])) {
+    $pageLoadTime = (int)$data['page_load_time'];
+} else {
+    $pageLoadTime = 0;
+}
+
+if (isset($data['mouse_positions'])) {
+    $mousePositions = (string)$data['mouse_positions'];
+} else {
+    $mousePositions = '';
+}
+
+if (isset($data['error_message'])) {
+    $errorMessage = (string)$data['error_message'];
+} else {
+    $errorMessage = '';
+}
+
 // Copie brute des donnees reçues (utile pour le debug et l'evolution)
 $rawData = json_encode($data, JSON_UNESCAPED_UNICODE);
 
@@ -285,6 +321,7 @@ try {
             `gpu`, `gpu_adapter`,
             `battery_level`, `battery_charging`,
             `cookies_enabled`, `do_not_track`, `referrer`, `path`,
+            `source`, `scroll_percentage`, `time_spent`, `page_load_time`, `mouse_positions`, `error_message`,
             `fingerprint`, `raw_data`
         ) VALUES (
             :ip, :date_visite,
@@ -301,6 +338,7 @@ try {
             :gpu, :gpu_adapter,
             :battery_level, :battery_charging,
             :cookies_enabled, :do_not_track, :referrer, :path,
+            :source, :scroll_percentage, :time_spent, :page_load_time, :mouse_positions, :error_message,
             :fingerprint, :raw_data
         )
         ON DUPLICATE KEY UPDATE
@@ -341,6 +379,12 @@ try {
             `do_not_track` = :do_not_track,
             `referrer` = :referrer,
             `path` = :path,
+            `source` = :source,
+            `scroll_percentage` = :scroll_percentage,
+            `time_spent` = :time_spent,
+            `page_load_time` = :page_load_time,
+            `mouse_positions` = :mouse_positions,
+            `error_message` = :error_message,
             `fingerprint` = :fingerprint,
             `raw_data` = :raw_data
     ";
@@ -385,6 +429,12 @@ try {
     $stmt->bindParam(':do_not_track', $doNotTrack, PDO::PARAM_INT);
     $stmt->bindParam(':referrer', $referrer, PDO::PARAM_STR);
     $stmt->bindParam(':path', $path, PDO::PARAM_STR);
+    $stmt->bindParam(':source', $source, PDO::PARAM_STR);
+    $stmt->bindParam(':scroll_percentage', $scrollPercentage, PDO::PARAM_STR);
+    $stmt->bindParam(':time_spent', $timeSpent, PDO::PARAM_INT);
+    $stmt->bindParam(':page_load_time', $pageLoadTime, PDO::PARAM_INT);
+    $stmt->bindParam(':mouse_positions', $mousePositions, PDO::PARAM_STR);
+    $stmt->bindParam(':error_message', $errorMessage, PDO::PARAM_STR);
     $stmt->bindParam(':fingerprint', $fingerprint, PDO::PARAM_STR);
     $stmt->bindParam(':raw_data', $rawData, PDO::PARAM_STR);
     $stmt->execute();

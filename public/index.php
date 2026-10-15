@@ -93,6 +93,8 @@
     <body>
         <script src="/src/js/theme.js"></script>
         <script src="/src/js/visitor.js"></script>
+        <script src="/src/js/visitor-function.js"></script>
+        <script src="/src/js/visitor-event.js"></script>
 
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.php'; ?>
 
