@@ -5,6 +5,17 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
+
+// Rate limiting (per user + per IP)
+$clientIp = getClientIdentifier();
+// Validate userId is numeric
+$userId = intval($_SESSION["id"]);
+if (!checkRateLimit($pdo, $clientIp, 'data_collect', 20, 60) || !checkRateLimit($pdo, "user_{$userId}", 'data_collect', 20, 60)) {
+    logSecurityEvent('rate_limit_exceeded', ['endpoint' => 'data_collect', 'ip' => $clientIp, 'user_id' => $userId]);
+    rateLimitExceededResponse('data_collect');
+}
 
 header('Content-Type: application/json; charset=utf-8');
 
