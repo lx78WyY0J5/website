@@ -148,11 +148,13 @@ function getViewStats(PDO $pdo, string $url, ?int $userId = null): array {
         'site_total' => getSiteViews($pdo),
         'page_total' => getPageViews($pdo, $url),
         'data_total' => getDataViews($pdo),
+        'api_total' => getAPIViews($pdo),
     ];
 
     if ($userId !== null) {
         $stats['user_page'] = getUserPageViews($pdo, $userId, $url);
         $stats['user_total'] = getUserTotalViews($pdo, $userId);
+        $stats['user_api_total'] = getUserAPITotalViews($pdo, $userId);
     }
 
     return $stats;

@@ -6,12 +6,15 @@
         <p><strong class="view-stats-title">Statistiques du site</strong> :</p>
         <p>Vues totales du site : <strong><?= number_format($viewStats['site_total'] ?? 0) ?></strong></p>
         <p>Vues API /data : <strong><?= number_format($viewStats['data_total'] ?? 0) ?></strong></p>
+        <p>Vues totales API : <strong><?= number_format($viewStats['api_total'] ?? 0) ?></strong></p>
         <p>Vues de cette page : <strong><?= number_format($viewStats['page_total'] ?? 0) ?></strong></p>
         <?php if (isset($viewStats['user_page'])): ?>
+            <hr>
             <p>Vos vues sur cette page : <strong><?= number_format($viewStats['user_page']) ?></strong></p>
             <p>Vos vues totales : <strong><?= number_format($viewStats['user_total']) ?></strong></p>
+            <p>Vos vues totales API : <strong><?= number_format($viewStats['user_api_total']) ?></strong></p>
         <?php endif; ?>
-
+        <hr>
         <div class="site-stats">
             <div class="render-time">
                 <?php
@@ -28,7 +31,7 @@
                 <?php
                     $taille = ob_get_length();
                     $taille_ko = round($taille / 1024, 2);
-                    echo '<p>Poids de la page</p><p class="render-weight-num"> ' . $taille_ko . '</p><p class="render-weight-ko"> ko</p>';
+                    echo '<p>Poids de la page (HTML jusqu\'ici)</p><p class="render-weight-num"> ' . $taille_ko . '</p><p class="render-weight-ko"> ko</p>';
                     ob_end_flush();
                 ?>
             </div>
