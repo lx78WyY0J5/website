@@ -150,6 +150,7 @@ function collectVisitorData() {
         data.local_ip = results[1];
         data.gpu_adapter = results[2];
 
+        //Ajouter au reste des données
         fingerprintSource = fingerprintSource + '|' +
             data.battery_level + '|' +
             data.battery_charging + '|' +

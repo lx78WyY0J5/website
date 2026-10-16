@@ -152,7 +152,7 @@ echo '  </channel></rss>';
 {
   "name": "doc.Altherneum.fr",
   "short_name": "Altherneum",
-  "description": "Site personnel - Tutoriels, projets, veille tech",
+  "description": "Site personnel - Notes, projets, veille tech",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1a1a2e",
@@ -197,23 +197,11 @@ Canonical: https://doc.altherneum.fr/.well-known/security.txt
 - **Description** : Actuellement rate-limit seulement sur auth + profile picture. Les pages publiques (outils, jeux, cours) sont ouvertes.
 - **Action** : Ajouter `checkRateLimit($pdo, $clientIp, 'public_page', 100, 1)` dans `index.php` avant include page.
 
-
 # Préconnect / DNS-prefetch pour assets externes
 - **Description** : Si CDN, polices Google, APIs tierces → `<link rel="preconnect" href="...">` dans head.
 
 # Backup automatique BDD (cron)
 - **Description** : `mysqldump` journalier → compression → stockage externe (S3, Drive, etc.).
 
-
 # Internationalisation (i18n) FR/EN
 - **Description** : Fichiers `lang/fr.php`, `lang/en.php` + détection `Accept-Language` ou param `?lang=en`.
-
-# Protection CSRF sur tous les formulaires POST
-- **Description** : Implémentée en octobre 2026. Voir la tâche `tasks/now.md` initiale.
-- **Détails** : Token CSRF généré via `bin2hex(random_bytes(32))`, stocké en session, validé avec `hash_equals()` pour éviter les attaques par timing.
-- **Fichiers modifiés** : `public/src/php/csrf.php` (nouveau), `public/src/pages/login/login.php`, `public/src/pages/register/register.php`, `public/src/pages/profile/picture/picture.php`, `public/src/pages/password/update/update.php`, `public/src/pages/login/login.html`, `public/src/pages/register/register.html`, `public/src/pages/profile/picture/picture.html`, `public/src/pages/password/update/update.html`.
-- **Formulaires protégés** : Connexion, inscription, téléchargement photo de profil, changement de mot de passe.
-- **Règles respectées** : Functions classiques au lieu de fléchées, blocs `{ }` complets, pas de conditions `? :` en une ligne.
-
-# Corrections rapides
-- **Mot de passe .xyz** : Correction de l'espace superflu dans le lien navlink.php (`motdepasse .xyz` → `motdepasse.xyz`).
