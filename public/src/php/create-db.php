@@ -159,8 +159,8 @@
 
             $pdo->exec($sql);
             // Insert initial row if not exists (ensures counter works after DB reset)
-            $pdo->exec("INSERT IGNORE INTO site_views (id, total_views) VALUES (1, 0)");
-            echo "<p>✔️ Site views table ready</p>";
+            $pdo->exec("INSERT IGNORE INTO api_views (id, total_views) VALUES (1, 0)");
+            echo "<p>✔️ API views table ready</p>";
         } catch(PDOException $e) {
             echo "<p>Error creating site views table: " . $e->getMessage() . "</p>";
         }
@@ -181,9 +181,9 @@
             echo "<p>Error creating page views table: " . $e->getMessage() . "</p>";
         }
 
-        // Create table api_total_views only if it doesn't exist
+        // Create table user_api_total_views only if it doesn't exist
         try {
-            $sql = "CREATE TABLE IF NOT EXISTS api_total_views (
+            $sql = "CREATE TABLE IF NOT EXISTS user_api_total_views (
                 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                 user_id INT NOT NULL,
                 total_views BIGINT NOT NULL DEFAULT 0,
