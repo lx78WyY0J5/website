@@ -506,16 +506,19 @@ function getHeadlessScore() {
             'twitterbot',
             'slackbot',
             'pinterestbot',
+            'bytedance',
+            'shapbot',
+            'opencode', 'electron',
             'ahrefsbot', 'semrushbot', 'screaming-frog-seo-spider', 'dotbot', 'mj12bot',
             'gptbot', 'oai-searchbot', 'chatgpt-user',
             'claudebot', 'claude-web', 'claude-user', 'claude-code', 'anthropic-ai',
             'perplexitybot', 'perplexity-user',
-            'google-extended', 'google-cloudvertexbot', 'gemini-deep-research', 'Google-Read-Aloud',
+            'google-extended', 'google-cloudvertexbot', 'gemini-deep-research', 'Google-read-aloud',
             'ccbot', 'ai2bot',
             'bytespider',
             'cohere-ai', 'cohere-training-data-crawler',
             'diffbot', 'img2dataset', 'crawl4ai', 'firecrawl', 'youbot', 'timpi',
-            'bot', 'crawler', 'spider', 'scrap', 'agent', 'harvester', 'extractor', 'monitor'
+            'bot', 'scan', 'crawler', 'spider', 'scrap', 'agent', 'harvester', 'extractor', 'monitor', 'security', 'research'
         ];
         var i;
         var containsBotWord = 0;
