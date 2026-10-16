@@ -41,6 +41,28 @@ function getClientIdentifier(): string {
     return $_SERVER['REMOTE_ADDR'] ?? 'unknown';
 }
 
+function checkRateLimitByIP(PDO $pdo, string $endpoint, int $maxAttempts, int $windowMinutes): bool {
+    $clientIp = getClientIdentifier();
+    $identifier = $clientIp;
+    $allowed = checkRateLimit($pdo, $identifier, $endpoint, $maxAttempts, $windowMinutes);
+    if (!$allowed) {
+        logSecurityEvent('rate_limit_exceeded', ['endpoint' => $endpoint, 'ip' => $clientIp]);
+        rateLimitExceededResponse($endpoint);
+    }
+    return $allowed;
+}
+
+function checkRateLimitByUser(PDO $pdo, int $userId, string $endpoint, int $maxAttempts, int $windowMinutes): bool {
+    $identifier = 'user_' . $userId;
+    $allowed = checkRateLimit($pdo, $identifier, $endpoint, $maxAttempts, $windowMinutes);
+    if (!$allowed) {
+        $clientIp = getClientIdentifier();
+        logSecurityEvent('rate_limit_exceeded', ['endpoint' => $endpoint, 'ip' => $clientIp, 'user_id' => $userId]);
+        rateLimitExceededResponse($endpoint);
+    }
+    return $allowed;
+}
+
 function rateLimitExceededResponse(string $endpoint): void {
     http_response_code(429);
     if ($endpoint === 'global') {

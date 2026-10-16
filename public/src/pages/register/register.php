@@ -7,11 +7,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
 
 // Rate limiting
-$clientIp = getClientIdentifier();
-if (!checkRateLimit($pdo, $clientIp, 'register', 5, 15)) {
-    logSecurityEvent('rate_limit_exceeded', ['endpoint' => 'register', 'ip' => $clientIp]);
-    rateLimitExceededResponse('register');
-}
+checkRateLimitByIP($pdo, 'register', 5, 15);
 
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $register_code = "";

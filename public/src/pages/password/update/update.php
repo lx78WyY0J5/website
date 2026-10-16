@@ -16,13 +16,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/csrf.php';
 
 // Rate limiting (per user + per IP)
-$clientIp = getClientIdentifier();
 $userId = $_SESSION["id"];
-if (!checkRateLimit($pdo, $clientIp, 'password_update', 5, 15) ||
-    !checkRateLimit($pdo, "user_{$userId}", 'password_update', 5, 15)) {
-    logSecurityEvent('rate_limit_exceeded', ['endpoint' => 'password_update', 'ip' => $clientIp, 'user_id' => $userId]);
-    rateLimitExceededResponse('password_update');
-}
+checkRateLimitByIP($pdo, 'password_update', 5, 15) || checkRateLimitByUser($pdo, $userId, 'password_update', 5, 15);
 
 // Define variables and initialize with empty values
 $password = $confirm_password = "";

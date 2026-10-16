@@ -14,13 +14,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/pages/profile/picture/getPicture.php';
 
 // Rate limiting (per user + per IP)
-$clientIp = getClientIdentifier();
-// Validate userId is numeric
-$userId = intval($_SESSION["id"]);
-if (!checkRateLimit($pdo, $clientIp, 'profile_picture_upload', 20, 60) || !checkRateLimit($pdo, "user_{$userId}", 'profile_picture_upload', 20, 60)) {
-    logSecurityEvent('rate_limit_exceeded', ['endpoint' => 'profile_picture_upload', 'ip' => $clientIp, 'user_id' => $userId]);
-    rateLimitExceededResponse('profile_picture_upload');
-}
+$userId = $_SESSION["id"];
+checkRateLimitByIP($pdo, 'profile_picture_upload', 20, 60) || checkRateLimitByUser($pdo, $userId, 'profile_picture_upload', 20, 60);
 
 // Define upload directory with user ID subfolder
 $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/profile_pictures/';

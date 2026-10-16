@@ -9,11 +9,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
 
 // Rate limiting
-$clientIp = getClientIdentifier();
-if (!checkRateLimit($pdo, $clientIp, 'data_collect', 10, 15)) {
-    logSecurityEvent('rate_limit_exceeded', ['endpoint' => 'data_collect', 'ip' => $clientIp]);
-    rateLimitExceededResponse('data_collect');
-}
+checkRateLimitByIP($pdo, 'data_collect', 10, 15);
 
 header('Content-Type: application/json; charset=utf-8');
 
