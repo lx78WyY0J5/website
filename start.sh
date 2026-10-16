@@ -118,7 +118,7 @@ start_php() {
     local max_attempts=30
     local attempt=0
     while [ $attempt -lt $max_attempts ]; do
-        if curl -s http://127.0.0.1:8000/ > /dev/null 2>&1; then
+        if curl -s http://127.0.0.1:8000/health > /dev/null 2>&1; then
             echo "PHP server ready"
             break
         fi
