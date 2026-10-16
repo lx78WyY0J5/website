@@ -5,3 +5,4 @@ nohup.out
 */uploads/profile_pictures/*
 backup/*
 /tasks/now.md
+logs/PHP-log.txt
