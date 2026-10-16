@@ -17,7 +17,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/csrf.php';
 
 // Rate limiting (per user + per IP)
 $userId = $_SESSION["id"];
-checkRateLimitByIP($pdo, 'password_update', 5, 15) || checkRateLimitByUser($pdo, $userId, 'password_update', 5, 15);
+checkRateLimitByIP($pdo, 'password_update', 5, 15);
+checkRateLimitByUser($pdo, $userId, 'password_update', 5, 15);
 
 // Define variables and initialize with empty values
 $password = $confirm_password = "";

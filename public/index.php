@@ -21,16 +21,11 @@
 
     // Global rate limit per IP (DDoS protection)
     $clientIp = getClientIdentifier();
-    // Determine max attempts based on user authentication
     $maxAttempts = 20;
-    if(isset($_SESSION['username'])){
+    if(isset($_SESSION['username'])){ // Determine max attempts based on user authentication
         $maxAttempts = 50;
     };
-
-    if (!checkRateLimit($pdo, $clientIp, 'global', $maxAttempts, 1)) {
-        logSecurityEvent('rate_limit_exceeded', ['endpoint' => 'global', 'ip' => $clientIp]);
-        rateLimitExceededResponse('global');
-    }
+    checkRateLimitByIP($pdo, 'global', $maxAttempts, 1);
 
     $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 

@@ -15,7 +15,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/pages/profile/picture/getPicture.
 
 // Rate limiting (per user + per IP)
 $userId = $_SESSION["id"];
-checkRateLimitByIP($pdo, 'profile_picture_upload', 20, 60) || checkRateLimitByUser($pdo, $userId, 'profile_picture_upload', 20, 60);
+checkRateLimitByIP($pdo, 'profile_picture_upload', 20, 60);
+checkRateLimitByUser($pdo, $userId, 'profile_picture_upload', 20, 60);
 
 // Define upload directory with user ID subfolder
 $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/profile_pictures/';
