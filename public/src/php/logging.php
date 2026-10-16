@@ -6,6 +6,7 @@ function logSecurityEvent(string $event, array $context = []): void {
     $entry = [
         'time' => date('c'),
         'ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
+        'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? 'none',
         'event' => $event,
         'context' => $context,
     ];
