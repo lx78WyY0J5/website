@@ -72,8 +72,8 @@
     }
 
     $userId = isset($_SESSION['id']) ? (int)$_SESSION['id'] : null;
-    trackView($pdo, $uri, $userId);
-    $viewStats = getViewStats($pdo, $uri, $userId);
+    trackView($pdo, $uri, $userId); //Increment SQL view counter
+    $viewStats = getViewStats($pdo, $uri, $userId); //used later in the footer to display stats
 
     if(isset($_SESSION['username'])) {
         logSecurityEvent('visit', ['username' => $_SESSION['username'], 'url' => $uri]);
