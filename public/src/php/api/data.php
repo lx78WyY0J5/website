@@ -11,6 +11,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
 // Rate limiting
 checkRateLimitByIP($pdo, 'data_collect', 10, 15);
 
+// Increment data views counter
+logSecurityEvent('snitching', ['url' => $uri]);
+incrementDataViews($pdo);
+
 header('Content-Type: application/json; charset=utf-8');
 
 // Seulement les requêtes POST sont acceptées

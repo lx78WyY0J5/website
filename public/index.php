@@ -41,12 +41,22 @@
         $apiFile = $_SERVER['DOCUMENT_ROOT'] . '/src/php/api/' . $route . '.php';
         if (file_exists($apiFile)) {
             require $apiFile;
+
+            logSecurityEvent('api_visit', ['url' => $uri]);
+
             exit;
         }
 
         // Fichier introuvable : 404
         http_response_code(404);
         echo 'Route API inconnue';
+        exit;
+    }
+
+    if($uri === 'health'){
+        logSecurityEvent('health-scan', ['url' => $uri]);
+        $now = new DateTimeImmutable('now', new DateTimeZone('Europe/Paris'));
+        echo $now->format('Y-m-d H:i:s');
         exit;
     }
 

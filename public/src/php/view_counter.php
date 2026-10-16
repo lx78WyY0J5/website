@@ -56,6 +56,17 @@ function getUserTotalViews(PDO $pdo, int $userId): int {
     return $result ? (int)$result['total_views'] : 0;
 }
 
+function incrementDataViews(PDO $pdo): void {
+    $stmt = $pdo->prepare("UPDATE `data_views` SET `total_views` = `total_views` + 1 WHERE `id` = 1");
+    $stmt->execute();
+}
+
+function getDataViews(PDO $pdo): int {
+    $stmt = $pdo->query("SELECT `total_views` FROM `data_views` WHERE `id` = 1");
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result ? (int)$result['total_views'] : 0;
+}
+
 function trackView(PDO $pdo, string $url, ?int $userId = null): void {
     incrementSiteViews($pdo);
     incrementPageViews($pdo, $url);
@@ -70,6 +81,7 @@ function getViewStats(PDO $pdo, string $url, ?int $userId = null): array {
     $stats = [
         'site_total' => getSiteViews($pdo),
         'page_total' => getPageViews($pdo, $url),
+        'data_total' => getDataViews($pdo),
     ];
 
     if ($userId !== null) {

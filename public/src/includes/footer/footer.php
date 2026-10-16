@@ -5,6 +5,7 @@
     <div class="view-stats">
         <p><strong class="view-stats-title">Statistiques du site</strong> :</p>
         <p>Vues totales du site : <strong><?= number_format($viewStats['site_total'] ?? 0) ?></strong></p>
+        <p>Vues API /data : <strong><?= number_format($viewStats['data_total'] ?? 0) ?></strong></p>
         <p>Vues de cette page : <strong><?= number_format($viewStats['page_total'] ?? 0) ?></strong></p>
         <?php if (isset($viewStats['user_page'])): ?>
             <p>Vos vues sur cette page : <strong><?= number_format($viewStats['user_page']) ?></strong></p>

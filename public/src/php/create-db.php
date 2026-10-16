@@ -92,6 +92,8 @@
             )";
 
             $pdo->exec($sql);
+            // Insert initial row if not exists (ensures counter works after DB reset)
+            $pdo->exec("INSERT IGNORE INTO site_views (id, total_views) VALUES (1, 0)");
             echo "<p>✔️ Site views table ready</p>";
         } catch(PDOException $e) {
             echo "<p>Error creating site views table: " . $e->getMessage() . "</p>";
@@ -148,12 +150,19 @@
             echo "<p>Error creating user total views table: " . $e->getMessage() . "</p>";
         }
 
-        // Insert initial site views only if not exists
+        // Create table data_views only if it doesn't exist
         try {
-            $pdo->exec("INSERT IGNORE INTO site_views (id, total_views) VALUES (1, 0)");
-            echo "<p>✔️ Initial site views inserted</p>";
+            $sql = "CREATE TABLE IF NOT EXISTS data_views (
+                id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                total_views BIGINT NOT NULL DEFAULT 0
+            )";
+
+            $pdo->exec($sql);
+            // Insert initial row if not exists (ensures counter works after DB reset)
+            $pdo->exec("INSERT IGNORE INTO data_views (id, total_views) VALUES (1, 0)");
+            echo "<p>✔️ Data views table ready</p>";
         } catch(PDOException $e) {
-            echo "<p>Error inserting site views: " . $e->getMessage() . "</p>";
+            echo "<p>Error creating data views table: " . $e->getMessage() . "</p>";
         }
 
         // Insert admin user if not exists
