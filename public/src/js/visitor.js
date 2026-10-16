@@ -101,6 +101,9 @@ function collectVisitorData() {
     data.color_depth = screen.colorDepth;
 
     // Construire une chaine pour generer l'empreinte (fingerprint) du visiteur
+    // NOTE : localIP, referrer, battery, battery_charging, path, connection_effective_type,
+    // connection_downlink, connection_save_data sont exclus du hash pour plus de stabilite.
+    // Ces champs sont tout de meme envoyes au serveur mais ne font pas partie de l'empreinte.
     var fingerprintSource = data.user_agent + '|' +
         data.app_version + '|' +
         data.app_name + '|' +
@@ -123,21 +126,13 @@ function collectVisitorData() {
         data.time_zone + '|' +
         data.timezone_offset + '|' +
         data.on_line + '|' +
-        data.connection_effective_type + '|' +
-        data.connection_downlink + '|' +
-        data.connection_save_data + '|' +
-        data.local_ip + '|' +
         data.screen_resolution + '|' +
         data.color_depth + '|' +
         data.pixel_depth + '|' +
         data.gpu + '|' +
         data.gpu_adapter + '|' +
-        data.battery_level + '|' +
-        data.battery_charging + '|' +
         data.cookies_enabled + '|' +
-        data.do_not_track + '|' +
-        data.referrer + '|' +
-        data.path;
+        data.do_not_track;
 
     // Recuperer les donnees asynchrones (batterie, IP local, GPU adapter) avant de generer l'empreinte et d'envoyer les donnees
     Promise.all([
@@ -150,12 +145,9 @@ function collectVisitorData() {
         data.local_ip = results[1];
         data.gpu_adapter = results[2];
 
-        //Ajouter au reste des données
-        fingerprintSource = fingerprintSource + '|' +
-            data.battery_level + '|' +
-            data.battery_charging + '|' +
-            data.local_ip + '|' +
-            data.gpu_adapter;
+        // NOTE : battery_level, battery_charging, local_ip ne sont pas ajoutés au hash
+        // pour maintenir la stabilite de l'empreinte. Ces valeurs sont however
+        // conservees dans data et envoyees au serveur.
 
         generateFingerprint(fingerprintSource).then(function (hash) {
             data.fingerprint = hash;
