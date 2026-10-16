@@ -1682,17 +1682,13 @@ function showSingleFilmByID(filmID) {
             mainDiv[0].innerHTML = ""; // Clear existing content
 
             document.getElementById("filmh1").style.display = "none";
-            
+
             var div = document.createElement("div");
             div.className = "card " + getNote(matchingFilm.note);
-            
-            var anchor = document.createElement("a");
-            anchor.href = "?imdb=" + matchingFilm.filmID;
-            anchor.id = matchingFilm.filmID;
-            
+
             var imgTop = document.createElement("img");
             imgTop.className = "svg";
-            
+
             var a = document.createElement("a");
             a.href = "https://www.imdb.com/title/" + matchingFilm.filmID;
             a.innerHTML = matchingFilm.title;
@@ -1704,7 +1700,6 @@ function showSingleFilmByID(filmID) {
             text.innerHTML = matchingFilm.description;
 
             div.appendChild(imgTop);
-            div.appendChild(anchor);
             div.appendChild(a);
             div.appendChild(img);
             div.appendChild(text);
@@ -1771,21 +1766,29 @@ async function showFilm(categorie, divID){
 
             let div = document.createElement("div");
 
+            let divlogo = document.createElement("div");
+            divlogo.className = "divlogo";
+
             let anchor = document.createElement("a");
             let anchorimage = document.createElement("img");
+            let anchorscroll = document.createElement("a");
+
             let imgTop = document.createElement("img");
-            let a = document.createElement("a")
+            let a = document.createElement("a");
             let img = document.createElement("img");
             let text = document.createElement("p");
 
             div.className = "card " + getNote(filmLinks[link].note);
 
+            anchorscroll.href = "#" + filmLinks[link].filmID;
+            anchorscroll.id = filmLinks[link].filmID;
+            anchorscroll.innerHTML = "#";
+            anchorscroll.onclick  = () => { autoScroll(true, "center");}
+
             anchorimage.src = "/src/assets/svg/link.svg";
             anchorimage.className = "svg";
 
             anchor.href = "?imdb=" + filmLinks[link].filmID;
-            anchor.id = filmLinks[link].filmID;
-            anchor.innerHTML = ""
             anchor.onclick  = () => { autoScroll(true, "center");}
 
             imgTop.className = "svg";
@@ -1797,9 +1800,11 @@ async function showFilm(categorie, divID){
 
             text.innerHTML = filmLinks[link].description;
 
-            div.appendChild(imgTop);
-            div.appendChild(anchor);
+            div.appendChild(divlogo);
+            divlogo.appendChild(imgTop);
+            divlogo.appendChild(anchor);
             anchor.appendChild(anchorimage);
+            divlogo.appendChild(anchorscroll);
             div.appendChild(a);
             div.appendChild(img);
             div.appendChild(text);

@@ -47,8 +47,32 @@
     padding-bottom: 2vh;
 }
 
-.films>div>div>a {
-    font-size: xx-large;
+.films>div>div>div.divlogo {
+    display: flex;
+    flex-flow: row;
+    align-self: center;
+    justify-content: center;
+    padding-bottom: 25px;
+}
+
+.films>div>div>div.divlogo>* {
+    display: flex;
+    flex-flow: row;
+    align-self: center;
+    justify-content: center;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+}
+
+.films>div>div>div.divlogo>a {
+    font-size: xxx-large;
+    text-align: center;
+    text-decoration: none;
+}
+
+.films>div>div.card>a {
+    font-size: xxx-large;
     text-decoration: underline;
     text-align: center;
 }
@@ -69,32 +93,32 @@
     border-color: var(--main-color);
 }
 
-.card>img.svg {
+.card>div>img.svg {
     content: url(/src/assets/svg/thumbs-down.svg);
     max-width: 50px;
 }
 
-.card.unknow>img.svg {
+.card.unknow>div>img.svg {
     content: url(/src/assets/svg/help-question.svg);
     max-width: 50px;
 }
 
-.card.best>img.svg {
+.card.best>div>img.svg {
     content: url(/src/assets/svg/star.svg);
 }
 
-.card.medium>img.svg {
+.card.medium>div>img.svg {
     content: url(/src/assets/svg/star-half.svg);
 }
 
-.card.love>img.svg {
+.card.love>div>img.svg {
     content: url(/src/assets/svg/heart.svg);
 }
-.card.bad>img.svg {
+.card.bad>div>img.svg {
     content: url(/src/assets/svg/thumbs-down.svg);
 }
 
-.card.zero>img.svg {
+.card.zero>div>img.svg {
     content: url(/src/assets/svg/warning.svg);
 }
 
