@@ -358,8 +358,8 @@ function getGpuAdapter() {
         var adapterName = '';
         if (typeof navigator !== 'undefined' && navigator !== null && typeof navigator.gpu !== 'undefined' && navigator.gpu !== null && typeof navigator.gpu.requestAdapter === 'function') {
             navigator.gpu.requestAdapter().then(function (adapter) {
-                if (adapter !== null && adapter !== undefined && adapter.name !== undefined) {
-                    adapterName = adapter.name;
+                if (adapter !== null && adapter !== undefined) {
+                    adapterName = adapter.info.description;
                 }
                 resolve(adapterName);
             }).catch(function (error) {
