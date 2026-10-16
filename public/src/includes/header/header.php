@@ -11,17 +11,15 @@
     <div id="NavTopModuleHolder"></div>
 
     <script src="/src/includes/header/header.js"></script>
-     <?php
-        echo "<script>"; 
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/src/pages/admin/music/music.js'; 
-        echo "mergeYouTubeTitles(musicLinks, true, false, false);";
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/src/pages/admin/video/video.js'; 
-        echo "mergeYouTubeTitles(videoLinks, false, true, false);";
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/src/js/film.js'; 
-        echo "mergeYouTubeTitles(filmLinks, false, false, true);";
-        echo "</script>";
-     ?>
-    <script>getURLParameter();</script>
+
+        <script src="/src/pages/admin/music/music.js"></script> 
+        <script>mergeYouTubeTitles(musicLinks, true, false, false);</script>
+        <script src="/src/pages/admin/video/video.js"></script> 
+        <script>mergeYouTubeTitles(videoLinks, false, true, false);</script>
+        <script src="/src/js/film.js"></script>
+        <script>mergeYouTubeTitles(filmLinks, false, false, true);</script>
+
+        <script>getURLParameter();</script>
 </header>
 <link rel="stylesheet" href="/src/css/scrollPercentage.css">
 <div id="scrollPercentage"></div>
