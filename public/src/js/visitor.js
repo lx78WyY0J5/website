@@ -7,7 +7,7 @@ var mousePositions = [];
 var lastMousePositionTime = 0;
 
 // Intervals (en millisecondes)
-var PERIODIC_INTERVAL = 10000; // Envoi des donnees toutes les 10 secondes
+var PERIODIC_INTERVAL = 30000; // Envoi des donnees toutes les 30 secondes
 var MOUSE_LOG_INTERVAL = 1000; // Position de la souris toutes les 1 seconde
 
 function prepareVisitorData(source, extra) {
