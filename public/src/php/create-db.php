@@ -150,6 +150,72 @@
             echo "<p>Error creating user total views table: " . $e->getMessage() . "</p>";
         }
 
+        // Create table api_views only if it doesn't exist
+        try {
+            $sql = "CREATE TABLE IF NOT EXISTS api_views (
+                id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                total_views BIGINT NOT NULL DEFAULT 0
+            )";
+
+            $pdo->exec($sql);
+            // Insert initial row if not exists (ensures counter works after DB reset)
+            $pdo->exec("INSERT IGNORE INTO site_views (id, total_views) VALUES (1, 0)");
+            echo "<p>✔️ Site views table ready</p>";
+        } catch(PDOException $e) {
+            echo "<p>Error creating site views table: " . $e->getMessage() . "</p>";
+        }
+
+        // Create table api_page_views only if it doesn't exist
+        try {
+            $sql = "CREATE TABLE IF NOT EXISTS api_page_views (
+                id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                url VARCHAR(500) NOT NULL,
+                view_count BIGINT NOT NULL DEFAULT 0,
+                UNIQUE KEY uk_url (url),
+                INDEX idx_url (url)
+            )";
+
+            $pdo->exec($sql);
+            echo "<p>✔️ Page views table ready</p>";
+        } catch(PDOException $e) {
+            echo "<p>Error creating page views table: " . $e->getMessage() . "</p>";
+        }
+
+        // Create table api_total_views only if it doesn't exist
+        try {
+            $sql = "CREATE TABLE IF NOT EXISTS api_total_views (
+                id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                user_id INT NOT NULL,
+                total_views BIGINT NOT NULL DEFAULT 0,
+                FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+                UNIQUE KEY uk_user_id (user_id)
+            )";
+
+            $pdo->exec($sql);
+            echo "<p>✔️ User api views table ready</p>";
+        } catch(PDOException $e) {
+            echo "<p>Error creating api total views table: " . $e->getMessage() . "</p>";
+        }
+
+        // Create table user_api_page_views only if it doesn't exist
+        try {
+            $sql = "CREATE TABLE IF NOT EXISTS user_api_page_views (
+                id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                user_id INT NOT NULL,
+                url VARCHAR(500) NOT NULL,
+                view_count BIGINT NOT NULL DEFAULT 0,
+                FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+                UNIQUE KEY uk_user_url (user_id, url),
+                INDEX idx_user_id (user_id),
+                INDEX idx_url (url)
+            )";
+
+            $pdo->exec($sql);
+            echo "<p>✔️ User page views table ready</p>";
+        } catch(PDOException $e) {
+            echo "<p>Error creating user page views table: " . $e->getMessage() . "</p>";
+        }
+
         // Create table data_views only if it doesn't exist
         try {
             $sql = "CREATE TABLE IF NOT EXISTS data_views (

@@ -29,6 +29,35 @@ function incrementUserTotalViews(PDO $pdo, int $userId): void {
     $stmt->execute([$userId]);
 }
 
+function incrementAPIViews(PDO $pdo): void {
+    $stmt = $pdo->prepare("UPDATE `api_views` SET `total_views` = `total_views` + 1 WHERE `id` = 1");
+    $stmt->execute();
+}
+
+function incrementAPIPageViews(PDO $pdo, string $url): void {
+    $stmt = $pdo->prepare("
+        INSERT INTO `api_page_views` (`url`, `view_count`) VALUES (?, 1)
+        ON DUPLICATE KEY UPDATE `view_count` = `view_count` + 1
+    ");
+    $stmt->execute([$url]);
+}
+
+function incrementUserAPIViews(PDO $pdo, int $userId, string $url): void {
+    $stmt = $pdo->prepare("
+        INSERT INTO `user_api_page_views` (`user_id`, `url`, `view_count`) VALUES (?, ?, 1)
+        ON DUPLICATE KEY UPDATE `view_count` = `view_count` + 1
+    ");
+    $stmt->execute([$userId, $url]);
+}
+
+function incrementUserAPITotalViews(PDO $pdo, int $userId): void {
+    $stmt = $pdo->prepare("
+        INSERT INTO `api_total_views` (`user_id`, `total_views`) VALUES (?, 1)
+        ON DUPLICATE KEY UPDATE `total_views` = `total_views` + 1
+    ");
+    $stmt->execute([$userId]);
+}
+
 function getSiteViews(PDO $pdo): int {
     $stmt = $pdo->query("SELECT `total_views` FROM `site_views` WHERE `id` = 1");
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -74,6 +103,16 @@ function trackView(PDO $pdo, string $url, ?int $userId = null): void {
     if ($userId !== null) {
         incrementUserPageViews($pdo, $userId, $url);
         incrementUserTotalViews($pdo, $userId);
+    }
+}
+
+function trackViewAPI(PDO $pdo, string $url, ?int $userId = null): void {
+    incrementAPIViews($pdo);
+    incrementAPIPageViews($pdo, $url);
+
+    if ($userId !== null) {
+        incrementUserAPIViews($pdo, $userId, $url);
+        incrementUserAPITotalViews($pdo, $userId);
     }
 }
 

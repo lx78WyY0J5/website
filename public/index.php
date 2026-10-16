@@ -32,6 +32,10 @@
     // Route API (case-insensitive, file-based routing)
     $lowerUri = strtolower($uri);
     if (str_starts_with($lowerUri, 'api')) {
+        logSecurityEvent('api_visit', ['url' => $uri]);
+        $userId = isset($_SESSION['id']) ? (int)$_SESSION['id'] : null;
+        trackViewAPI($pdo, $uri, $userId); //Increment SQL view counter
+
         $route = ltrim(str_replace('api', '', $lowerUri), '/');
         if ($route === '') {
             $route = 'index';
@@ -41,8 +45,6 @@
         $apiFile = $_SERVER['DOCUMENT_ROOT'] . '/src/php/api/' . $route . '.php';
         if (file_exists($apiFile)) {
             require $apiFile;
-
-            logSecurityEvent('api_visit', ['url' => $uri]);
 
             exit;
         }
@@ -57,6 +59,10 @@
         logSecurityEvent('health-scan', ['url' => $uri]);
         $now = new DateTimeImmutable('now', new DateTimeZone('Europe/Paris'));
         echo $now->format('Y-m-d H:i:s');
+        exit;
+    }
+    else if($uri === 'v1/models'){
+        logSecurityEvent('model-scan', ['url' => $uri]);
         exit;
     }
 
@@ -78,6 +84,7 @@
 
     $userId = isset($_SESSION['id']) ? (int)$_SESSION['id'] : null;
     trackView($pdo, $uri, $userId); //Increment SQL view counter
+
     $viewStats = getViewStats($pdo, $uri, $userId); //used later in the footer to display stats
 
     if(isset($_SESSION['username'])) {
