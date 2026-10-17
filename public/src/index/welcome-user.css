@@ -29,6 +29,7 @@
     font-family: 'Roboto';
     text-decoration: underline;
     font-size: xx-large;
+    padding-top: 10px;
 }
 
 .welcome-user-picture {

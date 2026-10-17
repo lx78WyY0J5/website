@@ -16,15 +16,16 @@
         echo '<div id="user-id">';
             echo '<h2>Vous avez la session n°' . $_SESSION["id"] . '</h2>';
         echo '</div>';
+        echo '<hr>';
     }
 
-    if(!isset($_SESSION["is_admin"]) || empty($_SESSION["is_admin"]) || $_SESSION["is_admin"] != true) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.html';
-        if(!isset($_SESSION['loggedin'])){
-            echo '<p><a href="/login">Connectez-vous</a>, ou alors pourquoi ne pas <a href="/register">créer un compte</a> ?</p>';
-        }
+    include $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.html';
+
+    if(!isset($_SESSION['loggedin'])){
+        echo '<p><a href="/login">Connectez-vous</a>, ou alors pourquoi ne pas <a href="/register">créer un compte</a> ?</p>';
     }
-    else{
+
+    if(isset($_SESSION["is_admin"]) && !empty($_SESSION["is_admin"]) && $_SESSION["is_admin"] === true) {
         echo '<hr>';
         include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/info/info.php';
     }
