@@ -1,0 +1,46 @@
+:root:has(div.cursor) * {
+    cursor: none;
+}
+
+.cursor.hover {
+    transform: rotate(90deg) scale(1.5);
+    border-radius: 500px;
+    background: var(--second-hover);
+}
+
+.cursor.click {
+    transform: scale(0.5);
+    opacity: 0.5;
+}
+
+.cursor {
+    position: fixed;
+    left: 50vw;
+    top: 50vh;
+    z-index: 1001;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    background: var(--second-default);
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transform: scale(1);
+    opacity: 1;
+    transition: background 1s ease, transform 1s ease, opacity 0.5s ease-out;
+    transform-origin: center;
+}
+
+@media only screen and (hover: none) and (pointer: coarse) {
+    .cursor {
+        display: none !important;
+    }
+
+    a,
+    button,
+    html,
+    input {
+        cursor: default !important;
+    }
+}
