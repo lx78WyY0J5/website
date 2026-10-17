@@ -29,8 +29,6 @@ async function createCursor() {
     var content = document.querySelector("html"); // add style / theme //sinon le CSS manque d'info (var-color) (matrice)
     content.appendChild(cursor);
 
-    await include_css("/src/css/cursor.css");
-
     getHandler();
     setCursorPosition(positionX, positionY);
 }
