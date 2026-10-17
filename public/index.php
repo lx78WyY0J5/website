@@ -33,7 +33,10 @@
     $lowerUri = strtolower($uri);
     if (str_starts_with($lowerUri, 'api')) {
         logSecurityEvent('api_visit', ['url' => $uri]);
-        $userId = isset($_SESSION['id']) ? (int)$_SESSION['id'] : null;
+        $userId = null;
+        if(isset($_SESSION['id'])){
+            $userId = (int)$_SESSION['id'];
+        }
         trackViewAPI($pdo, $uri, $userId); //Increment SQL view counter
 
         $route = ltrim(str_replace('api', '', $lowerUri), '/');
@@ -82,7 +85,10 @@
         }
     }
 
-    $userId = isset($_SESSION['id']) ? (int)$_SESSION['id'] : null;
+    $userId = null;
+        if(isset($_SESSION['id'])){
+            $userId = (int)$_SESSION['id'];
+        }
     trackView($pdo, $uri, $userId); //Increment SQL view counter
 
     $viewStats = getViewStats($pdo, $uri, $userId); //used later in the footer to display stats
