@@ -4,6 +4,10 @@
 #banner{
 }
 
+br.padding{
+    margin: 10px;
+}
+
 #banner>img {
     border-radius: 20%;
 

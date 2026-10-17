@@ -1,8 +1,7 @@
 textarea#frames-textarea{
-    width: 80vw;
-    height: 70vh;
+    width: 100%;
+    height: 550px;
 
-    max-width: 80vw;
     max-height: 70vh;
 
     text-align: center;
@@ -11,6 +10,7 @@ textarea#frames-textarea{
     border-style: none;
     background: transparent;
     backdrop-filter: none;
+    overflow: hidden;
 }
 
 #frames-frames,
