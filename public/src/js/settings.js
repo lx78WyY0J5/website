@@ -17,11 +17,6 @@ function SwitchYTIndividualsVids() {
     Switcher("IndividualsVids");
 }
 
-function SwitchCursor() {
-    Switcher("customCursor");
-    getCursorSetting();
-}
-
 function SwitchGranted() {
     Switcher("Granted");
 }
@@ -123,7 +118,6 @@ function setInputValue(name, defaultValue) {
 }
 
 function loadSettingsSwitch() {
-    setSwitch("customCursor", false);
     setSwitch("Granted", false);
     setSwitch("YouTubeLoop", false);
     setSwitch("YoutubeShuffle", true);

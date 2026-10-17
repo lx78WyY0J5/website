@@ -114,9 +114,6 @@
         <script src="/src/js/visitor-function.js"></script>
         <script src="/src/js/visitor-event.js"></script>
 
-        <script src="/src/js/cursor.js"></script>
-        <link rel="stylesheet" href="/src/css/cursor.css">
-
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.php'; ?>
 
         <div id="content">
