@@ -16,10 +16,10 @@
 
     // Récupérer les visites avec IP et score de détection
     $stmt = $pdo->query("
-        SELECT ip, date_visite, headless_score, user_agent, app_name, platform
+        SELECT ip, date_visite, source, headless_score, user_agent, fingerprint, oscpu, platform, path, languages, gpu, plugins, time_spent
         FROM visites 
         ORDER BY date_visite DESC 
-        LIMIT 50
+        LIMIT 100
     ");
     $visites = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

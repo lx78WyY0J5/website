@@ -56,6 +56,13 @@ function displayVisites(visites) {
             score = 'N/A';
         }
 
+        let source;
+        if (vite.source) {
+            source = vite.source;
+        } else {
+            source = 'Inconnue';
+        }
+
         let userAgent;
         if (vite.user_agent) {
             userAgent = vite.user_agent;
@@ -63,27 +70,76 @@ function displayVisites(visites) {
             userAgent = 'Inconnu';
         }
 
-        let appName;
-        if (vite.app_name) {
-            appName = vite.app_name;
+        let fingerprint;
+        if (vite.fingerprint) {
+            fingerprint = vite.fingerprint;
         } else {
-            appName = 'Non détecté';
+            fingerprint = 'Inconnu';
+        }
+
+        let oscpu;
+        if (vite.oscpu) {
+            oscpu = vite.oscpu;
+        } else {
+            oscpu = 'Non détecté';
         }
 
         let platform;
-        if (vite.app_name) {
+        if (vite.platform) {
             platform = vite.platform;
         } else {
             platform = 'Pas d\'OS';
         }
 
+        let path;
+        if (vite.path) {
+            path = vite.path;
+        } else {
+            path = 'Aucune URL';
+        }
+
+        let languages;
+        if (vite.languages) {
+            languages = vite.languages;
+        } else {
+            languages = 'Aucune langue';
+        }
+
+        let gpu;
+        if (vite.gpu) {
+            gpu = vite.gpu;
+        } else {
+            gpu = 'Aucun GPU';
+        }
+
+        let plugins;
+        if (vite.plugins) {
+            plugins = vite.plugins;
+        } else {
+            plugins = 'Aucun plugin';
+        }
+
+        let time_spent;
+        if (vite.time_spent !== undefined) {
+            time_spent = vite.time_spent;
+        } else {
+            time_spent = 0;
+        }
+
         rows += `<tr>
             <td><strong>${ip}</strong></td>
             <td>${date}</td>
+            <td>${source}</td>
             <td>${score}</td>
             <td>${userAgent}</td>
-            <td>${appName}</td>
+            <td>${fingerprint}</td>
+            <td>${oscpu}</td>
             <td>${platform}</td>
+            <td>${path}</td>
+            <td>${languages}</td>
+            <td>${gpu}</td>
+            <td>${plugins}</td>
+            <td>${time_spent}s</td>
         </tr>`;
     });
 
