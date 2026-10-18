@@ -87,8 +87,11 @@ async function checkIfInputMatchLink(query) {
     for (link in links) {
         let resultTemp = compareLinks(link, queryListed);
         if (resultTemp !== null) {
-            result[counter] = resultTemp;
-            counter++;
+            if(counter <= 100){
+                result[counter] = resultTemp;
+                counter++;
+            }
+            else{ break; }
         }
     }
 
