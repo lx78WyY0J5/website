@@ -66,9 +66,9 @@ function checkRateLimitByUser(PDO $pdo, int $userId, string $endpoint, int $maxA
 function rateLimitExceededResponse(string $endpoint): void {
     http_response_code(429);
     if ($endpoint === 'global') {
-        echo "<p>Trop de requêtes. Veuillez patienter avant de réessayer.</p>";
+        echo "<p>HTTP 429 : Trop de requêtes. Veuillez patienter avant de réessayer.</p>";
     } else {
-        echo "<p>Trop de tentatives pour {$endpoint}. Réessayez dans 15 minutes.</p>";
+        echo "<p>HTTP 429 : Trop de tentatives pour {$endpoint}. Réessayez dans 15 minutes.</p>";
     }
     exit;
 }
