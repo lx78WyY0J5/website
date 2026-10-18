@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="/src/pages/outils/stats/stats.css">
+
+<div id="sql-stats">
+    <h1>Statistiques SQL</h1>
+
+    <!-- Visites Section -->
+    <section id="visites-section" class="stats-section">
+        <h2>Visites récentes</h2>
+        <div class="loading">Chargement des visites...</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>IP</th>
+                    <th>Date</th>
+                    <th>Score détection</th>
+                    <th>Navigateur</th>
+                    <th>Appareil</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rempli par JavaScript -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Utilisateurs Section -->
+    <section id="users-section" class="stats-section">
+        <h2>Utilisateurs</h2>
+        <div class="loading">Chargement des utilisateurs...</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Date création</th>
+                    <th>Total visites</th>
+                    <th>Total API views</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rempli par JavaScript -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Statistiques générales -->
+    <section id="summary-section" class="stats-section">
+        <h2>Résumé</h2>
+        <div class="grid-stats">
+            <div class="stat-card">
+                <h3>Total visites</h3>
+                <div id="total-visits" class="stat-number">Chargement...</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total utilisateurs</h3>
+                <div id="total-users" class="stat-number">Chargement...</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total page views</h3>
+                <div id="total-page-views" class="stat-number">Chargement...</div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="/src/pages/outils/stats/stats.js"></script>
