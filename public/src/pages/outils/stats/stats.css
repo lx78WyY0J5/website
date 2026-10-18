@@ -1,16 +1,28 @@
-.stats-section>table{
-    width: 100%;
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: sans-serif;
 }
 
-.stats-section>table>thead>tr,
-.stats-section>table>tbody>tr {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    gap: 10px;
+th, td {
+  border: 1px solid var(--background-color);
+  padding: 8px;
+  text-align: center;
+  color: var(--text-color)
 }
 
-.stats-section>table>thead>tr>th,
-.stats-section>table>tbody>tr>td {
+tr {}
 
+th {
+  background-color: var(--main-color);
+  color: var(--text-color);
+}
+
+tr:nth-child(even) {
+  background-color: var(--background-color-transparent);
+  color: var(--main-color);
+}
+
+tr:hover {
+  background-color: var(--second-hover-low);
 }
