@@ -1,3 +1,3 @@
 <?php
 header('Content-Type: text/plain');
-echo "OK";
+echo "API OK";
