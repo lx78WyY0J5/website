@@ -8,10 +8,12 @@ th, td {
   border: 1px solid var(--background-color);
   padding: 8px;
   text-align: center;
-  color: var(--text-color)
+  color: var(--text-color);
 }
 
-tr {}
+.stat-number {
+    color: var(--text-color);
+}
 
 th {
   background-color: var(--main-color);
