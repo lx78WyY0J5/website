@@ -43,9 +43,10 @@
     $userCount = $stmt->fetch(PDO::FETCH_ASSOC);
     $totalUsers = $userCount ? (int)$userCount['count'] : 0;
 
-    $stmt = $pdo->query("SELECT view_count FROM page_views ORDER BY view_count DESC LIMIT 1");
+    $stmt = $pdo->query("SELECT view_count,url FROM page_views WHERE url <> '' ORDER BY view_count DESC LIMIT 1");
     $topPage = $stmt->fetch(PDO::FETCH_ASSOC);
     $totalPageViews = $topPage ? (int)$topPage['view_count'] : 0;
+    $totalPageViewsUrl = $topPage ? (String)$topPage['url'] : "0";
 
     echo json_encode([
         'success' => true,
@@ -53,6 +54,7 @@
         'users' => $users,
         'total_visits' => $totalVisits,
         'total_users' => $totalUsers,
-        'total_page_views' => $totalPageViews
+        'total_page_views' => $totalPageViews,
+        'total_page_views_url' => $totalPageViewsUrl
     ]);
 ?>

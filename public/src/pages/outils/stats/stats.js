@@ -20,7 +20,7 @@ async function fetchStats() {
 
         displayVisites(data.visites);
         displayUsers(data.users);
-        updateSummary(data.total_visits, data.total_users, data.total_page_views);
+        updateSummary(data.total_visits, data.total_users, data.total_page_views, data.total_page_views_url);
     } catch (error) {
         console.error('Erreur lors du chargement des stats:', error);
         displayError('Erreur lors du chargement des statistiques');
@@ -199,10 +199,11 @@ function displayUsers(users) {
     tbody.innerHTML = rows;
 }
 
-function updateSummary(totalVisits, totalUsers, totalPageViews) {
+function updateSummary(totalVisits, totalUsers, totalPageViews, totalPageViewsUrl) {
     document.getElementById('total-visits').textContent = totalVisits;
     document.getElementById('total-users').textContent = totalUsers;
-    document.getElementById('total-page-views').textContent = totalPageViews;
+    document.getElementById('top-total-page-views').textContent = totalPageViews;
+    document.getElementById('top-total-page-views-url').textContent = "/" + totalPageViewsUrl;
 }
 
 function formatDate(dateString) {
