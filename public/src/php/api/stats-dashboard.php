@@ -61,6 +61,6 @@
     ]);
     }
     else {
-        echo 'fuck you hacker';
+        echo 'Vous devez vous connecter en tant qu\'administrateur';
     }
 ?>

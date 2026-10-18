@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function fetchStats() {
     try {
-        const response = await fetch('/src/php/stats-dashboard.php');
+        const response = await fetch('/api/stats-dashboard');
         if (!response.ok) {
             throw new Error('Erreur réseau: ' + response.status);
         }
