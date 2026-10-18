@@ -41,12 +41,41 @@ function displayVisites(visites) {
 
     let rows = '';
     visites.forEach(vite => {
-        const ip = vite.ip || 'N/A';
+        let ip;
+        if (vite.ip) {
+            ip = vite.ip;
+        } else {
+            ip = 'N/A';
+        }
+
         const date = formatDate(vite.date_visite);
-        const score = vite.headless_score !== undefined ? vite.headless_score : 'N/A';
-        const userAgent = vite.user_agent ? truncateString(vite.user_agent, 30) : 'Inconnu';
-        const appName = vite.app_name ? truncateString(vite.app_name, 20) : 'Non détecté';
-        const platform = vite.app_name ? truncateString(vite.platform, 20) : 'Pas d\'OS';
+        let score;
+        if (vite.headless_score !== undefined) {
+            score = vite.headless_score;
+        } else {
+            score = 'N/A';
+        }
+
+        let userAgent;
+        if (vite.user_agent) {
+            userAgent = vite.user_agent;
+        } else {
+            userAgent = 'Inconnu';
+        }
+
+        let appName;
+        if (vite.app_name) {
+            appName = vite.app_name;
+        } else {
+            appName = 'Non détecté';
+        }
+
+        let platform;
+        if (vite.app_name) {
+            platform = vite.platform;
+        } else {
+            platform = 'Pas d\'OS';
+        }
 
         rows += `<tr>
             <td><strong>${ip}</strong></td>
@@ -75,10 +104,33 @@ function displayUsers(users) {
 
     let rows = '';
     users.forEach(user => {
-        const username = user.username || 'Inconnu';
-        const createdAt = user.created_at ? formatDateFrancais(user.created_at) : 'Inconnue';
-        const totalViews = user.total_views !== undefined ? user.total_views : 0;
-        const totalApiViews = user.total_api_views !== undefined ? user.total_api_views : 0;
+        let username;
+        if (user.username) {
+            username = user.username;
+        } else {
+            username = 'Inconnu';
+        }
+        
+        let createdAt;
+        if(user.created_at){
+            createdAt = formatDateFrancais(user.created_at);
+        } else {
+            createdAt = 'Inconnu';
+        }
+
+        let totalViews;
+        if (user.total_views !== undefined) {
+            totalViews = user.total_views;
+        } else {
+            totalViews = 0;
+        }
+
+        let totalApiViews;
+        if (user.total_views !== undefined) {
+            totalApiViews = user.total_api_views;
+        } else {
+            totalApiViews = 0;
+        }
 
         rows += `<tr>
             <td>${username}</td>
@@ -100,14 +152,18 @@ function updateSummary(totalVisits, totalUsers, totalPageViews) {
 function formatDate(dateString) {
     if (!dateString) return 'N/A';
     const date = new Date(dateString);
+
     if (isNaN(date.getTime())) return dateString;
+
     return date.toLocaleString();
 }
 
 function formatDateFrancais(dateString) {
     if (!dateString) return 'N/A';
     const date = new Date(dateString);
+
     if (isNaN(date.getTime())) return dateString;
+
     const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' };
     return date.toLocaleString('fr-FR', options);
 }
@@ -115,11 +171,13 @@ function formatDateFrancais(dateString) {
 function truncateString(str, maxLength) {
     if (!str) return '';
     if (str.length <= maxLength) return str;
+
     return str.substring(0, maxLength - 1) + '…';
 }
 
 function displayError(message) {
     const sections = document.querySelectorAll('.stats-section');
+
     sections.forEach(section => {
         section.innerHTML = `<div class="error">${message}</div>`;
     });
