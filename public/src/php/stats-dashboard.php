@@ -1,7 +1,8 @@
 <?php
-    if(isset($_SESSION["is_admin"]) && !empty($_SESSION["is_admin"]) && $_SESSION["is_admin"] === true) {
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
+    session_start();
+    if(isset($_SESSION["is_admin"]) && !empty($_SESSION["is_admin"]) && $_SESSION["is_admin"] === true) {
 
     $servername = getenv('DB_IP');
     $username = getenv('DB_USER');
