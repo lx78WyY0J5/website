@@ -42,6 +42,12 @@ let links = [
         svg: "/src/assets/svg/settings.svg",
     },
     {
+        href: "/outils/stats",
+        tag: "Compte URL Outils URL Admin",
+        title: "Statistiques SQL",
+        svg: "/src/assets/svg/settings.svg",
+    },
+    {
         href: "/discord/tempvoc",
         tag: ".gg URL Discord",
         title: "Salon vocal invité Discord",

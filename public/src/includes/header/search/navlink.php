@@ -16,6 +16,11 @@
                         echo "<a href='/logout'><img src='/src/assets/svg/settings.svg' class='svg' alt=''>Logout</a>";
                         echo "<a href='/password/update'><img src='/src/assets/svg/password.svg' class='svg' alt=''>Update password</a>";
                         echo "<a href='/profile/picture'><img src='/src/assets/svg/settings.svg' class='svg' alt=''>Update profile picture</a>";
+
+                        if(isset($_SESSION["is_admin"]) && !empty($_SESSION["is_admin"]) && $_SESSION["is_admin"] === true) {
+                            echo '<hr>';
+                            echo "<a href='/outils/stats'><img src='/src/assets/svg/settings.svg' class='svg' alt=''>Statistiques SQL</a>";
+                        }
                     }
                     else{
                         echo "<a href='/login'><img src='/src/assets/svg/app-gear.svg' class='svg' alt=''>Login</a>";
