@@ -48,7 +48,7 @@ function displayVisites(visites) {
             ip = 'N/A';
         }
 
-        const date = formatDate(vite.date_visite);
+        const date = formatDateFrancais(vite.date_visite);
         let score;
         if (vite.headless_score !== undefined) {
             score = vite.headless_score;
@@ -206,22 +206,17 @@ function updateSummary(totalVisits, totalUsers, totalPageViews, totalPageViewsUr
     document.getElementById('top-total-page-views-url').textContent = "/" + totalPageViewsUrl;
 }
 
-function formatDate(dateString) {
-    if (!dateString) return 'N/A';
-    const date = new Date(dateString);
-
-    if (isNaN(date.getTime())) return dateString;
-
-    return date.toLocaleString();
-}
-
 function formatDateFrancais(dateString) {
     if (!dateString) return 'N/A';
-    const date = new Date(dateString);
+    const date = new Date(dateString.endsWith('Z') ? dateString : dateString + 'Z');   
 
     if (isNaN(date.getTime())) return dateString;
 
-    const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    const options = {
+        year: 'numeric', month: 'numeric', day: 'numeric',
+        hour: '2-digit', minute: '2-digit',
+        timeZone: 'Europe/Paris'
+    };
     return date.toLocaleString('fr-FR', options);
 }
 
