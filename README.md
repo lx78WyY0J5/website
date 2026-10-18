@@ -11,20 +11,30 @@
 - `nano .env`
 ### .env inexistant
 En cas de `.env` inexistant, le `.env.exemple` sera copié vers `.env`
-## Installation
+
+## Installation et lancement
+### Installation
 [./install.sh](/install.sh)
 ```
 chmod +x install.sh
 install.sh
 ```
-## Démarrage
+### Démarrage
 [./start.sh](/start.sh)
 ```
 chmod +x start.sh
 start.sh
 ```
+### Changer le mot de passe administrateur
+- Se connecter `/login` (voire le `.env`)
+  - `administrator`
+  - `SuperUser123@World!`
+- Aller sur `/password/update`
+  - Changer le mot de passe
+
 ## Tests automatiques
 [./.github/workflows/ci.yml](/.github/workflows/ci.yml)
+
 ## Comment le site marche
 ### Index.php
 - [./public/index.php](/public/index.php)
