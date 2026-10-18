@@ -1,4 +1,5 @@
 <?php
+    if(isset($_SESSION["is_admin"]) && !empty($_SESSION["is_admin"]) && $_SESSION["is_admin"] === true) {
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
 
@@ -57,4 +58,8 @@
         'total_page_views' => $totalPageViews,
         'total_page_views_url' => $totalPageViewsUrl
     ]);
+    }
+    else {
+        echo 'fuck you hacker';
+    }
 ?>
