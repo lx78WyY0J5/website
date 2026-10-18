@@ -1,0 +1,16 @@
+.stats-section>table{
+    width: 100%;
+}
+
+.stats-section>table>thead>tr,
+.stats-section>table>tbody>tr {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    gap: 10px;
+}
+
+.stats-section>table>thead>tr>th,
+.stats-section>table>tbody>tr>td {
+
+}

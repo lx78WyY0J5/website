@@ -46,6 +46,7 @@ function displayVisites(visites) {
         const score = vite.headless_score !== undefined ? vite.headless_score : 'N/A';
         const userAgent = vite.user_agent ? truncateString(vite.user_agent, 30) : 'Inconnu';
         const appName = vite.app_name ? truncateString(vite.app_name, 20) : 'Non détecté';
+        const platform = vite.app_name ? truncateString(vite.platform, 20) : 'Pas d\'OS';
 
         rows += `<tr>
             <td><strong>${ip}</strong></td>
@@ -53,6 +54,7 @@ function displayVisites(visites) {
             <td>${score}</td>
             <td>${userAgent}</td>
             <td>${appName}</td>
+            <td>${platform}</td>
         </tr>`;
     });
 
