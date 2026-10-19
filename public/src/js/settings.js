@@ -146,6 +146,8 @@ function setTransparencyPowerSetting(){
         }
     }
     else{
-        document.getElementById("TransparencyPower").value = 1;
+        if(document.getElementById("TransparencyPower") !== null){
+            document.getElementById("TransparencyPower").value = 1;
+        }
     }
 }
