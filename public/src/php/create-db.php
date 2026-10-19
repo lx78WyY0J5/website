@@ -96,16 +96,60 @@
             $pdo->exec($sql);
             echo "<p>✔️ User pictures table ready</p>";
 
-            // Insert admin user profile picure
+            // Photo de profil admin : le fichier pp.gif existe déjà dans
+            // uploads/profile_pictures/<adminId>/ -> créer la ligne BDD
             $adminUsername = getenv('ADMIN_USERNAME');
-            $adminPassword = getenv('ADMIN_PASSWORD');
-            if ($adminUsername && $adminPassword) {
+            if ($adminUsername) {
                 try {
-                    $stmt = $pdo->prepare("INSERT IGNORE INTO users (username, password) VALUES (?, ?)");
-                    $stmt->execute([$adminUsername, password_hash($adminPassword, PASSWORD_DEFAULT)]);
-                    echo "<p>✔️ Admin user inserted</p>";
+                    $adminId = null;
+                    $stmt = $pdo->prepare("SELECT id FROM users WHERE username = :username");
+                    $stmt->bindParam(":username", $param_admin_username, PDO::PARAM_STR);
+                    $param_admin_username = $adminUsername;
+
+                    if ($stmt->execute()) {
+                        $adminRow = $stmt->fetch(PDO::FETCH_ASSOC);
+                        if ($adminRow !== false) {
+                            $adminId = (int)$adminRow["id"];
+                        }
+                    }
+                    unset($stmt);
+
+                    if ($adminId !== null) {
+                        $file_path = "uploads/profile_pictures/" . $adminId . "/pp.gif";
+
+                        // La photo doit exister physiquement
+                        if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $file_path)) {
+                            // N'écrire la ligne que si elle n'existe pas déjà (relance)
+                            $param_filename = "pp.gif";
+                            $param_admin_id = $adminId;
+                            $stmt = $pdo->prepare("SELECT id FROM user_pictures WHERE user_id = :user_id AND filename = :filename");
+                            $stmt->bindParam(":user_id", $param_admin_id, PDO::PARAM_INT);
+                            $stmt->bindParam(":filename", $param_filename, PDO::PARAM_STR);
+
+                            if ($stmt->execute()) {
+                                if ($stmt->rowCount() == 0) {
+                                    $param_file_path = $file_path;
+                                    $insert = $pdo->prepare("INSERT INTO user_pictures (user_id, filename, file_path) VALUES (:user_id, :filename, :file_path)");
+                                    $insert->bindParam(":user_id", $param_admin_id, PDO::PARAM_INT);
+                                    $insert->bindParam(":filename", $param_filename, PDO::PARAM_STR);
+                                    $insert->bindParam(":file_path", $param_file_path, PDO::PARAM_STR);
+                                    $insert->execute();
+                                    echo "<p>✔️ Admin profile picture inserted</p>";
+                                }
+                                else {
+                                    echo "<p>✔ Admin profile picture already present</p>";
+                                }
+                            }
+
+                            // Close statement
+                            unset($stmt);
+                        }
+                        else {
+                            echo "<p>Admin profile picture file not found : " . $file_path . "</p>";
+                        }
+                    }
                 } catch(PDOException $e) {
-                    echo "<p>Error inserting admin user: " . $e->getMessage() . "</p>";
+                    echo "<p>Error inserting admin profile picture: " . $e->getMessage() . "</p>";
                 }
             }
         } catch(PDOException $e) {

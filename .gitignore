@@ -2,7 +2,7 @@
 logs/security.log
 logs/php.log
 nohup.out
-*/uploads/profile_pictures/*
+*/uploads/*/*
 backup/*
-/tasks/now.md
+/tasks/*
 logs/PHP-log.txt
