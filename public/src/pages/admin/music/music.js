@@ -195,7 +195,7 @@ var musicLinks = [
     {
         "videoID": "TMSlTQmDLx4",
         "top": true,
-        "category": "histoire",
+        "category": "histoire chill electro rock",
         "title": "99 Luftballons"
     },
     {
@@ -1300,12 +1300,13 @@ var musicLinks = [
     },
     {
         "videoID": "5yXdpVCmTGc",
-        "category": "phonk",
+        "category": "phonk electro",
+        "top": true,
         "title": "MANGOS TIKTOK VERSION (PHONK)"
     },
     {
         "videoID": "YyoFFkDIT3k",
-        "category": "phonk",
+        "category": "phonk electro",
         "top": true,
         "title": "2KE, 808iuli - X-SLIDE"
     },
@@ -1421,7 +1422,8 @@ var musicLinks = [
     },
     {
         "videoID": "_KztNIg4cvE",
-        "category": "histoire",
+        "category": "histoire chill electro",
+        "top":true,
         "title": "Crystal Waters - Gypsy Woman (She's Homeless) (Official Music Video)"
     },
     {
@@ -5176,7 +5178,7 @@ var musicLinks = [
     },
     {
         "videoID": "Gr7mOdz1l9E",
-        "category": "phonk",
+        "category": "phonk electro",
         "top": true,
         "title": "HAVOC"
     },
@@ -6445,7 +6447,8 @@ var musicLinks = [
     },
     {
         "videoID": "zxt75OGPWao",
-        "category": "todo",
+        "category": "rap",
+        "top": true,
         "title": "7/7"
     },
     {
@@ -6845,7 +6848,8 @@ var musicLinks = [
     },
     {
         "videoID": "ObGOmFoxFdU",
-        "category": "todo",
+        "category": "slavic rap",
+        "top": true,
         "title": "ГАМОРА - Дыхание улиц (Official clip 2011)"
     },
     {
@@ -8794,7 +8798,8 @@ var musicLinks = [
     },
     {
         "videoID": "rBdf-tgfDKE",
-        "category": "todo",
+        "category": "slavic trool electro phonk",
+        "top": true,
         "title": "HISTED, TXVSTERPLAYA - MASHA ULTRAFUNK"
     },
     {
@@ -9655,7 +9660,8 @@ var musicLinks = [
     },
     {
         "videoID": "PtApgLa94Yo",
-        "category": "todo",
+        "category": "slavic electro phonk histoire",
+        "top": true,
         "title": "KATYUSHA"
     },
     {
@@ -9795,7 +9801,8 @@ var musicLinks = [
     },
     {
         "videoID": "KHIgpxwdZfg",
-        "category": "todo",
+        "category": "histoire chill electro",
+        "top":true,
         "title": "Gypsy Woman (She's Homeless) (La Da Dee La Da Da) (Radio Edit)"
     },
     {
@@ -10180,7 +10187,8 @@ var musicLinks = [
     },
     {
         "videoID": "lEX3O-SPYco",
-        "category": "todo",
+        "category": "histoire chill electro",
+        "top": true,
         "title": "Don't Stop The Music (Slowed)"
     },
     {
@@ -10519,7 +10527,8 @@ var musicLinks = [
     },
     {
         "videoID": "lpWeXiE28qc",
-        "category": "todo",
+        "category": "electro phonk",
+        "top": true,
         "title": "Horrigan"
     },
     {
@@ -10897,7 +10906,8 @@ var musicLinks = [
     },
     {
         "videoID": "5rW1NeyeBIc",
-        "category": "todo",
+        "category": "electro phonk rap",
+        "top": true,
         "title": "9mm"
     },
     {
@@ -11497,7 +11507,8 @@ var musicLinks = [
     },
     {
         "videoID": "9g8KuGzHTyU",
-        "category": "todo",
+        "category": "electro",
+        "top": true,
         "title": "Meet Her At The Love Parade"
     },
     {
@@ -11820,17 +11831,20 @@ var musicLinks = [
     },
     {
         "videoID": "TQz28aF1Nmo",
-        "category": "todo",
+        "top": true,
+        "category": "histoire chill electro rock",
         "title": "99 Luftballons (from \"Atomic Blonde\")"
     },
     {
         "videoID": "AT_0zXw2rRo",
-        "category": "todo",
+        "top": true,
+        "category": "histoire chill electro rock",
         "title": "99 Luftballons"
     },
     {
         "videoID": "Fpu5a0Bl8eY",
-        "category": "todo",
+        "top": true,
+        "category": "histoire chill electro rock",
         "title": "NENA | 99 Luftballons [1983] [Offizielles HD Musikvideo]"
     },
     {
@@ -12690,7 +12704,8 @@ var musicLinks = [
     },
     {
         "videoID": "NSZxh0EAwNg",
-        "category": "todo",
+        "category": "phonk hardbass",
+        "top": true,
         "title": "DEATH TANK"
     },
     {
@@ -12725,7 +12740,8 @@ var musicLinks = [
     },
     {
         "videoID": "BA4rSO-h9Io",
-        "category": "todo",
+        "category": "histoire chill rock",
+        "top": true,
         "title": "Redbone - Come and Get Your Love (Official Music Video)"
     },
     {
@@ -13347,7 +13363,8 @@ var musicLinks = [
     },
     {
         "videoID": "Nr-WemEPw48",
-        "category": "todo",
+        "category": "asian chill histoire",
+        "top": true,
         "title": "Watashitachi o Shinjite Ite"
     },
     {
@@ -13940,7 +13957,8 @@ var musicLinks = [
     },
     {
         "videoID": "9O-nn93Z5p4",
-        "category": "todo",
+        "category": "rap trool",
+        "top": true,
         "title": "HEM - Zinzin (Clip officiel)"
     },
     {
