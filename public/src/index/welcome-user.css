@@ -11,22 +11,22 @@
         flex-direction: column;
     }
 
-    #welcome-user > h2 {
+    #welcome-user>h2 {
         margin-bottom: 0px;
     }
 }
 
-#welcome-user > * {
+#welcome-user>* {
     display: inline-block;
 }
 
-#welcome-user > h2 {
+#welcome-user>h2 {
     font-family: Pacifico;
     font-size: 50px;;
     margin: 0px;
 }
 
-#welcome-user > h1 {
+#welcome-user>h1 {
     font-family: 'Roboto';
     text-decoration: underline;
     font-size: xx-large;
