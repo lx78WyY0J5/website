@@ -14151,6 +14151,30 @@ var musicLinks = [
         "videoID": "AIgJenz0ZK4",
         "category": "todo",
         "title": "Flashdance - Maniac (Movie Music Video)"
+    },
+    {
+        "videoID": "yUeGynkcAM4",
+        "category": "rap",
+        "top": true
+    },
+    {
+        "videoID": "_je5c9L5q88",
+        "category": "rap moody"
+    },
+    {
+        "videoID": "TMc9tHQ8Gcw",
+        "category": "rap trool",
+        "top": true
+    },
+    {
+        "videoID": "9tsjC_0rspY",
+        "category": "rap trool",
+        "top": true
+    },
+    {
+        "videoID": "uMXzZKJprwg",
+        "category": "rap trool moody",
+        "top": true
     }
 ];
 
