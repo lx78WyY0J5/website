@@ -1112,7 +1112,7 @@ var musicLinks = [
     {
         "videoID": "qUwSYxoRhaM",
         "category": "phonk",
-        "title": "DVRST - REASON TO LIVE"
+        "title": "DVRST - Reason To Live"
     },
     {
         "videoID": "W9GXqCBAZb0",
@@ -2416,7 +2416,7 @@ var musicLinks = [
     {
         "videoID": "rdSXXwkuaT0",
         "category": "trool histoire",
-        "title": "\"HARD DRIVE\" - UNDERTALE METTATON SONG | by Griffinilla  (ft. WildCard)"
+        "title": "HARD DRIVE"
     },
     {
         "videoID": "Jrg9KxGNeJY",
@@ -4273,7 +4273,7 @@ var musicLinks = [
     },
     {
         "videoID": "oozW_CTmovA",
-        "category": "phonk",
+        "category": "phonk rap",
         "top": true,
         "title": "North Side"
     },
@@ -4425,7 +4425,7 @@ var musicLinks = [
     {
         "videoID": "N72U-NFu44k",
         "category": "rock histoire",
-        "title": "It Has To Be This Way"
+        "title": "It Has To Be This Way (Platinum Mix)"
     },
     {
         "videoID": "qQzdAsjWGPg",
@@ -4792,7 +4792,7 @@ var musicLinks = [
     {
         "videoID": "Xu3FTEmN-eg",
         "category": "rock electro histoire",
-        "title": "The Chemical Brothers - Galvanize (Official Music Video)"
+        "title": "The Chemical Brothers - Galvanize featuring Q-Tip (Official Music Video)"
     },
     {
         "videoID": "_N7Iy1PzfFI",
@@ -5471,7 +5471,7 @@ var musicLinks = [
     {
         "videoID": "ppCmZcccjnA",
         "category": "phonk hardbass moody",
-        "title": "MISERY HARDTEKK"
+        "title": "MISERY HARDTEKK [NOW ON ALL PLATFORMS]"
     },
     {
         "videoID": "adtntJCreYE",
@@ -5975,7 +5975,7 @@ var musicLinks = [
     {
         "videoID": "eeNv4wf2D1U",
         "category": "todo",
-        "title": "love nwantiti (feat. Dj Yo! & AX'EL) (Remix)"
+        "title": "love nwantiti (feat. Dj Yo! & AX'EL) [Remix]"
     },
     {
         "videoID": "1QpQqt7FLSE",
@@ -12066,7 +12066,7 @@ var musicLinks = [
     {
         "videoID": "7XOAStfv-v0",
         "category": "todo",
-        "title": "Lupe Fiasco - Daydreamin' (feat. Jill Scott) [Official Video]"
+        "title": "Lupe Fiasco - Daydreamin' (feat. Jill Scott) [Official Video] [HD Remaster]"
     },
     {
         "videoID": "iwOs94-XHrc",
@@ -12414,7 +12414,7 @@ var musicLinks = [
     {
         "videoID": "6W5pq4bIzIw",
         "category": "todo",
-        "title": "Shaggy - Boombastic (Official Music Video)"
+        "title": "Shaggy - Boombastic"
     },
     {
         "videoID": "9ZrAYxWPN6c",
@@ -13120,7 +13120,7 @@ var musicLinks = [
         "videoID": "0UPDBODtxzw",
         "category": "histoire rock chill moody electro",
         "top": true,
-        "title": "Tame Impala, JENNIE - Dracula (JENNIE Remix - Official Lyric Video)"
+        "title": "Tame Impala - Dracula (JENNIE Remix - Official Lyric Video) ft. JENNIE"
     },
     {
         "videoID": "6KjVYeQ9SRw",
@@ -13302,7 +13302,7 @@ var musicLinks = [
     },
     {
         "videoID": "NMNsvyDbdMQ",
-        "category": "trool slavic rap", 
+        "category": "trool slavic rap",
         "top": true,
         "title": "V PUTIN / GANSTA’S PARADISE"
     },
@@ -13333,7 +13333,7 @@ var musicLinks = [
     {
         "videoID": "p3l7fgvrEKM",
         "category": "todo",
-        "title": "GALA - Freed from desire [Official Video]"
+        "title": "GALA - Freed from desire [Official 4K Video]"
     },
     {
         "videoID": "OHAjc-ayhus",
@@ -13572,456 +13572,568 @@ var musicLinks = [
     {
         "videoID": "1IXOdjVTbcw",
         "category": "todo",
+        "title": "Feels - [Sped Up]"
     },
     {
         "videoID": "AfSx-q51W5g",
         "category": "todo",
+        "title": "pupsies - misery. (Lyrics)"
     },
     {
         "videoID": "VlPKk0yGOAM",
         "category": "todo",
+        "title": "roi x did i tell u that i miss u (instrumental)"
     },
     {
         "videoID": "rZEz_xulFiA",
         "category": "todo",
+        "title": "The Perfect Pair | Sped up"
     },
     {
         "videoID": "HwtEBQiuX-c",
         "category": "todo",
+        "title": "beabadoobee - the perfect pair (Official Audio)"
     },
     {
         "videoID": "3WpdCZC9q6w",
         "category": "todo",
+        "title": "Beabadoobee - the perfect pair (Official Live Video)"
     },
     {
         "videoID": "AZTo3iJng7U",
         "category": "todo",
+        "title": "Magic Man"
     },
     {
         "videoID": "CtoO-jLSC8o",
         "category": "todo",
+        "title": "my marmalade by Katia Lel. Pronunciation."
     },
     {
         "videoID": "bmorUXjaQgs",
         "category": "todo",
+        "title": "gypsy in my mind - speed up"
     },
     {
         "videoID": "W2Y8afd31tM",
         "category": "todo",
+        "title": "Gypsy in my Mind (Disco Rave Edit) - Never Dull, Club Coast (TikTok)"
     },
     {
         "videoID": "wPJYvICJ5tY",
         "category": "todo",
+        "title": "Never Dull - In My Mind (ft. Crystal Waters)"
     },
     {
         "videoID": "5yr-r7mD_Io",
         "category": "todo",
+        "title": "MONTAGEM URANIUM (Slowed)"
     },
     {
         "videoID": "At8v_Yc044Y",
         "category": "todo",
+        "title": "KSI - Thick Of It (feat. Trippie Redd) [Official Music Video]"
     },
     {
         "videoID": "-arkKErUdLs",
         "category": "todo",
+        "title": "Thick of it Thomas the train remix extended music"
     },
     {
         "videoID": "wD0Mm6WIcYs",
         "category": "todo",
+        "title": "Gigi D'Agostino - L'Amour Toujours ( Official Video )"
     },
     {
         "videoID": "JINM3T45GhA",
         "category": "todo",
+        "title": "L’Amour Toujours - Slowed + Reverb | Agartha Remix"
     },
     {
         "videoID": "FwPpAeZdIts",
         "category": "todo",
+        "title": "Golden Brown × Female cover ( 𝙨𝙡𝙤𝙬𝙚𝙙 + 𝙧𝙚𝙫𝙚𝙧𝙗 ) | 𝙁𝙪𝙡𝙡 𝙫𝙚𝙧𝙨𝙞𝙤𝙣 | 𝘿𝙖𝙠𝙞𝙟𝙠𝙤"
     },
     {
         "videoID": "Ixu_r8wqGo4",
         "category": "todo",
+        "title": "unhappy (slowed)"
     },
     {
         "videoID": "HugtGPq-sqs",
         "category": "todo",
+        "title": "siinamota - Young Girl A (slowed)"
     },
     {
         "videoID": "qD-sbetAjjM",
         "category": "todo",
+        "title": "L'amour Toujours - Organ Version"
     },
     {
         "videoID": "eFByj5kZHgE",
         "category": "todo",
+        "title": "Wangjaesan Light Music Band - Play with Flowers"
     },
     {
         "videoID": "o837EeJn_XQ",
         "category": "todo",
+        "title": "L no Theme B"
     },
     {
         "videoID": "ZRtdQ81jPUQ",
         "category": "todo",
+        "title": "YOASOBI「アイドル」 Official Music Video"
     },
     {
         "videoID": "dy90tA3TT1c",
         "category": "todo",
+        "title": "YOASOBI「怪物」Official Music Video　(YOASOBI - Monster)"
     },
     {
         "videoID": "x8VYWazR5mE",
         "category": "todo",
+        "title": "YOASOBI「夜に駆ける」 Official Music Video"
     },
     {
         "videoID": "3eytpBOkOFA",
         "category": "todo",
+        "title": "YOASOBI「祝福」Official Music Video (『機動戦士ガンダム 水星の魔女』オープニングテーマ)"
     },
     {
         "videoID": "OIBODIPC_8Y",
         "category": "todo",
+        "title": "YOASOBI「勇者」 Official Music Video／TVアニメ『葬送のフリーレン』オープニングテーマ"
     },
     {
         "videoID": "Y4nEEZwckuU",
         "category": "todo",
+        "title": "YOASOBI「群青」Official Music Video"
     },
     {
         "videoID": "8iuLXODzL04",
         "category": "todo",
+        "title": "YOASOBI「たぶん」Official Music  Video"
     },
     {
         "videoID": "sAuEeM_6zpk",
         "category": "todo",
+        "title": "YOASOBI「あの夢をなぞって」 Official Music Video"
     },
     {
         "videoID": "kzdJkT4kp-A",
         "category": "todo",
+        "title": "YOASOBI「ハルジオン」Official Music Video"
     },
     {
         "videoID": "C7dPqrmDWxs",
         "category": "todo",
+        "title": "Pharrell Williams - Happy (from Despicable Me 2) [Ballroom Version]"
     },
     {
         "videoID": "ncHWcgju-eo",
         "category": "todo",
+        "title": "Safe And Sound - Agartha Remix"
     },
     {
         "videoID": "47dtFZ8CFo8",
         "category": "todo",
+        "title": "Capital Cities - Safe And Sound"
     },
     {
         "videoID": "jWpZuFM0Qtk",
         "category": "todo",
+        "title": "Safe and Sound"
     },
     {
         "videoID": "p6v6wWmEYvY",
         "category": "todo",
+        "title": "Barracuda"
     },
     {
         "videoID": "WaURUkHtCJ0",
         "category": "todo",
+        "title": "WA WA WA FUNK (Remix SLOWED)"
     },
     {
         "videoID": "75P0QGi3RO0",
         "category": "todo",
+        "title": "Dark is the Night - Soviet WW2 Song"
     },
     {
         "videoID": "HjmmxX5U2VM",
         "category": "todo",
+        "title": "Темная ночь - Temnaya noch - Dark is the night, 1943"
     },
     {
         "videoID": "J76S5q_ETfo",
         "category": "todo",
+        "title": "【ハク。Cover企画】MONO NO AWARE \"かむかもしかもにどもかも！\""
     },
     {
         "videoID": "cr1ApdTn6JY",
         "category": "todo",
+        "title": "Trance - Bass is kicking"
     },
     {
         "videoID": "ATSoWTil834",
         "category": "todo",
+        "title": "Bass Is Kicking (2005 Edit)"
     },
     {
         "videoID": "jiexIMlRAPI",
         "category": "todo",
+        "title": "Banana Shake | Sped up"
     },
     {
         "videoID": "sk4QhMsTlRA",
         "category": "todo",
+        "title": "BANANA SHAKE (SPED UP)"
     },
     {
         "videoID": "_r8zB9RA37s",
         "category": "todo",
+        "title": "Mogger (Super Slowed)"
     },
     {
         "videoID": "o_Go1ah3Vds",
         "category": "todo",
+        "title": "Tchaikovsky - pas de deux"
     },
     {
         "videoID": "dvgZkm1xWPE",
         "category": "todo",
+        "title": "Coldplay - Viva La Vida (Official Video)"
     },
     {
         "videoID": "ALsvdSA9tOU",
         "category": "todo",
+        "title": "Viva La Vida"
     },
     {
         "videoID": "Uoox9fpmDP0",
         "category": "todo",
+        "title": "Bôa -  Duvet (Official Video)"
     },
     {
         "videoID": "40N4Mjjvh4c",
-        "category": "todo",
+        "category": "todo"
     },
     {
         "videoID": "ma1pD7ugMb8",
         "category": "todo",
+        "title": "Grimes- Genesis slowed and reverb"
     },
     {
         "videoID": "hBkh7DRNqw8",
         "category": "todo",
+        "title": "Trisha's Lullaby"
     },
     {
         "videoID": "ICDSY3BErX0",
         "category": "todo",
+        "title": "Vivaldi - Winter (L'inverno)"
     },
     {
         "videoID": "ER8z-iLK91Y",
         "category": "todo",
+        "title": "Lil Boo Thang"
     },
     {
         "videoID": "V2Bqt5yJSTg",
         "category": "todo",
+        "title": "Annihilate"
     },
     {
         "videoID": "EeS9JN7D0p0",
         "category": "todo",
+        "title": "Annihilate (Slowed)"
     },
     {
         "videoID": "giAYKRRuE54",
         "category": "todo",
+        "title": "Annihilate (Super Slowed)"
     },
     {
         "videoID": "dowgfTcZiTw",
         "category": "todo",
+        "title": "Annihilate (Sped Up)"
     },
     {
         "videoID": "htgr3pvBr-I",
         "category": "todo",
+        "title": "Toto - Hold The Line (Official Video)"
     },
     {
         "videoID": "LatorN4P9aA",
         "category": "todo",
+        "title": "Journey - Separate Ways (Worlds Apart) (Official HD Video)"
     },
     {
         "videoID": "Y0JepxudChw",
         "category": "todo",
+        "title": "Journey, Steve Perry - Separate Ways (Worlds Apart) (Steve Perry & Bryce Miller Extended Remix)"
     },
     {
         "videoID": "UsdGgRL1xHc",
         "category": "todo",
+        "title": "Separate Ways (Worlds Apart)  [2024 Remaster]"
     },
     {
         "videoID": "Tn-z95ev64s",
         "category": "todo",
+        "title": "Катя Лель - Мой мармеладный"
     },
     {
         "videoID": "lO_FMJ7wffw",
         "category": "todo",
+        "title": "Lukas Graham - 7 Years (Live from NYC)"
     },
     {
         "videoID": "LHCob76kigA",
         "category": "todo",
+        "title": "Lukas Graham - 7 Years [Official Music Video]"
     },
     {
         "videoID": "pZ-oEuWMszs",
         "category": "todo",
+        "title": "Mr. Boombastic Official Music Video - Biggie Cheese"
     },
     {
         "videoID": "ekW-i0KlU1U",
         "category": "todo",
+        "title": "adore - \"did i tell u that i miss u\" (lyric video)"
     },
     {
         "videoID": "_mXwVQtqfLA",
         "category": "todo",
+        "title": "4 Non Blondes - I wake in the morning and I step outside (What's Up) (Lyrics)"
     },
     {
         "videoID": "6NXnxTNIWkc",
         "category": "todo",
+        "title": "4 Non Blondes - What's Up (Official Music Video)"
     },
     {
         "videoID": "nZg7Fe07l2I",
         "category": "todo",
+        "title": "Siine ft. Zorro - Wake Up in the Morning"
     },
     {
         "videoID": "C-u5WLJ9Yk4",
         "category": "todo",
+        "title": "Britney Spears - ...Baby One More Time (Official Video)"
     },
     {
         "videoID": "eJdq1IjW87Q",
         "category": "todo",
+        "title": "SEM CONTROLE (Slowed)"
     },
     {
         "videoID": "iUpEsSb0tWI",
         "category": "todo",
+        "title": "SEM CONTROLE (Super Slowed)"
     },
     {
         "videoID": "i71lIBizbvc",
         "category": "todo",
+        "title": "Dr livesey phonk walk"
     },
     {
         "videoID": "9O-nn93Z5p4",
         "category": "todo",
+        "title": "HEM - Zinzin (Clip officiel)"
     },
     {
         "videoID": "YykjpeuMNEk",
         "category": "todo",
+        "title": "Coldplay - Hymn For The Weekend (Official Video)"
     },
     {
         "videoID": "2PQTafuxFZ4",
         "category": "todo",
+        "title": "MONTAGEM RUBIDIUM"
     },
     {
         "videoID": "2tw2QDSeBQQ",
         "category": "todo",
+        "title": "Training Season (Live from the Royal Albert Hall)"
     },
     {
         "videoID": "W3_c4-4OMbM",
         "category": "todo",
+        "title": "Six Days (Remix)"
     },
     {
         "videoID": "xRzbLQ_WKPs",
         "category": "todo",
+        "title": "Steve Lacy - Dark Red"
     },
     {
         "videoID": "Q6FarZpy67M",
         "category": "todo",
+        "title": "Dark Red"
     },
     {
         "videoID": "x-OzspEcQG8",
         "category": "todo",
+        "title": "STEVE LACY - RYD / DARK RED"
     },
     {
         "videoID": "DknZK7LgeUI",
         "category": "todo",
+        "title": "unhappy (remix)"
     },
     {
         "videoID": "eJpgshMPAzg",
         "category": "todo",
+        "title": "S0rrow - Unhappy extended (unreleased) "
     },
     {
         "videoID": "vsdEUqwWa1w",
         "category": "todo",
+        "title": "200"
     },
     {
         "videoID": "8295rOMvtQI",
         "category": "todo",
+        "title": "Incubus - Wish You Were Here"
     },
     {
         "videoID": "K6qj09OHvjw",
         "category": "todo",
+        "title": "Pink Floyd - Wish You Were Here (Official Video)"
     },
     {
         "videoID": "84Tq-eAJIk4",
         "category": "todo",
+        "title": "Pink Floyd - Wish You Were Here (PULSE Restored & Re-Edited)"
     },
     {
         "videoID": "At8ao5iABFg",
         "category": "todo",
+        "title": "Ruler of Everything"
     },
     {
         "videoID": "I8sUC-dsW8A",
         "category": "todo",
+        "title": "Tally Hall - Ruler of Everything"
     },
     {
         "videoID": "fXP8Npky7lE",
         "category": "todo",
+        "title": "Dead Girls"
     },
     {
         "videoID": "tw429JGL5zo",
         "category": "todo",
+        "title": "Ludacris - Move B***H (Official Music Video) ft. Mystikal, I-20"
     },
     {
         "videoID": "-HCvxCHOeEQ",
         "category": "todo",
+        "title": "unhappy (official audio)"
     },
     {
         "videoID": "Ff80k1JD4Qo",
         "category": "todo",
+        "title": "Eternal Eclipse"
     },
     {
         "videoID": "U7Klj7MDlMA",
         "category": "todo",
+        "title": "Kent Osborne - Eternal Eclipse (Official Visualizer)"
     },
     {
         "videoID": "UnmvmWfCPXU",
         "category": "todo",
+        "title": "Kent Osborne - Eternal Eclipse (Music Video)"
     },
     {
         "videoID": "_4L2qgj4wWA",
         "category": "todo",
+        "title": "COWBELL GOTH"
     },
     {
         "videoID": "8sgycukafqQ",
         "category": "todo",
+        "title": "What I've Done (Official Music Video) [4K Upgrade] - Linkin Park"
     },
     {
         "videoID": "7Tzq6isGOjg",
         "category": "todo",
+        "title": "cats in the cold"
     },
     {
         "videoID": "vBQV6NvL_cI",
         "category": "todo",
+        "title": "NO ERA AMOR (Super Slowed)"
     },
     {
         "videoID": "3DcoC8p9az8",
         "category": "todo",
+        "title": "Dua Lipa - Training Season (Live from the Royal Albert Hall) [Official Performance Video]"
     },
     {
         "videoID": "sH0Qda32IKM",
         "category": "todo",
+        "title": "WAR - Why Can't We Be Friends? (Official Video) [Remastered in 4K]"
     },
     {
         "videoID": "ZjBZ8MUnB0E",
         "category": "todo",
+        "title": "Dua Lipa - Training Season (Official Music Video)"
     },
     {
         "videoID": "6lQXfW0oJ-c",
         "category": "todo",
         "short": true,
+        "title": "Dr. Livesey Phonk Walk Smoother Background Motion."
     },
     {
         "videoID": "JUSUxfLIA40",
         "category": "todo",
+        "title": "Rom and Death Meme - Dr. Livesey Phonk Walk - Ghostface Playa - Why Not"
     },
     {
         "videoID": "4TYv2PhG89A",
         "category": "todo",
+        "title": "Sade - Smooth Operator - Official - 1984"
     },
     {
         "videoID": "Gj-gMYkvVvA",
         "category": "todo",
+        "title": "MONTAGEM PEGADORA"
     },
     {
         "videoID": "GLi-UF9U-RI",
         "category": "todo",
+        "title": "Benoit - Tourne Toi Benoit"
     },
     {
         "videoID": "eps1368QXUQ",
         "category": "todo",
+        "title": "Bando"
     },
     {
         "videoID": "O3nhC_pDVqQ",
         "category": "todo",
+        "title": "ANNA - Bando (Live) | ROUNDS | Vevo"
     },
     {
         "videoID": "laKJSXdfKxM",
         "category": "todo",
+        "title": "Bando (Remix)"
     },
     {
         "videoID": "MdMT_uyGCTs",
         "category": "todo",
+        "title": "Michael Sembello - Maniac (1983) [Remastered in HD]"
     },
     {
         "videoID": "AIgJenz0ZK4",
         "category": "todo",
-    },
+        "title": "Flashdance - Maniac (Movie Music Video)"
+    }
 ];
 
 var MusicListType = ["todo", "jazz", "rain", "chill", "asian", "classic", "histoire", "phonk", "rap", "reggae", "trool", "rock", "electro", "hardbass", "slavic", "long", "moody", "nightcore"];
