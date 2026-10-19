@@ -577,26 +577,6 @@ function generateFingerprint(text) {
     });
 }
 
-function getScrollPercentageBis() {
-    var doc = document.documentElement;
-    var body = document.body;
-    var top = 'scrollTop';
-    var height = 'scrollHeight';
-    var scrollTop = doc[top] || body[top];
-    var scrollHeight = (doc[height] || body[height]) - doc.clientHeight;
-    var percent = 0;
-    if (scrollHeight > 0) {
-        percent = (scrollTop / scrollHeight) * 100;
-    }
-    if (percent < 0) {
-        percent = 0;
-    }
-    if (percent > 100) {
-        percent = 100;
-    }
-    return percent;
-}
-
 function getTimeSpent() {
     var seconds = 0;
     if (pageStartTime !== null) {

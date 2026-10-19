@@ -26,7 +26,7 @@ function prepareVisitorData(source, extra) {
     // Temps de chargement de la page (millisecondes)
     data.page_load_time = pageLoadTime;
     // Pourcentage de scroll actuel
-    data.scroll_percentage = getScrollPercentageBis();
+    data.scroll_percentage = getScrollPercentage();
     // Positions de la souris (tableau stocke en JSON)
     data.mouse_positions = JSON.stringify(mousePositions);
     // Fusionner les donnees supplementaires
