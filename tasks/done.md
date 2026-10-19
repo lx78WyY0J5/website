@@ -56,7 +56,7 @@
 
 ### 7. Inscription (`public/src/pages/register/`)
 - **Fichiers** : `register.php` (logique), `register.html` (formulaire), `register.js` (UX), `head.php` (métas)
-- **Flux** : POST → validation (format, unicité, code invitation `REGISTER_CODE`, force MDP) → hash `password_hash()` → INSERT → session auto-login → redirect `/`
+- **Flux** : POST → validation (format, unicité, force MDP) → hash `password_hash()` → INSERT → session auto-login → redirect `/`
 - **Rate-limit** : 5 req/15 min par IP
 
 ### 8. Connexion (`public/src/pages/login/`)

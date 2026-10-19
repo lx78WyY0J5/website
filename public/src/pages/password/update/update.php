@@ -7,6 +7,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 
+// Compte Discord-only (pas de compte classique, password NULL) : proposer la
+// création du mot de passe via /discord/register, car l'ancien n'existe pas
+// à vérifier (password_verify($old, null) = false + deprecation PHP 8.1+)
+if(!isset($_SESSION["username"]) || empty($_SESSION["username"])){
+    header("location: /discord/register");
+    echo "<script>window.location.href = '/discord/register';</script>";
+    exit;
+}
+
 //load requiered modules
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';

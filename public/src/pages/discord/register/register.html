@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="/src/css/discord.css">
+
+<h2>Créer votre compte classique et le lier à votre compte Discord</h2>
+<p class="discord">Compte Discord connecté : <?php echo htmlspecialchars($discordDisplayName); ?></p>
+
+<form method="POST" action="">
+    <input type="hidden" name="csrf_token" value="<?php echo generateCsrfToken(); ?>">
+    <input type="text" name="username" placeholder="username" required>
+    <input type="password" name="password" placeholder="password" required>
+    <input type="password" name="confirm_password" placeholder="Confirm password" required>
+    <button type="submit"><p>Créer le compte</p></button>
+</form>
+<p>Le compte créé sera lié à votre compte Discord : vous pourrez ensuite vous connecter avec votre compte classique ou avec Discord.</p>

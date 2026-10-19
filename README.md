@@ -11,6 +11,14 @@
 - `nano .env`
 ### .env inexistant
 En cas de `.env` inexistant, le `.env.exemple` sera copié vers `.env`
+### Connexion avec Discord
+- Variables `.env` :
+  - `DISCORD_CLIENT_ID` : identifiant de l'application (portail développeur [Discord](https://discord.com/developers/applications))
+  - `DISCORD_CLIENT_SECRET` : secret de l'application
+  - `DISCORD_REDIRECT_URI` : doit être **identique** à l'URI déclarée sur le portail (ex : `https://doc.altherneum.fr/discord/callback`)
+- Flow : authorization code, scope `identify`, callback `/discord/callback`
+- `/discord/login` : « Se connecter avec Discord » (ou « Lier mon compte Discord » si connecté) — l'ancien lien implicit grant reste sur la même page
+- `/discord/register` : pour un compte connecté via Discord uniquement, crée le compte classique et le lie à Discord
 
 ## Installation et lancement
 ### Installation

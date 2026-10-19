@@ -8,7 +8,7 @@ csrf_token=$(curl -s -c /tmp/cookies.txt -L -X GET "$BASE_URL/register" | grep -
 
 # Step 2: POST to register with low entropy password AND CSRF token, using saved cookies
 resp=$(curl -s -b /tmp/cookies.txt -X POST "$BASE_URL/register" \
-  -d "csrf_token=$csrf_token&username=entropyuser&password=ShortPass123!&confirm_password=ShortPass123!&code=123456" \
+  -d "csrf_token=$csrf_token&username=entropyuser&password=ShortPass123!&confirm_password=ShortPass123!" \
   -H "Content-Type: application/x-www-form-urlencoded")
 
 echo "$resp" | grep -q "L'entropie du mot de passe est trop faible"

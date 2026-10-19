@@ -39,8 +39,10 @@
         try {
             $sql = "CREATE TABLE IF NOT EXISTS users (
                 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                username VARCHAR(50) NOT NULL UNIQUE,
-                password VARCHAR(255) NOT NULL,
+                username VARCHAR(50) NULL UNIQUE,
+                password VARCHAR(255) NULL,
+                discord_id BIGINT UNSIGNED NULL UNIQUE,
+                discord_linked_at DATETIME NULL,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )";
 

@@ -8,7 +8,7 @@ csrf_token=$(curl -s -c /tmp/cookies.txt -L -X GET "$BASE_URL/register" | grep -
 
 # Step 2: POST to register with CSRF token, using saved cookies
 resp=$(curl -s -b /tmp/cookies.txt -X POST "$BASE_URL/register" \
-  -d "csrf_token=$csrf_token&username=testuser123&password=StrongPass123ThatPass4test!&confirm_password=StrongPass123ThatPass4test!&code=123456" \
+  -d "csrf_token=$csrf_token&username=testuser123&password=StrongPass123ThatPass4test!&confirm_password=StrongPass123ThatPass4test!" \
   -H "Content-Type: application/x-www-form-urlencoded")
 
 echo "$resp" | grep -q "location: /\|window.location.href = '/'"

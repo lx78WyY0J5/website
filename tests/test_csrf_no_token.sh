@@ -11,7 +11,7 @@ csrf_token=$(curl -s -c /tmp/cookies.txt -L -X GET "$BASE_URL/register" | grep -
 
 # Step 2: POST to register WITHOUT CSRF token (should fail - token empty)
 resp=$(curl -s -b /tmp/cookies.txt -X POST "$BASE_URL/register" \
-  -d "username=validuser&password=StrongPass123!&confirm_password=StrongPass123!&code=123456" \
+  -d "username=validuser&password=StrongPass123!&confirm_password=StrongPass123!" \
   -H "Content-Type: application/x-www-form-urlencoded")
 
 # Check for CSRF error message

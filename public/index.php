@@ -6,10 +6,23 @@
         return false;
     }
 
+    $sessionPath = "";
+    if (is_string($path)) {
+        $sessionPath = rtrim($path, '/');
+    }
+
+    // SameSite Lax UNIQUEMENT sur les routes du flow Discord : un cookie Strict
+    // n'est pas envoyé au retour cross-site depuis Discord (top-level GET),
+    // ce qui perdrait la session (state OAuth + loggedin). Strict partout ailleurs.
+    $sessionSameSite = 'Strict';
+    if ($sessionPath === '/discord/login' || $sessionPath === '/discord/callback' || $sessionPath === '/discord/register') {
+        $sessionSameSite = 'Lax';
+    }
+
     session_set_cookie_params([
         'httponly' => true,
         'secure'   => true,
-        'samesite' => 'Strict',
+        'samesite' => $sessionSameSite,
     ]);
 
     session_start();
@@ -22,7 +35,7 @@
     // Global rate limit per IP (DDoS protection)
     $clientIp = getClientIdentifier();
     $maxAttempts = 20;
-    if(isset($_SESSION['username'])){ // Determine max attempts based on user authentication
+    if(!empty($_SESSION['username']) || !empty($_SESSION['discord_id'])){ // Determine max attempts based on user authentication (classic or Discord)
         $maxAttempts = 50;
     };
     checkRateLimitByIP($pdo, 'global', $maxAttempts, 1);
@@ -68,6 +81,11 @@
         logSecurityEvent('model-scan', ['url' => $uri]);
         exit;
     }
+    else if($uri === 'discord/callback'){
+        // Callback OAuth Discord : intercepté tôt (hors template HTML, pas de tracking)
+        require $_SERVER['DOCUMENT_ROOT'] . '/src/pages/discord/callback/index.php';
+        exit;
+    }
 
     if ($uri === '' || $uri === 'accueil') {
         $pageFile = $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.php';
@@ -93,12 +111,14 @@
 
     $viewStats = getViewStats($pdo, $uri, $userId); //used later in the footer to display stats
 
-    if(isset($_SESSION['username'])) {
-        logSecurityEvent('visit', ['username' => $_SESSION['username'], 'url' => $uri]);
+    $visitContext = ['url' => $uri];
+    if(!empty($_SESSION['username'])) {
+        $visitContext['username'] = $_SESSION['username'];
     }
-    else {
-        logSecurityEvent('visit', ['url' => $uri]);
+    if(!empty($_SESSION['discord_username'])) {
+        $visitContext['discord_username'] = $_SESSION['discord_username'];
     }
+    logSecurityEvent('visit', $visitContext);
 ?>
 
 <!DOCTYPE html>

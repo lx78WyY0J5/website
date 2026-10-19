@@ -8,7 +8,7 @@ csrf_token=$(curl -s -c /tmp/cookies.txt -L -X GET "$BASE_URL/register" | grep -
 
 # Step 2: POST to register with short username AND CSRF token, using saved cookies
 resp=$(curl -s -b /tmp/cookies.txt -X POST "$BASE_URL/register" \
-  -d "csrf_token=$csrf_token&username=ab&password=StrongPass123!&confirm_password=StrongPass123!&code=123456" \
+  -d "csrf_token=$csrf_token&username=ab&password=StrongPass123!&confirm_password=StrongPass123!" \
   -H "Content-Type: application/x-www-form-urlencoded")
 
 echo "$resp" | grep -q "Le nom d'utilisateur doit comporter au moins 6 caractères"

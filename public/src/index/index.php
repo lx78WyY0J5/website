@@ -1,5 +1,15 @@
 <?php
-    if(isset($_SESSION["loggedin"]) && isset($_SESSION['username'])){
+    // Les deux noms possibles : compte classique et/ou compte Discord
+    $classicName = "";
+    if (isset($_SESSION['username'])) {
+        $classicName = $_SESSION['username'];
+    }
+    $discordName = "";
+    if (isset($_SESSION['discord_username'])) {
+        $discordName = $_SESSION['discord_username'];
+    }
+
+    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         require_once $_SERVER['DOCUMENT_ROOT'] . '/src/pages/profile/picture/getPicture.php';
 
         $userId = intval($_SESSION["id"]);
@@ -11,7 +21,12 @@
             if ($profilePicture && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . ltrim($profilePicture, '/'))) {
                 echo '<img src="/' . ltrim($profilePicture, '/') . '" alt="Photo de profil" class="welcome-user-picture">';
             }
-            echo '<h1>' . $_SESSION['username'] .'</h1>';
+            if ($classicName !== "") {
+                echo '<h1>' . htmlspecialchars($classicName) .'</h1>';
+            }
+            if ($discordName !== "") {
+                echo '<h3>' . htmlspecialchars($discordName) .'</h3>';
+            }
         echo '</div>';
         echo '<div id="user-id">';
             echo '<h2>Vous avez la session n°' . $_SESSION["id"] . '</h2>';
@@ -23,7 +38,16 @@
 
     if(!isset($_SESSION['loggedin'])){
         echo '<p><a href="/login">Connectez-vous</a>, ou alors pourquoi ne pas <a href="/register">créer un compte</a> ?</p>';
-    }
+        if($classicName === "" && isset($_SESSION["discord_id"]) && !empty($_SESSION["discord_id"])){
+                // Compte Discord-only : un compte Discord est déjà requis et connecté,
+                // on propose de créer un compte classique qui sera lié au compte Discord
+                echo '<p>Vous êtes connecté via Discord : <a href="/discord/register">créez votre compte classique et liez-le</a> — le compte créé sera lié à votre compte Discord, vous pourrez vous connecter des deux façons.</p>';
+            }
+            else{
+                echo '<p>Nouveau : <a href="/discord/login">Connectez-vous avec Discord</a> !</p>';
+            }
+        }
+    else {    }
 
     $x = rand(0, 10);
     echo '<hr>';

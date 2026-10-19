@@ -24,6 +24,12 @@ let links = [
         svg: "/src/assets/svg/settings.svg",
     },
     {
+        href: "/discord/register",
+        tag: "Compte Discord URL",
+        title: "Créer un compte classique (lié à Discord)",
+        svg: "/src/assets/svg/trademark/discord.svg",
+    },
+    {
         href: "/logout",
         tag: "Compte URL",
         title: "Se déconnecter",
@@ -61,8 +67,8 @@ let links = [
     },
     {
         href: "/discord/login",
-        tag: ".gg Discord Outils",
-        title: "Exemple d'API Discord login",
+        tag: "Compte Discord URL",
+        title: "Se connecter (ou lier) avec Discord",
         svg: "/src/assets/svg/trademark/discord.svg",
     },
     {

@@ -10,7 +10,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
 checkRateLimitByIP($pdo, 'register', 5, 15);
 
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = $register_code = "";
+$username = $password = $confirm_password = "";
 $can_register = true;
 
 // Processing form data when form is submitted
@@ -79,18 +79,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Close statement
                 unset($stmt);
             }
-        }
-    }
-
-    //Validate user inviation code
-    if(!isset($_POST["code"]) || empty(trim($_POST["code"]))){
-        echo "<p>Veuillez saisir le code de registration</p>";
-        $can_register = false;
-    } else {
-        $register_code = trim($_POST["code"]);
-        if(trim($_POST["code"]) !== getenv("REGISTER_CODE")){
-            echo "<p>Le code de registration est incorrect</p>";
-            $can_register = false;
         }
     }
 

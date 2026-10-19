@@ -8,7 +8,7 @@ csrf_token=$(curl -s -c /tmp/cookies.txt -L -X GET "$BASE_URL/register" | grep -
 
 # Step 2: POST to register with password lacking digit AND CSRF token, using saved cookies
 resp=$(curl -s -b /tmp/cookies.txt -X POST "$BASE_URL/register" \
-  -d "csrf_token=$csrf_token&username=validuser&password=ValidPass!&confirm_password=ValidPass!&code=123456" \
+  -d "csrf_token=$csrf_token&username=validuser&password=ValidPass!&confirm_password=ValidPass!" \
   -H "Content-Type: application/x-www-form-urlencoded")
 
 echo "$resp" | grep -q "Le mot de passe doit contenir un chiffre"

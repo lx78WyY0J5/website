@@ -73,7 +73,8 @@
             <a target="_blank" href="/discord/tempvoc"><img src="/src/assets/svg/telephone.svg" class="svg" alt="">Salon vocal temporaire invité</a>
             <a target="_blank" href="/discord/voc"><img src="/src/assets/svg/telephone.svg" class="svg" alt="">Salon vocal temporaire</a>
             <hr>
-            <a href="/discord/login"><img src="/src/assets/svg/trademark/discord.svg" class="svg" alt="">API login</a>
+            <a href="/discord/login"><img src="/src/assets/svg/trademark/discord.svg" class="svg" alt="">Login Discord</a>
+            <a href="/discord/register"><img src="/src/assets/svg/trademark/discord.svg" class="svg" alt="">Créer un compte classique</a>
             <a href="/discord/api"><img src="/src/assets/svg/trademark/discord.svg" class="svg" alt="">API</a>
             <hr>
             <a target="_blank" href="https://discord.com/developers"><img src="/src/assets/svg/link.svg" class="svg" alt="">Portail développeur</a>
