@@ -14,12 +14,16 @@
 
         $userId = intval($_SESSION["id"]);
         $profilePicture = getLatestProfilePictureOfUser($pdo, $userId);
+        $discordPicture = getDiscordProfilePictureOfUser($pdo, $userId);
 
         echo '<link rel="stylesheet" href="/src/index/welcome-user.css">';
         echo '<div id="welcome-user">';
             echo '<h2>Bienvenue</h2>';
             if ($profilePicture && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . ltrim($profilePicture, '/'))) {
                 echo '<img src="/' . ltrim($profilePicture, '/') . '" alt="Photo de profil" class="welcome-user-picture">';
+            }
+            if ($discordPicture && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . ltrim($discordPicture, '/'))) {
+                echo '<img src="/' . ltrim($discordPicture, '/') . '" alt="Photo de profil Discord" class="welcome-user-picture">';
             }
             if ($classicName !== "") {
                 echo '<h1>' . htmlspecialchars($classicName) .'</h1>';

@@ -48,6 +48,19 @@
 
             $pdo->exec($sql);
             echo "<p>✔️ Table users ready</p>";
+
+            // Insert admin user if not exists
+            $adminUsername = getenv('ADMIN_USERNAME');
+            $adminPassword = getenv('ADMIN_PASSWORD');
+            if ($adminUsername && $adminPassword) {
+                try {
+                    $stmt = $pdo->prepare("INSERT IGNORE INTO users (username, password) VALUES (?, ?)");
+                    $stmt->execute([$adminUsername, password_hash($adminPassword, PASSWORD_DEFAULT)]);
+                    echo "<p>✔️ Admin user inserted</p>";
+                } catch(PDOException $e) {
+                    echo "<p>Error inserting admin user: " . $e->getMessage() . "</p>";
+                }
+            }
         } catch(PDOException $e) {
             echo "<p>Error creating table: " . $e->getMessage() . "</p>";
         }
@@ -82,6 +95,19 @@
 
             $pdo->exec($sql);
             echo "<p>✔️ User pictures table ready</p>";
+
+            // Insert admin user profile picure
+            $adminUsername = getenv('ADMIN_USERNAME');
+            $adminPassword = getenv('ADMIN_PASSWORD');
+            if ($adminUsername && $adminPassword) {
+                try {
+                    $stmt = $pdo->prepare("INSERT IGNORE INTO users (username, password) VALUES (?, ?)");
+                    $stmt->execute([$adminUsername, password_hash($adminPassword, PASSWORD_DEFAULT)]);
+                    echo "<p>✔️ Admin user inserted</p>";
+                } catch(PDOException $e) {
+                    echo "<p>Error inserting admin user: " . $e->getMessage() . "</p>";
+                }
+            }
         } catch(PDOException $e) {
             echo "<p>Error creating user pictures table: " . $e->getMessage() . "</p>";
         }
@@ -231,19 +257,6 @@
             echo "<p>✔️ Data views table ready</p>";
         } catch(PDOException $e) {
             echo "<p>Error creating data views table: " . $e->getMessage() . "</p>";
-        }
-
-        // Insert admin user if not exists
-        $adminUsername = getenv('ADMIN_USERNAME');
-        $adminPassword = getenv('ADMIN_PASSWORD');
-        if ($adminUsername && $adminPassword) {
-            try {
-                $stmt = $pdo->prepare("INSERT IGNORE INTO users (username, password) VALUES (?, ?)");
-                $stmt->execute([$adminUsername, password_hash($adminPassword, PASSWORD_DEFAULT)]);
-                echo "<p>✔️ Admin user inserted</p>";
-            } catch(PDOException $e) {
-                echo "<p>Error inserting admin user: " . $e->getMessage() . "</p>";
-            }
         }
 
         // Create table visites only if it doesn't exist

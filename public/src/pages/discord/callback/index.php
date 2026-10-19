@@ -58,6 +58,13 @@ if (isset($discordUser['username']) && is_string($discordUser['username'])) {
     $discordUsernameSaved = $discordUser['username'];
 }
 
+// Avatar Discord : hash (ou vide = avatar par défaut) -> téléchargé en local
+$discordAvatarHash = "";
+if (isset($discordUser['avatar']) && is_string($discordUser['avatar'])) {
+    $discordAvatarHash = $discordUser['avatar'];
+}
+discordDownloadAvatar($discordId, $discordAvatarHash);
+
 $alreadyLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && !empty($_SESSION['id']);
 
 if ($alreadyLoggedIn === true) {

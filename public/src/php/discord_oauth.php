@@ -195,3 +195,66 @@ function discordDeleteUser(PDO $pdo, int $userId): void
     $stmt->bindParam(":id", $userId, PDO::PARAM_INT);
     $stmt->execute();
 }
+
+// Télécharge l'avatar Discord chez Discord et l'enregistre en local sous
+// uploads/profile_pictures/discord_pictures/<discord_id>.<ext>
+// (gif si le hash est animé "a_", sinon png ; hash vide = avatar par défaut)
+// Un seul fichier par utilisateur : les anciens formats sont supprimés
+// Retourne le chemin public ("uploads/...") ou false si échec
+function discordDownloadAvatar($discordId, $avatarHash)
+{
+    // URL de l'image : avatar personnalisé (hash) ou avatar par défaut
+    if (empty($avatarHash)) {
+        $defaultIndex = ((int)$discordId >> 22) % 6;
+        $url = "https://cdn.discordapp.com/embed/avatars/" . $defaultIndex . ".png";
+        $extension = "png";
+    }
+    else {
+        if (str_starts_with($avatarHash, "a_")) {
+            $extension = "gif";
+        }
+        else {
+            $extension = "png";
+        }
+        $url = "https://cdn.discordapp.com/avatars/" . $discordId . "/" . $avatarHash
+            . "." . $extension . "?size=256";
+    }
+
+    // Télécharger l'image AVANT de toucher aux anciens fichiers :
+    // en cas d'échec réseau, l'ancienne photo reste en place
+    $ch = curl_init($url);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_CONNECTTIMEOUT => 5,
+        CURLOPT_TIMEOUT => 10,
+    ]);
+    $imageData = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($imageData === false || $httpCode !== 200 || empty($imageData)) {
+        return false;
+    }
+
+    $directory = $_SERVER["DOCUMENT_ROOT"] . "/uploads/profile_pictures/discord_pictures";
+
+    // Créer le dossier s'il n'existe pas
+    if (!is_dir($directory)) {
+        if (!mkdir($directory, 0755, true)) {
+            return false;
+        }
+    }
+
+    // Un seul avatar par utilisateur : retirer les anciens formats
+    foreach (glob($directory . "/" . $discordId . ".*") as $oldFile) {
+        unlink($oldFile);
+    }
+
+    $filename = $discordId . "." . $extension;
+    if (file_put_contents($directory . "/" . $filename, $imageData) === false) {
+        return false;
+    }
+
+    return "uploads/profile_pictures/discord_pictures/" . $filename;
+}
