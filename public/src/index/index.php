@@ -18,27 +18,33 @@
 
         echo '<link rel="stylesheet" href="/src/index/welcome-user.css">';
         echo '<div id="welcome-user">';
-            echo '<h2>Bienvenue</h2>';
-            if ($profilePicture && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . ltrim($profilePicture, '/'))) {
-                echo '<img src="/' . ltrim($profilePicture, '/') . '" alt="Photo de profil" class="welcome-user-picture">';
-            }
-            if ($discordPicture && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . ltrim($discordPicture, '/'))) {
-                echo '<img src="/' . ltrim($discordPicture, '/') . '" alt="Photo de profil Discord" class="welcome-user-picture">';
-            }
-            if ($classicName !== "") {
-                echo '<h1>' . htmlspecialchars($classicName) .'</h1>';
-            }
-            if ($discordName !== "") {
-                echo '<h1>' . htmlspecialchars($discordName) .'</h1>';
-            }
+            echo '<div id="welcome-user-classic">';
+                if ($classicName !== "") {
+                echo '<h2>'. getGreeting() . '</h2>';
+                    echo '<h1>' . htmlspecialchars($classicName) .'</h1>';
+                }
+                if ($profilePicture && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . ltrim($profilePicture, '/'))) {
+                    echo '<img src="/' . ltrim($profilePicture, '/') . '" alt="Photo de profil" class="welcome-user-picture">';
+                }
+            echo '</div>';
+            echo '<div id="welcome-user-discord">';
+                if ($discordName !== "") {
+                echo '<h2>'. getGreeting() . '</h2>';
+                    echo '<h1>' . htmlspecialchars($discordName) .'</h1>';
+                }
+                if ($discordPicture && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . ltrim($discordPicture, '/'))) {
+                    echo '<img src="/' . ltrim($discordPicture, '/') . '" alt="Photo de profil Discord" class="welcome-user-picture">';
+                }
+            echo '</div>';
         echo '</div>';
         echo '<div id="user-id">';
+        echo '<hr>';
             echo '<h2>Vous avez la session n°' . $_SESSION["id"] . '</h2>';
             if($_SESSION['is_admin'] === true){
                 echo '<h2>Compte administrateur</h2>';
             }
-        echo '</div>';
         echo '<hr>';
+        echo '</div>';
     }
 
     include $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.html';
@@ -99,5 +105,47 @@
     if(isset($_SESSION["is_admin"]) && !empty($_SESSION["is_admin"]) && $_SESSION["is_admin"] === true) {
         echo '<hr>';
         include $_SERVER['DOCUMENT_ROOT'] . '/src/pages/info/info.php';
+    }
+
+    function getGreeting(): string
+    {
+        $greetings = [
+            'Bonjour',
+            'Bienvenue',
+            'Bon retour',
+            'Salut',
+            'Enchanté',
+            // Français
+            // Anglais
+            'Hello',
+            'Hi',
+            'Welcome',
+            'Hey',
+            'Wassup',
+            // Autres
+            'Hola',         // Espagnol / Catalan
+            'Ciao',         // Italien
+            'Olá',          // Portugais
+            'Oi',           // Portugais (BR)
+            'Hallo',        // Allemand / Néerlandais
+            'Hoi',          // Néerlandais
+            'Hej',          // Suédois / Danois
+            'Hei',          // Norvégien / Finnois
+            'Halló',        // Islandais
+            'Ola',          // Galicien
+            'Halò',         // Écossais gaélique
+
+            // Asie
+            'Namaste',      // Hindi / Népalais
+            'Ni hao',       // Chinois
+            'Chào',         // Vietnamien
+            'Halo',         // Indonésien
+            'Hyālō',        // Bengali
+
+            // Océanie
+            'Aloha',        // Havaïen
+        ];
+
+        return $greetings[array_rand($greetings)];
     }
 ?>
