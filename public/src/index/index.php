@@ -38,16 +38,16 @@
 
     if(!isset($_SESSION['loggedin'])){
         echo '<p><a href="/login">Connectez-vous</a>, ou alors pourquoi ne pas <a href="/register">créer un compte</a> ?</p>';
+        echo '<p>Nouveau : <a href="/discord/login">Connectez-vous avec Discord</a> !</p>';
+    }
+    else {
         if($classicName === "" && isset($_SESSION["discord_id"]) && !empty($_SESSION["discord_id"])){
-                // Compte Discord-only : un compte Discord est déjà requis et connecté,
-                // on propose de créer un compte classique qui sera lié au compte Discord
-                echo '<p>Vous êtes connecté via Discord : <a href="/discord/register">créez votre compte classique et liez-le</a> — le compte créé sera lié à votre compte Discord, vous pourrez vous connecter des deux façons.</p>';
-            }
-            else{
-                echo '<p>Nouveau : <a href="/discord/login">Connectez-vous avec Discord</a> !</p>';
-            }
+            echo '<p>Vous êtes connecté via Discord : <a href="/discord/register">créez un compte classique (ou reliez-en un déjà existant)</a><br>Le compte sera lié à votre compte Discord, vous pourrez vous connecter des deux façons</p>';
         }
-    else {    }
+        else{
+            echo '<p>Nouveau : <a href="/discord/login">Connectez-vous avec Discord</a> !</p>';
+        }
+    }
 
     $x = rand(0, 10);
     echo '<hr>';

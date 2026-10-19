@@ -1,13 +1,29 @@
 <link rel="stylesheet" href="/src/css/discord.css">
 
-<h2>Créer votre compte classique et le lier à votre compte Discord</h2>
-<p class="discord">Compte Discord connecté : <?php echo htmlspecialchars($discordDisplayName); ?></p>
+<h2>Compte Discord connecté</h2>
+<p class="discord">Connexion Discord : <?php echo htmlspecialchars($discordDisplayName); ?></p>
+
+<h3>Créer un nouveau compte classique et le lier à Discord</h3>
+<p>Le compte créé sera lié à votre compte Discord : vous pourrez ensuite vous connecter avec votre compte classique ou avec Discord.</p>
 
 <form method="POST" action="">
     <input type="hidden" name="csrf_token" value="<?php echo generateCsrfToken(); ?>">
+    <input type="hidden" name="action" value="create">
     <input type="text" name="username" placeholder="username" required>
     <input type="password" name="password" placeholder="password" required>
     <input type="password" name="confirm_password" placeholder="Confirm password" required>
     <button type="submit"><p>Créer le compte</p></button>
 </form>
-<p>Le compte créé sera lié à votre compte Discord : vous pourrez ensuite vous connecter avec votre compte classique ou avec Discord.</p>
+
+<hr>
+
+<h3>Vous avez déjà un compte classique ? Le lier à Discord</h3>
+<p>Le compte classique sera relier à votre compte Discord, vous devrez vous connecter des deux façons. Un seul compte classique possible par Discord : la ligne Discord-only de cette session sera fusionner dans le compte choisi, AUCUN compte n'est créé.</p>
+
+<form method="POST" action="">
+    <input type="hidden" name="csrf_token" value="<?php echo generateCsrfToken(); ?>">
+    <input type="hidden" name="action" value="link">
+    <input type="text" name="username" placeholder="username" required>
+    <input type="password" name="password" placeholder="password" required>
+    <button type="submit"><p>Lier ce compte</p></button>
+</form>

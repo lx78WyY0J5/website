@@ -60,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if($row && password_verify($old_password, $row["password"])){
-                // Old password is correct — proceed with update
+                // Old password is correct - proceed with update
                 $sql = "UPDATE users SET password = :password WHERE id = :id";
                 if($stmt = $pdo->prepare($sql)){
                     $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);

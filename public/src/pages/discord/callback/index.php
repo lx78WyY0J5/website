@@ -1,5 +1,5 @@
 <?php
-// Handler /discord/callback — intercepté tôt dans public/index.php (avant le template)
+// Handler /discord/callback - intercepté tôt dans public/index.php (avant le template)
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/loadEnv.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/PDO.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/csrf.php';
@@ -98,7 +98,11 @@ if ($alreadyLoggedIn === true) {
     }
     $_SESSION['discord_id'] = $discordId;
     $_SESSION['discord_username'] = $discordUsernameSaved;
-    // $_SESSION['username'] (nom classique) et is_admin restent inchangés
+    // $_SESSION['username'] (nom classique) reste inchangé, de même que is_admin,
+    // sauf si ce discord_id est celui configuré admin (ADMIN_DISCORD_USER_ID)
+    if (discordIsAdminId($discordId)) {
+        $_SESSION["is_admin"] = true;
+    }
     logSecurityEvent('discord_link_success', ['user_id' => $_SESSION['id']]);
 }
 else {
@@ -162,6 +166,11 @@ else {
         if (strcasecmp($classicUsername, $adminUsername) === 0) {
             $_SESSION["is_admin"] = true;
         }
+    }
+
+    // Admin Discord : le discord_id peut être configuré au .env (ADMIN_DISCORD_USER_ID)
+    if (discordIsAdminId($discordId)) {
+        $_SESSION["is_admin"] = true;
     }
 
     logSecurityEvent('discord_login_success', ['user_id' => $userId]);

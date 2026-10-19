@@ -139,6 +139,22 @@ function discordFindUserByDiscordId(PDO $pdo, $discordId)
     return null;
 }
 
+// Vérifie que ce discord_id est celui configuré comme admin (.env ADMIN_DISCORD_USER_ID)
+function discordIsAdminId($discordId): bool
+{
+    $adminDiscordUserId = getenv("ADMIN_DISCORD_USER_ID");
+
+    if (empty($adminDiscordUserId)) {
+        return false;
+    }
+
+    if (!is_string($discordId) || empty($discordId)) {
+        return false;
+    }
+
+    return $discordId === $adminDiscordUserId;
+}
+
 // Crée une ligne Discord-only (username/password NULL). Retourne le nouvel id
 function discordCreateUser(PDO $pdo, $discordId): int
 {
@@ -156,6 +172,19 @@ function discordLinkToUser(PDO $pdo, int $userId, $discordId): void
     $stmt->bindParam(":discord_id", $discordId, PDO::PARAM_STR);
     $stmt->bindParam(":id", $userId, PDO::PARAM_INT);
     $stmt->execute();
+}
+
+// Revendication : lie un discord_id à une ligne users SANS discord_id
+// (compte classique existant lié depuis un compte Discord-only). Retourne le
+// nombre de lignes affectées (1 = lié, 0 = déjà lié entre-temps)
+function discordLinkToUnlinkedUser(PDO $pdo, int $userId, $discordId): int
+{
+    $stmt = $pdo->prepare("UPDATE users SET discord_id = :discord_id, discord_linked_at = NOW() WHERE id = :id AND discord_id IS NULL");
+    $stmt->bindParam(":discord_id", $discordId, PDO::PARAM_STR);
+    $stmt->bindParam(":id", $userId, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->rowCount();
 }
 
 // Supprime une ligne users (ligne "fantôme" Discord-only) par id
