@@ -77,14 +77,14 @@ var musicLinks = [
         "videoID": "rGWXuBv2hEA",
         "category": "phonk",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=InH6WOodkkA'>Slowed version</a>",
+        "text": "<a target='_blank' href='#InH6WOodkkA'>Slowed version</a>",
         "title": "Death Is No More"
     },
     {
         "videoID": "InH6WOodkkA",
         "category": "phonk",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=rGWXuBv2hEA'>Original</a>",
+        "text": "<a target='_blank' href='#rGWXuBv2hEA'>Original</a>",
         "title": "Death Is No More (Slowed)"
     },
     {
@@ -101,13 +101,13 @@ var musicLinks = [
     {
         "videoID": "sVjk5nrb_lI",
         "category": "histoire",
-        "text": "<a target='_blank' href='/admin/video?videoid=vOGhAV-84iI'>Silly Symphonies - The Skeleton Dance - Walt Disney Animation Studios</a>, <a target='_blank' href='/admin/music?videoid=q6-ZGAGcJrk'>remix</a>",
+        "text": "<a target='_blank' href='/admin/video#vOGhAV-84iI'>Silly Symphonies - The Skeleton Dance - Walt Disney Animation Studios</a>, <a target='_blank' href='#q6-ZGAGcJrk'>remix</a>",
         "title": "Spooky Scary Skeletons - Original Video [4K HD]"
     },
     {
         "videoID": "q6-ZGAGcJrk",
         "category": "histoire",
-        "text": "<a target='_blank' href='/admin/music?videoid=sVjk5nrb_lI'>Original</a>",
+        "text": "<a target='_blank' href='#sVjk5nrb_lI'>Original</a>",
         "top": true,
         "title": "Spooky Scary Skeletons (Remix) - Extended Mix"
     },
@@ -157,13 +157,13 @@ var musicLinks = [
     {
         "videoID": "4Js-XbNj6Tk",
         "category": "histoire chill",
-        "text": "Rick & Morty, <a target='_blank' href='/admin/music?videoid=zh4gzV_x3UM'>remix</a>",
+        "text": "Rick & Morty, <a target='_blank' href='#zh4gzV_x3UM'>remix</a>",
         "title": "Blonde Redhead - For the Damaged Coda"
     },
     {
         "videoID": "zh4gzV_x3UM",
         "category": "histoire chill",
-        "text": "<a target='_blank' href='/admin/music?videoid=4Js-XbNj6Tk'>original</a>",
+        "text": "<a target='_blank' href='#4Js-XbNj6Tk'>original</a>",
         "title": "Rick and Morty: Evil Morty Theme (For The Damaged Coda) | EPIC VERSION [Attack on Titan Style]"
     },
     {
@@ -509,14 +509,14 @@ var musicLinks = [
         "title": "🎵Best of Electro Swing Music Mix 2022🎵 No:10"
     },
     {
-        "text": "<a target='_blank' href='/admin/music?videoid=yt-DyDfgMOUjCI'>Original</a>",
+        "text": "<a target='_blank' href='#yt-DyDfgMOUjCI'>Original</a>",
         "videoID": "3Z4efCGd7TE",
         "top": true,
         "category": "chill",
         "title": "Arcane | Bad Guy『 AMV 』"
     },
     {
-        "text": "<a target='_blank' href='/admin/music?videoid=yt-Y2V6yjjPbX0'>Original</a>",
+        "text": "<a target='_blank' href='#yt-Y2V6yjjPbX0'>Original</a>",
         "videoID": "fktD1q8OPa0",
         "top": true,
         "category": "chill",
@@ -711,7 +711,7 @@ var musicLinks = [
         "videoID": "PD1EXJScA6k",
         "top": true,
         "category": "chill moody histoire",
-        "text": "<a target='_blank' href='/admin/music?videoid=3vEiqil5d3Q'>Alternative upload</a>",
+        "text": "<a target='_blank' href='#3vEiqil5d3Q'>Alternative upload</a>",
         "title": "The Rare Occasions | \"Notion\" Official Music Video"
     },
     {
@@ -1019,13 +1019,13 @@ var musicLinks = [
     {
         "videoID": "i8lDuo9yqfs",
         "category": "trool asian",
-        "text": "PoV Dev's life, <a target='_blank' href='/admin/music?videoid=FtutLA63Cp8'>Original</a>",
+        "text": "PoV Dev's life, <a target='_blank' href='#FtutLA63Cp8'>Original</a>",
         "title": "Bad Apple but every line it switches to a different version"
     },
     {
         "videoID": "FtutLA63Cp8",
         "category": "trool asian",
-        "text": "<a target='_blank' href='/admin/music?videoid=i8lDuo9yqfs'>Remix</a>",
+        "text": "<a target='_blank' href='#i8lDuo9yqfs'>Remix</a>",
         "title": "【東方】Bad Apple!! ＰＶ【影絵】"
     },
     {
@@ -1260,7 +1260,7 @@ var musicLinks = [
     },
     {
         "videoID": "F2xnvyMp8Us",
-        "text": "<a target='_blank' href='/admin/music?videoid=yt-DF3XjEhJ40Y'>Original</a>",
+        "text": "<a target='_blank' href='#yt-DF3XjEhJ40Y'>Original</a>",
         "top": true,
         "category": "chill",
         "title": "Love Story - Indila"
@@ -1437,13 +1437,13 @@ var musicLinks = [
     },
     {
         "videoID": "_KEQxsXjZuY",
-        "text": "<a target='_blank' href='/admin/music?videoid=PozNmD_FgZY'>TV version</a>",
+        "text": "<a target='_blank' href='#PozNmD_FgZY'>TV version</a>",
         "category": "chill trool",
         "title": "Zander Hawley - Daddy Cop (Full Version) Official Music Video"
     },
     {
         "videoID": "PozNmD_FgZY",
-        "text": "<a target='_blank' href='/admin/music?videoid=_KEQxsXjZuY'>Music version</a>",
+        "text": "<a target='_blank' href='#_KEQxsXjZuY'>Music version</a>",
         "category": "chill trool",
         "title": "\"The Rookie\" TV Series (Daddy Cop) (Cop Cuties) (Arrest Me, But Make It Sexy) Parts 1 And 2"
     },
@@ -1462,14 +1462,14 @@ var musicLinks = [
     {
         "videoID": "uT3_6ct-WGE",
         "category": "phonk",
-        "text": "<a target='_blank' href='/admin/music?videoid=jNd_LxLnIkM'>Original</a>",
+        "text": "<a target='_blank' href='#jNd_LxLnIkM'>Original</a>",
         "title": "STRANGER (Slowed)"
     },
     {
         "videoID": "jNd_LxLnIkM",
         "top": true,
         "category": "phonk",
-        "text": "<a target='_blank' href='/admin/music?videoid=uT3_6ct-WGE'>Slowed version</a>",
+        "text": "<a target='_blank' href='#uT3_6ct-WGE'>Slowed version</a>",
         "title": "STRANGER"
     },
     {
@@ -1613,14 +1613,14 @@ var musicLinks = [
     {
         "videoID": "eJIL35tCbVE",
         "category": "phonk jazz",
-        "text": "<a target='_blank' href='/admin/music?videoid=yDoyUJkNEL4'>Original</a>",
+        "text": "<a target='_blank' href='#yDoyUJkNEL4'>Original</a>",
         "top": true,
         "title": "Tarararara Tarararara Song (Instagram Trend 2025) Viral Trumpet l DJ HK STYLE #tararara #trending"
     },
     {
         "videoID": "yDoyUJkNEL4",
         "category": "chill jazz",
-        "text": "<a target='_blank' href='/admin/music?videoid=eJIL35tCbVE'>Remix</a>",
+        "text": "<a target='_blank' href='#eJIL35tCbVE'>Remix</a>",
         "top": true,
         "title": "Tararara Viral Trumpet | Sonu Singh Kdm | Time Of Our Lives By Zhao Lei | Full Song Version"
     },
@@ -1652,13 +1652,13 @@ var musicLinks = [
         "title": "Eiffel 65 - Blue (Da Ba Dee) (Lyrics)"
     },
     {
-        "text": "<a target='_blank' href='/admin/music?videoid=34CZjsEI1yU'>Rock remix</a>",
+        "text": "<a target='_blank' href='#34CZjsEI1yU'>Rock remix</a>",
         "videoID": "ytWz0qVvBZ0",
         "category": "trool",
         "title": "♪ Diggy Diggy Hole"
     },
     {
-        "text": "<a target='_blank' href='/admin/music?videoid=ytWz0qVvBZ0'>Original</a>",
+        "text": "<a target='_blank' href='#ytWz0qVvBZ0'>Original</a>",
         "videoID": "34CZjsEI1yU",
         "category": "rock",
         "title": "WIND ROSE - Diggy Diggy Hole (Official Video) | Napalm Records"
@@ -1780,14 +1780,14 @@ var musicLinks = [
     {
         "videoID": "Ra5qZDJefJs",
         "category": "phonk electro asian",
-        "text": "<a target='_blank' href='/admin/music?videoid=mw7Y0jQ8_BU'>Spinnin Records 1st upload</a>",
+        "text": "<a target='_blank' href='#mw7Y0jQ8_BU'>Spinnin Records 1st upload</a>",
         "title": "2 Phút Hơn (KAIZ Remix)"
     },
     {
         "videoID": "mw7Y0jQ8_BU",
         "category": "phonk electro asian",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=Ra5qZDJefJs'>Re-upload by YouTube</a>",
+        "text": "<a target='_blank' href='#Ra5qZDJefJs'>Re-upload by YouTube</a>",
         "title": "Pháo - 2 Phút Hơn (KAIZ Remix) [Official Music Video]"
     },
     {
@@ -2183,7 +2183,7 @@ var musicLinks = [
         "videoID": "sADmwWhU5ZM",
         "category": "chill moody histoire",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=VNyGaTO0dU0'>Alternative upload</a>",
+        "text": "<a target='_blank' href='#VNyGaTO0dU0'>Alternative upload</a>",
         "title": "joji - WORLD$TAR MONEY"
     },
     {
@@ -2206,7 +2206,7 @@ var musicLinks = [
     {
         "videoID": "VNyGaTO0dU0",
         "category": "chill moody histoire",
-        "text": "<a target='_blank' href='/admin/music?videoid=sADmwWhU5ZM'>Alternative upload</a>",
+        "text": "<a target='_blank' href='#sADmwWhU5ZM'>Alternative upload</a>",
         "title": "joji - worldstar money"
     },
     {
@@ -2224,13 +2224,13 @@ var musicLinks = [
     {
         "videoID": "-sSMARZ-1lg",
         "category": "moody chill",
-        "text": "<a target='_blank' href='/admin/music?videoid=xknnD47tcMU'>Alternative upload</a>",
+        "text": "<a target='_blank' href='#xknnD47tcMU'>Alternative upload</a>",
         "title": "Kill Eva, ENCASSATOR – Psycho Dreams (Lyric Video)"
     },
     {
         "videoID": "xknnD47tcMU",
         "category": "phonk moody chill",
-        "text": "<a target='_blank' href='/admin/music?videoid=-sSMARZ-1lg'>Alternative upload</a>",
+        "text": "<a target='_blank' href='#-sSMARZ-1lg'>Alternative upload</a>",
         "top": true,
         "title": "Kill Eva & ENCASSATOR - Psycho Dreams (Sped Up)"
     },
@@ -2313,7 +2313,7 @@ var musicLinks = [
     {
         "videoID": "3vEiqil5d3Q",
         "category": "chill moody histoire",
-        "text": "<a target='_blank' href='/admin/music?videoid=PD1EXJScA6k'>Alternative upload</a>",
+        "text": "<a target='_blank' href='#PD1EXJScA6k'>Alternative upload</a>",
         "top": true,
         "title": "Notion"
     },
@@ -2378,14 +2378,14 @@ var musicLinks = [
     {
         "videoID": "R9PNKMwVW5M",
         "category": "chill histoire asian",
-        "text": "<a target='_blank' href='/admin/music?videoid=ETvIJFa1c-0'>Anime version</a>",
+        "text": "<a target='_blank' href='#ETvIJFa1c-0'>Anime version</a>",
         "top": true,
         "title": "Wild Side (Anime Version)"
     },
     {
         "videoID": "ETvIJFa1c-0",
         "category": "chill histoire asian",
-        "text": "<a target='_blank' href='/admin/music?videoid=R9PNKMwVW5M'>Original</a>",
+        "text": "<a target='_blank' href='#R9PNKMwVW5M'>Original</a>",
         "top": true,
         "title": "BEASTARS OP | Wild Side (Official Music Video)"
     },
@@ -2399,7 +2399,7 @@ var musicLinks = [
         "videoID": "91GTuZWCQmY",
         "category": "histoire chill rock slavic",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=s1ATTIQrmIQ'>Copy</a>",
+        "text": "<a target='_blank' href='#s1ATTIQrmIQ'>Copy</a>",
         "title": "Molchat Doma - Sudno (dir. by @blood.doves)"
     },
     {
@@ -2826,42 +2826,42 @@ var musicLinks = [
     {
         "videoID": "wed87yyVNcM",
         "category": "electro moody",
-        "text": "<a target='_blank' href='/admin/music?videoid=QrwzGEOKcfw'>Original</a>",
+        "text": "<a target='_blank' href='#QrwzGEOKcfw'>Original</a>",
         "top": true,
         "title": "IVOXYGEN - plateau (angst Techno Remix) [Extended]"
     },
     {
         "videoID": "QrwzGEOKcfw",
         "category": "moody chill histoire",
-        "text": "<a target='_blank' href='/admin/music?videoid=wed87yyVNcM'>Remix</a>",
+        "text": "<a target='_blank' href='#wed87yyVNcM'>Remix</a>",
         "top": true,
         "title": "plateau"
     },
     {
         "videoID": "LC_FdVkjSMQ",
         "category": "electro",
-        "text": "<a target='_blank' href='/admin/music?videoid=248eDM0rKtc'>Original</a>",
+        "text": "<a target='_blank' href='#248eDM0rKtc'>Original</a>",
         "top": true,
         "title": "BEAUZ - LICK IT (Extended Edit)"
     },
     {
         "videoID": "248eDM0rKtc",
         "category": "electro",
-        "text": "<a target='_blank' href='/admin/music?videoid=LC_FdVkjSMQ'>Remix</a>",
+        "text": "<a target='_blank' href='#LC_FdVkjSMQ'>Remix</a>",
         "top": true,
         "title": "Lick It"
     },
     {
         "videoID": "wU5xRUkUVFM",
         "category": "moody electro",
-        "text": "<a target='_blank' href='/admin/music?videoid=yI_TvT5D-zM'>Original</a>",
+        "text": "<a target='_blank' href='#yI_TvT5D-zM'>Original</a>",
         "top": true,
         "title": "IVOXYGEN - Write My Name In Your Heart (angst Techno Remix) [Extended]"
     },
     {
         "videoID": "yI_TvT5D-zM",
         "category": "moody chill",
-        "text": "<a target='_blank' href='/admin/music?videoid=wU5xRUkUVFM'>Remix</a>",
+        "text": "<a target='_blank' href='#wU5xRUkUVFM'>Remix</a>",
         "top": true,
         "title": "IVOXYGEN - write my name in your heart"
     },
@@ -2879,7 +2879,7 @@ var musicLinks = [
     {
         "videoID": "s1ATTIQrmIQ",
         "category": "slavic histoire rock chill",
-        "text": "<a target='_blank' href='/admin/music?videoid=91GTuZWCQmY'>Copy</a>",
+        "text": "<a target='_blank' href='#91GTuZWCQmY'>Copy</a>",
         "title": "Судно (Борис Рыжий)"
     },
     {
@@ -3003,40 +3003,40 @@ var musicLinks = [
         "videoID": "ljryOkkRlKA",
         "category": "histoire trool chill",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=GTxPUFWjOlQ'>Original</a>",
+        "text": "<a target='_blank' href='#GTxPUFWjOlQ'>Original</a>",
         "title": "Back That Up To The Beat (sped up Version)"
     },
     {
         "videoID": "GTxPUFWjOlQ",
         "category": "histoire trool chill",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=ljryOkkRlKA'>Sped up version</a>",
+        "text": "<a target='_blank' href='#ljryOkkRlKA'>Sped up version</a>",
         "title": "Madonna - Back That Up To The Beat (Official Lyric Video)"
     },
     {
         "videoID": "j9V78UbdzWI",
         "category": "trool histoire electro hardbass",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=iLBBRuVDOo4'>Original</a>",
+        "text": "<a target='_blank' href='#iLBBRuVDOo4'>Original</a>",
         "title": "Coffin Dance (Official Music Video HD)"
     },
     {
         "videoID": "iLBBRuVDOo4",
         "category": "electro hardbass",
-        "text": "<a target='_blank' href='/admin/music?videoid=j9V78UbdzWI'>Coffin Dance version</a>",
+        "text": "<a target='_blank' href='#j9V78UbdzWI'>Coffin Dance version</a>",
         "title": "Vicetone & Tony Igy - Astronomia"
     },
     {
         "videoID": "3fS2HloUZgc",
         "category": "nightcore electro",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=rp53irFjzYg'>Original</a>",
+        "text": "<a target='_blank' href='#rp53irFjzYg'>Original</a>",
         "title": "Nightcore - God Is A Girl"
     },
     {
         "videoID": "rp53irFjzYg",
         "category": "electro hardbass",
-        "text": "<a target='_blank' href='/admin/music?videoid=3fS2HloUZgc'>Nightcore</a>",
+        "text": "<a target='_blank' href='#3fS2HloUZgc'>Nightcore</a>",
         "title": "Groove Coverage - God is a Girl (Official Video)"
     },
     {
@@ -3433,20 +3433,20 @@ var musicLinks = [
         "videoID": "ieJ-uXYWAwI",
         "category": "phonk",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=-XEavwcHU78'>Original</a>, <a target='_blank' href='/admin/music?videoid=fwGmJbcAUcE'>alternative upload</a>",
+        "text": "<a target='_blank' href='#-XEavwcHU78'>Original</a>, <a target='_blank' href='#fwGmJbcAUcE'>alternative upload</a>",
         "title": "Twin Tribes - Monolith (SLOWED//REVERB)"
     },
     {
         "videoID": "-XEavwcHU78",
         "category": "histoire",
-        "text": "<a target='_blank' href='/admin/music?videoid=ieJ-uXYWAwI'>Remix</a>, <a target='_blank' href='/admin/music?videoid=fwGmJbcAUcE'>alternative upload</a>",
+        "text": "<a target='_blank' href='#ieJ-uXYWAwI'>Remix</a>, <a target='_blank' href='#fwGmJbcAUcE'>alternative upload</a>",
         "title": "Twin Tribes - Monolith (Official Video)"
     },
     {
         "videoID": "fwGmJbcAUcE",
         "category": "histoire",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=-XEavwcHU78'>Original</a>, <a target='_blank' href='/admin/music?videoid=ieJ-uXYWAwI'>remix</a>",
+        "text": "<a target='_blank' href='#-XEavwcHU78'>Original</a>, <a target='_blank' href='#ieJ-uXYWAwI'>remix</a>",
         "title": "Monolith"
     },
     {
@@ -3565,14 +3565,14 @@ var musicLinks = [
     {
         "videoID": "nWKPYs54INA",
         "category": "electro moody chill",
-        "text": "<a target='_blank' href='/admin/music?videoid=n7Oz_7-Y9fk'>Alternative</a>",
+        "text": "<a target='_blank' href='#n7Oz_7-Y9fk'>Alternative</a>",
         "top": true,
         "title": "etxrnall - your love is my drug (8bit slowed)"
     },
     {
         "videoID": "n7Oz_7-Y9fk",
         "category": "electro moody chill",
-        "text": "<a target='_blank' href='/admin/music?videoid=nWKPYs54INA'>Alternative</a>",
+        "text": "<a target='_blank' href='#nWKPYs54INA'>Alternative</a>",
         "top": true,
         "title": "Your Love Is My Drug  (8 - bit) [Jason Edit]"
     },
@@ -3591,14 +3591,14 @@ var musicLinks = [
     {
         "videoID": "evny_w98PjI",
         "category": "histoire chill moody electro",
-        "text": "<a target='_blank' href='/admin/music?videoid=HhP6V4igJOg'>Alternative</a>",
+        "text": "<a target='_blank' href='#HhP6V4igJOg'>Alternative</a>",
         "top": true,
         "title": "Ari Abdul - BABYDOLL (Lyric Video)"
     },
     {
         "videoID": "HhP6V4igJOg",
         "category": "histoire chill moody electro",
-        "text": "<a target='_blank' href='/admin/music?videoid=evny_w98PjI'>Alternative</a>",
+        "text": "<a target='_blank' href='#evny_w98PjI'>Alternative</a>",
         "top": true,
         "title": "Ari Abdul - BABYDOLL (Jason Wats Techno Remix) (Sped Up) [Extended]"
     },
@@ -3710,42 +3710,42 @@ var musicLinks = [
     {
         "videoID": "yHcHGyg-mY0",
         "category": "phonk",
-        "text": "<a target='_blank' href='/admin/music?videoid=FNXUolrn9Hg'>Slowed</a>",
+        "text": "<a target='_blank' href='#FNXUolrn9Hg'>Slowed</a>",
         "top": true,
         "title": "MONTAGEM BAILÃO"
     },
     {
         "videoID": "FNXUolrn9Hg",
         "category": "phonk",
-        "text": "<a target='_blank' href='/admin/music?videoid=yHcHGyg-mY0'>Original</a>",
+        "text": "<a target='_blank' href='#yHcHGyg-mY0'>Original</a>",
         "top": true,
         "title": "MONTAGEM BAILÃO (Slowed)"
     },
     {
         "videoID": "QKBjAb4en4E",
         "category": "phonk",
-        "text": "<a target='_blank' href='/admin/music?videoid=Wu_wk1k16b8'>Slowed</a>",
+        "text": "<a target='_blank' href='#Wu_wk1k16b8'>Slowed</a>",
         "top": true,
         "title": "WISTED"
     },
     {
         "videoID": "Wu_wk1k16b8",
         "category": "phonk",
-        "text": "<a target='_blank' href='/admin/music?videoid=QKBjAb4en4E'>Original</a>",
+        "text": "<a target='_blank' href='#QKBjAb4en4E'>Original</a>",
         "top": true,
         "title": "WISTED (Slowed)"
     },
     {
         "videoID": "F4DaMdsijwE",
         "category": "phonk electro",
-        "text": "<a target='_blank' href='/admin/music?videoid=N5kcpkQuNv8'>Slowed</a>",
+        "text": "<a target='_blank' href='#N5kcpkQuNv8'>Slowed</a>",
         "top": true,
         "title": "VISION"
     },
     {
         "videoID": "N5kcpkQuNv8",
         "category": "phonk electro",
-        "text": "<a target='_blank' href='/admin/music?videoid=F4DaMdsijwE'>Original</a>",
+        "text": "<a target='_blank' href='#F4DaMdsijwE'>Original</a>",
         "top": true,
         "title": "VISION (Slowed)"
     },
@@ -3825,14 +3825,14 @@ var musicLinks = [
         "videoID": "iS_8v1tos0U",
         "category": "phonk",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=IUq7xu6HtrI'>Extended</a>",
+        "text": "<a target='_blank' href='#IUq7xu6HtrI'>Extended</a>",
         "title": "AKAI (Slowed)"
     },
     {
         "videoID": "IUq7xu6HtrI",
         "category": "phonk",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=iS_8v1tos0U'>Original</a>",
+        "text": "<a target='_blank' href='#iS_8v1tos0U'>Original</a>",
         "title": "AKAI ( Slowed / Extended)"
     },
     {
@@ -3845,14 +3845,14 @@ var musicLinks = [
         "videoID": "fxuyPBcnzXA",
         "category": "phonk electro",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=3P7w4SSZ27g'>Alternative</a>",
+        "text": "<a target='_blank' href='#3P7w4SSZ27g'>Alternative</a>",
         "title": "ACIDO"
     },
     {
         "videoID": "3P7w4SSZ27g",
         "category": "phonk electro slavic",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=fxuyPBcnzXA'>Original</a>",
+        "text": "<a target='_blank' href='#fxuyPBcnzXA'>Original</a>",
         "title": "ACIDO (Alt Ver)"
     },
     {
@@ -3871,21 +3871,21 @@ var musicLinks = [
         "videoID": "x2R314btHoo",
         "category": "phonk electro hardbass",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=ZlrVr0D0CKM'>Alternative</a>, <a target='_blank' href='/admin/music?videoid=8G5jka9aDSw'>slowed</a>",
+        "text": "<a target='_blank' href='#ZlrVr0D0CKM'>Alternative</a>, <a target='_blank' href='#8G5jka9aDSw'>slowed</a>",
         "title": "HAZA"
     },
     {
         "videoID": "ZlrVr0D0CKM",
         "category": "phonk electro hardbass",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=x2R314btHoo'>Original</a>, <a target='_blank' href='/admin/music?videoid=8G5jka9aDSw'>slowed</a>",
+        "text": "<a target='_blank' href='#x2R314btHoo'>Original</a>, <a target='_blank' href='#8G5jka9aDSw'>slowed</a>",
         "title": "HAZA (Alt Ver)"
     },
     {
         "videoID": "8G5jka9aDSw",
         "category": "phonk electro hardbass",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=x2R314btHoo'>Original</a>, <a target='_blank' href='/admin/music?videoid=ZlrVr0D0CKM'>alternative</a>",
+        "text": "<a target='_blank' href='#x2R314btHoo'>Original</a>, <a target='_blank' href='#ZlrVr0D0CKM'>alternative</a>",
         "title": "HAZA (Slowed)"
     },
     {
@@ -3898,42 +3898,42 @@ var musicLinks = [
         "videoID": "AayuhXNGTCA",
         "category": "phonk electro moody",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=XwaP_bcYp64'>Sped up</a>, <a target='_blank' href='/admin/music?videoid=KJ-TnT5Mxqs'>Original</a>, <a target='_blank' href='/admin/music?videoid=Fb5jGmMvhtM'>Extended</a>",
+        "text": "<a target='_blank' href='#XwaP_bcYp64'>Sped up</a>, <a target='_blank' href='#KJ-TnT5Mxqs'>Original</a>, <a target='_blank' href='#Fb5jGmMvhtM'>Extended</a>",
         "title": "GLICHERY - SEA OF PROBLEMS (Music Video)"
     },
     {
         "videoID": "XwaP_bcYp64",
         "category": "phonk electro moody",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=AayuhXNGTCA'>Vidéo</a>, <a target='_blank' href='/admin/music?videoid=KJ-TnT5Mxqs'>Original</a>, <a target='_blank' href='/admin/music?videoid=Fb5jGmMvhtM'>Extended</a>",
+        "text": "<a target='_blank' href='#AayuhXNGTCA'>Vidéo</a>, <a target='_blank' href='#KJ-TnT5Mxqs'>Original</a>, <a target='_blank' href='#Fb5jGmMvhtM'>Extended</a>",
         "title": "Sea Of Problems (Sped Up)"
     },
     {
         "videoID": "KJ-TnT5Mxqs",
         "category": "phonk electro moody",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=XwaP_bcYp64'>Sped up</a>, <a target='_blank' href='/admin/music?videoid=AayuhXNGTCA'>Vidéo</a>, <a target='_blank' href='/admin/music?videoid=Fb5jGmMvhtM'>Extended</a>",
+        "text": "<a target='_blank' href='#XwaP_bcYp64'>Sped up</a>, <a target='_blank' href='#AayuhXNGTCA'>Vidéo</a>, <a target='_blank' href='#Fb5jGmMvhtM'>Extended</a>",
         "title": "Sea Of Problems"
     },
     {
         "videoID": "Fb5jGmMvhtM",
         "category": "phonk electro moody",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=XwaP_bcYp64'>Sped up</a>, <a target='_blank' href='/admin/music?videoid=AayuhXNGTCA'>Vidéo</a>, <a target='_blank' href='/admin/music?videoid=KJ-TnT5Mxqs'>Original</a>",
+        "text": "<a target='_blank' href='#XwaP_bcYp64'>Sped up</a>, <a target='_blank' href='#AayuhXNGTCA'>Vidéo</a>, <a target='_blank' href='#KJ-TnT5Mxqs'>Original</a>",
         "title": "Glichery - Sea of Problems (SPED UP + EXTENDED MIX) [Visualizer]"
     },
     {
         "videoID": "Iyv905Q2omU",
         "category": "histoire chill electro",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=4B7bYrARvUU'>The boys OST</a>",
+        "text": "<a target='_blank' href='#4B7bYrARvUU'>The boys OST</a>",
         "title": "Billy Joel - Pressure (Official Video)"
     },
     {
         "videoID": "4B7bYrARvUU",
         "category": "histoire chill electro",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=Iyv905Q2omU'>Original</a>",
+        "text": "<a target='_blank' href='#Iyv905Q2omU'>Original</a>",
         "title": "Billy Joel - Pressure | The Boys Season 2 OST"
     },
     {
@@ -4208,14 +4208,14 @@ var musicLinks = [
         "videoID": "nOeJuoFs6sM",
         "category": "moody slavic histoire chill",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=6SEr1XcZG4M'>Vidéo</a>",
+        "text": "<a target='_blank' href='#6SEr1XcZG4M'>Vidéo</a>",
         "title": "EMIN feat. JONY - КАМИН"
     },
     {
         "videoID": "6SEr1XcZG4M",
         "category": "moody slavic histoire chill",
         "top": true,
-        "text": "<a target='_blank' href='/admin/music?videoid=nOeJuoFs6sM'>Musique</a>",
+        "text": "<a target='_blank' href='#nOeJuoFs6sM'>Musique</a>",
         "title": "EMIN, JONY - Камин/ Fireplace (Official Video) "
     },
     {
@@ -4411,14 +4411,14 @@ var musicLinks = [
     {
         "videoID": "hW3NVZDG_eQ",
         "category": "chill asian moody histoire",
-        "text": "<a target='_blank' href='/admin/music?videoid=H9R1Hl6sJeE'>Original</a>",
+        "text": "<a target='_blank' href='#H9R1Hl6sJeE'>Original</a>",
         "top": true,
         "title": "Anri- I can't stop the Loneliness (Teto Cover)"
     },
     {
         "videoID": "H9R1Hl6sJeE",
         "category": "chill asian moody histoire",
-        "text": "<a target='_blank' href='/admin/music?videoid=hW3NVZDG_eQ'>Teto Cover</a>",
+        "text": "<a target='_blank' href='#hW3NVZDG_eQ'>Teto Cover</a>",
         "top": true,
         "title": "悲しみがとまらない　I CAN'T STOP THE LONELINESS"
     },
@@ -13835,6 +13835,227 @@ var musicLinks = [
     },
     {
         "videoID": "ekW-i0KlU1U",
+        "category": "todo",
+    },
+    {
+        "videoID": "_mXwVQtqfLA",
+        "category": "todo",
+    },
+    {
+        "videoID": "6NXnxTNIWkc",
+        "category": "todo",
+    },
+    {
+        "videoID": "nZg7Fe07l2I",
+        "category": "todo",
+    },
+    {
+        "videoID": "C-u5WLJ9Yk4",
+        "category": "todo",
+    },
+    {
+        "videoID": "eJdq1IjW87Q",
+        "category": "todo",
+    },
+    {
+        "videoID": "iUpEsSb0tWI",
+        "category": "todo",
+    },
+    {
+        "videoID": "i71lIBizbvc",
+        "category": "todo",
+    },
+    {
+        "videoID": "-D_LgE4bSWE",
+        "category": "todo",
+    },
+    {
+        "videoID": "9O-nn93Z5p4",
+        "category": "todo",
+    },
+    {
+        "videoID": "YykjpeuMNEk",
+        "category": "todo",
+    },
+    {
+        "videoID": "2PQTafuxFZ4",
+        "category": "todo",
+    },
+    {
+        "videoID": "2tw2QDSeBQQ",
+        "category": "todo",
+    },
+    {
+        "videoID": "6dOwHzCHfgA",
+        "category": "todo",
+    },
+    {
+        "videoID": "e3OBPOKtMgA",
+        "category": "todo",
+    },
+    {
+        "videoID": "W3_c4-4OMbM",
+        "category": "todo",
+    },
+    {
+        "videoID": "xRzbLQ_WKPs",
+        "category": "todo",
+    },
+    {
+        "videoID": "Q6FarZpy67M",
+        "category": "todo",
+    },
+    {
+        "videoID": "x-OzspEcQG8",
+        "category": "todo",
+    },
+    {
+        "videoID": "DknZK7LgeUI",
+        "category": "todo",
+    },
+    {
+        "videoID": "eJpgshMPAzg",
+        "category": "todo",
+    },
+    {
+        "videoID": "vsdEUqwWa1w",
+        "category": "todo",
+    },
+    {
+        "videoID": "8295rOMvtQI",
+        "category": "todo",
+    },
+    {
+        "videoID": "K6qj09OHvjw",
+        "category": "todo",
+    },
+    {
+        "videoID": "84Tq-eAJIk4",
+        "category": "todo",
+    },
+    {
+        "videoID": "At8ao5iABFg",
+        "category": "todo",
+    },
+    {
+        "videoID": "I8sUC-dsW8A",
+        "category": "todo",
+    },
+    {
+        "videoID": "fXP8Npky7lE",
+        "category": "todo",
+    },
+    {
+        "videoID": "tw429JGL5zo",
+        "category": "todo",
+    },
+    {
+        "videoID": "-HCvxCHOeEQ",
+        "category": "todo",
+    },
+    {
+        "videoID": "Ff80k1JD4Qo",
+        "category": "todo",
+    },
+    {
+        "videoID": "U7Klj7MDlMA",
+        "category": "todo",
+    },
+    {
+        "videoID": "UnmvmWfCPXU",
+        "category": "todo",
+    },
+    {
+        "videoID": "_4L2qgj4wWA",
+        "category": "todo",
+    },
+    {
+        "videoID": "8sgycukafqQ",
+        "category": "todo",
+    },
+    {
+        "videoID": "7Tzq6isGOjg",
+        "category": "todo",
+    },
+    {
+        "videoID": "vBQV6NvL_cI",
+        "category": "todo",
+    },
+    {
+        "videoID": "3DcoC8p9az8",
+        "category": "todo",
+    },
+    {
+        "videoID": "sH0Qda32IKM",
+        "category": "todo",
+    },
+    {
+        "videoID": "ZjBZ8MUnB0E",
+        "category": "todo",
+    },
+    {
+        "videoID": "3DcoC8p9az8",
+        "category": "todo",
+    },
+    {
+        "videoID": "6lQXfW0oJ-c",
+        "category": "todo",
+        "short": true,
+    },
+    {
+        "videoID": "-D_LgE4bSWE",
+        "category": "todo",
+    },
+    {
+        "videoID": "JUSUxfLIA40",
+        "category": "todo",
+    },
+    {
+        "videoID": "4TYv2PhG89A",
+        "category": "todo",
+    },
+    {
+        "videoID": "YykjpeuMNEk",
+        "category": "todo",
+    },
+    {
+        "videoID": "fXP8Npky7lE",
+        "category": "todo",
+    },
+    {
+        "videoID": "Gj-gMYkvVvA",
+        "category": "todo",
+    },
+    {
+        "videoID": "GLi-UF9U-RI",
+        "category": "todo",
+    },
+    {
+        "videoID": "eps1368QXUQ",
+        "category": "todo",
+    },
+    {
+        "videoID": "O3nhC_pDVqQ",
+        "category": "todo",
+    },
+    {
+        "videoID": "laKJSXdfKxM",
+        "category": "todo",
+    },
+    {
+        "videoID": "MdMT_uyGCTs",
+        "category": "todo",
+    },
+    {
+        "videoID": "6GCNUeTFSbA",
+        "category": "todo",
+    },
+    {
+        "videoID": "AIgJenz0ZK4",
+        "category": "todo",
+    },
+    {
+        "videoID": "1e32cgJrbBo",
         "category": "todo",
     },
 ];
