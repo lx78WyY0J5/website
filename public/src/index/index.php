@@ -25,11 +25,14 @@
                 echo '<h1>' . htmlspecialchars($classicName) .'</h1>';
             }
             if ($discordName !== "") {
-                echo '<h3>' . htmlspecialchars($discordName) .'</h3>';
+                echo '<h1>' . htmlspecialchars($discordName) .'</h1>';
             }
         echo '</div>';
         echo '<div id="user-id">';
             echo '<h2>Vous avez la session n°' . $_SESSION["id"] . '</h2>';
+            if($_SESSION['is_admin'] === true){
+                echo '<h2>Compte administrateur</h2>';
+            }
         echo '</div>';
         echo '<hr>';
     }

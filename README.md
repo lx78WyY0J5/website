@@ -11,11 +11,6 @@
 - `nano .env`
 ### .env inexistant
 En cas de `.env` inexistant, le `.env.exemple` sera copié vers `.env`
-### Connexion avec Discord
-- Variables `.env` :
-  - `DISCORD_CLIENT_ID` : identifiant de l'application (portail développeur [Discord](https://discord.com/developers/applications))
-  - `DISCORD_CLIENT_SECRET` : secret de l'application
-  - `DISCORD_REDIRECT_URI` : doit être **identique** à l'URI déclarée sur le portail (ex : `https://doc.altherneum.fr/discord/callback`)
 ## Installation et lancement
 ### Installation
 [./install.sh](/install.sh)
@@ -35,6 +30,13 @@ start.sh
   - `SuperUser123@World!`
 - Aller sur `/password/update`
   - Changer le mot de passe
+### Connexion avec Discord
+- Variables `.env` :
+  - `DISCORD_CLIENT_ID` : identifiant de l'application (portail développeur [Discord](https://discord.com/developers/applications))
+  - `DISCORD_CLIENT_SECRET` : secret de l'application
+  - `DISCORD_REDIRECT_URI` : doit être **identique** à l'URI déclarée sur le portail (ex : `https://doc.altherneum.fr/discord/callback`)
+  - `ADMIN_DISCORD_USER_ID` : L'identifiant Discord de l'administrateur
+- Lier votre compte Discord via `/discord/login`
 
 ## Tests automatiques
 [./.github/workflows/ci.yml](/.github/workflows/ci.yml)
