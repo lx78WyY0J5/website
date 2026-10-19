@@ -577,7 +577,7 @@ function generateFingerprint(text) {
     });
 }
 
-function getScrollPercentage() {
+function getScrollPercentageBis() {
     var doc = document.documentElement;
     var body = document.body;
     var top = 'scrollTop';
