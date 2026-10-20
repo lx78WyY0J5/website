@@ -53,9 +53,11 @@
                 echo '<p>Erreur : ' . htmlspecialchars($e->getMessage()) . '</p>';
             }
         echo '</div>';
-        /*echo '<div id="php-info">';
+        /*
+            echo '<div id="php-info">';
             phpinfo(); //avoid PHP info as it override with some CSS
-        echo '</div>';*/
+            echo '</div>';
+        */
     }else{
         header("location: /");
         echo "<script>window.location.href = '/';</script>";

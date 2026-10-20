@@ -17,7 +17,6 @@
         }
     }
     else {
-        echo '<p>Discord non configuré : renseignez DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET
-            et DISCORD_REDIRECT_URI dans le .env</p>';
+        echo '<p>Discord non configuré : renseignez DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET et DISCORD_REDIRECT_URI dans le .env</p>';
     }
 ?>

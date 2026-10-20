@@ -74,10 +74,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         session_destroy();
                         echo "<p>Mot de passe changé avec succès !</p>";
                         echo "<p>Vous allez être redirigé vers la page de connexion dans 5 secondes</p>";
-                        echo "<script>
-                            setTimeout(function(){ window.location.href='/login'; }, 5000);
-                            document.forms[0].style = 'display: none;';
-                        </script>";
+                        echo "<script>setTimeout(function(){ window.location.href='/login'; }, 5000);</script>";
+                        echo "<script>document.forms[0].style = 'display: none;';</script>";
                         exit;
                     }
                     else {
