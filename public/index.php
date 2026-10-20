@@ -149,6 +149,6 @@
         </div>
     </div>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/footer/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/footer/footer.php'; ?>
 </body>
 </html>
