@@ -3,9 +3,8 @@
 <div id="sql-stats">
     <h1>Statistiques SQL</h1>
 
-    <!-- Visites Section -->
-    <section id="visites-section" class="stats-section">
-        <h2>Visites récentes</h2>
+    <details id="visites-section" class="stats-section">
+        <summary>Visites récentes</summary>
         <div class="loading">Chargement des visites...</div>
         <table>
             <thead>
@@ -29,17 +28,24 @@
                 <!-- Rempli par JavaScript -->
             </tbody>
         </table>
-    </section>
+    </details>
 
-    <!-- Utilisateurs Section -->
-    <section id="users-section" class="stats-section">
-        <h2>Utilisateurs</h2>
+    <details id="users-section" class="stats-section">
+        <summary>Utilisateurs</summary>
+        <div class="stat-card">
+            <h3>Total utilisateurs</h3>
+            <div id="total-users" class="stat-number">Chargement...</div>
+        </div>
+        <hr>
         <div class="loading">Chargement des utilisateurs...</div>
         <table>
             <thead>
                 <tr>
                     <th>Username</th>
+                    <th>User ID</th>
                     <th>Date création</th>
+                    <th>Discord ID</th>
+                    <th>Discord date création</th>
                     <th>Total visites</th>
                     <th>Total API views</th>
                 </tr>
@@ -48,28 +54,25 @@
                 <!-- Rempli par JavaScript -->
             </tbody>
         </table>
-    </section>
+    </details>
 
-    <!-- Statistiques générales -->
-    <section id="summary-section" class="stats-section">
-        <h2>Résumé</h2>
+    <details id="summary-section" class="stats-section">
+        <summary>Résumé</summary>
         <div class="grid-stats">
             <div class="stat-card">
                 <h3>Total visites</h3>
                 <div id="total-visits" class="stat-number">Chargement...</div>
             </div>
+            <hr>
             <div class="stat-card">
-                <h3>Total utilisateurs</h3>
-                <div id="total-users" class="stat-number">Chargement...</div>
-            </div>
-            <div class="stat-card">
-                <h3>Page la plus vue</h3>
-                <p>(Sans compter l'accueil)</p>
-                <div id="top-total-page-views" class="stat-number">Chargement...</div>
-                <div id="top-total-page-views-url" class="stat-number">Chargement...</div>
+                <h3>Page la plus vue (Hors accueil)</h3>
+                <div id="top-total-page-views-div">
+                    <div id="top-total-page-views" class="stat-number">Chargement...</div>
+                    <div id="top-total-page-views-url" class="stat-number">Chargement...</div>
+                </div>
             </div>
         </div>
-    </section>
+    </details>
 </div>
 
 <script src="/src/pages/outils/stats/stats.js"></script>

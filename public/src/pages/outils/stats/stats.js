@@ -166,12 +166,33 @@ function displayUsers(users) {
         } else {
             username = 'Inconnu';
         }
-        
+
+        let userid;
+        if (user.id !== undefined) {
+            userid = user.id;
+        } else {
+            userid = 0;
+        }
+
+        let userdiscordid;
+        if (user.discord_id !== undefined) {
+            userdiscordid = user.discord_id;
+        } else {
+            userdiscordid = 0;
+        }
+
         let createdAt;
         if(user.created_at){
             createdAt = formatDateFrancais(user.created_at);
         } else {
             createdAt = 'Inconnu';
+        }
+
+        let discordlinkedat;
+        if(user.discord_linked_at){
+            discordlinkedat = formatDateFrancais(user.discord_linked_at);
+        } else {
+            discordlinkedat = 'Inconnu';
         }
 
         let totalViews;
@@ -190,7 +211,10 @@ function displayUsers(users) {
 
         rows += `<tr>
             <td>${username}</td>
+            <td>${userid}</td>
             <td>${createdAt}</td>
+            <td>${userdiscordid}</td>
+            <td>${discordlinkedat}</td>
             <td>${totalViews}</td>
             <td>${totalApiViews}</td>
         </tr>`;

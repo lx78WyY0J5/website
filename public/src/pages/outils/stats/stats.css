@@ -28,3 +28,12 @@ tr:nth-child(even) {
 tr:hover {
   background-color: var(--second-hover-low);
 }
+
+#top-total-page-views-div {
+  display: inline-flex;
+  gap: 5px;
+}
+
+#sql-stats h3{
+  text-decoration: underline;
+}
