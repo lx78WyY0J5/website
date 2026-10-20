@@ -57,8 +57,8 @@
         if($classicName === "" && isset($_SESSION["discord_id"]) && !empty($_SESSION["discord_id"])){
             echo '<p>Vous êtes connecté via Discord : <a href="/discord/register">créez un compte classique (ou reliez-en un déjà existant)</a><br>Le compte sera lié à votre compte Discord, vous pourrez vous connecter des deux façons</p>';
         }
-        else{
-            echo '<p>Nouveau : <a href="/discord/login">Connectez-vous avec Discord</a> !</p>';
+        else if($classicName !== "" && !isset($_SESSION["discord_id"]) && empty($_SESSION["discord_id"])){
+            echo '<p>Nouveau : <a href="/discord/login">Connectez-vous avec Discord</a> !<br>Reliez votre compte à Discord, vous pourrez vous connecter des deux façons</p>';
         }
     }
 
