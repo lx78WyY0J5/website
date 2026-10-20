@@ -87,6 +87,8 @@
         exit;
     }
 
+    echo '<!DOCTYPE html>';
+    echo '<html lang="fr">';
     if ($uri === '' || $uri === 'accueil') {
         $pageFile = $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.php';
         include $_SERVER['DOCUMENT_ROOT'] . '/src/index/head.php';
@@ -121,14 +123,12 @@
     logSecurityEvent('visit', $visitContext);
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-    <link rel="stylesheet" href="/src/css/font.css">
-    <link rel="stylesheet" href="/src/css/style.css">
-    <link rel="stylesheet" href="/src/css/scrollbar.css">
-    <link rel="stylesheet" href="/src/css/theme.css">
-    <link rel="stylesheet" href="/src/css/article.css">
     <body>
+        <link rel="stylesheet" href="/src/css/font.css">
+        <link rel="stylesheet" href="/src/css/style.css">
+        <link rel="stylesheet" href="/src/css/scrollbar.css">
+        <link rel="stylesheet" href="/src/css/theme.css">
+        <link rel="stylesheet" href="/src/css/article.css">
         <script src="/src/js/theme.js"></script>
         <script src="/src/js/visitor.js"></script>
         <script src="/src/js/visitor-function.js"></script>
