@@ -1,17 +1,18 @@
+console.log("scrollPercentage.js loaded");
+
 document.addEventListener('scroll', function () {
     var scroll = getScrollPercentage();
     setWidthPercentage(scroll);
 });
 
 function getScrollPercentage() {
-    var doc = document.documentElement;
-    var body = document.body;
-    var top = 'scrollTop';
-    var height = 'scrollHeight';
+    var height = document.body.clientHeight;
+    var top = document.body.scrollTop;
+    var maxHeight = document.body.scrollHeight;
 
-    var percent = (doc[top] || body[top]) / ((doc[height] || body[height]) - doc.clientHeight) * 100;
+    const scrollPercent = (top / (maxHeight - height)) * 100;
 
-    return percent;
+    return scrollPercent;
 }
 
 function setWidthPercentage(scrollPercentage) {
