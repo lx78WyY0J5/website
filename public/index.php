@@ -87,8 +87,8 @@
         exit;
     }
 
-    echo '<!DOCTYPE html>';
-    echo '<html lang="fr">';
+    echo '<!DOCTYPE html>' . PHP_EOL;
+    echo '<html lang="fr">' . PHP_EOL;
     if ($uri === '' || $uri === 'accueil') {
         $pageFile = $_SERVER['DOCUMENT_ROOT'] . '/src/index/index.php';
         include $_SERVER['DOCUMENT_ROOT'] . '/src/index/head.php';
@@ -123,32 +123,32 @@
     logSecurityEvent('visit', $visitContext);
 ?>
 
-    <body>
-        <link rel="stylesheet" href="/src/css/font.css">
-        <link rel="stylesheet" href="/src/css/style.css">
-        <link rel="stylesheet" href="/src/css/scrollbar.css">
-        <link rel="stylesheet" href="/src/css/theme.css">
-        <link rel="stylesheet" href="/src/css/article.css">
-        <script src="/src/js/theme.js"></script>
-        <script src="/src/js/visitor.js"></script>
-        <script src="/src/js/visitor-function.js"></script>
-        <script src="/src/js/visitor-event.js"></script>
+<body>
+    <link rel="stylesheet" href="/src/css/font.css">
+    <link rel="stylesheet" href="/src/css/style.css">
+    <link rel="stylesheet" href="/src/css/scrollbar.css">
+    <link rel="stylesheet" href="/src/css/theme.css">
+    <link rel="stylesheet" href="/src/css/article.css">
+    <script src="/src/js/theme.js"></script>
+    <script src="/src/js/visitor.js"></script>
+    <script src="/src/js/visitor-function.js"></script>
+    <script src="/src/js/visitor-event.js"></script>
 
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/header/header.php'; ?>
 
-        <div id="content">
-            <div id="content-left" style="display: none;">
-            </div>
-
-            <article id="contentArticle">
-                <?php include $pageFile; ?>
-            </article>
-
-            <div id="content-right">
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/anchor.php'; ?>
-            </div>
+    <div id="content">
+        <div id="content-left" style="display: none;">
         </div>
 
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/footer/footer.php'; ?>
-    </body>
+        <article id="contentArticle">
+            <?php include $pageFile; ?>
+        </article>
+
+        <div id="content-right">
+            <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/anchor.php'; ?>
+        </div>
+    </div>
+
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/includes/footer/footer.php'; ?>
+</body>
 </html>
