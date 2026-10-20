@@ -27,7 +27,7 @@
 
     // Récupérer les utilisateurs avec date création
     $stmt = $pdo->query("
-        SELECT id, username, created_at, 
+        SELECT id, username, created_at, discord_id, discord_linked_at, 
             (SELECT total_views FROM user_total_views WHERE user_id = users.id) as total_views,
             (SELECT total_views FROM user_api_total_views WHERE user_id = users.id) as total_api_views
         FROM users 
