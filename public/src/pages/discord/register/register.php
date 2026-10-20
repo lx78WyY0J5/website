@@ -6,6 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/password_validation.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/discord_oauth.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/user_merge.php';
 
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
@@ -109,76 +110,57 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $targetId = (int)$target["id"];
             $ghostId = (int)$_SESSION["id"];
 
-            // La ligne fantôme Discord-only de cette session porte le discord_id
-            // (UNIQUE) : la supprimer AVANT d'écrire sur la ligne ciblée
+            // La ligne Discord-only de cette session est fusionnée dans le
+            // compte classique : ses photos et ses vues sont réaffectées avant
+            // sa suppression. En cas d'échec, la transaction est annulée et le
+            // compte Discord-only reste intact.
             try {
-                discordDeleteUser($pdo, $ghostId);
+                mergeUserAccounts($pdo, $ghostId, $targetId, (string)$_SESSION["discord_id"]);
                 logSecurityEvent('discord_register_ghost_merged', ["ghost_id" => $ghostId, "user_id" => $targetId]);
             }
             catch(PDOException $e) {
-                logSecurityEvent('discord_register_ghost_delete_error', ["ghost_id" => $ghostId]);
+                if ($e->getCode() === "23000") {
+                    logSecurityEvent('discord_register_link_conflict', ['target_id' => $targetId]);
+                    echo "<p>Ce compte est déjà lié à un autre compte Discord</p>";
+                }
+                else {
+                    logSecurityEvent('discord_register_merge_error', ["ghost_id" => $ghostId, "target_id" => $targetId]);
+                    echo "<p>Oups! Une erreur s'est produite. Veuillez réessayer plus tard</p>";
+                }
+                $can_register = false;
+            }
+            catch(Throwable $e) {
+                logSecurityEvent('discord_register_merge_error', ["ghost_id" => $ghostId, "target_id" => $targetId]);
                 echo "<p>Oups! Une erreur s'est produite. Veuillez réessayer plus tard</p>";
                 $can_register = false;
             }
 
             if($can_register === true){
-                // TOCTOU traité par la garde SQL : AND discord_id IS NULL.
-                // S'il échoue, la ligne fantôme est déjà supprimée -> la session
-                // restante n'est plus valide (discord_id lié à un autre compte)
-                try {
-                    if(discordLinkToUnlinkedUser($pdo, $targetId, $_SESSION['discord_id']) === 1){
-                        $can_register = true;
-                    }
-                    else {
-                        logSecurityEvent('discord_register_link_conflict', ['target_id' => $targetId]);
-                        echo "<p>Ce compte Discord est déjà lié à un autre compte</p>";
-                        $can_register = false;
-                    }
+                // Basculer la session sur le compte classique revendiqué
+                $_SESSION["id"] = $targetId;
+                $_SESSION["username"] = $link_username;
+
+                // même logique is_admin que login.php
+                $adminUsername = getenv("ADMIN_USERNAME");
+                if (empty($adminUsername) || !isset($adminUsername)) {
+                    $adminUsername = "administrator";
                 }
-                catch(PDOException $e) {
-                    logSecurityEvent('discord_register_link_conflict', ['target_id' => $targetId]);
-                    echo "<p>Ce compte Discord est déjà lié à un autre compte</p>";
-                    $can_register = false;
-                }
-
-                if($can_register === true){
-                    // Basculer la session sur le compte classique revendiqué
-                    $_SESSION["id"] = $targetId;
-                    $_SESSION["username"] = $link_username;
-
-                    // même logique is_admin que login.php
-                    $adminUsername = getenv("ADMIN_USERNAME");
-                    if (empty($adminUsername) || !isset($adminUsername)) {
-                        $adminUsername = "administrator";
-                    }
-                    if(strcasecmp($link_username, $adminUsername) === 0){
-                        $_SESSION["is_admin"] = true;
-                    }
-                    else{
-                        $_SESSION["is_admin"] = false;
-                    }
-
-                    // Admin Discord : le discord_id de la session peut être configuré admin (.env)
-                    if (discordIsAdminId($_SESSION["discord_id"])) {
-                        $_SESSION["is_admin"] = true;
-                    }
-
-                    echo "<script>document.forms[0].style = 'display: none;';</script>";
-                    logSecurityEvent('discord_register_link_success', ["user_id" => $targetId, "ghost_id" => $ghostId, "username" => $link_username]);
-                    header("location: /");
-                    echo "<script>window.location.href = '/';</script>";
+                if(strcasecmp($link_username, $adminUsername) === 0){
+                    $_SESSION["is_admin"] = true;
                 }
                 else{
-                    // La ligne fantôme est déjà supprimée : terminer la session
-                    $_SESSION["loggedin"] = false;
-                    unset($_SESSION["id"]);
-                    unset($_SESSION["username"]);
-                    unset($_SESSION["discord_id"]);
-                    unset($_SESSION["discord_username"]);
-                    unset($_SESSION["is_admin"]);
-                    header("location: /login");
-                    echo "<script>window.location.href = '/login';</script>";
+                    $_SESSION["is_admin"] = false;
                 }
+
+                // Admin Discord : le discord_id de la session peut être configuré admin (.env)
+                if (discordIsAdminId($_SESSION["discord_id"])) {
+                    $_SESSION["is_admin"] = true;
+                }
+
+                echo "<script>document.forms[0].style = 'display: none;';</script>";
+                logSecurityEvent('discord_register_link_success', ["user_id" => $targetId, "ghost_id" => $ghostId, "username" => $link_username]);
+                header("location: /");
+                echo "<script>window.location.href = '/';</script>";
             }
         }
     }

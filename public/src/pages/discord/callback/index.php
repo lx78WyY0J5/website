@@ -6,6 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/csrf.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/logging.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/rate_limiter.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/discord_oauth.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/php/user_merge.php';
 
 checkRateLimitByIP($pdo, 'discord_callback', 10, 15);
 
@@ -58,6 +59,35 @@ if (isset($discordUser['username']) && is_string($discordUser['username'])) {
     $discordUsernameSaved = $discordUser['username'];
 }
 
+
+$alreadyLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && !empty($_SESSION['id']);
+
+if ($alreadyLoggedIn === true) {
+    // Un compte ne peut pas remplacer un Discord déjà lié par un autre Discord.
+    // Le même Discord reste autorisé (connexion idempotente).
+    $currentUser = discordFindUserById($pdo, (int)$_SESSION['id']);
+    if ($currentUser === null) {
+        logSecurityEvent('discord_link_user_missing', ['user_id' => $_SESSION['id']]);
+        echo "<p>Oups! Une erreur s'est produite. Veuillez réessayer plus tard</p>";
+        exit;
+    }
+
+    $currentDiscordId = "";
+    if (!empty($currentUser["discord_id"])) {
+        $currentDiscordId = (string)$currentUser["discord_id"];
+    }
+
+    if ($currentDiscordId !== "" && $currentDiscordId !== (string)$discordId) {
+        logSecurityEvent('discord_link_conflict_already_linked', [
+            'user_id' => $_SESSION['id'],
+            'existing_discord_id' => $currentDiscordId,
+        ]);
+        logSecurityEvent('discord_link_account_already_linked', ['user_id' => $_SESSION['id']]);
+        echo "<p>Ce compte est déjà lié à un autre compte Discord</p>";
+        exit;
+    }
+}
+
 // Avatar Discord : hash (ou vide = avatar par défaut) -> téléchargé en local
 $discordAvatarHash = "";
 if (isset($discordUser['avatar']) && is_string($discordUser['avatar'])) {
@@ -65,10 +95,8 @@ if (isset($discordUser['avatar']) && is_string($discordUser['avatar'])) {
 }
 discordDownloadAvatar($discordId, $discordAvatarHash);
 
-$alreadyLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && !empty($_SESSION['id']);
-
 if ($alreadyLoggedIn === true) {
-    // CAS LIAISON : un compte classique est déjà connecté
+    // CAS LIAISON : le compte classique est déjà connecté
     // Le propriétaire actuel du discord_id
     $owner = discordFindUserByDiscordId($pdo, $discordId);
     if ($owner !== null && (int)$owner['id'] !== (int)$_SESSION['id']) {
@@ -78,31 +106,59 @@ if ($alreadyLoggedIn === true) {
             echo "<p>Ce compte Discord est déjà lié à un autre compte</p>";
             exit;
         }
-        // Sinon c'est une ligne "fantôme" Discord-only (username NULL) :
-        // on la supprime pour rattacher le discord_id au compte classique courant
-        // (FK ON DELETE CASCADE : user_pictures / user_*_views suivent, ghost_id journalisé)
-        discordDeleteUser($pdo, (int)$owner['id']);
-        logSecurityEvent('discord_link_ghost_merged', ["user_id" => $_SESSION["id"], "ghost_id" => (int)$owner["id"]]);
-    }
 
-    // TOCTOU : entre le SELECT du propriétaire et cet UPDATE, un autre utilisateur
-    // peut prendre le même discord_id -> condition UNIQUE violée au moment de l'écriture
-    try {
-        discordLinkToUser($pdo, (int)$_SESSION["id"], $discordId); // UPDATE ... WHERE id = :id
-    }
-    catch(PDOException $e) {
-        if ($e->getCode() === "23000") {
-            // Course : le discord_id a été pris entre le SELECT et l'UPDATE
-            logSecurityEvent('discord_link_conflict', ['user_id' => $_SESSION['id']]);
-            echo "<p>Ce compte Discord est déjà lié à un autre compte</p>";
-            exit;
+        // La ligne BDD du compte Discord-only est fusionnée : toutes ses données sont réaffectées vers le compte courant avant sa suppression.
+        try {
+            mergeUserAccounts($pdo, (int)$owner['id'], (int)$_SESSION['id'], (string)$discordId);
+            logSecurityEvent('discord_link_ghost_merged', ["user_id" => $_SESSION["id"], "ghost_id" => (int)$owner["id"]]);
         }
-        else {
-            logSecurityEvent('discord_link_error', ['user_id' => $_SESSION['id']]);
+        catch(PDOException $e) {
+            if ($e->getCode() === "23000") {
+                logSecurityEvent('discord_link_conflict', ['user_id' => $_SESSION['id']]);
+                echo "<p>Ce compte Discord est déjà lié à un autre compte</p>";
+                exit;
+            }
+            else {
+                logSecurityEvent('discord_link_merge_error', ['user_id' => $_SESSION['id'], 'ghost_id' => (int)$owner['id']]);
+                echo "<p>Oups! Une erreur s'est produite. Veuillez réessayer plus tard</p>";
+                exit;
+            }
+        }
+        catch(Throwable $e) {
+            logSecurityEvent('discord_link_merge_error', ['user_id' => $_SESSION['id'], 'ghost_id' => (int)$owner['id']]);
             echo "<p>Oups! Une erreur s'est produite. Veuillez réessayer plus tard</p>";
             exit;
         }
     }
+    else {
+        // Même Discord déjà lié, ou Discord libre : la condition SQL empêche tout remplacement d'un autre Discord.
+        try {
+            $affectedRows = discordLinkToUser($pdo, (int)$_SESSION["id"], $discordId);
+
+            // rowCount vaut 0 si le même Discord était déjà lié (aucun changement).
+            // En revanche, si le compte a été lié à un autre Discord entre-temps,
+            // la garde SQL n'a rien modifié : c'est un conflit.
+            if ($affectedRows !== 1 && $currentDiscordId !== (string)$discordId) {
+                logSecurityEvent('discord_link_conflict', ['user_id' => $_SESSION['id']]);
+                echo "<p>Ce compte Discord est déjà lié à un autre compte</p>";
+                exit;
+            }
+        }
+        catch(PDOException $e) {
+            if ($e->getCode() === "23000") {
+                // Course/Race condition : le discord_id a été pris entre le SELECT et l'UPDATE
+                logSecurityEvent('discord_link_conflict', ['user_id' => $_SESSION['id']]);
+                echo "<p>Ce compte Discord est déjà lié à un autre compte</p>";
+                exit;
+            }
+            else {
+                logSecurityEvent('discord_link_error', ['user_id' => $_SESSION['id']]);
+                echo "<p>Oups! Une erreur s'est produite. Veuillez réessayer plus tard</p>";
+                exit;
+            }
+        }
+    }
+
     $_SESSION['discord_id'] = $discordId;
     $_SESSION['discord_username'] = $discordUsernameSaved;
     // $_SESSION['username'] (nom classique) reste inchangé, de même que is_admin,

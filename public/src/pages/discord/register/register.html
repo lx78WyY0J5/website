@@ -3,8 +3,10 @@
 <h2>Compte Discord connecté</h2>
 <p class="discord">Connexion Discord : <?php echo htmlspecialchars($discordDisplayName); ?></p>
 
+<hr>
+
 <h3>Créer un nouveau compte classique et le lier à Discord</h3>
-<p>Le compte créé sera lié à votre compte Discord : vous pourrez ensuite vous connecter avec votre compte classique ou avec Discord.</p>
+<p>Le compte créé sera lié à votre compte Discord : vous pourrez ensuite vous connecter avec votre compte classique ou avec Discord</p>
 
 <form method="POST" action="">
     <input type="hidden" name="csrf_token" value="<?php echo generateCsrfToken(); ?>">
@@ -18,7 +20,7 @@
 <hr>
 
 <h3>Vous avez déjà un compte classique ? Le lier à Discord</h3>
-<p>Le compte classique sera relier à votre compte Discord, vous devrez vous connecter des deux façons. Un seul compte classique possible par Discord : la ligne Discord-only de cette session sera fusionner dans le compte choisi, AUCUN compte n'est créé.</p>
+<p>Le compte connecté sera lié à votre compte Discord : vous pourrez ensuite vous connecter avec votre compte classique ou avec Discord</p>
 
 <form method="POST" action="">
     <input type="hidden" name="csrf_token" value="<?php echo generateCsrfToken(); ?>">

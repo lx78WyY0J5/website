@@ -122,7 +122,7 @@ function discordFetchUser($token)
 }
 
 // Retourne la ligne users pour ce discord_id (id, username, discord_id) ou null
-// (sert au login Discord ET à la détection de la ligne "fantôme")
+// (sert au login Discord ET à la détection d'un compte Discord-only)
 function discordFindUserByDiscordId(PDO $pdo, $discordId)
 {
     $stmt = $pdo->prepare("SELECT id, username, discord_id FROM users WHERE discord_id = :discord_id");
@@ -165,13 +165,23 @@ function discordCreateUser(PDO $pdo, $discordId): int
     return (int)$pdo->lastInsertId();
 }
 
-// Lie un discord_id à la ligne users classique existante (UPDATE ... WHERE id = :id)
-function discordLinkToUser(PDO $pdo, int $userId, $discordId): void
+// Lie un discord_id à la ligne users existante.
+// La condition SQL empêche de remplacer un Discord déjà lié par un autre.
+// Retourne le nombre de lignes modifiées (0 si le lien était déjà identique).
+function discordLinkToUser(PDO $pdo, int $userId, $discordId): int
 {
-    $stmt = $pdo->prepare("UPDATE users SET discord_id = :discord_id, discord_linked_at = NOW() WHERE id = :id");
+    $stmt = $pdo->prepare("UPDATE users
+        SET discord_id = :discord_id,
+            discord_linked_at = COALESCE(discord_linked_at, NOW())
+        WHERE id = :id
+          AND (discord_id IS NULL OR discord_id = :existing_discord_id)");
+
     $stmt->bindParam(":discord_id", $discordId, PDO::PARAM_STR);
+    $stmt->bindParam(":existing_discord_id", $discordId, PDO::PARAM_STR);
     $stmt->bindParam(":id", $userId, PDO::PARAM_INT);
     $stmt->execute();
+
+    return $stmt->rowCount();
 }
 
 // Revendication : lie un discord_id à une ligne users SANS discord_id
@@ -187,8 +197,26 @@ function discordLinkToUnlinkedUser(PDO $pdo, int $userId, $discordId): int
     return $stmt->rowCount();
 }
 
-// Supprime une ligne users (ligne "fantôme" Discord-only) par id
-// ⚠️ FK ON DELETE CASCADE : user_pictures / user_*_views suivent la suppression
+// Retourne les champs utiles de la ligne users pour un id local, ou null
+function discordFindUserById(PDO $pdo, int $userId)
+{
+    $stmt = $pdo->prepare("SELECT id, username, discord_id, discord_linked_at, created_at FROM users WHERE id = :id");
+    $stmt->bindParam(":id", $userId, PDO::PARAM_INT);
+
+    if ($stmt->execute()) {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row === false) {
+            return null;
+        }
+        return $row;
+    }
+
+    return null;
+}
+
+// Supprime une ligne users par id.
+// ⚠️ À n'utiliser qu'après avoir réaffecté ses données : la suppression est en
+// cascade sur user_pictures et user_*_views.
 function discordDeleteUser(PDO $pdo, int $userId): void
 {
     $stmt = $pdo->prepare("DELETE FROM users WHERE id = :id");
