@@ -1,6 +1,4 @@
-<?php
-    echo '<head>';
-        echo '<meta charset="UTF-8">';
-        echo '<title>Se déconnecter</title>';
-    echo '</head>';
-?>
+<head>
+    <meta charset="UTF-8">
+    <title>Se déconnecter</title>
+</head>

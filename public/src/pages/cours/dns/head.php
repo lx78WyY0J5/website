@@ -1,6 +1,4 @@
-<?php
-    echo '<head>';
-        echo '<meta charset="UTF-8">';
-        echo '<title>Cours - DNS</title>';
-    echo '</head>';
-?>
+<head>
+    <meta charset="UTF-8">
+    <title>Cours - DNS</title>
+</head>

@@ -1,6 +1,4 @@
-<?php
-    echo '<head>';
-        echo '<meta charset="UTF-8">';
-        echo '<title>Github - Statistiques</title>';
-    echo '</head>';
-?>
+<head>
+    <meta charset="UTF-8">
+    <title>Github - Statistiques</title>
+</head>

@@ -1,6 +1,4 @@
-<?php
-    echo '<head>';
-        echo '<meta charset="UTF-8">';
-        echo '<title>Cours - Readme</title>';
-    echo '</head>';
-?>
+<head>
+    <meta charset="UTF-8">
+    <title>Cours - Readme</title>
+</head>
