@@ -1,6 +1,6 @@
 <footer>
     <link rel="stylesheet" href="/src/includes/footer/footer.css">
-<p>Site fait avec <img src="/src/assets/svg/heart-color.svg" class="svg-color"></img> par <a href="/admin/contact">lx78WyY0J5</a></p>
+    <p>Site fait avec <img src="/src/assets/svg/heart-color.svg" class="svg-color"> par <a href="/admin/contact">lx78WyY0J5</a></p>
 
     <div class="view-stats">
         <p><strong class="view-stats-title">Statistiques du site</strong> :</p>
