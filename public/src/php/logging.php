@@ -11,8 +11,11 @@ function logSecurityEvent(string $event, array $context = []): void {
         'context' => $context,
     ];
 
+    $fileName = 'security-' . date('Y-m-d') . '.log';
+    $logFile = $logDir . '/' . $fileName;
+
     file_put_contents(
-        $logDir . '/security.log',
+        $logFile,
         json_encode($entry) . "\n",
         FILE_APPEND | LOCK_EX
     );
